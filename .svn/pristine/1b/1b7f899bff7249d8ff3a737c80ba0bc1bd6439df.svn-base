@@ -1,0 +1,15 @@
+package com.el.cmic.service.supplier;
+
+import java.util.List;
+
+
+import com.el.cmic.domain.supplier.Supplier;
+
+public interface SupplierService {
+
+	public List<Supplier>  selectSupplier();
+	
+	public Integer  updateEv01(String status,String span8);
+	
+	public void callSupplierInterface();
+}

@@ -1,0 +1,60 @@
+package com.el.cmic.mapper.customer;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
+import com.el.cmic.domain.customer.CustomPItem;
+import com.el.cmic.domain.customer.CustomPropel;
+import com.el.cmic.domain.goods.Licence;
+
+public interface CustomPropelMapper {
+	
+	//暂时 未解决  读取配置文件中的schema
+	/**
+	 * 查询客户信息推送 主信息
+	 * @return
+	 */
+	@Select(" select feo2.BSAN8,fe01.KSE8WMSHZ,fo01.ABAN8,fo01.ABAT1,fo01.ABALPH,fe01.KSE8BYM,"
+			+ " (fo16.ALADD1|| '-'|| fo16.ALADD4) as address ,fo11.WWMLNM,(fo15.WPAR1||'+'||fo15.WPPH1) as tell,fe01.KSCUSTS,"
+			+ " fe01.KSE8WMSHZM,fe01.KSE8JDSJ,fo01.ABTAX,(fo15copy.WPAR1||'+'||fo15copy.WPPH1) as email "
+			+ " from CRPDTA.FE8WMS02  feo2 "
+			+ " left  join  CRPDTA.FE80101 fe01  on feo2.BSAN8 =fe01.KSAN8"
+			+ " left join CRPDTA.F0101    fo01 on feo2.BSAN8  =fo01.ABAN8"
+			+ " left join CRPDTA.F0116   fo16 on feo2.BSAN8=fo16.ALAN8"
+			+ " left join CRPDTA.F0111 fo11 on feo2.BSAN8=fo11.WWAN8"
+			+ " left join CRPDTA.F0115   fo15 on (feo2.BSAN8=fo15.WPAN8 and  fo15.WPPHTP = '')"
+			+ " left join  CRPDTA.F0115 fo15copy on (feo2.BSAN8=fo15copy.WPAN8 and   fo15copy.WPPHTP = 'FAX')"
+			+ " WHERE feo2.BSEV01='N'"
+			)
+	public List<CustomPropel>  selectCustomPropelList();
+	
+	
+	/**
+	 * 根据an8  查询  客户信息 地址明细
+	 * @param an8
+	 * @return
+	 */
+	@Select(" select  '数据库没有此字段' as PA8,(fo16.ALADD1||'-'||fo16.ALADD4 ) as address , '' as mcu ,fo11.WWMLNM as mlnm , (fo15.WPAR1||'+'||fo15.WPPH1) as tellPhone "
+			+ "	from CRPDTA.FE8WMS02  feo2 "
+			+ " left join  CRPDTA.FE80101 fe01  on feo2.BSAN8 =fe01.KSAN8"
+			+ " left join CRPDTA.F0101    fo01 on feo2.BSAN8  =fo01.ABAN8"
+			+ " left join CRPDTA.F0116   fo16 on feo2.BSAN8=fo16.ALAN8"
+			+ " left join CRPDTA.F0111 fo11 on fe01.KSAN8=fo11.WWAN8"
+			+ " left join CRPDTA.F0115   fo15 on (feo2.BSAN8=fo15.WPAN8  and  fo15.WPPHTP = '')"
+			+ " WHERE feo2.BSAN8=#{an8}")
+	public List<CustomPItem>  selectCustomPItemList(String an8);
+	
+	/**
+	 * 根据an8   查询  客户证照信息
+	 * @param an8
+	 * @return
+	 */
+	
+	@Select("select f5.drdl01 as ZZE8ZZLXA , fz.ZZE8ZZBM, fz.ZZEFTJ, fz.ZZEXDJ "
+			+ "	from crpdta.FE80101Z  "
+			+ " fz left join   crpctl.f0005  f5 on (trim(fz.ZZE8ZZLXA)=trim(f5.drky)  and drsy = 'E8' AND DRRT = '10')"
+			+ " where  fz.zzan8='${value}'")
+	public List<Licence> selectLicenceList(String an8);
+
+}

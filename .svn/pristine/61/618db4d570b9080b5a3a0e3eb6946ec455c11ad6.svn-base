@@ -1,0 +1,12 @@
+package com.el.cmic.ws.mapper;
+
+import com.el.cfg.domain.F4104;
+import org.apache.ibatis.annotations.UpdateProvider;
+
+/**
+ * Created by king_ on 2016/10/8.
+ */
+public interface F4104UpdateByLitmMapper {
+    @UpdateProvider(type=F4104UpdateByLitmSqlprovider.class, method="updateByPrimaryKeySelective")
+    int updateByPrimaryKeySelective(F4104 record);
+}

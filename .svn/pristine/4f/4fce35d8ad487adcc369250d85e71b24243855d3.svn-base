@@ -1,0 +1,136 @@
+package com.el.cmic.domain.ckback;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+/**
+ * Created by Vincent on 2016/10/26.
+ */
+
+public class CkBackOrder {
+    @JSONField(serialize = false)
+    private BigDecimal syedoc;
+
+    @JSONField(name = "物流中心")
+    private int mcu;
+    @JSONField(name = "出库类型")
+    private int ca01;
+
+    @JSONField(name = "货主")
+    private String kcoo;
+    @JSONField(name = "通知单号")
+    private String doco;
+    @JSONField(name = "说明")
+    private String remark;
+    @JSONField(name = "备用字段一")
+    private String memo1;
+    @JSONField(name = "备用字段二")
+    private String memo2;
+    @JSONField(name = "备用字段三")
+    private String memo3;
+    @JSONField(name = "订单类型")
+    private String dcto;
+    @JSONField(name = "业务类型")
+    private String flag;
+
+    @JSONField(name = "通知单明细")
+    private List<CkBackOrderDtl> ckBackOrderDtlList;
+
+    public BigDecimal getSyedoc() {
+        return syedoc;
+    }
+
+    public void setSyedoc(BigDecimal syedoc) {
+        this.syedoc = syedoc;
+    }
+
+    public int getMcu() {
+        return mcu;
+    }
+
+    public void setMcu(int mcu) {
+        this.mcu = mcu;
+    }
+
+    public int getCa01() {
+        return ca01;
+    }
+
+    public void setCa01(int ca01) {
+        this.ca01 = ca01;
+    }
+
+    public String getKcoo() {
+        return kcoo;
+    }
+
+    public void setKcoo(String kcoo) {
+        this.kcoo = kcoo;
+    }
+
+    public String getDoco() {
+        return doco;
+    }
+
+    public void setDoco(String doco) {
+        this.doco = doco;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getMemo1() {
+        return memo1;
+    }
+
+    public void setMemo1(String memo1) {
+        this.memo1 = memo1;
+    }
+
+    public String getMemo2() {
+        return memo2;
+    }
+
+    public void setMemo2(String memo2) {
+        this.memo2 = memo2;
+    }
+
+    public String getMemo3() {
+        return memo3;
+    }
+
+    public void setMemo3(String memo3) {
+        this.memo3 = memo3;
+    }
+
+    public String getDcto() {
+        return dcto;
+    }
+
+    public void setDcto(String dcto) {
+        this.dcto = dcto;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public List<CkBackOrderDtl> getCkBackOrderDtlList() {
+        return ckBackOrderDtlList;
+    }
+
+    public void setCkBackOrderDtlList(List<CkBackOrderDtl> ckBackOrderDtlList) {
+        this.ckBackOrderDtlList = ckBackOrderDtlList;
+    }
+}

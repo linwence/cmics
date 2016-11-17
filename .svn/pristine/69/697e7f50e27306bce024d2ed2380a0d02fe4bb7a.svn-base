@@ -1,0 +1,84 @@
+package com.el.cmic.mapper.repertory;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Many;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.jdbc.SQL;
+
+import com.el.cmic.domain.repertory.InInvertoryCancel;
+import com.el.cmic.domain.repertory.InInvertoryCancelItem;
+import com.el.utils.ReadPropertiesUtil;
+
+public interface InInvertoryCancelMapper {
+	//动态 获取  db.properties  文件属性值
+	
+	/**
+	 * 入库单取消  list
+	 * @return
+	 */
+	@Select("select QXDCTO,QXDOCO,QXAN8,QXE8NAME,QXTRDJ,LSE8WLZXID as QXMCU ,LSE8HZBM as QXKCOO"
+			+ " from crpdta.FE8WMS12  f12"
+			+ " left join  crpdta.FE8WMS21 f21 on f12.QXMCU=f21.LSMCU"
+			+ " left join  crpdta.FE8WMS20  f20 on f12.Qxkcoo=f20.LSCO"
+			+ " where QXEV01='N'")
+	  @Results({
+	        @Result(column="QXMCU", property="qxmcu"),
+	        @Result(column="QXDCTO", property="qxdcto" ),
+	        @Result(column="QXKCOO", property="qxkcoo"),
+	        @Result(column="QXDOCO", property="qxdoco"),
+	        @Result(column="QXAN8", property="qxan8"),
+	        @Result(column="QXE8NAME", property="qxe8name"),
+	        @Result(column="QXTRDJ", property="qxtrdj"),
+	        @Result( property="iICIList",column="{mcu=QXMCU,dcto=QXDCTO,doco=QXDOCO,kcoo=QXKCOO}",javaType = List.class,
+	        	    many = @Many(select ="selectInInvertoryCancelItem")),
+	    })
+	public List<InInvertoryCancel> selectInInvertoryCancel();
+	
+	
+	/**
+	 * 入库单取消  明细list
+	 * @return
+	 */
+	@Select("select  QXLNID,QXLITM,QXUORG,0 as invertoryType,QXDSC1 from crpdta.FE8WMS12 where QXEV01='N' and QXMCU=#{mcu} "
+			+ "and  QXDCTO=#{dcto}  and QXDOCO=#{doco} and QXKCOO=#{kcoo}  ")
+	@Results({
+		   @Result(column="QXLNID", property="qxlnid"),
+		   @Result(column="QXLITM", property="qxlitm"),
+		   @Result(column="QXUORG", property="qxuorg"),
+		   @Result(column="QXDSC1", property="qxdsc1")
+	})
+	public List<InInvertoryCancelItem> selectInInvertoryCancelItem();
+	
+	/**
+	 * 更新   入库取消返回推送
+	 * @param paramMap
+	 * @return
+	 */
+	@UpdateProvider(type=InInvertoryCancelMapper.sqlProvider.class,method=InInvertoryCancelMapper.sqlProvider.updateInInvertoryCancel)
+	public Integer updateInInvertoryCancel(Map<String,String> paramMap);
+	
+	
+	class sqlProvider extends SQL{
+		
+		//动态 获取  db.properties  文件属性值
+	   private static final String schema=ReadPropertiesUtil.getPropertyValue("/config/db.properties", "schema");
+	   
+	   private static final String updateInInvertoryCancel="updateInInvertoryCancel";
+	   public String updateInInvertoryCancel(Map<String,String> paramMap){
+		   UPDATE (schema+".FE8WMS12");  
+		   SET("QXDCTO = #{qxdcto}"); 
+		   SET("QXLNID = #{qxlnid}"); 
+		   SET("QXEV01 = #{qxev01}"); 
+		   WHERE("QXDOCO = #{qxdoco}"); 
+		   //SOCN  数据库中未能找到该
+		   return toString();
+	   }
+		
+	}
+
+}

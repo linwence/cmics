@@ -1,0 +1,92 @@
+package com.el.cmic.service.department.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.el.cmic.common.SpdInterfaceType;
+import com.el.cmic.common.domain.SpdData;
+import com.el.cmic.common.domain.SpdRequest;
+import com.el.cmic.common.domain.SpdResult;
+import com.el.cmic.domain.department.DepartmentData;
+import com.el.cmic.mapper.department.DepartmentDataMapper;
+import com.el.cmic.service.department.DepartmentDataService;
+import com.el.utils.AddSpaceUtil;
+import com.el.utils.CallSpdWebServiceUtil;
+import com.el.utils.SpdClientService;
+
+@Service
+public class DepartmentDataServiceImpl implements DepartmentDataService{
+	
+	Logger logger = Logger.getLogger(DepartmentDataServiceImpl.class);
+ 
+	@Autowired
+	private DepartmentDataMapper  departmentDataMapper;
+	
+	@Value("${spd.ID}")
+	private String spdId;
+	 
+	@Resource(name="spdRequest")
+	private SpdRequest spdRequest;
+	
+	@Resource(name="spdClientService")
+	private SpdClientService  spdClientService;
+	
+	/**
+	 * 部门基础数据推送  查询list
+	 * @return
+	 */
+	@Override
+	public List<DepartmentData> selectDepartmentDatas() {
+		return departmentDataMapper.selectDepartmentDatas();
+	}
+	
+	/**
+	 * 更新 FE8SPD02  EV01 表的状态  Y  or  N
+	 */
+	@Override
+	@Transactional
+	public void updateEv01(String status,String bmmcu,String bmco) {
+		departmentDataMapper.updateEv01(status,bmmcu,bmco);
+	}
+	
+
+	/**
+	 *  部门基础数据推送    接口
+	 */
+	@Override
+	public void callSpdDepartmentInterface() {
+		List<DepartmentData> arrayList = new ArrayList<DepartmentData>();
+		arrayList=this.selectDepartmentDatas();
+		for(DepartmentData departmentData:arrayList){
+		    SpdData spdData = new SpdData(SpdInterfaceType.DEPARTMENTDATA_TYPE,spdId,departmentData,"明细");
+			//生成data数据
+			String data = spdData.toJson();
+			System.out.println(data);
+			//调用webservice提供的接口
+			SpdResult  spdResult =  spdClientService.callSpdWebService(data);
+			System.out.print("接口测试结果:");
+			System.out.println(spdResult);
+			afterResponse(departmentData,spdResult);
+		}
+		
+	}
+	
+	
+	public  void afterResponse(DepartmentData departmentData,SpdResult spdResult){
+		 String status = "Y";
+		 //接口调用不成功  更新状态
+		if(!spdResult.isSuccess()){
+			status="E";
+		}
+		updateEv01(status,AddSpaceUtil.addSpanceLeft(departmentData.getMcu(),12),AddSpaceUtil.addSpanceRight(departmentData.getCo(),5));
+	}
+
+}

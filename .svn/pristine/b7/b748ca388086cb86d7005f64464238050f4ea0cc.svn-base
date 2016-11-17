@@ -1,0 +1,67 @@
+package com.el.cmic.callmdm.domain;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
+/**
+ * Created by Vincent on 2016/10/11.
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"isbgz", "isqyba", "isyyzz", "iszzjgma", "isswdjz", "isxbyyzz"})
+public class RqC001InputJks {
+    private String isbgz;//<isbgz>是否有报关证</isbgz>
+    private String isqyba;// <isqyba>是否有出入境检验检疫报检企业备案表</isqyba>
+    private String isyyzz;// <isyyzz>是否有营业执照</isyyzz>
+    private String iszzjgma;// <iszzjgma>是否有组织机构代码</iszzjgma>
+    private String isswdjz;// <isswdjz>是否有税务登记证</isswdjz>
+    private String isxbyyzz;// <isxbyyzz>是否有新版营业执照</isxbyyzz>
+
+    public String getIsbgz() {
+        return isbgz;
+    }
+
+    public void setIsbgz(String isbgz) {
+        this.isbgz = isbgz;
+    }
+
+    public String getIsqyba() {
+        return isqyba;
+    }
+
+    public void setIsqyba(String isqyba) {
+        this.isqyba = isqyba;
+    }
+
+    public String getIsyyzz() {
+        return isyyzz;
+    }
+
+    public void setIsyyzz(String isyyzz) {
+        this.isyyzz = isyyzz;
+    }
+
+    public String getIszzjgma() {
+        return iszzjgma;
+    }
+
+    public void setIszzjgma(String iszzjgma) {
+        this.iszzjgma = iszzjgma;
+    }
+
+    public String getIsswdjz() {
+        return isswdjz;
+    }
+
+    public void setIsswdjz(String isswdjz) {
+        this.isswdjz = isswdjz;
+    }
+
+    public String getIsxbyyzz() {
+        return isxbyyzz;
+    }
+
+    public void setIsxbyyzz(String isxbyyzz) {
+        this.isxbyyzz = isxbyyzz;
+    }
+}

@@ -1,0 +1,166 @@
+package com.el.cmic.ws.service;
+
+
+import com.el.cfg.domain.*;
+import com.el.cmic.ws.domain.*;
+import com.el.cmic.ws.mapper.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+/**
+ * Created by king_ on 2016/9/29.
+ */
+@Service
+public class AddE01ToERPServiceImpl implements AddE01ToERPService {
+    @Autowired
+    F4101UpdateByLitmMapper f4101UpdateByLitmMapper;
+    @Autowired
+    FE84101UpdateByLitmMapper fe84101UpdateByLitmMapper;
+    @Autowired
+    FE84101ZUpdateByPKMapper fe84101ZUpdateByPKMapper;
+    @Autowired
+    F0101UpdateByPKMapper f0101UpdateByPKMapper;
+    @Autowired
+    FE84101ZSelectByE8ZZBM fe84101ZSelectByE8ZZBM;
+    @Autowired
+    FE80101UpdateByPKMapper fe80101UpdateByPKMapper;
+    @Autowired
+    F0005DMapper f0005DMapper;
+    @Autowired
+    F0005Mapper f0005Mapper;
+    String dbtype = "CRPCTL";
+
+    public void AddE01ToERP(PhE001OutHeader phE001OutHeader, PhE001OutMain phE001OutMain, PhE001OutsublineB phE001OutsublineB,String no) {
+        updateF4101(phE001OutHeader,phE001OutMain,no);
+        updateF0101(phE001OutMain);
+        updateFE84101(phE001OutHeader,phE001OutMain,phE001OutsublineB,no);
+        updateFE84101Z(phE001OutMain,phE001OutsublineB,no);
+        updateFE80101(phE001OutMain);
+    }
+
+    public String updateF4101(PhE001OutHeader phE001OutHeader,  PhE001OutMain phE001OutMain,String no){
+        String TemporaryCode = "";
+        String FormalCode = "";
+        F4101 f4101 =new F4101();
+        List<PhE001OutHeaderCode> phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
+        for(PhE001OutHeaderCode tmp :phE001OutHeaderCodes){
+            if(tmp.getCodetype().equals("0")){
+                TemporaryCode = tmp.getCodevalue();
+            }
+
+            if(tmp.getCodetype().equals("1")){
+                FormalCode = tmp.getCodevalue();
+            }
+        }
+        f4101.setImlitm(no);
+        f4101.setImaitm(FormalCode);
+        f4101.setImdsc2(phE001OutMain.getProducttype());
+        f4101.setImdsc1(phE001OutMain.getSync());
+     //   f4101.setImuom1(phE001OutMain.getPk_weight());
+        f4101.setImuom1(f0005DMapper.selectF0005D(dbtype,"00","UM",phE001OutMain.getPk_weight()));
+     //   f4101.setImsrp3(phE001OutMain.getPk_productclass());
+      //  f4101.setImsrp3(f0005Mapper.selectF0005(dbtype,"E8","14",phE001OutMain.getPk_productclass()));
+     //   f4101.setImsrp4(phE001OutMain.getPk_department());
+    //    f4101.setImsrp4(f0005Mapper.selectF0005(dbtype,"E8","15",phE001OutMain.getPk_yltsfl()));
+
+        f4101UpdateByLitmMapper.updateByLitmSelective(f4101,phE001OutHeader.getDatatype());
+
+        return null;
+        //Litm Aitm多对一问题--------------------------《count》-----------------------------------------------------------
+    }
+    public String updateFE84101(PhE001OutHeader phE001OutHeader,PhE001OutMain phE001OutMain,PhE001OutsublineB phE001OutsublineB,String no){
+        Fe84101 fe84101 = new Fe84101();
+
+        List<PhE001OutHeaderCode> phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
+        for(PhE001OutHeaderCode tmp :phE001OutHeaderCodes){
+
+            if(tmp.getCodetype().equals("1")){
+                fe84101.setSpev01("Y");
+            }
+        }
+        if(fe84101.getSpev01().equals(null)) {
+            fe84101.setSpev01("N");
+        }
+        fe84101.setSplitm(no);
+        fe84101.setSpe8name(phE001OutMain.getProductname());
+        BigDecimal bd=new BigDecimal(phE001OutMain.getPk_mfname());
+        fe84101.setSpan8(bd);
+        fe84101.setSpe8pzwh(phE001OutMain.getFileno());
+        fe84101.setSpe8yyks(phE001OutMain.getPk_department());
+        fe84101.setSpe8cpdl(f0005Mapper.selectF0005(dbtype,"E8","14",phE001OutMain.getPk_productclass()));
+        fe84101.setSpe8tsfl(f0005Mapper.selectF0005(dbtype,"E8","15",phE001OutMain.getPk_yltsfl()));
+
+        fe84101.setSpe8jx(f0005Mapper.selectF0005(dbtype,"E8","JX",phE001OutMain.getForm()));
+     //   fe84101.setSporig(phE001OutMain.getPk_mfcountry());
+        fe84101.setSporig(f0005Mapper.selectF0005(dbtype,"E8","17",phE001OutMain.getPk_mfcountry()));
+        for(PhE001OutBE01 tmp : phE001OutsublineB.getPhE001OutBE01List()) {
+            //fe84101.setSpe8fxdj(tmp.getFxdj());
+            fe84101.setSpe8fxdj(f0005Mapper.selectF0005(dbtype,"E8","19",tmp.getFxdj()));
+          //  fe84101.setSpe8cctj(tmp.getCctj());
+            fe84101.setSpe8cctj(f0005Mapper.selectF0005(dbtype,"E8","19",tmp.getCctj()));
+            fe84101.setSpe8qtcc(tmp.getQtcctj());
+
+            fe84101.setSpe8cpfl(tmp.getPk_productclass());
+          //  fe84101.setSpe8jgg(tmp.getPk_jgg());
+            fe84101.setSpe8jgg(f0005Mapper.selectF0005(dbtype,"E8","35",tmp.getPk_jgg()));
+
+        }
+        //证件类型维护主表附表问题--------------------------------------------------------------------------------------
+
+        fe84101UpdateByLitmMapper.updateByLitmSelective(fe84101,phE001OutHeader.getDatatype());
+        return null;
+    }
+    public String updateFE84101Z(PhE001OutMain phE001OutMain,PhE001OutsublineB phE001OutsublineB,String no){
+        Fe84101z fe84101Z = new Fe84101z();
+        for(PhE001OutBE01 tmp :phE001OutsublineB.getPhE001OutBE01List()){
+       //     fe84101Z.setZze8zzlxa(tmp.getPk_licensetype());
+            fe84101Z.setZze8zzlxa(f0005Mapper.selectF0005(dbtype,"E8","28",tmp.getPk_licensetype()));
+            fe84101Z.setZze8zzbm(tmp.getLicenseno());
+            fe84101Z.setZzlitm(no);
+           // BigDecimal bd=new BigDecimal(tmp.getTodate());
+            Integer bd = Integer.parseInt(tmp.getTodate());
+            fe84101Z.setZzexdj(bd);
+            //fe84101Z.setZzlitm(phE001OutMain.getProductcode());
+            if(fe84101ZSelectByE8ZZBM.selectByPrimaryKey(tmp.getLicenseno())>=1) {
+                fe84101ZUpdateByPKMapper.updateByPrimaryKeySelective(fe84101Z, "E01");
+            }
+            if (fe84101ZSelectByE8ZZBM.selectByPrimaryKey(tmp.getLicenseno())==0){
+                fe84101ZUpdateByPKMapper.insertSelective(fe84101Z);
+            }
+
+          /*  String zznum =fe84101ZSelectByE8ZZBM.selectByPrimaryKey(tmp.getLicenseno());
+            FE84101 fe84101 = new FE84101();
+            //fe84101.setSplitm(zznum);
+            fe84101.setSpe8fxdj(tmp.getFxdj());
+            fe84101.setSpe8cctj(tmp.getCctj());
+            fe84101.setSpe8qtcc(tmp.getQtcctj());
+            fe84101.setSpe8jgg(tmp.getPk_jgg());
+            fe84101UpdateByLitmMapper.updateByLitmSelective(fe84101,"E011");*/
+        }
+        return null;
+    }
+
+    public String updateF0101(PhE001OutMain phE001OutMain){
+        F0101 f0101 = new F0101();
+        f0101.setAbac28(phE001OutMain.getPk_label());
+
+        BigDecimal bd=new BigDecimal(phE001OutMain.getPk_mfname());
+        f0101.setAban8(bd);
+
+        f0101UpdateByPKMapper.updateByPrimaryKeySelective(f0101,"E01");
+        return  null;
+    }
+
+    public String updateFE80101(PhE001OutMain phE001OutMain) {
+        Fe80101 fe80101 = new Fe80101();
+        BigDecimal bd=new BigDecimal(phE001OutMain.getPk_mfname());
+        fe80101.setKsan8(bd);
+        fe80101.setKse8cp(f0005Mapper.selectF0005(dbtype,"E8","BR",phE001OutMain.getPk_label()));
+        fe80101.setKse8scxkz(phE001OutMain.getLicenseno());
+        fe80101UpdateByPKMapper.updateByPrimaryKeySelective(fe80101,"E01");
+        return null;
+    }
+}

@@ -1,0 +1,24 @@
+package com.el.cmic.callmdm.service;
+
+import com.el.cmic.callmdm.domain.FE8Log01;
+import com.el.cmic.callmdm.mapper.Fe8Log01Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * Created by Vincent on 2016/10/9.
+ */
+@Service(value = "fe8Log01ServiceImpl")
+public class Fe8Log01ServiceImpl implements Fe8Log01Service {
+    @Autowired
+    private Fe8Log01Mapper fe8Log01Mapper;
+
+
+    @Transactional
+    public int insert(FE8Log01 fE8Log01) {
+
+        return fe8Log01Mapper.insert(fE8Log01);
+
+    }
+}

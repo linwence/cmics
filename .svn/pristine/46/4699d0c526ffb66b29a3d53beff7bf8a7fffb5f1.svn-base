@@ -1,0 +1,37 @@
+package com.el.cmic.common.domain;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
+/**
+ * Created by Vincent on 2016/10/25.
+ * 用于接收返回的结果
+ */
+public class WmsResult {
+    private boolean success;
+    private String code;
+    private String message;
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+}

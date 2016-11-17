@@ -1,0 +1,164 @@
+package com.el.cmic.domain.department;
+
+
+import org.springframework.stereotype.Component;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.annotation.JSONType;
+
+/**
+ * 部门基础数据推送
+ * 
+ * @author zhanhao
+ *
+ */
+@Component
+@JSONType(orders = { "SPD系统标识", "配送机构系统标识", "配送机构ERP编号", "配送机构名称", "ERP上级部门编号",
+		"ERP上级部门名称", "ERP部门编号", "ERP部门名称","简称","备注","封存"},ignores={"bmmcu"})
+public class DepartmentData {
+	/**
+	 *  FE8SPD02.BMMCU
+	 */
+	private String bmmcu;
+	
+	//SPD系统标识
+	@JSONField(name = "SPD系统标识")
+	private final String jkspd = "JKSPD";
+	 
+	//配送机构系统标识
+	@JSONField(name = "配送机构系统标识")
+	private final String jde = "JDE";
+	
+	//配送机构ERP编号
+	@JSONField(name = "配送机构ERP编号")
+	private final String send = "00001";
+	 
+	//配送机构名称
+	@JSONField(name = "配送机构名称")
+	private String sendName = " ";
+
+	//ERP上级部门编号 
+	@JSONField(name = "ERP上级部门编号")
+	private String sDepName=" ";
+	
+	//ERP上级部门名称 
+	@JSONField(name = "ERP上级部门名称")
+	private String sDepCode=" ";
+	/**
+	 * ERP部门编号 F0006.MCMCU
+	 */
+	@JSONField(name = "ERP部门编号")
+	private String mcmcu;
+	
+	/**
+	 * ERP部门名称 F0006.MCDC
+	 */
+	@JSONField(name = "ERP部门名称")
+	private String mcdc;
+	
+	// 简称
+	@JSONField(name = "简称")
+	private String imdsc1;
+
+	// 备注
+	@JSONField(name = "备注")
+	private String remark;
+
+	// 封存
+	@JSONField(name = "封存")
+	private int fencun = 0;
+
+	public String getSendName() {
+		return sendName;
+	}
+
+	public void setSendName(String sendName) {
+		this.sendName = sendName;
+	}
+
+	public String getsDepName() {
+		return sDepName;
+	}
+
+	public void setsDepName(String sDepName) {
+		this.sDepName = sDepName;
+	}
+
+	public String getsDepCode() {
+		return sDepCode;
+	}
+
+	public void setsDepCode(String sDepCode) {
+		this.sDepCode = sDepCode;
+	}
+
+	public String getMcmcu() {
+		return mcmcu;
+	}
+
+	public void setMcmcu(String mcmcu) {
+		this.mcmcu = mcmcu;
+	}
+
+	public String getMcdc() {
+		return mcdc;
+	}
+
+	public void setMcdc(String mcdc) {
+		this.mcdc = mcdc;
+	}
+
+	public String getImdsc1() {
+		return imdsc1;
+	}
+
+	public void setImdsc1(String imdsc1) {
+		this.imdsc1 = imdsc1;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public int getFencun() {
+		return fencun;
+	}
+
+	public void setFencun(int fencun) {
+		this.fencun = fencun;
+	}
+
+	public String getJkspd() {
+		return jkspd;
+	}
+
+	public String getJde() {
+		return jde;
+	}
+
+	public String getSend() {
+		return send;
+	}
+
+	public String getBmmcu() {
+		return bmmcu;
+	}
+
+	public void setBmmcu(String bmmcu) {
+		this.bmmcu = bmmcu;
+	}
+
+	@Override
+	public String toString() {
+		return "DepartmentData [bmmcu=" + bmmcu + ", jkspd=" + jkspd + ", jde="
+				+ jde + ", send=" + send + ", sendName=" + sendName
+				+ ", sDepName=" + sDepName + ", sDepCode=" + sDepCode
+				+ ", mcmcu=" + mcmcu + ", mcdc=" + mcdc + ", imdsc1=" + imdsc1
+				+ ", remark=" + remark + ", fencun=" + fencun + "]";
+	}
+	
+}

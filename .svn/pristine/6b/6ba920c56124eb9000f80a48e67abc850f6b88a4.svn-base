@@ -1,0 +1,779 @@
+package com.el.cfg.mapper;
+
+import com.el.cfg.domain.F0101;
+import org.apache.ibatis.jdbc.SQL;
+
+public class F0101SqlProvider {
+
+    public String insertSelective(F0101 record) {
+        SQL sql = new SQL();
+        sql.INSERT_INTO("CRPDTA.F0101");
+        
+        if (record.getAban8() != null) {
+            sql.VALUES("ABAN8", "#{aban8,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbalky() != null) {
+            sql.VALUES("ABALKY", "#{abalky,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbtax() != null) {
+            sql.VALUES("ABTAX", "#{abtax,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbalph() != null) {
+            sql.VALUES("ABALPH", "#{abalph,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbdc() != null) {
+            sql.VALUES("ABDC", "#{abdc,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbmcu() != null) {
+            sql.VALUES("ABMCU", "#{abmcu,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbsic() != null) {
+            sql.VALUES("ABSIC", "#{absic,jdbcType=OTHER}");
+        }
+        
+        if (record.getAblngp() != null) {
+            sql.VALUES("ABLNGP", "#{ablngp,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbat1() != null) {
+            sql.VALUES("ABAT1", "#{abat1,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbcm() != null) {
+            sql.VALUES("ABCM", "#{abcm,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbtaxc() != null) {
+            sql.VALUES("ABTAXC", "#{abtaxc,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbat2() != null) {
+            sql.VALUES("ABAT2", "#{abat2,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbat3() != null) {
+            sql.VALUES("ABAT3", "#{abat3,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbat4() != null) {
+            sql.VALUES("ABAT4", "#{abat4,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbat5() != null) {
+            sql.VALUES("ABAT5", "#{abat5,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbatp() != null) {
+            sql.VALUES("ABATP", "#{abatp,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbatr() != null) {
+            sql.VALUES("ABATR", "#{abatr,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbatpr() != null) {
+            sql.VALUES("ABATPR", "#{abatpr,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbab3() != null) {
+            sql.VALUES("ABAB3", "#{abab3,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbate() != null) {
+            sql.VALUES("ABATE", "#{abate,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbsbli() != null) {
+            sql.VALUES("ABSBLI", "#{absbli,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbeftb() != null) {
+            sql.VALUES("ABEFTB", "#{abeftb,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban81() != null) {
+            sql.VALUES("ABAN81", "#{aban81,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban82() != null) {
+            sql.VALUES("ABAN82", "#{aban82,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban83() != null) {
+            sql.VALUES("ABAN83", "#{aban83,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban84() != null) {
+            sql.VALUES("ABAN84", "#{aban84,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban86() != null) {
+            sql.VALUES("ABAN86", "#{aban86,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban85() != null) {
+            sql.VALUES("ABAN85", "#{aban85,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbac01() != null) {
+            sql.VALUES("ABAC01", "#{abac01,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac02() != null) {
+            sql.VALUES("ABAC02", "#{abac02,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac03() != null) {
+            sql.VALUES("ABAC03", "#{abac03,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac04() != null) {
+            sql.VALUES("ABAC04", "#{abac04,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac05() != null) {
+            sql.VALUES("ABAC05", "#{abac05,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac06() != null) {
+            sql.VALUES("ABAC06", "#{abac06,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac07() != null) {
+            sql.VALUES("ABAC07", "#{abac07,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac08() != null) {
+            sql.VALUES("ABAC08", "#{abac08,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac09() != null) {
+            sql.VALUES("ABAC09", "#{abac09,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac10() != null) {
+            sql.VALUES("ABAC10", "#{abac10,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac11() != null) {
+            sql.VALUES("ABAC11", "#{abac11,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac12() != null) {
+            sql.VALUES("ABAC12", "#{abac12,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac13() != null) {
+            sql.VALUES("ABAC13", "#{abac13,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac14() != null) {
+            sql.VALUES("ABAC14", "#{abac14,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac15() != null) {
+            sql.VALUES("ABAC15", "#{abac15,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac16() != null) {
+            sql.VALUES("ABAC16", "#{abac16,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac17() != null) {
+            sql.VALUES("ABAC17", "#{abac17,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac18() != null) {
+            sql.VALUES("ABAC18", "#{abac18,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac19() != null) {
+            sql.VALUES("ABAC19", "#{abac19,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac20() != null) {
+            sql.VALUES("ABAC20", "#{abac20,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac21() != null) {
+            sql.VALUES("ABAC21", "#{abac21,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac22() != null) {
+            sql.VALUES("ABAC22", "#{abac22,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac23() != null) {
+            sql.VALUES("ABAC23", "#{abac23,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac24() != null) {
+            sql.VALUES("ABAC24", "#{abac24,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac25() != null) {
+            sql.VALUES("ABAC25", "#{abac25,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac26() != null) {
+            sql.VALUES("ABAC26", "#{abac26,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac27() != null) {
+            sql.VALUES("ABAC27", "#{abac27,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac28() != null) {
+            sql.VALUES("ABAC28", "#{abac28,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac29() != null) {
+            sql.VALUES("ABAC29", "#{abac29,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac30() != null) {
+            sql.VALUES("ABAC30", "#{abac30,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbglba() != null) {
+            sql.VALUES("ABGLBA", "#{abglba,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbpti() != null) {
+            sql.VALUES("ABPTI", "#{abpti,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbpdi() != null) {
+            sql.VALUES("ABPDI", "#{abpdi,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbmsga() != null) {
+            sql.VALUES("ABMSGA", "#{abmsga,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbrmk() != null) {
+            sql.VALUES("ABRMK", "#{abrmk,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbtxct() != null) {
+            sql.VALUES("ABTXCT", "#{abtxct,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbtx2() != null) {
+            sql.VALUES("ABTX2", "#{abtx2,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbalp1() != null) {
+            sql.VALUES("ABALP1", "#{abalp1,jdbcType=OTHER}");
+        }
+        
+        if (record.getAburcd() != null) {
+            sql.VALUES("ABURCD", "#{aburcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getAburdt() != null) {
+            sql.VALUES("ABURDT", "#{aburdt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAburat() != null) {
+            sql.VALUES("ABURAT", "#{aburat,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAburab() != null) {
+            sql.VALUES("ABURAB", "#{aburab,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAburrf() != null) {
+            sql.VALUES("ABURRF", "#{aburrf,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbuser() != null) {
+            sql.VALUES("ABUSER", "#{abuser,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbpid() != null) {
+            sql.VALUES("ABPID", "#{abpid,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbupmj() != null) {
+            sql.VALUES("ABUPMJ", "#{abupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbjobn() != null) {
+            sql.VALUES("ABJOBN", "#{abjobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbupmt() != null) {
+            sql.VALUES("ABUPMT", "#{abupmt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbprgf() != null) {
+            sql.VALUES("ABPRGF", "#{abprgf,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbsccltp() != null) {
+            sql.VALUES("ABSCCLTP", "#{absccltp,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbticker() != null) {
+            sql.VALUES("ABTICKER", "#{abticker,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbexchg() != null) {
+            sql.VALUES("ABEXCHG", "#{abexchg,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbduns() != null) {
+            sql.VALUES("ABDUNS", "#{abduns,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbclass01() != null) {
+            sql.VALUES("ABCLASS01", "#{abclass01,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbclass02() != null) {
+            sql.VALUES("ABCLASS02", "#{abclass02,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbclass03() != null) {
+            sql.VALUES("ABCLASS03", "#{abclass03,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbclass04() != null) {
+            sql.VALUES("ABCLASS04", "#{abclass04,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbclass05() != null) {
+            sql.VALUES("ABCLASS05", "#{abclass05,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbnoe() != null) {
+            sql.VALUES("ABNOE", "#{abnoe,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbgrowthr() != null) {
+            sql.VALUES("ABGROWTHR", "#{abgrowthr,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbyearstar() != null) {
+            sql.VALUES("ABYEARSTAR", "#{abyearstar,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbaempgp() != null) {
+            sql.VALUES("ABAEMPGP", "#{abaempgp,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbactin() != null) {
+            sql.VALUES("ABACTIN", "#{abactin,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbrevrng() != null) {
+            sql.VALUES("ABREVRNG", "#{abrevrng,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbsyncs() != null) {
+            sql.VALUES("ABSYNCS", "#{absyncs,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbperrs() != null) {
+            sql.VALUES("ABPERRS", "#{abperrs,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbcaad() != null) {
+            sql.VALUES("ABCAAD", "#{abcaad,jdbcType=DECIMAL}");
+        }
+        
+        return sql.toString();
+    }
+
+    public String updateByPrimaryKeySelective(F0101 record) {
+        SQL sql = new SQL();
+        sql.UPDATE("CRPDTA.F0101");
+        
+        if (record.getAbalky() != null) {
+            sql.SET("ABALKY = #{abalky,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbtax() != null) {
+            sql.SET("ABTAX = #{abtax,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbalph() != null) {
+            sql.SET("ABALPH = #{abalph,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbdc() != null) {
+            sql.SET("ABDC = #{abdc,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbmcu() != null) {
+            sql.SET("ABMCU = #{abmcu,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbsic() != null) {
+            sql.SET("ABSIC = #{absic,jdbcType=OTHER}");
+        }
+        
+        if (record.getAblngp() != null) {
+            sql.SET("ABLNGP = #{ablngp,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbat1() != null) {
+            sql.SET("ABAT1 = #{abat1,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbcm() != null) {
+            sql.SET("ABCM = #{abcm,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbtaxc() != null) {
+            sql.SET("ABTAXC = #{abtaxc,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbat2() != null) {
+            sql.SET("ABAT2 = #{abat2,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbat3() != null) {
+            sql.SET("ABAT3 = #{abat3,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbat4() != null) {
+            sql.SET("ABAT4 = #{abat4,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbat5() != null) {
+            sql.SET("ABAT5 = #{abat5,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbatp() != null) {
+            sql.SET("ABATP = #{abatp,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbatr() != null) {
+            sql.SET("ABATR = #{abatr,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbatpr() != null) {
+            sql.SET("ABATPR = #{abatpr,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbab3() != null) {
+            sql.SET("ABAB3 = #{abab3,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbate() != null) {
+            sql.SET("ABATE = #{abate,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbsbli() != null) {
+            sql.SET("ABSBLI = #{absbli,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbeftb() != null) {
+            sql.SET("ABEFTB = #{abeftb,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban81() != null) {
+            sql.SET("ABAN81 = #{aban81,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban82() != null) {
+            sql.SET("ABAN82 = #{aban82,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban83() != null) {
+            sql.SET("ABAN83 = #{aban83,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban84() != null) {
+            sql.SET("ABAN84 = #{aban84,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban86() != null) {
+            sql.SET("ABAN86 = #{aban86,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAban85() != null) {
+            sql.SET("ABAN85 = #{aban85,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbac01() != null) {
+            sql.SET("ABAC01 = #{abac01,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac02() != null) {
+            sql.SET("ABAC02 = #{abac02,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac03() != null) {
+            sql.SET("ABAC03 = #{abac03,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac04() != null) {
+            sql.SET("ABAC04 = #{abac04,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac05() != null) {
+            sql.SET("ABAC05 = #{abac05,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac06() != null) {
+            sql.SET("ABAC06 = #{abac06,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac07() != null) {
+            sql.SET("ABAC07 = #{abac07,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac08() != null) {
+            sql.SET("ABAC08 = #{abac08,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac09() != null) {
+            sql.SET("ABAC09 = #{abac09,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac10() != null) {
+            sql.SET("ABAC10 = #{abac10,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac11() != null) {
+            sql.SET("ABAC11 = #{abac11,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac12() != null) {
+            sql.SET("ABAC12 = #{abac12,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac13() != null) {
+            sql.SET("ABAC13 = #{abac13,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac14() != null) {
+            sql.SET("ABAC14 = #{abac14,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac15() != null) {
+            sql.SET("ABAC15 = #{abac15,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac16() != null) {
+            sql.SET("ABAC16 = #{abac16,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac17() != null) {
+            sql.SET("ABAC17 = #{abac17,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac18() != null) {
+            sql.SET("ABAC18 = #{abac18,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac19() != null) {
+            sql.SET("ABAC19 = #{abac19,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac20() != null) {
+            sql.SET("ABAC20 = #{abac20,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac21() != null) {
+            sql.SET("ABAC21 = #{abac21,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac22() != null) {
+            sql.SET("ABAC22 = #{abac22,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac23() != null) {
+            sql.SET("ABAC23 = #{abac23,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac24() != null) {
+            sql.SET("ABAC24 = #{abac24,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac25() != null) {
+            sql.SET("ABAC25 = #{abac25,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac26() != null) {
+            sql.SET("ABAC26 = #{abac26,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac27() != null) {
+            sql.SET("ABAC27 = #{abac27,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac28() != null) {
+            sql.SET("ABAC28 = #{abac28,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac29() != null) {
+            sql.SET("ABAC29 = #{abac29,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbac30() != null) {
+            sql.SET("ABAC30 = #{abac30,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbglba() != null) {
+            sql.SET("ABGLBA = #{abglba,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbpti() != null) {
+            sql.SET("ABPTI = #{abpti,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbpdi() != null) {
+            sql.SET("ABPDI = #{abpdi,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbmsga() != null) {
+            sql.SET("ABMSGA = #{abmsga,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbrmk() != null) {
+            sql.SET("ABRMK = #{abrmk,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbtxct() != null) {
+            sql.SET("ABTXCT = #{abtxct,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbtx2() != null) {
+            sql.SET("ABTX2 = #{abtx2,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbalp1() != null) {
+            sql.SET("ABALP1 = #{abalp1,jdbcType=OTHER}");
+        }
+        
+        if (record.getAburcd() != null) {
+            sql.SET("ABURCD = #{aburcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getAburdt() != null) {
+            sql.SET("ABURDT = #{aburdt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAburat() != null) {
+            sql.SET("ABURAT = #{aburat,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAburab() != null) {
+            sql.SET("ABURAB = #{aburab,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAburrf() != null) {
+            sql.SET("ABURRF = #{aburrf,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbuser() != null) {
+            sql.SET("ABUSER = #{abuser,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbpid() != null) {
+            sql.SET("ABPID = #{abpid,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbupmj() != null) {
+            sql.SET("ABUPMJ = #{abupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbjobn() != null) {
+            sql.SET("ABJOBN = #{abjobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbupmt() != null) {
+            sql.SET("ABUPMT = #{abupmt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbprgf() != null) {
+            sql.SET("ABPRGF = #{abprgf,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbsccltp() != null) {
+            sql.SET("ABSCCLTP = #{absccltp,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbticker() != null) {
+            sql.SET("ABTICKER = #{abticker,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbexchg() != null) {
+            sql.SET("ABEXCHG = #{abexchg,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbduns() != null) {
+            sql.SET("ABDUNS = #{abduns,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbclass01() != null) {
+            sql.SET("ABCLASS01 = #{abclass01,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbclass02() != null) {
+            sql.SET("ABCLASS02 = #{abclass02,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbclass03() != null) {
+            sql.SET("ABCLASS03 = #{abclass03,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbclass04() != null) {
+            sql.SET("ABCLASS04 = #{abclass04,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbclass05() != null) {
+            sql.SET("ABCLASS05 = #{abclass05,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbnoe() != null) {
+            sql.SET("ABNOE = #{abnoe,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbgrowthr() != null) {
+            sql.SET("ABGROWTHR = #{abgrowthr,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbyearstar() != null) {
+            sql.SET("ABYEARSTAR = #{abyearstar,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbaempgp() != null) {
+            sql.SET("ABAEMPGP = #{abaempgp,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbactin() != null) {
+            sql.SET("ABACTIN = #{abactin,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbrevrng() != null) {
+            sql.SET("ABREVRNG = #{abrevrng,jdbcType=OTHER}");
+        }
+        
+        if (record.getAbsyncs() != null) {
+            sql.SET("ABSYNCS = #{absyncs,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbperrs() != null) {
+            sql.SET("ABPERRS = #{abperrs,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAbcaad() != null) {
+            sql.SET("ABCAAD = #{abcaad,jdbcType=DECIMAL}");
+        }
+        
+        sql.WHERE("ABAN8 = #{aban8,jdbcType=DECIMAL}");
+        
+        return sql.toString();
+    }
+}

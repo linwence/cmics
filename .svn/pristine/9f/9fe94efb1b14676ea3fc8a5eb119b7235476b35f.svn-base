@@ -1,0 +1,106 @@
+/**
+ * 
+ */
+package com.el.cmic.service.inbound;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.el.cfg.domain.F4211;
+import com.el.cfg.domain.F4311;
+import com.el.cfg.mapper.F4211Mapper;
+import com.el.cfg.mapper.F4311Mapper;
+import com.el.cmic.domain.inbound.InboundPush;
+import com.el.cmic.domain.inbound.InboundPushDetail;
+import com.el.cmic.mapper.inbound.InboundPushDetailMapper;
+import com.el.cmic.mapper.inbound.InboundPushMapper;
+
+/**
+ * @author ELSIAN
+ *
+ */
+@Service
+public class InboundServiceImpl implements InboundService {
+
+	@Autowired
+    protected InboundPushMapper inboundPushMapper;
+
+	@Autowired
+    protected InboundPushDetailMapper inboundPushDetailMapper;
+
+	@Autowired
+    protected F4211Mapper f4211Mapper;
+
+	@Autowired
+    protected F4311Mapper f4311Mapper;
+
+	/* (non-Javadoc)
+	 * @see com.el.cmic.service.inbound.InboundService#getInboundPushList()
+	 */
+	public List<InboundPush> getInboundPushList() {
+		List<InboundPush> list = inboundPushMapper.selectAll();
+		if (list != null && !list.isEmpty()) {
+			for (InboundPush row : list) {
+				List<InboundPushDetail> details = inboundPushDetailMapper.selectAll();
+				row.setDetails(details);
+			}
+		}
+		return list;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.el.cmic.service.inbound.InboundService#getInboundPushListWithDetails()
+	 */
+	public List<InboundPush> getInboundPushListWithDetails() {
+		List<InboundPush> list = inboundPushMapper.selectAllWithDetails();
+		return list;
+	}
+	
+
+	/* (non-Javadoc)
+	 * @see com.el.cmic.service.inbound.InboundService#getPushData()
+	 */
+    public String getPushData() {
+		List<InboundPush> list = inboundPushMapper.selectAllWithDetails();
+		return JSON.toJSONString(list, SerializerFeature.WriteMapNullValue, SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.WriteNullListAsEmpty, SerializerFeature.SortField);
+    }
+
+	/* (non-Javadoc)
+	 * @see com.el.cmic.service.inbound.InboundService#updateF4211Status(java.util.List)
+	 */
+	@Override
+    @Transactional
+	public int updateF4211Status(List<F4211> updList) {
+		//return f4211Mapper.updateStatusBatch(updList);
+		int cnt = 0;
+		if (updList != null && updList.size() > 0) {
+			for (F4211 row : updList) {
+				cnt += f4211Mapper.updateStatus(row);
+			}
+		}
+		return cnt;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.el.cmic.service.inbound.InboundService#updateF4311Status(java.util.List)
+	 */
+	@Override
+    @Transactional
+    public int updateF4311Status(List<F4311> updList) {
+		//return f4311Mapper.updateStatusBatch(updList);
+		int cnt = 0;
+		if (updList != null && updList.size() > 0) {
+			for (F4311 row : updList) {
+				cnt += f4311Mapper.updateStatus(row);
+			}
+		}
+		return cnt;
+	}
+
+
+}

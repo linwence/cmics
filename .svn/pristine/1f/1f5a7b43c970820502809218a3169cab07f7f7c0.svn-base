@@ -1,0 +1,16 @@
+package com.el.cmic.callmdm.service;
+
+import com.el.cfg.domain.F4101;
+import com.el.cfg.domain.FE84101;
+import com.el.cmic.callmdm.domain.RqE001InputHeader;
+
+/**
+ * Created by Vincent on 2016/10/9.
+ */
+public interface RqE001Service {
+    int updateFe84101(FE84101 fe84101);
+
+    public int updateF4101(F4101 f4101);
+
+    public RqE001InputHeader getRqE001InputHeader(String dataType, String billInfo, String direction, String funcType);
+}

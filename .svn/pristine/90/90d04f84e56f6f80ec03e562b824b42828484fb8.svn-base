@@ -1,0 +1,110 @@
+package com.el.cmic.ws.service;
+
+import com.el.cfg.domain.F4101;
+import com.el.cfg.domain.F4104;
+import com.el.cfg.domain.Fe84101;
+import com.el.cmic.ws.domain.PhE001OutHeader;
+import com.el.cmic.ws.domain.PhE001OutHeaderCode;
+import com.el.cmic.ws.domain.PhE003OutMain;
+import com.el.cmic.ws.mapper.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+/**
+ * Created by king_ on 2016/10/8.
+ */
+@Service
+public class AddE03ToERPServiceImpl implements AddE03ToERPService {
+    @Autowired
+    F4101UpdateByLitmMapper f4101UpdateByLitmMapper;
+    @Autowired
+    FE84101UpdateByLitmMapper fe84101UpdateByLitmMapper;
+    @Autowired
+    F4104UpdateByLitmMapper f4104UpdateByLitmMapper;
+    @Autowired
+    F0005Mapper f0005Mapper;
+    @Autowired
+    F0005DMapper f0005DMapper;
+
+    String dbtype = "CRPCTL";
+
+    public String addE03ToERP(PhE001OutHeader phE001OutHeader, PhE003OutMain phE003OutMain,String no) {
+        updateF4101(phE001OutHeader, phE003OutMain,no);
+        updateF4104(phE001OutHeader, phE003OutMain,no);
+        updateFE84101(phE001OutHeader, phE003OutMain,no);
+        return null;
+    }
+
+    public String updateF4101(PhE001OutHeader phE001OutHeader, PhE003OutMain phE003OutMain,String no) {
+        F4101 f4101 = new F4101();
+        String TemporaryCode="";
+        String  FormalCode="";
+        List<PhE001OutHeaderCode> phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
+        for(PhE001OutHeaderCode tmp :phE001OutHeaderCodes){
+            if(tmp.getCodetype().equals("0")){
+                TemporaryCode = tmp.getCodevalue();
+            }
+            if(tmp.getCodetype().equals("1")){
+                FormalCode = tmp.getCodevalue();
+            }
+        }
+
+        f4101.setImaitm(FormalCode);
+        f4101.setImlitm(no);
+        f4101.setImdsc2(phE003OutMain.getProducttype());
+        //f4101.setImOrig();
+        f4101.setImdsc1(phE003OutMain.getSync());
+   //     f4101.setImsrp3(phE003OutMain.getPk_productclass());
+    //    f4101.setImsrp3(f0005Mapper.selectF0005(dbtype,"E8","14",phE003OutMain.getPk_productclass()));
+   //     f4101.setImsrp4(phE003OutMain.getPk_yltsfl());
+  //      f4101.setImsrp4(f0005Mapper.selectF0005(dbtype,"E8","15",phE003OutMain.getPk_yltsfl()));
+
+        f4101UpdateByLitmMapper.updateByLitmSelective(f4101,"E03");
+        return null;
+    }
+
+    public String updateFE84101(PhE001OutHeader phE001OutHeader, PhE003OutMain phE003OutMain,String no) {
+        Fe84101 fe84101 = new Fe84101();
+        List<PhE001OutHeaderCode> phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
+        for(PhE001OutHeaderCode tmp :phE001OutHeaderCodes){
+            if(tmp.getCodetype().equals("1")){
+                fe84101.setSpev01("Y");
+            }
+        }
+        if(fe84101.getSpev01().equals(null)){
+            fe84101.setSpev01("N");
+        }
+        fe84101.setSplitm(no);
+        fe84101.setSpe8name(phE003OutMain.getProductname());
+        BigDecimal bd = new BigDecimal(phE003OutMain.getMfname());
+        fe84101.setSpan8(bd);
+        fe84101.setSpe8cpdl(f0005Mapper.selectF0005(dbtype,"E8","14",phE003OutMain.getPk_productclass()));
+        fe84101.setSpe8tsfl(f0005Mapper.selectF0005(dbtype,"E8","15",phE003OutMain.getPk_yltsfl()));
+    //    fe84101.setSpe8jhg(phE003OutMain.getPk_jhg());
+        fe84101.setSpe8jhg(f0005Mapper.selectF0005(dbtype,"E8","21",phE003OutMain.getPk_jhg()));
+    //    fe84101.setSpe8ztw(phE003OutMain.getPk_ztw());
+        fe84101.setSpe8ztw(f0005Mapper.selectF0005(dbtype,"E8","32",phE003OutMain.getPk_ztw()));
+     //   fe84101.setSporig(phE003OutMain.getPk_mfcountry());
+        fe84101.setSporig(f0005Mapper.selectF0005(dbtype,"E8","17",phE003OutMain.getPk_mfcountry()));
+
+
+        fe84101UpdateByLitmMapper.updateByLitmSelective(fe84101,"E03");
+
+
+
+        return null;
+    }
+
+    public String updateF4104(PhE001OutHeader phE001OutHeader, PhE003OutMain phE003OutMain,String no) {
+        F4104 f4104 =new F4104();
+        f4104.setIvcitm(phE003OutMain.getInterbarcode());
+        f4104.setIvxrt("IBC");
+        f4104.setIvlitm(no);
+        f4104UpdateByLitmMapper.updateByPrimaryKeySelective(f4104);
+        return null;
+    }
+}
+

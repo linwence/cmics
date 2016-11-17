@@ -1,0 +1,414 @@
+package com.el.cmic.domain.goods;
+
+import java.util.Date;
+
+import org.springframework.stereotype.Component;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.annotation.JSONType;
+
+/**
+ * 商品基础数据推送
+ * @author zhanhao
+ *
+ */
+@Component
+@JSONType(orders = {"SPD系统标识","配送机构系统标识","配送机构ERP编号","配送机构名称","ERP商品编号","ERP商品名称","通用名","简称",
+		"注册商标","规格","产地","生产厂商","单位","包装","中包装","条形码","批准文号","注册证号","注册证有效期至","类别属性","类别","剂型","储存条件",
+		"启用唯一码管理","其他分类1","其他分类2","其他分类3","备注","封存","封存时间"})
+public class Bale {
+	
+	/**
+	 * FE8SPD01.SPLITM
+	 */
+	private String splitm;
+	/**
+	 * SPD系统标识 
+	 */
+	 @JSONField(name = "SPD系统标识")
+	private final String  jkspd="JKSPD";
+	/**
+	 * 配送机构系统标识
+	 */
+	 @JSONField(name = "配送机构系统标识")
+	private final String  jde ="JDE";
+	/**
+	 * 配送机构ERP编号 
+	 */
+	 @JSONField(name = "配送机构ERP编号")
+	private final String  send="00001";
+	/**
+	 * 配送机构名称 
+	 */
+	 @JSONField(name = "配送机构名称")
+	private String sendName=" ";
+	
+    /**
+     *  ERP商品编号  - F4101.IMLITM
+     */
+	 @JSONField(name = "ERP商品编号")
+    private String imlitm;
+    
+ /**
+     *  ERP商品名称 - FE84101.SPE8NAME
+     */
+	 @JSONField(name = "ERP商品名称")
+    private String spe8name;
+    
+    /**
+     *  通用名 - FE84101.SPE8TYM
+     */
+	 @JSONField(name = "通用名")
+    private String spe8tym;
+    
+    /**
+     *  简称 - F4101.IMDSC1
+     */
+	 @JSONField(name = "简称")
+    private String imdsc1;
+    
+    //注册商标
+	 @JSONField(name = "注册商标")
+    private String zcsb = " ";
+    
+    /**
+     *  规格 - F4101.IMDSC2
+     */
+	 @JSONField(name = "规格")
+    private String imdsc2;
+    
+    //产地 
+	 @JSONField(name = "产地")
+    private String proAddres;
+     /**
+     *  生产厂商 - F0101.ABALPH
+     */
+	 @JSONField(name = "生产厂商")
+    private String abalph;
+    
+     /**
+     *  单位 - F0005.DRDL01
+     */
+	 @JSONField(name = "单位")
+    private String drdl01;
+    
+    //包装
+	 @JSONField(name = "包装")
+    private final  int baozhuang=1;
+    
+    //中包装 
+	 @JSONField(name = "中包装")
+    private final int zbaozhuang=1;
+    
+    //条形码 
+	 @JSONField(name = "条形码")
+    private String  barcode = " ";
+    
+     /**
+     *  批准文号 - FE84101.SPE8PZWH
+     */
+	 @JSONField(name = "批准文号")
+    private String spe8pzwh;
+    
+     /**
+     *  注册证号 - FE84101Z.ZZE8ZZBM
+     */
+	 @JSONField(name = "注册证号")
+    private String zze8zzbm;
+    
+     /**
+     *  注册证有效期至 - FE84101Z.ZZEXDJ
+     */
+	 @JSONField(name = "注册证有效期至")
+    private String zzexdj;
+    
+    //类别属性
+	 @JSONField(name = "类别属性")
+    private String typeS;
+    
+    //类别
+	 @JSONField(name = "类别")
+    private String type;
+    
+    //剂型
+	 @JSONField(name = "剂型")
+    private String qixing;
+    
+    //储存条件
+	 @JSONField(name = "储存条件")
+    private String chucunif;
+    
+    //启用唯一码管理 
+	 @JSONField(name = "启用唯一码管理")
+    private int onlyCode;
+    
+    //其他分类1
+	 @JSONField(name = "其他分类1")
+    private String fentype1;
+    
+    //其他分类2 
+	 @JSONField(name = "其他分类2")
+    private String fentype2;
+    
+    //其他分类3 
+	 @JSONField(name = "其他分类3")
+    private String fentype3;
+    
+    //备注
+	 @JSONField(name = "备注")
+    private String remark;
+    
+    //封存 
+	 @JSONField(name = "封存")
+    private String fencun;
+    
+    //封存时间
+	 @JSONField(name = "封存时间")
+    private String fencunTime;
+
+	public String getSendName() {
+		return sendName;
+	}
+
+	public void setSendName(String sendName) {
+		this.sendName = sendName;
+	}
+
+	public String getImlitm() {
+		return imlitm;
+	}
+
+	public void setImlitm(String imlitm) {
+		this.imlitm = imlitm;
+	}
+
+	public String getSpe8name() {
+		return spe8name;
+	}
+
+	public void setSpe8name(String spe8name) {
+		this.spe8name = spe8name;
+	}
+
+	public String getSpe8tym() {
+		return spe8tym;
+	}
+
+	public void setSpe8tym(String spe8tym) {
+		this.spe8tym = spe8tym;
+	}
+
+	public String getImdsc1() {
+		return imdsc1;
+	}
+
+	public void setImdsc1(String imdsc1) {
+		this.imdsc1 = imdsc1;
+	}
+
+	public String getZcsb() {
+		return zcsb;
+	}
+
+	public void setZcsb(String zcsb) {
+		this.zcsb = zcsb;
+	}
+
+	public String getImdsc2() {
+		return imdsc2;
+	}
+
+	public void setImdsc2(String imdsc2) {
+		this.imdsc2 = imdsc2;
+	}
+
+	public String getProAddres() {
+		return proAddres;
+	}
+
+	public void setProAddres(String proAddres) {
+		this.proAddres = proAddres;
+	}
+
+	public String getAbalph() {
+		return abalph;
+	}
+
+	public void setAbalph(String abalph) {
+		this.abalph = abalph;
+	}
+
+	public String getDrdl01() {
+		return drdl01;
+	}
+
+	public void setDrdl01(String drdl01) {
+		this.drdl01 = drdl01;
+	}
+
+	public String getBarcode() {
+		return barcode;
+	}
+
+	public void setBarcode(String barcode) {
+		this.barcode = barcode;
+	}
+
+	public String getSpe8pzwh() {
+		return spe8pzwh;
+	}
+
+	public void setSpe8pzwh(String spe8pzwh) {
+		this.spe8pzwh = spe8pzwh;
+	}
+
+	public String getZze8zzbm() {
+		return zze8zzbm;
+	}
+
+	public void setZze8zzbm(String zze8zzbm) {
+		this.zze8zzbm = zze8zzbm;
+	}
+
+	public String getZzexdj() {
+		return zzexdj;
+	}
+
+	public void setZzexdj(String zzexdj) {
+		this.zzexdj = zzexdj;
+	}
+
+	public String getTypeS() {
+		return typeS;
+	}
+
+	public void setTypeS(String typeS) {
+		this.typeS = typeS;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getQixing() {
+		return qixing;
+	}
+
+	public void setQixing(String qixing) {
+		this.qixing = qixing;
+	}
+
+	public String getChucunif() {
+		return chucunif;
+	}
+
+	public void setChucunif(String chucunif) {
+		this.chucunif = chucunif;
+	}
+
+	public int getOnlyCode() {
+		return onlyCode;
+	}
+
+	public void setOnlyCode(int onlyCode) {
+		this.onlyCode = onlyCode;
+	}
+
+	public String getFentype1() {
+		return fentype1;
+	}
+
+	public void setFentype1(String fentype1) {
+		this.fentype1 = fentype1;
+	}
+
+	public String getFentype2() {
+		return fentype2;
+	}
+
+	public void setFentype2(String fentype2) {
+		this.fentype2 = fentype2;
+	}
+
+	public String getFentype3() {
+		return fentype3;
+	}
+
+	public void setFentype3(String fentype3) {
+		this.fentype3 = fentype3;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public String getFencun() {
+		return fencun;
+	}
+
+	public void setFencun(String fencun) {
+		this.fencun = fencun;
+	}
+
+	public String getFencunTime() {
+		return fencunTime;
+	}
+
+	public void setFencunTime(String fencunTime) {
+		this.fencunTime = fencunTime;
+	}
+
+	public String getJkspd() {
+		return jkspd;
+	}
+
+	public String getJde() {
+		return jde;
+	}
+
+	public String getSend() {
+		return send;
+	}
+
+	public int getBaozhuang() {
+		return baozhuang;
+	}
+
+	public int getZbaozhuang() {
+		return zbaozhuang;
+	}
+
+	public String getSplitm() {
+		return splitm;
+	}
+
+	public void setSplitm(String splitm) {
+		this.splitm = splitm;
+	}
+
+	@Override
+	public String toString() {
+		return "Bale [splitm=" + splitm + ", jkspd=" + jkspd + ", jde=" + jde
+				+ ", send=" + send + ", sendName=" + sendName + ", imlitm="
+				+ imlitm + ", spe8name=" + spe8name + ", spe8tym=" + spe8tym
+				+ ", imdsc1=" + imdsc1 + ", zcsb=" + zcsb + ", imdsc2="
+				+ imdsc2 + ", proAddres=" + proAddres + ", abalph=" + abalph
+				+ ", drdl01=" + drdl01 + ", baozhuang=" + baozhuang
+				+ ", zbaozhuang=" + zbaozhuang + ", barcode=" + barcode
+				+ ", spe8pzwh=" + spe8pzwh + ", zze8zzbm=" + zze8zzbm
+				+ ", zzexdj=" + zzexdj + ", typeS=" + typeS + ", type=" + type
+				+ ", qixing=" + qixing + ", chucunif=" + chucunif
+				+ ", onlyCode=" + onlyCode + ", fentype1=" + fentype1
+				+ ", fentype2=" + fentype2 + ", fentype3=" + fentype3
+				+ ", remark=" + remark + ", fencun=" + fencun + ", fencunTime="
+				+ fencunTime + "]";
+	}
+}

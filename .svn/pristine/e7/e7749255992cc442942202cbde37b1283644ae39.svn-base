@@ -1,0 +1,29 @@
+package com.el.cmic.mapper.goods;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
+import com.el.cmic.domain.goods.BalePrice;
+
+public interface BalePriceMapper {
+	
+	/**
+	 * 商品价格数据推送
+	 * @return
+	 */
+	@Select("select  SPDBS,ERPBS,CO,NAME,LITM,E8NAME,UPRC from VE8SPDJG")
+	public List<BalePrice> selectBalePrice();
+	
+	/**
+	 * FE8SPD04  更新   EV01
+	 * @param co
+	 * @param limt
+	 * @return
+	 */
+	@Update("update FE8SPD04 set JGEV01 = #{status,jdbcType=NCHAR} where JGCO=#{co,jdbcType=NCHAR} and JGLITM=#{limt,jdbcType=NCHAR} ")
+	public Integer  updateEV01(@Param("status") String status,@Param("co") String co,@Param("limt") String limt);
+
+}

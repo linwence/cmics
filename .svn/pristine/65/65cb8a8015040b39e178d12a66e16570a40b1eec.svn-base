@@ -1,0 +1,203 @@
+package com.el.cfg.dao;
+
+import com.el.cfg.domain.FE80101;
+import java.math.BigDecimal;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.type.JdbcType;
+
+public interface FE80101Mapper {
+    @Delete({
+        "delete from CRPDTA.FE80101",
+        "where KSAN8 = #{ksan8,jdbcType=DECIMAL}"
+    })
+    int deleteByPrimaryKey(BigDecimal ksan8);
+
+    @Insert({
+        "insert into CRPDTA.FE80101 (KSAN8, KSALPH, ",
+        "KSE8NAME, KSEV01, KSE8SCS, ",
+        "KSE8JXS, KSE8JKS, KSE8YY, ",
+        "KSE8YLJG, KSE8GR, KSE8QT, ",
+        "KSE8DL, KSE8XL, KSE8YYYL, ",
+        "KSE8YYGL, KSE8YYSB, ",
+        "KSE8YYGS, KSE8YLJB, ",
+        "KSE8TGYF, KSE8DWXZ, ",
+        "KSE8YYNSR, KSE8SFZ, ",
+        "KSE8SFFC, KSALKY, KSE8WMSID, ",
+        "KSE8WMSHZ, KSE8WMSHZM, ",
+        "KSE8BYM, KSCUSTS, KSE8JDSJ, ",
+        "KSURCD, KSURDT, KSURAT, ",
+        "KSURAB, KSURRF, KSEV02, ",
+        "KSEV03, KSEV04, KSEV05, ",
+        "KSDL01, KSDL02, KSDL03, ",
+        "KSDL010, KSDL011, KSUSER, ",
+        "KSPID, KSJOBN, KSUPMJ, ",
+        "KSUPMT, KSIDATE, ",
+        "KSDF01, KSRDATE, ",
+        "KSDF02, KSUKID, KSSTATUS)",
+        "values (#{ksan8,jdbcType=DECIMAL}, #{ksalph,jdbcType=OTHER}, ",
+        "#{kse8name,jdbcType=OTHER}, #{ksev01,jdbcType=OTHER}, #{kse8scs,jdbcType=OTHER}, ",
+        "#{kse8jxs,jdbcType=OTHER}, #{kse8jks,jdbcType=OTHER}, #{kse8yy,jdbcType=OTHER}, ",
+        "#{kse8yljg,jdbcType=OTHER}, #{kse8gr,jdbcType=OTHER}, #{kse8qt,jdbcType=OTHER}, ",
+        "#{kse8dl,jdbcType=OTHER}, #{kse8xl,jdbcType=OTHER}, #{kse8yyyl,jdbcType=OTHER}, ",
+        "#{kse8yygl,jdbcType=OTHER}, #{kse8yysb,jdbcType=OTHER}, ",
+        "#{kse8yygs,jdbcType=OTHER}, #{kse8yljb,jdbcType=OTHER}, ",
+        "#{kse8tgyf,jdbcType=OTHER}, #{kse8dwxz,jdbcType=OTHER}, ",
+        "#{kse8yynsr,jdbcType=DECIMAL}, #{kse8sfz,jdbcType=OTHER}, ",
+        "#{kse8sffc,jdbcType=OTHER}, #{ksalky,jdbcType=OTHER}, #{kse8wmsid,jdbcType=OTHER}, ",
+        "#{kse8wmshz,jdbcType=OTHER}, #{kse8wmshzm,jdbcType=OTHER}, ",
+        "#{kse8bym,jdbcType=OTHER}, #{kscusts,jdbcType=OTHER}, #{kse8jdsj,jdbcType=TIMESTAMP}, ",
+        "#{ksurcd,jdbcType=OTHER}, #{ksurdt,jdbcType=DECIMAL}, #{ksurat,jdbcType=DECIMAL}, ",
+        "#{ksurab,jdbcType=DECIMAL}, #{ksurrf,jdbcType=OTHER}, #{ksev02,jdbcType=OTHER}, ",
+        "#{ksev03,jdbcType=OTHER}, #{ksev04,jdbcType=OTHER}, #{ksev05,jdbcType=OTHER}, ",
+        "#{ksdl01,jdbcType=OTHER}, #{ksdl02,jdbcType=OTHER}, #{ksdl03,jdbcType=OTHER}, ",
+        "#{ksdl010,jdbcType=OTHER}, #{ksdl011,jdbcType=OTHER}, #{ksuser,jdbcType=OTHER}, ",
+        "#{kspid,jdbcType=OTHER}, #{ksjobn,jdbcType=OTHER}, #{ksupmj,jdbcType=DECIMAL}, ",
+        "#{ksupmt,jdbcType=DECIMAL}, #{ksidate,jdbcType=TIMESTAMP}, ",
+        "#{ksdf01,jdbcType=OTHER}, #{ksrdate,jdbcType=TIMESTAMP}, ",
+        "#{ksdf02,jdbcType=OTHER}, #{ksukid,jdbcType=DECIMAL}, #{ksstatus,jdbcType=OTHER})"
+    })
+    int insert(FE80101 record);
+
+    @InsertProvider(type=FE80101SqlProvider.class, method="insertSelective")
+    int insertSelective(FE80101 record);
+
+    @Select({
+        "select",
+        "KSAN8, KSALPH, KSE8NAME, KSEV01, KSE8SCS, KSE8JXS, KSE8JKS, KSE8YY, KSE8YLJG, ",
+        "KSE8GR, KSE8QT, KSE8DL, KSE8XL, KSE8YYYL, KSE8YYGL, KSE8YYSB, KSE8YYGS, KSE8YLJB, ",
+        "KSE8TGYF, KSE8DWXZ, KSE8YYNSR, KSE8SFZ, KSE8SFFC, KSALKY, KSE8WMSID, KSE8WMSHZ, ",
+        "KSE8WMSHZM, KSE8BYM, KSCUSTS, KSE8JDSJ, KSURCD, KSURDT, KSURAT, KSURAB, KSURRF, ",
+        "KSEV02, KSEV03, KSEV04, KSEV05, KSDL01, KSDL02, KSDL03, KSDL010, KSDL011, KSUSER, ",
+        "KSPID, KSJOBN, KSUPMJ, KSUPMT, KSIDATE, KSDF01, KSRDATE, KSDF02, KSUKID, KSSTATUS",
+        "from CRPDTA.FE80101",
+        "where KSAN8 = #{ksan8,jdbcType=DECIMAL}"
+    })
+    @Results({
+        @Result(column="KSAN8", property="ksan8", jdbcType=JdbcType.DECIMAL, id=true),
+        @Result(column="KSALPH", property="ksalph", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8NAME", property="kse8name", jdbcType=JdbcType.OTHER),
+        @Result(column="KSEV01", property="ksev01", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8SCS", property="kse8scs", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8JXS", property="kse8jxs", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8JKS", property="kse8jks", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8YY", property="kse8yy", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8YLJG", property="kse8yljg", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8GR", property="kse8gr", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8QT", property="kse8qt", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8DL", property="kse8dl", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8XL", property="kse8xl", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8YYYL", property="kse8yyyl", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8YYGL", property="kse8yygl", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8YYSB", property="kse8yysb", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8YYGS", property="kse8yygs", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8YLJB", property="kse8yljb", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8TGYF", property="kse8tgyf", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8DWXZ", property="kse8dwxz", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8YYNSR", property="kse8yynsr", jdbcType=JdbcType.DECIMAL),
+        @Result(column="KSE8SFZ", property="kse8sfz", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8SFFC", property="kse8sffc", jdbcType=JdbcType.OTHER),
+        @Result(column="KSALKY", property="ksalky", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8WMSID", property="kse8wmsid", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8WMSHZ", property="kse8wmshz", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8WMSHZM", property="kse8wmshzm", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8BYM", property="kse8bym", jdbcType=JdbcType.OTHER),
+        @Result(column="KSCUSTS", property="kscusts", jdbcType=JdbcType.OTHER),
+        @Result(column="KSE8JDSJ", property="kse8jdsj", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="KSURCD", property="ksurcd", jdbcType=JdbcType.OTHER),
+        @Result(column="KSURDT", property="ksurdt", jdbcType=JdbcType.DECIMAL),
+        @Result(column="KSURAT", property="ksurat", jdbcType=JdbcType.DECIMAL),
+        @Result(column="KSURAB", property="ksurab", jdbcType=JdbcType.DECIMAL),
+        @Result(column="KSURRF", property="ksurrf", jdbcType=JdbcType.OTHER),
+        @Result(column="KSEV02", property="ksev02", jdbcType=JdbcType.OTHER),
+        @Result(column="KSEV03", property="ksev03", jdbcType=JdbcType.OTHER),
+        @Result(column="KSEV04", property="ksev04", jdbcType=JdbcType.OTHER),
+        @Result(column="KSEV05", property="ksev05", jdbcType=JdbcType.OTHER),
+        @Result(column="KSDL01", property="ksdl01", jdbcType=JdbcType.OTHER),
+        @Result(column="KSDL02", property="ksdl02", jdbcType=JdbcType.OTHER),
+        @Result(column="KSDL03", property="ksdl03", jdbcType=JdbcType.OTHER),
+        @Result(column="KSDL010", property="ksdl010", jdbcType=JdbcType.OTHER),
+        @Result(column="KSDL011", property="ksdl011", jdbcType=JdbcType.OTHER),
+        @Result(column="KSUSER", property="ksuser", jdbcType=JdbcType.OTHER),
+        @Result(column="KSPID", property="kspid", jdbcType=JdbcType.OTHER),
+        @Result(column="KSJOBN", property="ksjobn", jdbcType=JdbcType.OTHER),
+        @Result(column="KSUPMJ", property="ksupmj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="KSUPMT", property="ksupmt", jdbcType=JdbcType.DECIMAL),
+        @Result(column="KSIDATE", property="ksidate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="KSDF01", property="ksdf01", jdbcType=JdbcType.OTHER),
+        @Result(column="KSRDATE", property="ksrdate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="KSDF02", property="ksdf02", jdbcType=JdbcType.OTHER),
+        @Result(column="KSUKID", property="ksukid", jdbcType=JdbcType.DECIMAL),
+        @Result(column="KSSTATUS", property="ksstatus", jdbcType=JdbcType.OTHER)
+    })
+    FE80101 selectByPrimaryKey(BigDecimal ksan8);
+
+    @UpdateProvider(type=FE80101SqlProvider.class, method="updateByPrimaryKeySelective")
+    int updateByPrimaryKeySelective(FE80101 record);
+
+    @Update({
+        "update CRPDTA.FE80101",
+        "set KSALPH = #{ksalph,jdbcType=OTHER},",
+          "KSE8NAME = #{kse8name,jdbcType=OTHER},",
+          "KSEV01 = #{ksev01,jdbcType=OTHER},",
+          "KSE8SCS = #{kse8scs,jdbcType=OTHER},",
+          "KSE8JXS = #{kse8jxs,jdbcType=OTHER},",
+          "KSE8JKS = #{kse8jks,jdbcType=OTHER},",
+          "KSE8YY = #{kse8yy,jdbcType=OTHER},",
+          "KSE8YLJG = #{kse8yljg,jdbcType=OTHER},",
+          "KSE8GR = #{kse8gr,jdbcType=OTHER},",
+          "KSE8QT = #{kse8qt,jdbcType=OTHER},",
+          "KSE8DL = #{kse8dl,jdbcType=OTHER},",
+          "KSE8XL = #{kse8xl,jdbcType=OTHER},",
+          "KSE8YYYL = #{kse8yyyl,jdbcType=OTHER},",
+          "KSE8YYGL = #{kse8yygl,jdbcType=OTHER},",
+          "KSE8YYSB = #{kse8yysb,jdbcType=OTHER},",
+          "KSE8YYGS = #{kse8yygs,jdbcType=OTHER},",
+          "KSE8YLJB = #{kse8yljb,jdbcType=OTHER},",
+          "KSE8TGYF = #{kse8tgyf,jdbcType=OTHER},",
+          "KSE8DWXZ = #{kse8dwxz,jdbcType=OTHER},",
+          "KSE8YYNSR = #{kse8yynsr,jdbcType=DECIMAL},",
+          "KSE8SFZ = #{kse8sfz,jdbcType=OTHER},",
+          "KSE8SFFC = #{kse8sffc,jdbcType=OTHER},",
+          "KSALKY = #{ksalky,jdbcType=OTHER},",
+          "KSE8WMSID = #{kse8wmsid,jdbcType=OTHER},",
+          "KSE8WMSHZ = #{kse8wmshz,jdbcType=OTHER},",
+          "KSE8WMSHZM = #{kse8wmshzm,jdbcType=OTHER},",
+          "KSE8BYM = #{kse8bym,jdbcType=OTHER},",
+          "KSCUSTS = #{kscusts,jdbcType=OTHER},",
+          "KSE8JDSJ = #{kse8jdsj,jdbcType=TIMESTAMP},",
+          "KSURCD = #{ksurcd,jdbcType=OTHER},",
+          "KSURDT = #{ksurdt,jdbcType=DECIMAL},",
+          "KSURAT = #{ksurat,jdbcType=DECIMAL},",
+          "KSURAB = #{ksurab,jdbcType=DECIMAL},",
+          "KSURRF = #{ksurrf,jdbcType=OTHER},",
+          "KSEV02 = #{ksev02,jdbcType=OTHER},",
+          "KSEV03 = #{ksev03,jdbcType=OTHER},",
+          "KSEV04 = #{ksev04,jdbcType=OTHER},",
+          "KSEV05 = #{ksev05,jdbcType=OTHER},",
+          "KSDL01 = #{ksdl01,jdbcType=OTHER},",
+          "KSDL02 = #{ksdl02,jdbcType=OTHER},",
+          "KSDL03 = #{ksdl03,jdbcType=OTHER},",
+          "KSDL010 = #{ksdl010,jdbcType=OTHER},",
+          "KSDL011 = #{ksdl011,jdbcType=OTHER},",
+          "KSUSER = #{ksuser,jdbcType=OTHER},",
+          "KSPID = #{kspid,jdbcType=OTHER},",
+          "KSJOBN = #{ksjobn,jdbcType=OTHER},",
+          "KSUPMJ = #{ksupmj,jdbcType=DECIMAL},",
+          "KSUPMT = #{ksupmt,jdbcType=DECIMAL},",
+          "KSIDATE = #{ksidate,jdbcType=TIMESTAMP},",
+          "KSDF01 = #{ksdf01,jdbcType=OTHER},",
+          "KSRDATE = #{ksrdate,jdbcType=TIMESTAMP},",
+          "KSDF02 = #{ksdf02,jdbcType=OTHER},",
+          "KSUKID = #{ksukid,jdbcType=DECIMAL},",
+          "KSSTATUS = #{ksstatus,jdbcType=OTHER}",
+        "where KSAN8 = #{ksan8,jdbcType=DECIMAL}"
+    })
+    int updateByPrimaryKey(FE80101 record);
+}

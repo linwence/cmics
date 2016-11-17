@@ -1,0 +1,14 @@
+package com.el.cmic.ws.mapper;
+
+import com.el.cfg.domain.Fe80101;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.UpdateProvider;
+
+/**
+ * Created by king_ on 2016/10/8.
+ */
+public interface FE80101UpdateByPKMapper {
+    @UpdateProvider(type=FE80101UpdateByPKSqlProvider.class, method="updateByPrimaryKeySelective")
+    int updateByPrimaryKeySelective(@Param("record") Fe80101 record,@Param("datatype") String datatype);
+
+}

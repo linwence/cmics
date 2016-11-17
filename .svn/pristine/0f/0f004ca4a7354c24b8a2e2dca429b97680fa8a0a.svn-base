@@ -1,0 +1,18 @@
+package com.el.cmic.service.supplier;
+
+import java.util.List;
+
+
+
+import org.apache.ibatis.annotations.Param;
+
+import com.el.cmic.domain.supplier.Supplier;
+
+public interface SupplierService {
+
+	public List<Supplier>  selectSupplier();
+	
+	public Integer  updateEv01(String status,String span8, String spco);
+	
+	public void callSupplierInterface();
+}

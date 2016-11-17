@@ -1,0 +1,16 @@
+package com.el.cmic.ws.mapper;
+
+import com.el.cfg.domain.Fe84101;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+
+/**
+ * Created by king_ on 2016/9/29.
+ */
+public interface FE84101UpdateByLitmMapper {
+;
+
+    @UpdateProvider(type=FE84101UpdateByLitmSqlProvider.class, method="updateByLitmSelective")
+    int updateByLitmSelective(@Param("record") Fe84101 record, @Param("datatype") String datatype);
+}

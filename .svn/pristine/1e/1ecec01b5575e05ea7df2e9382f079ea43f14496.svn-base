@@ -1,0 +1,42 @@
+### set log levels ###  
+#log4j.rootLogger = INFO,stdout,I,D,E  
+log4j.rootLogger = INFO, CONSOLE
+
+## for console  
+log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender  
+log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout  
+log4j.appender.CONSOLE.layout.ConversionPattern=%d{MM-ddHH\:mm\:ss}[%c-%L] - %m%n  
+
+#### baidu ########
+log4j.logger.com.el=INFO,spd
+##### eleme #############
+#log4j.logger.com.el.action.eleme=INFO,eleme
+##### meituan#############
+#log4j.logger.com.el.action.meituan=INFO,meituan
+#####status#######
+#log4j.logger.com.el.servlet=INFO,other
+#log4j.logger.com.el.service.impl.WaimaiStatusServiceImpl=INFO,other
+##### APP xia dan#############
+#log4j.logger.com.el.action.apporder=INFO,AppOrder
+##### APP pei song#############
+#log4j.logger.com.el.action.distribution=INFO,AppDistribution
+
+
+#log4j.appender.stdout = org.apache.log4j.ConsoleAppender  
+#log4j.appender.stdout.Target = System.out  
+#log4j.appender.stdout.layout = org.apache.log4j.PatternLayout  
+#log4j.appender.stdout.layout.ConversionPattern = [%-5p] %d{yyyy-MM-dd HH\:mm\:ss,SSS} method\:%l%n%m%n  
+
+log4j.appender.other = org.apache.log4j.DailyRollingFileAppender  
+log4j.appender.other.File = ${webapp.root}WEB-INF/logs/other.log  
+log4j.appender.other.Append = true  
+log4j.appender.other.Threshold = INFO   
+log4j.appender.other.layout = org.apache.log4j.PatternLayout  
+log4j.appender.other.layout.ConversionPattern = %-d{yyyy-MM-dd HH\:mm\:ss}  [ %t\:%r ] - [ %p ]  %m%n 
+
+log4j.appender.spd = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.spd.File = ${webapp.root}WEB-INF/logs/wmslog.log
+log4j.appender.spd.Append = true
+log4j.appender.spd.Threshold = INFO
+log4j.appender.spd.layout = org.apache.log4j.PatternLayout
+log4j.appender.spd.layout.ConversionPattern = %-d{yyyy-MM-dd HH\:mm\:ss}  [ %t\:%r ] - [ %p ]  %m%n

@@ -1,0 +1,11 @@
+package com.el.cmic.service.Revert;
+
+import com.el.cmic.domain.revert.RevertData;
+
+public interface RevertDataService {
+	
+	public Integer  insertRevertData(RevertData revertData);
+	
+	public void  callInsertRevertData(RevertData revertData);
+
+}

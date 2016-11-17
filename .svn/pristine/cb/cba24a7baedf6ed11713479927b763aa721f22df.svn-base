@@ -1,0 +1,159 @@
+package com.el.cmic.ws.mapper;
+
+import com.el.cfg.domain.Fe84101;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.jdbc.SQL;
+import org.springframework.stereotype.Repository;
+
+/**
+ * Created by king_ on 2016/9/29.
+ */
+@Repository(value = "fe84101UpdateByLitmMapper")
+public interface FE84101UpdateByLitmMapper {
+
+    final class SqlProvider extends SQL{
+        public String updateByLitmSelective(@Param("schema")String schema,@Param("record") Fe84101 record, @Param("datatype") String datatype){
+
+
+            UPDATE(schema+".FE84101");
+
+            if(datatype.equals("E01")){
+                if(record.getSpe8yyks()!=null) {
+                    SET("SPE8YYKS = #{record.spe8yyks}");
+                }
+                if(record.getSpev01()!=null) {
+                    SET("SPEV01 = #{record.spev01}");
+                }
+                if(record.getSpe8name()!=null) {
+                    SET("SPE8NAME = #{record.spe8name}");
+                }
+                if(record.getSpan8()!=null) {
+                    SET("SPAN8 = #{record.span8}");
+                }
+                if(record.getSpe8pzwh()!=null) {
+                    SET("SPE8PZWH = #{record.spe8pzwh}");
+                }
+                if(record.getSporig()!=null) {
+                    SET("SPORIG = #{record.sporig}");
+                }
+                if(record.getSpe8fxdj()!=null) {
+                    SET("SPE8FXDJ = #{record.spe8fxdj}");
+                }
+                if(record.getSpe8cctj()!=null) {
+                    SET("SPE8CCTJ = #{record.spe8cctj}");
+                }
+                if(record.getSpe8qtcc()!=null) {
+                    SET("SPE8QTCC = #{record.spe8qtcc}");
+                }
+                if(record.getSpe8jgg()!=null) {
+                    SET("SPE8JGG = #{record.spe8jgg}");
+                }
+                //-------------------------------------change 10-17 fe84101 add 3
+                if(record.getSpe8cpdl()!=null) {
+                    SET("SPE8CPDL = #{record.spe8cpdl}");
+                }
+                if(record.getSpe8tsfl()!=null) {
+                    SET("SPE8TSFL = #{record.spe8tsfl}");
+                }
+                if(record.getSpe8cpfl()!=null) {
+                    SET("SPE8CPFL = #{record.spe8cpfl}");
+                }
+                if(record.getSpe8sptym()!=null){
+                    SET("SPE8SPTYM = #{record.spe8sptym}");
+                }
+            }
+            if(datatype.equals("E02")){
+                SET("SPEV01 = #{record.spev01}");
+                SET("SPE8NAME = #{record.spe8name}");
+                SET("SPAN8 = #{record.span8}");
+                SET("SPE8PZWH = #{record.spe8pzwh}");
+                if(record.getSpe8zdyl()!=null) {
+                    SET("SPE8ZDYL = #{record.spe8zdyl}");
+                }
+                if(record.getSpe8fxdj()!=null) {
+                    SET("SPE8FXDJ = #{record.spe8fxdj}");
+                }
+                if(record.getSpe8cctj()!=null) {
+                    SET("SPE8CCTJ = #{record.spe8cctj}");
+                }
+                if(record.getSpe8qtcc()!=null) {
+                    SET("SPE8QTCC = #{record.spe8qtcc}");
+                }
+                if(record.getSpe8jgg()!=null) {
+                    SET("SPE8JGG = #{record.spe8jgg}");
+                }
+                if(record.getSpe8sptym()!=null){
+                    SET("SPE8SPTYM = #{record.spe8sptym}");
+                }
+                SET("SPE8JHG = #{record.spe8jhg}");
+                SET("SPE8ZTW = #{record.spe8ztw}");
+                SET("SPE8GFG = #{record.spe8gfg}");
+                SET("SPE8PTYP = #{record.spe8ptyp}");
+
+                SET("SPE8ATCDL = #{record.spe8atcdl}");
+                SET("SPE8ATCXL = #{record.spe8atcxl}");
+                SET("SPORIG = #{record.sporig}");
+
+            }
+            if(datatype.equals("E03")){
+                if(record.getSpe8fxdj()!=null) {
+                    SET("SPE8FXDJ = #{record.spe8fxdj}");
+                }
+                if(record.getSpe8cctj()!=null) {
+                    SET("SPE8CCTJ = #{record.spe8cctj}");
+                }
+                if(record.getSpe8qtcc()!=null) {
+                    SET("SPE8QTCC = #{record.spe8qtcc}");
+                }
+                if(record.getSpe8jgg()!=null) {
+                    SET("SPE8JGG = #{record.spe8jgg}");
+                }
+                if(record.getSpe8sptym()!=null){
+                    SET("SPE8SPTYM = #{record.spe8sptym}");
+                }
+                SET("SPEV01 = #{record.spev01}");
+                SET("SPE8NAME = #{record.spe8name}");
+                SET("SPAN8 = #{record.span8}");
+                SET("SPE8JHG = #{record.spe8jhg}");
+                SET("SPE8ZTW = #{record.spe8ztw}");
+                SET("SPORIG = #{record.sporig}");
+                //-------------------------------------change 10-17 fe84101 add 3
+                SET("SPE8CPDL = #{record.spe8cpdl}");
+                SET("SPE8TSFL = #{record.spe8tsfl}");
+          //      SET("SPE8CPFL = #{record.spe8cpfl}");
+            }
+            if(datatype.equals("E04")){
+                if(record.getSpe8sptym()!=null){
+                    SET("SPE8SPTYM = #{record.spe8sptym}");
+                }
+                SET("SPEV01 = #{record.spev01}");
+                SET("SPE8NAME = #{record.spe8name}");
+            }
+
+
+            if(datatype.equals("MEGE")){
+                SET("SPAITM = concat(trim(SPAITM),';',#{record.spaitm})");
+                SET("SPE8SPTYM = #{record.spe8sptym}");
+                //SET("SPE8SPTYM =concat(trim(SPE8SPTYM),#{record.spe8sptym})");
+            }
+            if(datatype.equals("UMEGE")){
+                SET("SPAITM = #{record.spaitm}");
+                SET("SPE8SPTYM = #{record.spe8sptym}");
+            }
+
+            if(datatype.equals("SELE")){
+                SET("SPE8SFFC = #{record.spe8sffc}");
+            }
+
+            WHERE("Trim(SPLITM) = #{record.splitm}");
+            return toString();
+        }
+
+    }
+
+
+    @UpdateProvider(type=SqlProvider.class, method="updateByLitmSelective")
+    int updateByLitmSelective(@Param("schema")String schema,@Param("record") Fe84101 record, @Param("datatype") String datatype);
+}

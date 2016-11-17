@@ -1,0 +1,5 @@
+#wms接口地址
+wms.Url = http://www.jk-soft.com.cn:172
+wms.AppKey=AppKey
+wms.AppPassword=MD5
+wms.Ver=1

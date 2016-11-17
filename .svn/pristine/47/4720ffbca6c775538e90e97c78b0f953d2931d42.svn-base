@@ -1,0 +1,44 @@
+package com.el.cmic.controller.goods;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.el.cmic.common.MapJson;
+import com.el.cmic.domain.goods.Bales;
+import com.el.cmic.domain.goods.BalesConvert;
+import com.el.cmic.domain.goods.CustomPropel;
+import com.el.cmic.domain.goods.CustomPropelConvert;
+import com.el.cmic.service.goods.CustomPropelService;
+
+/**
+ * 关于客户 的接口  控制器
+ * @author zhanhao
+ *
+ */
+@Controller
+@RequestMapping("/Custom/")
+public class CustomPropelController {
+
+	@Autowired
+	private CustomPropelService customPropelService;
+	
+	/**
+	 * 查询 客户信息 List
+	 * @return Map
+	 */
+	@RequestMapping("selectCustomPropelList")
+	@ResponseBody
+	public Map<String,Object> selectCustomPropelList(){
+		List<CustomPropel>  cList= new ArrayList<CustomPropel>();
+		cList=customPropelService.selectCustomPropelList();
+		//英文转汉语
+		List<Map<String, Object>> list=CustomPropelConvert.cpEntityToMap(cList);
+		return MapJson.resultMapTw("接口数据", "list", list);
+	}
+}

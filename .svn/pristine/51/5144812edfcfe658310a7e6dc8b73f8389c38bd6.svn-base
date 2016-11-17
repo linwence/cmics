@@ -1,0 +1,73 @@
+package com.el.cmic.ws.domain;
+
+/**
+ * Created by king_ on 2016/9/21.
+ */
+public class PhC001OutJKSC01 {
+    private String isbgz;
+    private String isqyba;
+    private String isyyzz;
+    private String iszzjgma;
+    private String isswdjz;
+    private String isxbyyzz;
+
+    public String getIsbgz() {
+        return isbgz;
+    }
+
+    public void setIsbgz(String isbgz) {
+        this.isbgz = isbgz;
+    }
+
+    public String getIsqyba() {
+        return isqyba;
+    }
+
+    public void setIsqyba(String isqyba) {
+        this.isqyba = isqyba;
+    }
+
+    public String getIsyyzz() {
+        return isyyzz;
+    }
+
+    public void setIsyyzz(String isyyzz) {
+        this.isyyzz = isyyzz;
+    }
+
+    public String getIszzjgma() {
+        return iszzjgma;
+    }
+
+    public void setIszzjgma(String iszzjgma) {
+        this.iszzjgma = iszzjgma;
+    }
+
+    public String getIsswdjz() {
+        return isswdjz;
+    }
+
+    public void setIsswdjz(String isswdjz) {
+        this.isswdjz = isswdjz;
+    }
+
+    public String getIsxbyyzz() {
+        return isxbyyzz;
+    }
+
+    public void setIsxbyyzz(String isxbyyzz) {
+        this.isxbyyzz = isxbyyzz;
+    }
+
+    @Override
+    public String toString() {
+        return "PhC001OutJKSC01{" +
+                "isbgz='" + isbgz + '\'' +
+                ", isqyba='" + isqyba + '\'' +
+                ", isyyzz='" + isyyzz + '\'' +
+                ", iszzjgma='" + iszzjgma + '\'' +
+                ", isswdjz='" + isswdjz + '\'' +
+                ", isxbyyzz='" + isxbyyzz + '\'' +
+                '}';
+    }
+}

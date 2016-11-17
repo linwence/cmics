@@ -1,0 +1,112 @@
+package com.el.cmic.ws.service;
+
+import com.el.cfg.domain.F4101;
+
+import com.el.cfg.domain.Fe84101;
+import com.el.cmic.ws.domain.PhE001OutHeader;
+import com.el.cmic.ws.domain.PhE001OutHeaderCode;
+import com.el.cmic.ws.domain.PhE002OutMain;
+import com.el.cmic.ws.mapper.F0005DMapper;
+import com.el.cmic.ws.mapper.F0005Mapper;
+import com.el.cmic.ws.mapper.F4101UpdateByLitmMapper;
+import com.el.cmic.ws.mapper.FE84101UpdateByLitmMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+/**
+ * Created by king_ on 2016/10/8.
+ */
+@Service
+public class AddE02ToERPServiceImpl implements AddE02ToERPService {
+    @Autowired
+    FE84101UpdateByLitmMapper fe84101UpdateByLitmMapper;
+    @Autowired
+    F4101UpdateByLitmMapper f4101UpdateByLitmMapper;
+    @Autowired
+    F0005Mapper f0005Mapper;
+    @Autowired
+    F0005DMapper f0005DMapper;
+
+    String dbtype = "CRPCTL";
+
+    public String addE02ToERP(PhE001OutHeader phE001OutHeader, PhE002OutMain phE002OutMain,String no) {
+        updateF4101(phE001OutHeader,phE002OutMain,no);
+        updateFE84101(phE001OutHeader,phE002OutMain,no);
+        return null;
+    }
+
+    public String updateFE84101(PhE001OutHeader phE001OutHeader, PhE002OutMain phE002OutMain,String no) {
+        Fe84101 fe84101 = new Fe84101();
+        List<PhE001OutHeaderCode> phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
+        for(PhE001OutHeaderCode tmp :phE001OutHeaderCodes){
+
+            if(tmp.getCodetype().equals("1")){
+                fe84101.setSpev01("Y");
+            }
+
+        }
+        if(fe84101.getSpev01().equals(null)){
+            fe84101.setSpev01("N");
+        }
+        fe84101.setSplitm(no);
+        fe84101.setSpe8name(phE002OutMain.getProductname());
+        BigDecimal bd = new BigDecimal(phE002OutMain.getMfname());
+        fe84101.setSpan8(bd);
+        fe84101.setSpe8pzwh(phE002OutMain.getFileno());
+  //      fe84101.setSpe8zdyl(phE002OutMain.getPk_zdypdl());
+        fe84101.setSpe8zdyl(f0005Mapper.selectF0005(dbtype,"E8","29",phE002OutMain.getPk_zdypdl()));
+   //     fe84101.setSpe8jhg(phE002OutMain.getPk_jhg());
+        fe84101.setSpe8jhg(f0005Mapper.selectF0005(dbtype,"E8","21",phE002OutMain.getPk_zdypdl()));
+   //     fe84101.setSpe8ztw(phE002OutMain.getPk_ztw());
+        fe84101.setSpe8ztw(f0005Mapper.selectF0005(dbtype,"E8","32",phE002OutMain.getPk_ztw()));
+  //      fe84101.setSpe8gfg(phE002OutMain.getPk_fgjyw());
+        fe84101.setSpe8gfg(f0005Mapper.selectF0005(dbtype,"E8","33",phE002OutMain.getPk_fgjyw()));
+  //      fe84101.setSpe8ptyp(phE002OutMain.getPk_ptyp());
+        fe84101.setSpe8ptyp(f0005Mapper.selectF0005(dbtype,"E8","34",phE002OutMain.getPk_ptyp()));
+   //     fe84101.setSpe8atcdl(phE002OutMain.getPk_atcdl());
+        fe84101.setSpe8atcdl(f0005Mapper.selectF0005(dbtype,"E8","30",phE002OutMain.getPk_atcdl()));
+  //      fe84101.setSpe8atcxl(phE002OutMain.getPk_atcxl());
+        fe84101.setSpe8atcxl(f0005Mapper.selectF0005(dbtype,"E8","31",phE002OutMain.getPk_atcxl()));
+      //  fe84101.setSporig(phE002OutMain.getPk_mfcountry());
+        fe84101.setSporig(f0005Mapper.selectF0005(dbtype,"E8","17",phE002OutMain.getPk_mfcountry()));
+
+        fe84101.setSpe8jx(f0005Mapper.selectF0005(dbtype,"E8","JX",phE002OutMain.getForm()));
+
+        fe84101UpdateByLitmMapper.updateByLitmSelective(fe84101,"E02");
+
+
+
+        return null;
+    }
+
+    public String updateF4101(PhE001OutHeader phE001OutHeader, PhE002OutMain phE002OutMain,String no) {
+
+        String TemporaryCode = "";
+        String FormalCode = "";
+        F4101 f4101 =new F4101();
+        List<PhE001OutHeaderCode> phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
+        for(PhE001OutHeaderCode tmp :phE001OutHeaderCodes){
+            if(tmp.getCodetype().equals("0")){
+                TemporaryCode = tmp.getCodevalue();
+            }
+            if(tmp.getCodetype().equals("1")){
+                FormalCode = tmp.getCodevalue();
+            }
+        }
+        f4101.setImaitm(FormalCode);
+        f4101.setImlitm(no);
+        f4101.setImdsc2(phE002OutMain.getProducttype());
+        //f4101.setImorig();
+        f4101.setImdsc1(phE002OutMain.getSync());
+        //f4101.setImuom1(phE002OutMain.getPk_weight());
+        f4101.setImdsc1(f0005DMapper.selectF0005D(dbtype,"00","UM",phE002OutMain.getPk_weight()));
+
+        f4101UpdateByLitmMapper.updateByLitmSelective(f4101,"E02");
+
+        return null;
+    }
+}
+

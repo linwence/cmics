@@ -1,0 +1,23 @@
+package com.el.cmic.service.Revert.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.el.cmic.domain.revert.RevertDataDetail;
+import com.el.cmic.mapper.revert.RevertDataDetailMapper;
+import com.el.cmic.service.Revert.RevertDataDetailService;
+
+@Service
+public class RevertDataDetailServiceImpl  implements RevertDataDetailService{
+
+	@Autowired
+	private RevertDataDetailMapper revertDataDetailMapper;
+	
+	@Override
+	@Transactional
+	public Integer insertRevertDataDetail(RevertDataDetail revertDataDetail) {
+		return revertDataDetailMapper.insertRevertDataDetail(revertDataDetail);
+	}
+
+}

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cmicspd:war">
+    <output-path>$PROJECT_DIR$/cmicspd/target</output-path>
+    <root id="archive" name="cmicspd.war">
+      <element id="artifact" artifact-name="cmicspd:war exploded" />
+    </root>
+  </artifact>
+</component>

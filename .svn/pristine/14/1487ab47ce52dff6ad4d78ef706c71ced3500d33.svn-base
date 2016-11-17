@@ -1,0 +1,20 @@
+package com.el.cmic.ws.mapper;
+
+
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.type.JdbcType;
+
+/**
+ * Created by king_ on 2016/10/9.
+ */
+public interface FE84101ZSelectByE8ZZBM {
+    @Select({
+            "select",
+            "count(1)",
+            "from CRPDTA.FE84101Z",
+            "where  ZZE8ZZBM = #{zze8zzbm}"
+    })
+    int selectByPrimaryKey(String zze8zzbm);
+}

@@ -1,0 +1,11 @@
+package com.el.cmic.callmdm.service;
+
+import com.el.cmic.callmdm.domain.FE8Log01;
+
+/**
+ * Created by Vincent on 2016/10/9.
+ */
+public interface Fe8Log01Service {
+    int insert(FE8Log01 fe8Log01);
+
+}

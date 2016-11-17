@@ -1,0 +1,65 @@
+package com.el.cmic.common.domain;
+
+import java.io.Serializable;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.annotation.JSONType;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+
+/**
+ * Created by Vincent on 2016/10/25.
+ * 用于接收返回的结果
+ */
+@JSONType(orders={"success","code","message"})
+public class SpdResult {
+	
+	private boolean success;
+    private String code;
+    private String message;
+
+    public SpdResult() {
+    }
+
+    public SpdResult(boolean success, String code, String message) {
+        this.success = success;
+        this.code = code;
+        this.message = message;
+    }
+
+    /**
+	 * to a json
+	 */
+	public String toJson() {
+		return JSON.toJSONString(this, SerializerFeature.WriteMapNullValue, SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.WriteNullListAsEmpty, SerializerFeature.SortField);
+	}
+
+	public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+	@Override
+	public String toString() {
+		return "SpdResult [success=" + success + ", code=" + code
+				+ ", message=" + message + "]";
+	}
+}

@@ -1,0 +1,341 @@
+package com.el.cmic.callmdm.service;
+
+import com.el.cmic.callmdm.domain.*;
+import com.el.cmic.callmdm.mapper.ProductMapper;
+import com.el.cmic.common.domain.MdmDataType;
+import com.el.cmic.common.domain.MdmDirection;
+import com.el.cmic.common.domain.MdmFuncType;
+import com.el.utils.JAXBListUtil;
+import nc.itf.mdm.ws.Exception;
+import nc.itf.mdm.ws.QxmdmEquService;
+import nc.itf.mdm.ws.QxmdmEquServicePortType;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Created by Vincent on 2016/9/20.
+ */
+@Service
+public class RqECallMdmServiceImpl implements CallMdmService {
+    Logger logger = Logger.getLogger(RqECallMdmServiceImpl.class);
+    @Value("${schema}")
+    private String schema;
+    @Value("${mdm.username}")
+    private String mdmUserName;
+    @Value("${mdm.password}")
+    private String mdmPassword;
+
+    public String getSchema() {
+        return schema;
+    }
+
+    public void setSchema(String schema) {
+        this.schema = schema;
+    }
+
+    @Autowired
+    private ProductMapper productMapper;
+
+    public void addCallWS() {
+        //第一步 查找E01类型的商品新增记录，然后发送到mdm的webservice中
+        dealE01();
+         //第2步 查找E02类型的商品新增记录，然后发送到mdm的webservice中
+        dealE02();
+
+        //第3步 查找E03类型的商品新增记录，然后发送到mdm的webservice中
+        deal03();
+
+        //第4步 查找E03类型的商品新增记录，然后发送到mdm的webservice中
+        dealE04();
+
+    }
+
+    private void dealE04() {
+        List<RqE001InputProductE04> rqE001InputProductE04List = productE04QryInfo();
+        for (RqE001InputProductE04 rqE001InputProductE04 : rqE001InputProductE04List
+                ) {
+            String data = genDataXml(rqE001InputProductE04);
+            logger.info("data:" + data);
+            try {
+                String responseXml = callReqEqutByTypeSrv(MdmDataType.DATA_TYPE_E01, data);
+                System.out.println(responseXml);
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.error(e.getMessage());
+            }
+
+        }
+    }
+
+    private void deal03() {
+        List<RqE001InputProductE03> rqE001InputProductE03List = productE03QryInfo();
+        for (RqE001InputProductE03 rqE001InputProductE03 : rqE001InputProductE03List
+                ) {
+            String data = genDataXml(rqE001InputProductE03);
+            logger.info("data:" + data);
+            try {
+                String responseXml = callReqEqutByTypeSrv(MdmDataType.DATA_TYPE_E01, data);
+                System.out.println(responseXml);
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.error(e.getMessage());
+            }
+
+        }
+    }
+
+    private void dealE02() {
+        List<RqE001InputProductE02> rqE001InputProductE02List = productE02QryInfo();
+        for (RqE001InputProductE02 rqE001InputProductE02 : rqE001InputProductE02List
+                ) {
+            String data = genDataXml(rqE001InputProductE02);
+            logger.info("data:" + data);
+            try {
+                String responseXml = callReqEqutByTypeSrv(MdmDataType.DATA_TYPE_E02, data);
+                System.out.println(responseXml);
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.error(e.getMessage());
+            }
+
+        }
+    }
+
+    private void dealE01() {
+        List<RqE001InputProductE01> rqE001InputProductE01List = productE01QryInfo();
+        for (RqE001InputProductE01 rqE001InputProductE01 : rqE001InputProductE01List
+                ) {
+            String data = genDataXml(rqE001InputProductE01);
+            logger.info("data:" + data);
+            try {
+                String responseXml = callReqEqutByTypeSrv(MdmDataType.DATA_TYPE_E01, data);
+                System.out.println(responseXml);
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.error(e.getMessage());
+            }
+
+        }
+    }
+
+    /**
+     * 调用mdm的主数据接口
+     *
+     * @param dataType
+     * @param data
+     * @return
+     */
+    private String callReqEqutByTypeSrv(String dataType, String data) throws Exception {
+        QxmdmEquService qxmdmEquService = new QxmdmEquService();
+        QxmdmEquServicePortType qxmdmEquServicePortType = qxmdmEquService.getQxmdmEquServiceSOAP11PortHttp();
+        String responseXml = qxmdmEquServicePortType.reqEqutByTypeSrv(dataType, data, mdmUserName, mdmPassword);
+        return responseXml;
+    }
+
+    public String updateCallWS(String data, String username, String password) {
+        return null;
+    }
+
+    private List<RqE001InputProductE01> productE01QryInfo() {
+        return productMapper.productE01QryInfo(schema, MdmDataType.DATA_TYPE_E01);
+    }
+
+    private List<RqE001InputProductE02> productE02QryInfo() {
+        return productMapper.productE02QryInfo(schema, MdmDataType.DATA_TYPE_E02);
+    }
+
+    private List<RqE001InputProductE03> productE03QryInfo() {
+        return productMapper.productE03QryInfo(schema, MdmDataType.DATA_TYPE_E03);
+    }
+
+    private List<RqE001InputProductE04> productE04QryInfo() {
+        return productMapper.productE04QryInfo(schema, MdmDataType.DATA_TYPE_E04);
+    }
+
+    private String genDataXml(RqE001InputProductE01 rqE001InputProductE01) {
+        JAXBListUtil jaxbListUtil = null;
+        String xml = "";
+        String billInfo = "";
+        RqE001InputHeader rqE001InputHeader = getRqE001InputHeader(MdmDataType.DATA_TYPE_E01, billInfo, MdmDirection.TO_MDM, MdmFuncType.FUNC_TYPE_ADD);
+
+        RqE001InputSublineB rqE001InputSublineB = new RqE001InputSublineB();
+        jaxbListUtil = new JAXBListUtil(RqE001InputHeader.class);
+        String header = jaxbListUtil.toXml(rqE001InputHeader, "utf-8");
+        System.out.println(header);
+
+        jaxbListUtil = new JAXBListUtil(RqE001InputProductE01.class);
+
+        String productE01 = jaxbListUtil.toXml(rqE001InputProductE01, "utf-8");
+        System.out.println(productE01);
+
+        //获取商品证照
+        List<RqE001InputBE01> rqE001InputBE01List = productMapper.productQryBInfo(schema, rqE001InputProductE01.getProductcode());
+        rqE001InputSublineB.setSubname("b");
+        rqE001InputSublineB.setRqE001InputBE01List(rqE001InputBE01List);
+
+        jaxbListUtil = new JAXBListUtil(RqE001InputSublineB.class, JAXBListUtil.CollectionWrapper.class);
+        String subLineB = jaxbListUtil.toXml(rqE001InputSublineB, "utf-8");
+
+        String sub = "<sub>" + subLineB + "</sub>";
+
+        System.out.println(sub);
+        String detail = "<detail>" + productE01 + sub + "</detail>";
+        System.out.println(detail);
+
+        String content = "<content><count>1</count>" + detail + "</content>";
+        xml = "<?xml version='1.0' encoding='utf-8'?><xml>" + header + content + "</xml>";
+        System.out.println("===========================================");
+        System.out.println(xml);
+
+
+        return xml;
+    }
+
+
+    private String genDataXml(RqE001InputProductE02 rqE001InputProductE02) {
+        JAXBListUtil jaxbListUtil = null;
+        List<RqE001InputProductE02> rqE001InputProductE01List = productE02QryInfo();
+        String xml = "";
+        String billInfo = "";
+        RqE001InputHeader rqE001InputHeader = getRqE001InputHeader(MdmDataType.DATA_TYPE_E02, billInfo, MdmDirection.TO_MDM, MdmFuncType.FUNC_TYPE_ADD);
+
+        RqE001InputSublineB rqE001InputSublineB = new RqE001InputSublineB();
+        jaxbListUtil = new JAXBListUtil(RqE001InputHeader.class);
+        String header = jaxbListUtil.toXml(rqE001InputHeader, "utf-8");
+        System.out.println(header);
+
+        jaxbListUtil = new JAXBListUtil(RqE001InputProductE02.class);
+
+        String productE02 = jaxbListUtil.toXml(rqE001InputProductE02, "utf-8");
+        System.out.println(productE02);
+
+        //获取商品证照
+        List<RqE001InputBE01> rqE001InputBE01List = productMapper.productQryBInfo(schema, rqE001InputProductE02.getProductcode());
+        rqE001InputSublineB.setSubname("b");
+        rqE001InputSublineB.setRqE001InputBE01List(rqE001InputBE01List);
+
+        jaxbListUtil = new JAXBListUtil(RqE001InputSublineB.class, JAXBListUtil.CollectionWrapper.class);
+        String subLineB = jaxbListUtil.toXml(rqE001InputSublineB, "utf-8");
+
+        String sub = "<sub>" + subLineB + "</sub>";
+
+        System.out.println(sub);
+        String detail = "<detail>" + productE02 + sub + "</detail>";
+        System.out.println(detail);
+
+        String content = "<content><count>1</count>" + detail + "</content>";
+        xml = "<?xml version='1.0' encoding='utf-8'?><xml>" + header + content + "</xml>";
+        System.out.println("===========================================");
+        System.out.println(xml);
+
+
+        return xml;
+    }
+
+    private String genDataXml(RqE001InputProductE03 rqE001InputProductE03) {
+        JAXBListUtil jaxbListUtil = null;
+
+        String xml = "";
+        String billInfo = "";
+        RqE001InputHeader rqE001InputHeader = getRqE001InputHeader(MdmDataType.DATA_TYPE_E03, billInfo, MdmDirection.TO_MDM, MdmFuncType.FUNC_TYPE_ADD);
+
+        RqE001InputSublineB rqE001InputSublineB = new RqE001InputSublineB();
+        jaxbListUtil = new JAXBListUtil(RqE001InputHeader.class);
+        String header = jaxbListUtil.toXml(rqE001InputHeader, "utf-8");
+        System.out.println(header);
+
+        jaxbListUtil = new JAXBListUtil(RqE001InputProductE03.class);
+
+        String productE03 = jaxbListUtil.toXml(rqE001InputProductE03, "utf-8");
+        System.out.println(productE03);
+
+        //获取商品证照
+        List<RqE001InputBE01> rqE001InputBE01List = productMapper.productQryBInfo(schema, rqE001InputProductE03.getProductcode());
+        rqE001InputSublineB.setSubname("b");
+        rqE001InputSublineB.setRqE001InputBE01List(rqE001InputBE01List);
+
+        jaxbListUtil = new JAXBListUtil(RqE001InputSublineB.class, JAXBListUtil.CollectionWrapper.class);
+        String subLineB = jaxbListUtil.toXml(rqE001InputSublineB, "utf-8");
+
+        String sub = "<sub>" + subLineB + "</sub>";
+
+        System.out.println(sub);
+        String detail = "<detail>" + productE03 + sub + "</detail>";
+        System.out.println(detail);
+
+        String content = "<content><count>1</count>" + detail + "</content>";
+        xml = "<?xml version='1.0' encoding='utf-8'?><xml>" + header + content + "</xml>";
+        System.out.println("===========================================");
+        System.out.println(xml);
+
+
+        return xml;
+    }
+
+
+    private String genDataXml(RqE001InputProductE04 rqE001InputProductE04) {
+        JAXBListUtil jaxbListUtil = null;
+
+        String xml = "";
+        String billInfo = "";
+        RqE001InputHeader rqE001InputHeader = getRqE001InputHeader(MdmDataType.DATA_TYPE_E03, billInfo, MdmDirection.TO_MDM, MdmFuncType.FUNC_TYPE_ADD);
+
+        RqE001InputSublineB rqE001InputSublineB = new RqE001InputSublineB();
+        jaxbListUtil = new JAXBListUtil(RqE001InputHeader.class);
+        String header = jaxbListUtil.toXml(rqE001InputHeader, "utf-8");
+        System.out.println(header);
+
+        jaxbListUtil = new JAXBListUtil(RqE001InputProductE04.class);
+
+        String productE04 = jaxbListUtil.toXml(rqE001InputProductE04, "utf-8");
+        System.out.println(productE04);
+
+        //获取商品证照
+        List<RqE001InputBE01> rqE001InputBE01List = productMapper.productQryBInfo(schema, rqE001InputProductE04.getProductcode());
+        rqE001InputSublineB.setSubname("b");
+        rqE001InputSublineB.setRqE001InputBE01List(rqE001InputBE01List);
+
+        jaxbListUtil = new JAXBListUtil(RqE001InputSublineB.class, JAXBListUtil.CollectionWrapper.class);
+        String subLineB = jaxbListUtil.toXml(rqE001InputSublineB, "utf-8");
+
+        String sub = "<sub>" + subLineB + "</sub>";
+
+        System.out.println(sub);
+        String detail = "<detail>" + productE04 + sub + "</detail>";
+        System.out.println(detail);
+
+        String content = "<content><count>1</count>" + detail + "</content>";
+        xml = "<?xml version='1.0' encoding='utf-8'?><xml>" + header + content + "</xml>";
+        System.out.println("===========================================");
+        System.out.println(xml);
+
+
+        return xml;
+    }
+
+    private RqE001InputHeader getRqE001InputHeader(String datatype, String billInfo, String direction, String funcType) {
+        RqE001InputHeader rqE001InputHeader = new RqE001InputHeader();
+        rqE001InputHeader.setDataType(datatype);
+        rqE001InputHeader.setDirection(direction);
+        rqE001InputHeader.setFuncType(funcType);
+        rqE001InputHeader.setMsg("");
+        rqE001InputHeader.setSubmitbillinfo(billInfo);
+        return rqE001InputHeader;
+    }
+
+    public static void main(String[] args) {
+        QxmdmEquService qxmdmEquService = new QxmdmEquService();
+        QxmdmEquServicePortType qxmdmEquServicePortType = qxmdmEquService.getQxmdmEquServiceSOAP11PortHttp();
+        try {
+            String responseXml = qxmdmEquServicePortType.reqEqutByTypeSrv(MdmDataType.DATA_TYPE_E01, "111", "input_01002", "f4a087a9b8e3a53a3fd0bfe1c97eb059");
+            System.out.println(responseXml);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+}

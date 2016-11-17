@@ -1,0 +1,135 @@
+package com.el.cmic.domain.repertory;
+
+import java.math.BigDecimal;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
+public class InInvertoryCancelItem {
+
+	  /**
+     *  通知单行号 - FE8WMS12.QXLNID
+     */
+	@JSONField(name="通知单行号") 
+    private BigDecimal qxlnid;
+    
+    /**
+     *  货品编号 - FE8WMS12.QXLITM
+     */
+	@JSONField(name="货品编号") 
+    private String qxlitm;
+
+    /**
+     *  取消数量 - FE8WMS12.QXUORG
+     */
+	@JSONField(name="取消数量") 
+    private BigDecimal qxuorg;
+    
+    /**
+     * 固定值0
+     */
+	@JSONField(name="库类型") 
+    private String invertoryType;
+    
+    /**
+     *  货品名称 - FE8WMS12.QXDSC1
+     */
+	@JSONField(name="货品名称") 
+    private String qxdsc1;
+	
+	
+	  /**
+     * 虚拟字段（入库取消返回推送使用）  申请取消数量
+     */
+	 @JSONField(name="申请取消数量") 
+    private BigDecimal applyQuant;
+	/**
+	  * 实际取消数量（入库取消推送用  未在数据库中找到此字段  暂用此名）
+	  */
+	 @JSONField(name="实际取消数量") 
+	 private BigDecimal socn;
+	 
+ 	/**
+     * 更新入库取消返回推送用 - FE8WMS12.QXEV01
+     */
+    private String qxev01;
+
+
+	 
+	 
+	public BigDecimal getSocn() {
+		return socn;
+	}
+
+	public void setSocn(BigDecimal socn) {
+		this.socn = socn;
+	}
+
+	public BigDecimal getQxlnid() {
+		return qxlnid;
+	}
+
+	public void setQxlnid(BigDecimal qxlnid) {
+		this.qxlnid = qxlnid;
+	}
+
+	public String getQxlitm() {
+		return qxlitm;
+	}
+
+	public void setQxlitm(String qxlitm) {
+		this.qxlitm = qxlitm;
+	}
+
+	public BigDecimal getQxuorg() {
+		return qxuorg;
+	}
+
+	public void setQxuorg(BigDecimal qxuorg) {
+		this.qxuorg = qxuorg;
+	}
+
+	public String getInvertoryType() {
+		return invertoryType;
+	}
+
+	public void setInvertoryType(String invertoryType) {
+		this.invertoryType = invertoryType;
+	}
+
+	public String getQxdsc1() {
+		return qxdsc1;
+	}
+
+	public void setQxdsc1(String qxdsc1) {
+		this.qxdsc1 = qxdsc1;
+	}
+	
+
+
+
+	public BigDecimal getApplyQuant() {
+		return applyQuant;
+	}
+
+	public void setApplyQuant(BigDecimal applyQuant) {
+		this.applyQuant = applyQuant;
+	}
+
+	public String getQxev01() {
+		return qxev01;
+	}
+
+	public void setQxev01(String qxev01) {
+		this.qxev01 = qxev01;
+	}
+
+	@Override
+	public String toString() {
+		return "InInvertoryCancelItem [qxlnid=" + qxlnid + ", qxlitm=" + qxlitm
+				+ ", qxuorg=" + qxuorg + ", invertoryType=" + invertoryType
+				+ ", qxdsc1=" + qxdsc1 + ", ApplyQuant=" + applyQuant
+				+ ", socn=" + socn + "]";
+	}
+
+	
+}

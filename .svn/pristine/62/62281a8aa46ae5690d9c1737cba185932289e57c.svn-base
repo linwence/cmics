@@ -1,0 +1,48 @@
+package com.el.cmic.ws.service;
+
+
+import com.el.cfg.domain.Fe80101;
+import com.el.cfg.domain.Fe841003;
+import com.el.cmic.ws.mapper.FE80101UpdateByPKMapper;
+import com.el.cmic.ws.mapper.FE841003SelectByAn8Mapper;
+import com.el.cmic.ws.mapper.FE841003UpdateByPKMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+
+/**
+ * Created by king_ on 2016/10/13.
+ */
+@Service
+public class ModC0ESToERPServiceImpl implements ModC0ESToERPService {
+    @Autowired
+    FE841003UpdateByPKMapper fe841003UpdateByPKMapper;
+    @Autowired
+    FE841003SelectByAn8Mapper fe841003SelectByAn8Mapper;
+    @Autowired
+    FE80101UpdateByPKMapper fe80101UpdateByPKMapper;
+    public String updateFE841003(BigDecimal Doco, String EorS) {
+        Fe841003 fe841003 = new Fe841003();
+        fe841003.setSqukid(Doco);
+        fe841003.setSqflag(EorS);
+        fe841003UpdateByPKMapper.updateByPrimaryKeySelective(fe841003);
+        return null;
+    }
+
+    public String updateFE80101(BigDecimal an8) {
+        Fe841003 fe841003 = fe841003SelectByAn8Mapper.selectByPrimaryKey(an8);
+        Fe80101 fe80101 = new Fe80101();
+        fe80101.setKse8jycs(fe841003.getSqa427());
+        fe80101.setKse8ckdz(fe841003.getSqe8tym());
+        fe80101.setKse8fr(fe841003.getSqcnem());
+        fe80101.setKse8qyfzr(fe841003.getSqcnicl());
+        fe80101.setKse8ywlxr(fe841003.getSqcnyp());
+
+        fe80101UpdateByPKMapper.updateByPrimaryKeySelective(fe80101,"C011");
+
+
+
+        return null;
+    }
+}

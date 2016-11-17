@@ -1,0 +1,134 @@
+package com.el.cmic.domain.supplier;
+
+import org.springframework.stereotype.Component;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.annotation.JSONType;
+
+@Component
+@JSONType(orders = { "SPD系统标识", "配送机构系统标识", "配送机构ERP编号", "配送机构名称", "ERP供应商编号",
+		"ERP供应商名称", "简称","备注","封存"},ignores={"span8"})
+public class Supplier {
+	
+	/**
+	 * FE8SPD03.SPAN8
+	 */
+	private String span8;
+	
+	//SPD系统标识
+	@JSONField(name = "SPD系统标识")
+	private final String jkspd = "JKSPD";
+	 
+	//配送机构系统标识
+	@JSONField(name = "配送机构系统标识")
+	private final String jde = "JDE";
+	
+	//配送机构ERP编号
+	@JSONField(name = "配送机构ERP编号")
+	private final String send = "00001";
+	 
+	//配送机构名称
+	@JSONField(name = "配送机构名称")
+	private String sendName = " ";
+
+	/**
+	 * ERP供应商编号  F0401.A6AN8
+	 */
+	@JSONField(name = "ERP供应商编号")
+	private String a6an8;
+	
+	/**
+	 * ERP供应商名称   F0101.ABALPH 
+	 */
+	@JSONField(name = "ERP供应商名称")
+	private String abalph;
+	
+	// 简称
+	@JSONField(name = "简称")
+	private String imdsc1;
+
+	// 备注
+	@JSONField(name = "备注")
+	private String remark;
+
+	// 封存
+	@JSONField(name = "封存")
+	private int fencun = 0;
+
+	public String getSendName() {
+		return sendName;
+	}
+
+	public void setSendName(String sendName) {
+		this.sendName = sendName;
+	}
+
+	public String getImdsc1() {
+		return imdsc1;
+	}
+
+	public void setImdsc1(String imdsc1) {
+		this.imdsc1 = imdsc1;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public int getFencun() {
+		return fencun;
+	}
+
+	public void setFencun(int fencun) {
+		this.fencun = fencun;
+	}
+
+	public String getJkspd() {
+		return jkspd;
+	}
+
+	public String getJde() {
+		return jde;
+	}
+
+	public String getSend() {
+		return send;
+	}
+
+	public String getSpan8() {
+		return span8;
+	}
+
+	public void setSpan8(String span8) {
+		this.span8 = span8;
+	}
+
+	public String getA6an8() {
+		return a6an8;
+	}
+
+	public void setA6an8(String a6an8) {
+		this.a6an8 = a6an8;
+	}
+
+	public String getAbalph() {
+		return abalph;
+	}
+
+	public void setAbalph(String abalph) {
+		this.abalph = abalph;
+	}
+
+	@Override
+	public String toString() {
+		return "Supplier [span8=" + span8 + ", jkspd=" + jkspd + ", jde=" + jde
+				+ ", send=" + send + ", sendName=" + sendName + ", a6an8="
+				+ a6an8 + ", abalph=" + abalph + ", imdsc1=" + imdsc1
+				+ ", remark=" + remark + ", fencun=" + fencun + "]";
+	}
+
+}

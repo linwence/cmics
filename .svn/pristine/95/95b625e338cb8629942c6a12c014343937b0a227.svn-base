@@ -1,0 +1,72 @@
+package com.el.cmic.logaop;
+
+import com.alibaba.fastjson.JSON;
+import com.el.cmic.common.domain.WmsResult;
+import org.apache.log4j.Logger;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Base64Utils;
+
+import java.util.Map;
+
+/**
+ * 记录发送给wms的日志和调用时返回的信息
+ * Created by Vincent on 2016/11/4.
+ */
+@Component
+@Aspect
+public class LogAopService {
+    private Logger logger = Logger.getLogger(LogAopService.class);
+
+    @Pointcut("execution(* com.el.utils.HttpRequest.sendPost(..))")
+    private void method() {
+    }
+
+    @Before("method()")
+    public void beforeMethod(JoinPoint joinPoint) {
+        try {
+            Object[] objects = joinPoint.getArgs();
+            Map<String, Object> map = (Map<String, Object>) objects[0];
+            String sendStr = "";
+            String data = (String) map.get("data");
+            byte[] bytes = Base64Utils.decode(data.getBytes("utf-8"));
+            String decodeStr = new String(bytes, "utf-8");
+            logger.info("发送:[原始数据]:" + decodeStr);
+            for (Map.Entry<String, Object> entity : map.entrySet()) {
+
+                sendStr += entity.getKey() + "=" + entity.getValue() + "&";
+
+            }
+            logger.info("发送:[编码数据]:" + sendStr);
+
+        } catch (Exception e) {
+            logger.error("记录发送数据日志失败,[error]" + e.getMessage());
+        }
+
+    }
+
+    @AfterReturning(pointcut = "method()", returning = "retStr")
+    public void afterMethod(JoinPoint joinPoint, String retStr) {
+        try {
+            System.out.println("返回值:" + retStr);
+            byte[] bytes = Base64Utils.decode(retStr.getBytes("utf-8"));
+            String decodeStr = new String(bytes, "utf-8");
+            logger.info("返回:[原始数据]:" + retStr);
+
+            WmsResult wmsResult = JSON.parseObject(decodeStr, WmsResult.class);
+            if (wmsResult.isSuccess()) {
+                logger.info("返回:[解码数据]:" + decodeStr);
+            } else {
+                logger.error("返回:[解码数据]:" + decodeStr);
+            }
+        } catch (Exception e) {
+            logger.error("记录发送返回数据日志失败,[error]" + e.getMessage());
+        }
+
+
+    }
+}

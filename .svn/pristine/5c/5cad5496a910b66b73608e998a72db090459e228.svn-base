@@ -1,0 +1,317 @@
+package com.el.cfg.dao;
+
+import com.el.cfg.domain.FE841002;
+import org.apache.ibatis.jdbc.SQL;
+
+public class FE841002SqlProvider {
+
+    public String insertSelective(FE841002 record) {
+        SQL sql = new SQL();
+        sql.INSERT_INTO("CRPDTA.FE841002");
+        
+        if (record.getZzlitm() != null) {
+            sql.VALUES("ZZLITM", "#{zzlitm,jdbcType=OTHER}");
+        }
+        
+        if (record.getZze8zzlx() != null) {
+            sql.VALUES("ZZE8ZZLX", "#{zze8zzlx,jdbcType=OTHER}");
+        }
+        
+        if (record.getZze8zzbm() != null) {
+            sql.VALUES("ZZE8ZZBM", "#{zze8zzbm,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdoco() != null) {
+            sql.VALUES("ZZDOCO", "#{zzdoco,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzitm() != null) {
+            sql.VALUES("ZZITM", "#{zzitm,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzaitm() != null) {
+            sql.VALUES("ZZAITM", "#{zzaitm,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzev01() != null) {
+            sql.VALUES("ZZEV01", "#{zzev01,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdsc1() != null) {
+            sql.VALUES("ZZDSC1", "#{zzdsc1,jdbcType=OTHER}");
+        }
+        
+        if (record.getZze8name() != null) {
+            sql.VALUES("ZZE8NAME", "#{zze8name,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdsc2() != null) {
+            sql.VALUES("ZZDSC2", "#{zzdsc2,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzeftj() != null) {
+            sql.VALUES("ZZEFTJ", "#{zzeftj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzexdj() != null) {
+            sql.VALUES("ZZEXDJ", "#{zzexdj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzfttl() != null) {
+            sql.VALUES("ZZFTTL", "#{zzfttl,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzukid() != null) {
+            sql.VALUES("ZZUKID", "#{zzukid,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzurcd() != null) {
+            sql.VALUES("ZZURCD", "#{zzurcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzurdt() != null) {
+            sql.VALUES("ZZURDT", "#{zzurdt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzurat() != null) {
+            sql.VALUES("ZZURAT", "#{zzurat,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzurab() != null) {
+            sql.VALUES("ZZURAB", "#{zzurab,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzdl01() != null) {
+            sql.VALUES("ZZDL01", "#{zzdl01,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdl02() != null) {
+            sql.VALUES("ZZDL02", "#{zzdl02,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdl03() != null) {
+            sql.VALUES("ZZDL03", "#{zzdl03,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdl010() != null) {
+            sql.VALUES("ZZDL010", "#{zzdl010,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdl011() != null) {
+            sql.VALUES("ZZDL011", "#{zzdl011,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzev02() != null) {
+            sql.VALUES("ZZEV02", "#{zzev02,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzev03() != null) {
+            sql.VALUES("ZZEV03", "#{zzev03,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzev04() != null) {
+            sql.VALUES("ZZEV04", "#{zzev04,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzev05() != null) {
+            sql.VALUES("ZZEV05", "#{zzev05,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzuser() != null) {
+            sql.VALUES("ZZUSER", "#{zzuser,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzpid() != null) {
+            sql.VALUES("ZZPID", "#{zzpid,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzjobn() != null) {
+            sql.VALUES("ZZJOBN", "#{zzjobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzupmj() != null) {
+            sql.VALUES("ZZUPMJ", "#{zzupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzupmt() != null) {
+            sql.VALUES("ZZUPMT", "#{zzupmt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzidate() != null) {
+            sql.VALUES("ZZIDATE", "#{zzidate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getZzdf01() != null) {
+            sql.VALUES("ZZDF01", "#{zzdf01,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzrdate() != null) {
+            sql.VALUES("ZZRDATE", "#{zzrdate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getZzdf02() != null) {
+            sql.VALUES("ZZDF02", "#{zzdf02,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzstatus() != null) {
+            sql.VALUES("ZZSTATUS", "#{zzstatus,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzflag() != null) {
+            sql.VALUES("ZZFLAG", "#{zzflag,jdbcType=OTHER}");
+        }
+        
+        return sql.toString();
+    }
+
+    public String updateByPrimaryKeySelective(FE841002 record) {
+        SQL sql = new SQL();
+        sql.UPDATE("CRPDTA.FE841002");
+        
+        if (record.getZzdoco() != null) {
+            sql.SET("ZZDOCO = #{zzdoco,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzitm() != null) {
+            sql.SET("ZZITM = #{zzitm,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzaitm() != null) {
+            sql.SET("ZZAITM = #{zzaitm,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzev01() != null) {
+            sql.SET("ZZEV01 = #{zzev01,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdsc1() != null) {
+            sql.SET("ZZDSC1 = #{zzdsc1,jdbcType=OTHER}");
+        }
+        
+        if (record.getZze8name() != null) {
+            sql.SET("ZZE8NAME = #{zze8name,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdsc2() != null) {
+            sql.SET("ZZDSC2 = #{zzdsc2,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzeftj() != null) {
+            sql.SET("ZZEFTJ = #{zzeftj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzexdj() != null) {
+            sql.SET("ZZEXDJ = #{zzexdj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzfttl() != null) {
+            sql.SET("ZZFTTL = #{zzfttl,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzukid() != null) {
+            sql.SET("ZZUKID = #{zzukid,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzurcd() != null) {
+            sql.SET("ZZURCD = #{zzurcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzurdt() != null) {
+            sql.SET("ZZURDT = #{zzurdt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzurat() != null) {
+            sql.SET("ZZURAT = #{zzurat,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzurab() != null) {
+            sql.SET("ZZURAB = #{zzurab,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzdl01() != null) {
+            sql.SET("ZZDL01 = #{zzdl01,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdl02() != null) {
+            sql.SET("ZZDL02 = #{zzdl02,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdl03() != null) {
+            sql.SET("ZZDL03 = #{zzdl03,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdl010() != null) {
+            sql.SET("ZZDL010 = #{zzdl010,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzdl011() != null) {
+            sql.SET("ZZDL011 = #{zzdl011,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzev02() != null) {
+            sql.SET("ZZEV02 = #{zzev02,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzev03() != null) {
+            sql.SET("ZZEV03 = #{zzev03,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzev04() != null) {
+            sql.SET("ZZEV04 = #{zzev04,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzev05() != null) {
+            sql.SET("ZZEV05 = #{zzev05,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzuser() != null) {
+            sql.SET("ZZUSER = #{zzuser,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzpid() != null) {
+            sql.SET("ZZPID = #{zzpid,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzjobn() != null) {
+            sql.SET("ZZJOBN = #{zzjobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzupmj() != null) {
+            sql.SET("ZZUPMJ = #{zzupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzupmt() != null) {
+            sql.SET("ZZUPMT = #{zzupmt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getZzidate() != null) {
+            sql.SET("ZZIDATE = #{zzidate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getZzdf01() != null) {
+            sql.SET("ZZDF01 = #{zzdf01,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzrdate() != null) {
+            sql.SET("ZZRDATE = #{zzrdate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getZzdf02() != null) {
+            sql.SET("ZZDF02 = #{zzdf02,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzstatus() != null) {
+            sql.SET("ZZSTATUS = #{zzstatus,jdbcType=OTHER}");
+        }
+        
+        if (record.getZzflag() != null) {
+            sql.SET("ZZFLAG = #{zzflag,jdbcType=OTHER}");
+        }
+        
+        sql.WHERE("ZZLITM = #{zzlitm,jdbcType=OTHER}");
+        sql.WHERE("ZZE8ZZLX = #{zze8zzlx,jdbcType=OTHER}");
+        sql.WHERE("ZZE8ZZBM = #{zze8zzbm,jdbcType=OTHER}");
+        
+        return sql.toString();
+    }
+}

@@ -1,0 +1,352 @@
+package com.el.cmic.domain.customer;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+import java.util.jar.Attributes;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.annotation.JSONType;
+import com.el.cmic.domain.goods.Licence;
+
+/**
+ * 客户信息推送
+ *
+ * @author zhanhao
+ */
+@JSONType(orders = {"货主", "编号", "客户类型", "名称", "查询码", "原编号", "地址", "收货地址", "联系人", "电话", "状态",
+        "货主名称", "建档日期", "原名", "税号", "开户行", "账号", "邮编", "传真", "电子邮箱", "打印检验报告", "简称", "发货优先级",
+        "客户联区分打印", "收货地址明细", "证照明细"})
+public class CustomPropel {
+
+    /**
+     * FE8WMS02  BSAN8
+     */
+    @JSONField(serialize = false)
+    private String bsan8;
+    /**
+     * 货主 - FE8WMS20.LSE8HZBM
+     */
+    @JSONField(name = "货主")
+    private String lse8hzbm;
+
+    @JSONField(serialize = false)
+    private String co;
+
+    /**
+     * 编号 - F0101.ABAN8
+     */
+    @JSONField(name = "编号")
+    private BigDecimal aban8;
+    /**
+     * 客户类型 - F0101.ABAT1
+     */
+    @JSONField(name = "客户类型")
+    private String abat1;
+    /**
+     * 名称 - F0101.ABALPH
+     */
+    @JSONField(name = "名称")
+    private String abalph;
+    /**
+     * 查询码 - FE80101.KSE8BYM
+     */
+    @JSONField(name = "查询码")
+    private String kse8bym;
+
+
+    @JSONField(name = "原编号")
+    private String originalNo;
+    /**
+     * 地址         F0116.	ADD1-ADD4
+     */
+    @JSONField(name = "地址")
+    private String address;
+    @JSONField(name = "收货地址")
+    private String acceptAddress;
+    /**
+     * 联系人 - F0111.WWMLNM
+     */
+    @JSONField(name = "联系人")
+    private String wwmlnm;
+    /**
+     * 电话 F0115.AR1+PH1
+     */
+    @JSONField(name = "电话")
+    private String tell;
+
+    /**
+     * 状态 - FE80101.KSCUSTS
+     */
+    @JSONField(name = "状态")
+    private String kscusts;
+    /**
+     * 货主名称 - FE80101.KSE8WMSHZM
+     */
+    @JSONField(name = "货主名称")
+    private String kse8wmshzm;
+    /**
+     * 建档日期 - FE80101.KSE8JDSJ
+     */
+    @JSONField(name = "建档日期", format = "yyyy-MM-dd")
+    private Date kse8jdsj;
+    @JSONField(name = "原名")
+    private String origName;
+    /**
+     * 税号 - F0101.ABTAX
+     */
+    @JSONField(name = "税号")
+    private String abtax;
+    @JSONField(name = "开户行")
+    private String bank;
+    @JSONField(name = "账号")
+    private String accountNo;
+    @JSONField(name = "邮编")
+    private String postCode;
+    @JSONField(name = "传真")
+    private String fax;
+    @JSONField(name = "电子邮箱")
+    private String email;
+    @JSONField(name = "打印检验报告")
+    private String pringFlag;
+    @JSONField(name = "简称")
+    private String shortName;
+    @JSONField(name = "发货优先级")
+    private int sendLevel;
+    @JSONField(name = "客户联区分打印")
+    private String distinguishPrint;
+    /**
+     * 收货地址明细
+     */
+    @JSONField(name = "收货地址明细")
+    private List<CustomPItem> list;
+    /**
+     * 证照明细
+     */
+    @JSONField(name = "证照明细")
+    private List<CustomLicence> customLicenceList;
+
+    public String getBsan8() {
+        return bsan8;
+    }
+
+    public void setBsan8(String bsan8) {
+        this.bsan8 = bsan8;
+    }
+
+    public String getLse8hzbm() {
+        return lse8hzbm;
+    }
+
+    public void setLse8hzbm(String lse8hzbm) {
+        this.lse8hzbm = lse8hzbm;
+    }
+
+    public BigDecimal getAban8() {
+        return aban8;
+    }
+
+    public void setAban8(BigDecimal aban8) {
+        this.aban8 = aban8;
+    }
+
+    public String getAbat1() {
+        return abat1;
+    }
+
+    public void setAbat1(String abat1) {
+        this.abat1 = abat1;
+    }
+
+    public String getAbalph() {
+        return abalph;
+    }
+
+    public void setAbalph(String abalph) {
+        this.abalph = abalph;
+    }
+
+    public String getKse8bym() {
+        return kse8bym;
+    }
+
+    public void setKse8bym(String kse8bym) {
+        this.kse8bym = kse8bym;
+    }
+
+    public String getOriginalNo() {
+        return originalNo;
+    }
+
+    public void setOriginalNo(String originalNo) {
+        this.originalNo = originalNo;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAcceptAddress() {
+        return acceptAddress;
+    }
+
+    public void setAcceptAddress(String acceptAddress) {
+        this.acceptAddress = acceptAddress;
+    }
+
+    public String getWwmlnm() {
+        return wwmlnm;
+    }
+
+    public void setWwmlnm(String wwmlnm) {
+        this.wwmlnm = wwmlnm;
+    }
+
+    public String getTell() {
+        return tell;
+    }
+
+    public void setTell(String tell) {
+        this.tell = tell;
+    }
+
+    public String getKscusts() {
+        return kscusts;
+    }
+
+    public void setKscusts(String kscusts) {
+        this.kscusts = kscusts;
+    }
+
+    public String getKse8wmshzm() {
+        return kse8wmshzm;
+    }
+
+    public void setKse8wmshzm(String kse8wmshzm) {
+        this.kse8wmshzm = kse8wmshzm;
+    }
+
+    public Date getKse8jdsj() {
+        return kse8jdsj;
+    }
+
+    public void setKse8jdsj(Date kse8jdsj) {
+        this.kse8jdsj = kse8jdsj;
+    }
+
+    public String getOrigName() {
+        return origName;
+    }
+
+    public void setOrigName(String origName) {
+        this.origName = origName;
+    }
+
+    public String getAbtax() {
+        return abtax;
+    }
+
+    public void setAbtax(String abtax) {
+        this.abtax = abtax;
+    }
+
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
+    }
+
+    public String getAccountNo() {
+        return accountNo;
+    }
+
+    public void setAccountNo(String accountNo) {
+        this.accountNo = accountNo;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getFax() {
+        return fax;
+    }
+
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPringFlag() {
+        return pringFlag;
+    }
+
+    public void setPringFlag(String pringFlag) {
+        this.pringFlag = pringFlag;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+    public int getSendLevel() {
+        return sendLevel;
+    }
+
+    public void setSendLevel(int sendLevel) {
+        this.sendLevel = sendLevel;
+    }
+
+    public String getDistinguishPrint() {
+        return distinguishPrint;
+    }
+
+    public void setDistinguishPrint(String distinguishPrint) {
+        this.distinguishPrint = distinguishPrint;
+    }
+
+    public String getCo() {
+        return co;
+    }
+
+    public void setCo(String co) {
+        this.co = co;
+    }
+
+    public List<CustomPItem> getList() {
+        return list;
+    }
+
+    public void setList(List<CustomPItem> list) {
+        this.list = list;
+    }
+
+    public List<CustomLicence> getCustomLicenceList() {
+        return customLicenceList;
+    }
+
+    public void setCustomLicenceList(List<CustomLicence> customLicenceList) {
+        this.customLicenceList = customLicenceList;
+    }
+}

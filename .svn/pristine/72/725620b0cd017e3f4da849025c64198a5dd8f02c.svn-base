@@ -1,0 +1,61 @@
+package com.el.cmic.domain.goods;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.el.utils.DateUtil;
+/**
+ * bales  英文和汉字的映射
+ * @author zhanhao
+ *
+ */
+public class BalesConvert {
+	/**
+	 * 
+	 * @param list<T>
+	 * @return
+	 */
+	public static List<Map>  balesEntityToMap(List<Bales> list){
+		List<Map> listMap = new ArrayList();
+		for(Bales bales:list){
+			Map<String,Object>  entiryMap = new HashMap();
+			entiryMap.put("货主",  bales.getLSE8HZBM()==null?"":bales.getLSE8HZBM());
+			entiryMap.put("编号",  bales.getImlitm()==null?"":bales.getImlitm());
+			entiryMap.put("名称",  bales.getSpe8name()==null?"":bales.getSpe8name());
+			entiryMap.put("查询码 ",  bales.getImsrtx()==null?"":bales.getImsrtx());
+			entiryMap.put("规格",  bales.getImdsc2()==null?"":bales.getImdsc2());
+			entiryMap.put("产地", bales.getSporig()==null?"":bales.getSporig());
+			entiryMap.put("单位", bales.getImuom1()==null?"": bales.getImuom1());
+			entiryMap.put("有效期", bales.getImsld()==null?"":bales.getImsld());
+			entiryMap.put("状态",  bales.getImstkt()==null?"":bales.getImstkt());
+			entiryMap.put("货主名称", bales.getCcname()==null?"": bales.getCcname());
+			entiryMap.put("通用名称", bales.getSpe8tym()==null?"":bales.getSpe8tym());
+			entiryMap.put("是否唯一码监管", bales.getSpe8xlhgl()==null?"":bales.getSpe8xlhgl());
+			entiryMap.put("养护周期", bales.getSpe8yhzq()==null?"":bales.getSpe8yhzq());
+			entiryMap.put("分类1", bales.getImsrp3()==null?"":bales.getImsrp3() );
+			entiryMap.put("分类2", bales.getImsrp5()==null?"":bales.getImsrp5());
+			entiryMap.put("重点养护品种", bales.getSpe8zdyh()==null?"":bales.getSpe8zdyh());
+			entiryMap.put("生产厂商 ", bales.getAbalph()==null?"":bales.getAbalph());
+			entiryMap.put("剂型", bales.getSpe8jx()==null?"":bales.getSpe8jx());
+			entiryMap.put("储存条件", bales.getSpe8cctj()==null?"": bales.getSpe8cctj());
+			entiryMap.put("建档时间", DateUtil.formatDate("", bales.getSpe8jdsj()));
+			
+			////翻译 证照明细
+			List<Map<String,Object>> listItem = new ArrayList<Map<String,Object>>();
+			for(Licence licence:bales.getLicenceList()){
+				Map<String,Object> licenMap = new HashMap<String,Object>();
+				licenMap.put("证照类型",licence.getZZE8ZZLX()==null?"":licence.getZZE8ZZLX());
+				licenMap.put("证号", licence.getZZE8ZZBM()==null?"":licence.getZZE8ZZBM());
+				licenMap.put("证照有效自",DateUtil.juLianFormatDate(licence.getZZEFTJ()));
+				licenMap.put("证照有效至", DateUtil.juLianFormatDate(licence.getZZEXDJ()));
+				listItem.add(licenMap);
+			}
+			entiryMap.put("证照明细", listItem);
+			listMap.add(entiryMap);
+		}
+		return listMap;
+	}
+
+}

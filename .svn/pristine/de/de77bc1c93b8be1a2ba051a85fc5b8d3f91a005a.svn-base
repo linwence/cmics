@@ -1,0 +1,73 @@
+package com.el.cmic.ws.service;
+
+import com.el.cfg.domain.F4101;
+import com.el.cfg.domain.Fe84101;
+import com.el.cmic.ws.domain.PhE001OutHeader;
+import com.el.cmic.ws.domain.PhE001OutHeaderCode;
+import com.el.cmic.ws.domain.PhE004OutMain;
+import com.el.cmic.ws.mapper.F4101UpdateByLitmMapper;
+import com.el.cmic.ws.mapper.FE84101UpdateByLitmMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+/**
+ * Created by king_ on 2016/10/9.
+ */
+@Service
+public class AddE04ToERPServiceImpl implements  AddE04ToERPService{
+
+    @Autowired
+    F4101UpdateByLitmMapper f4101UpdateByLitmMapper;
+    @Autowired
+    FE84101UpdateByLitmMapper fe84101UpdateByLitmMapper;
+
+    public String addE04ToERP(PhE001OutHeader phE001OutHeader, PhE004OutMain phE004OutMain,String no) {
+        updateF4101(phE001OutHeader, phE004OutMain,no);
+        updateFE84101(phE001OutHeader, phE004OutMain,no);
+        return null;
+    }
+
+    public String updateF4101(PhE001OutHeader phE001OutHeader, PhE004OutMain phE004OutMain,String no) {
+        F4101 f4101 = new F4101();
+        String TemporaryCode="";
+        String  FormalCode="";
+        List<PhE001OutHeaderCode> phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
+        for(PhE001OutHeaderCode tmp :phE001OutHeaderCodes){
+            if(tmp.getCodetype().equals("0")){
+                TemporaryCode = tmp.getCodevalue();
+            }
+            if(tmp.getCodetype().equals("1")){
+                FormalCode = tmp.getCodevalue();
+            }
+        }
+
+        f4101.setImaitm(FormalCode);
+        f4101.setImlitm(no);
+        f4101UpdateByLitmMapper.updateByLitmSelective(f4101,"E04");
+        return null;
+    }
+
+    public String updateFE84101(PhE001OutHeader phE001OutHeader, PhE004OutMain phE004OutMain,String no) {
+        Fe84101 fe84101 = new Fe84101();
+
+        List<PhE001OutHeaderCode> phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
+        for(PhE001OutHeaderCode tmp :phE001OutHeaderCodes){
+
+            if(tmp.getCodetype().equals("1")){
+                fe84101.setSpev01("Y");
+            }
+        }
+        if(fe84101.getSpev01().equals(null)){
+            fe84101.setSpev01("N");
+        }
+        fe84101.setSplitm(no);
+        fe84101.setSpe8name(phE004OutMain.getServicename());
+
+        fe84101UpdateByLitmMapper.updateByLitmSelective(fe84101,"E04");
+
+        return null;
+    }
+}

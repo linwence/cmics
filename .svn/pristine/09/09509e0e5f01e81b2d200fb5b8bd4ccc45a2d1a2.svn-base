@@ -1,0 +1,11 @@
+package com.el.cmic.common;
+
+/**
+ * Created by Vincent on 2016/10/26.
+ */
+public class WmsInterfaceType {
+    public static final String CK_TYPE = "出库单";
+    public static final String CK_BACK_TYPE = "出库单返回";
+    public static final String CK_CANCEL_TYPE = "出库单取消";
+    public static final String CK_CANCEL_BACK_TYPE = "出库单取消返回";
+}

@@ -1,0 +1,75 @@
+package com.el.utils;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+/**
+ * 此工具类  对时间的操作
+ * @author zhanhao
+ *
+ */
+public class DateUtil {
+
+	/**
+	 * 
+	 * @param format  日期格式  默认 yy-MM-dd
+	 * @param date  日期
+	 * @return  String
+	 */
+	public static String formatDate(String format,Date date){
+		if(date==null){
+			return "";
+		}
+		if(format==null || "".equals(format)){
+			format="yyyy-MM-dd";
+		}
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+		return simpleDateFormat.format(date);
+	}
+	
+	/**
+	 * 重载
+	 * @param format  日期格式  默认 yy-MM-dd
+	 * @param date  日期
+	 * @return  String
+	 */
+	public static String formatDate(Date date){
+		if(date==null){
+			return "";
+		}
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		return simpleDateFormat.format(date);
+	}
+	
+	
+	/**
+	 * 儒略历转成日期 date
+	 * @param date
+	 * @return
+	 */
+	public static java.util.Date juLianToDate(int date) {
+	    int year = (date / 1000) + 1900;
+	    int dayOfYear = date % 1000;
+	 
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.set(Calendar.YEAR, year);
+	    calendar.set(Calendar.DAY_OF_YEAR, dayOfYear);
+	  
+	    return calendar.getTime();
+	  }
+	
+	/**
+	 * 儒略历转成日期字符串
+	 * @param date
+	 * @return
+	 */
+	public static String juLianFormatDate(Integer date){
+		if(date == null){
+			return "";
+		}
+		Date  dateJ = juLianToDate(date);
+		return formatDate(dateJ);
+	}
+	
+}

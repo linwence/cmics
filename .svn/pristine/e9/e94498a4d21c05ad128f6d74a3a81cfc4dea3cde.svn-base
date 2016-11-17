@@ -1,0 +1,356 @@
+package com.el.cfg.domain;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+public class FE841002 extends FE841002Key {
+    private BigDecimal zzdoco;
+
+    private BigDecimal zzitm;
+
+    private Object zzaitm;
+
+    private Object zzev01;
+
+    private Object zzdsc1;
+
+    private Object zze8name;
+
+    private Object zzdsc2;
+
+    private BigDecimal zzeftj;
+
+    private BigDecimal zzexdj;
+
+    private Object zzfttl;
+
+    private BigDecimal zzukid;
+
+    private Object zzurcd;
+
+    private BigDecimal zzurdt;
+
+    private BigDecimal zzurat;
+
+    private BigDecimal zzurab;
+
+    private Object zzdl01;
+
+    private Object zzdl02;
+
+    private Object zzdl03;
+
+    private Object zzdl010;
+
+    private Object zzdl011;
+
+    private Object zzev02;
+
+    private Object zzev03;
+
+    private Object zzev04;
+
+    private Object zzev05;
+
+    private Object zzuser;
+
+    private Object zzpid;
+
+    private Object zzjobn;
+
+    private BigDecimal zzupmj;
+
+    private BigDecimal zzupmt;
+
+    private Date zzidate;
+
+    private Object zzdf01;
+
+    private Date zzrdate;
+
+    private Object zzdf02;
+
+    private Object zzstatus;
+
+    private Object zzflag;
+
+    public BigDecimal getZzdoco() {
+        return zzdoco;
+    }
+
+    public void setZzdoco(BigDecimal zzdoco) {
+        this.zzdoco = zzdoco;
+    }
+
+    public BigDecimal getZzitm() {
+        return zzitm;
+    }
+
+    public void setZzitm(BigDecimal zzitm) {
+        this.zzitm = zzitm;
+    }
+
+    public Object getZzaitm() {
+        return zzaitm;
+    }
+
+    public void setZzaitm(Object zzaitm) {
+        this.zzaitm = zzaitm;
+    }
+
+    public Object getZzev01() {
+        return zzev01;
+    }
+
+    public void setZzev01(Object zzev01) {
+        this.zzev01 = zzev01;
+    }
+
+    public Object getZzdsc1() {
+        return zzdsc1;
+    }
+
+    public void setZzdsc1(Object zzdsc1) {
+        this.zzdsc1 = zzdsc1;
+    }
+
+    public Object getZze8name() {
+        return zze8name;
+    }
+
+    public void setZze8name(Object zze8name) {
+        this.zze8name = zze8name;
+    }
+
+    public Object getZzdsc2() {
+        return zzdsc2;
+    }
+
+    public void setZzdsc2(Object zzdsc2) {
+        this.zzdsc2 = zzdsc2;
+    }
+
+    public BigDecimal getZzeftj() {
+        return zzeftj;
+    }
+
+    public void setZzeftj(BigDecimal zzeftj) {
+        this.zzeftj = zzeftj;
+    }
+
+    public BigDecimal getZzexdj() {
+        return zzexdj;
+    }
+
+    public void setZzexdj(BigDecimal zzexdj) {
+        this.zzexdj = zzexdj;
+    }
+
+    public Object getZzfttl() {
+        return zzfttl;
+    }
+
+    public void setZzfttl(Object zzfttl) {
+        this.zzfttl = zzfttl;
+    }
+
+    public BigDecimal getZzukid() {
+        return zzukid;
+    }
+
+    public void setZzukid(BigDecimal zzukid) {
+        this.zzukid = zzukid;
+    }
+
+    public Object getZzurcd() {
+        return zzurcd;
+    }
+
+    public void setZzurcd(Object zzurcd) {
+        this.zzurcd = zzurcd;
+    }
+
+    public BigDecimal getZzurdt() {
+        return zzurdt;
+    }
+
+    public void setZzurdt(BigDecimal zzurdt) {
+        this.zzurdt = zzurdt;
+    }
+
+    public BigDecimal getZzurat() {
+        return zzurat;
+    }
+
+    public void setZzurat(BigDecimal zzurat) {
+        this.zzurat = zzurat;
+    }
+
+    public BigDecimal getZzurab() {
+        return zzurab;
+    }
+
+    public void setZzurab(BigDecimal zzurab) {
+        this.zzurab = zzurab;
+    }
+
+    public Object getZzdl01() {
+        return zzdl01;
+    }
+
+    public void setZzdl01(Object zzdl01) {
+        this.zzdl01 = zzdl01;
+    }
+
+    public Object getZzdl02() {
+        return zzdl02;
+    }
+
+    public void setZzdl02(Object zzdl02) {
+        this.zzdl02 = zzdl02;
+    }
+
+    public Object getZzdl03() {
+        return zzdl03;
+    }
+
+    public void setZzdl03(Object zzdl03) {
+        this.zzdl03 = zzdl03;
+    }
+
+    public Object getZzdl010() {
+        return zzdl010;
+    }
+
+    public void setZzdl010(Object zzdl010) {
+        this.zzdl010 = zzdl010;
+    }
+
+    public Object getZzdl011() {
+        return zzdl011;
+    }
+
+    public void setZzdl011(Object zzdl011) {
+        this.zzdl011 = zzdl011;
+    }
+
+    public Object getZzev02() {
+        return zzev02;
+    }
+
+    public void setZzev02(Object zzev02) {
+        this.zzev02 = zzev02;
+    }
+
+    public Object getZzev03() {
+        return zzev03;
+    }
+
+    public void setZzev03(Object zzev03) {
+        this.zzev03 = zzev03;
+    }
+
+    public Object getZzev04() {
+        return zzev04;
+    }
+
+    public void setZzev04(Object zzev04) {
+        this.zzev04 = zzev04;
+    }
+
+    public Object getZzev05() {
+        return zzev05;
+    }
+
+    public void setZzev05(Object zzev05) {
+        this.zzev05 = zzev05;
+    }
+
+    public Object getZzuser() {
+        return zzuser;
+    }
+
+    public void setZzuser(Object zzuser) {
+        this.zzuser = zzuser;
+    }
+
+    public Object getZzpid() {
+        return zzpid;
+    }
+
+    public void setZzpid(Object zzpid) {
+        this.zzpid = zzpid;
+    }
+
+    public Object getZzjobn() {
+        return zzjobn;
+    }
+
+    public void setZzjobn(Object zzjobn) {
+        this.zzjobn = zzjobn;
+    }
+
+    public BigDecimal getZzupmj() {
+        return zzupmj;
+    }
+
+    public void setZzupmj(BigDecimal zzupmj) {
+        this.zzupmj = zzupmj;
+    }
+
+    public BigDecimal getZzupmt() {
+        return zzupmt;
+    }
+
+    public void setZzupmt(BigDecimal zzupmt) {
+        this.zzupmt = zzupmt;
+    }
+
+    public Date getZzidate() {
+        return zzidate;
+    }
+
+    public void setZzidate(Date zzidate) {
+        this.zzidate = zzidate;
+    }
+
+    public Object getZzdf01() {
+        return zzdf01;
+    }
+
+    public void setZzdf01(Object zzdf01) {
+        this.zzdf01 = zzdf01;
+    }
+
+    public Date getZzrdate() {
+        return zzrdate;
+    }
+
+    public void setZzrdate(Date zzrdate) {
+        this.zzrdate = zzrdate;
+    }
+
+    public Object getZzdf02() {
+        return zzdf02;
+    }
+
+    public void setZzdf02(Object zzdf02) {
+        this.zzdf02 = zzdf02;
+    }
+
+    public Object getZzstatus() {
+        return zzstatus;
+    }
+
+    public void setZzstatus(Object zzstatus) {
+        this.zzstatus = zzstatus;
+    }
+
+    public Object getZzflag() {
+        return zzflag;
+    }
+
+    public void setZzflag(Object zzflag) {
+        this.zzflag = zzflag;
+    }
+}

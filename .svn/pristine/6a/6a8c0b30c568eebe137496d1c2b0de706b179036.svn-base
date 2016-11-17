@@ -1,0 +1,13 @@
+package com.el.cmic.common.service;
+
+import com.el.cmic.common.domain.WmsResult;
+
+/**
+ * Created by Vincent on 2016/10/28.
+ */
+
+public interface ValidParamService {
+    WmsResult validData(String data);
+
+    WmsResult validSign(String timestamp,String data,String sign);
+}

@@ -1,0 +1,15 @@
+package com.el.cmic.service;
+
+import javax.jws.WebService;
+
+/**
+ * Created by Vincent on 2016/11/1.
+ */
+@WebService(endpointInterface = "com.el.cmic.service.SpdWsService")
+public class SpdWsServiceImpl implements SpdWsService {
+    @Override
+    public String UpLoadData(String appkey, String timestamp, String data, String sign, String ver) {
+        // TODO: 2016/11/1 所有jde提供的接口入口
+        return null;
+    }
+}

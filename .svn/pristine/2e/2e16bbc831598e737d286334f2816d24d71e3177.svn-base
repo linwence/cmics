@@ -1,0 +1,42 @@
+package com.el.cmic.callmdm.service;
+
+import com.el.cfg.domain.F4101;
+import com.el.cfg.domain.FE84101;
+import com.el.cmic.callmdm.domain.RqE001InputHeader;
+import com.el.cmic.callmdm.domain.RqE001InputProductE01;
+import com.el.cmic.callmdm.mapper.RqE001Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import static javafx.scene.input.KeyCode.T;
+
+/**
+ * Created by Vincent on 2016/10/9.
+ */
+@Service("rqE001ServiceImpl")
+public class RqE001ServiceImpl implements RqE001Service {
+    @Autowired
+    private RqE001Mapper rqE001Mapper;
+
+    @Transactional
+    public int updateFe84101(FE84101 fe84101) {
+
+        return rqE001Mapper.updateFe84101(fe84101);
+    }
+
+    @Transactional
+    public int updateF4101(F4101 f4101) {
+        return rqE001Mapper.updateF4101(f4101);
+    }
+
+    public RqE001InputHeader getRqE001InputHeader(String dataType, String billInfo, String direction, String funcType) {
+        RqE001InputHeader rqE001InputHeader = new RqE001InputHeader();
+        rqE001InputHeader.setDataType(dataType);
+        rqE001InputHeader.setDirection(direction);
+        rqE001InputHeader.setFuncType(funcType);
+        rqE001InputHeader.setMsg("");
+        rqE001InputHeader.setSubmitbillinfo(billInfo);
+        return rqE001InputHeader;
+    }
+}

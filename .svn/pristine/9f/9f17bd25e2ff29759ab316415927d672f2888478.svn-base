@@ -1,0 +1,487 @@
+
+package nc.itf.mdm.ws;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the nc.itf.mdm.ws package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _GetEquCountByTypeSrvString_QNAME = new QName("", "string");
+    private final static QName _GetEquCountByTypeSrvString1_QNAME = new QName("", "string1");
+    private final static QName _GetEquCountByTypeSrvString2_QNAME = new QName("", "string2");
+    private final static QName _GetEquCountByTypeSrvResponseReturn_QNAME = new QName("", "return");
+    private final static QName _GetEquByCodeSrvString3_QNAME = new QName("", "string3");
+    private final static QName _GetEquByTypeSrvInt_QNAME = new QName("", "int");
+    private final static QName _GetEquByTypeSrvInt1_QNAME = new QName("", "int1");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: nc.itf.mdm.ws
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link GetEquCountByTypeSrv }
+     * 
+     */
+    public GetEquCountByTypeSrv createGetEquCountByTypeSrv() {
+        return new GetEquCountByTypeSrv();
+    }
+
+    /**
+     * Create an instance of {@link GetEquCountByTypeSrvResponse }
+     * 
+     */
+    public GetEquCountByTypeSrvResponse createGetEquCountByTypeSrvResponse() {
+        return new GetEquCountByTypeSrvResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetEquByCodeSrv }
+     * 
+     */
+    public GetEquByCodeSrv createGetEquByCodeSrv() {
+        return new GetEquByCodeSrv();
+    }
+
+    /**
+     * Create an instance of {@link GetEquByCodeSrvResponse }
+     * 
+     */
+    public GetEquByCodeSrvResponse createGetEquByCodeSrvResponse() {
+        return new GetEquByCodeSrvResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetEquByTypeSrv }
+     * 
+     */
+    public GetEquByTypeSrv createGetEquByTypeSrv() {
+        return new GetEquByTypeSrv();
+    }
+
+    /**
+     * Create an instance of {@link GetEquByTypeSrvResponse }
+     * 
+     */
+    public GetEquByTypeSrvResponse createGetEquByTypeSrvResponse() {
+        return new GetEquByTypeSrvResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReqEqutByTypeSrv }
+     * 
+     */
+    public ReqEqutByTypeSrv createReqEqutByTypeSrv() {
+        return new ReqEqutByTypeSrv();
+    }
+
+    /**
+     * Create an instance of {@link ReqEqutByTypeSrvResponse }
+     * 
+     */
+    public ReqEqutByTypeSrvResponse createReqEqutByTypeSrvResponse() {
+        return new ReqEqutByTypeSrvResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetNewEquByTypeSrv }
+     * 
+     */
+    public GetNewEquByTypeSrv createGetNewEquByTypeSrv() {
+        return new GetNewEquByTypeSrv();
+    }
+
+    /**
+     * Create an instance of {@link GetNewEquByTypeSrvResponse }
+     * 
+     */
+    public GetNewEquByTypeSrvResponse createGetNewEquByTypeSrvResponse() {
+        return new GetNewEquByTypeSrvResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetEquByUniTypeSrv }
+     * 
+     */
+    public GetEquByUniTypeSrv createGetEquByUniTypeSrv() {
+        return new GetEquByUniTypeSrv();
+    }
+
+    /**
+     * Create an instance of {@link GetEquByUniTypeSrvResponse }
+     * 
+     */
+    public GetEquByUniTypeSrvResponse createGetEquByUniTypeSrvResponse() {
+        return new GetEquByUniTypeSrvResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReqModEquSrv }
+     * 
+     */
+    public ReqModEquSrv createReqModEquSrv() {
+        return new ReqModEquSrv();
+    }
+
+    /**
+     * Create an instance of {@link ReqModEquSrvResponse }
+     * 
+     */
+    public ReqModEquSrvResponse createReqModEquSrvResponse() {
+        return new ReqModEquSrvResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string", scope = GetEquCountByTypeSrv.class)
+    public JAXBElement<String> createGetEquCountByTypeSrvString(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString_QNAME, String.class, GetEquCountByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string1", scope = GetEquCountByTypeSrv.class)
+    public JAXBElement<String> createGetEquCountByTypeSrvString1(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString1_QNAME, String.class, GetEquCountByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string2", scope = GetEquCountByTypeSrv.class)
+    public JAXBElement<String> createGetEquCountByTypeSrvString2(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString2_QNAME, String.class, GetEquCountByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "return", scope = GetEquCountByTypeSrvResponse.class)
+    public JAXBElement<String> createGetEquCountByTypeSrvResponseReturn(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvResponseReturn_QNAME, String.class, GetEquCountByTypeSrvResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string", scope = GetEquByCodeSrv.class)
+    public JAXBElement<String> createGetEquByCodeSrvString(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString_QNAME, String.class, GetEquByCodeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string1", scope = GetEquByCodeSrv.class)
+    public JAXBElement<String> createGetEquByCodeSrvString1(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString1_QNAME, String.class, GetEquByCodeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string2", scope = GetEquByCodeSrv.class)
+    public JAXBElement<String> createGetEquByCodeSrvString2(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString2_QNAME, String.class, GetEquByCodeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string3", scope = GetEquByCodeSrv.class)
+    public JAXBElement<String> createGetEquByCodeSrvString3(String value) {
+        return new JAXBElement<String>(_GetEquByCodeSrvString3_QNAME, String.class, GetEquByCodeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "return", scope = GetEquByCodeSrvResponse.class)
+    public JAXBElement<String> createGetEquByCodeSrvResponseReturn(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvResponseReturn_QNAME, String.class, GetEquByCodeSrvResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string", scope = GetEquByTypeSrv.class)
+    public JAXBElement<String> createGetEquByTypeSrvString(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString_QNAME, String.class, GetEquByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "int", scope = GetEquByTypeSrv.class)
+    public JAXBElement<Integer> createGetEquByTypeSrvInt(Integer value) {
+        return new JAXBElement<Integer>(_GetEquByTypeSrvInt_QNAME, Integer.class, GetEquByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "int1", scope = GetEquByTypeSrv.class)
+    public JAXBElement<Integer> createGetEquByTypeSrvInt1(Integer value) {
+        return new JAXBElement<Integer>(_GetEquByTypeSrvInt1_QNAME, Integer.class, GetEquByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string1", scope = GetEquByTypeSrv.class)
+    public JAXBElement<String> createGetEquByTypeSrvString1(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString1_QNAME, String.class, GetEquByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string2", scope = GetEquByTypeSrv.class)
+    public JAXBElement<String> createGetEquByTypeSrvString2(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString2_QNAME, String.class, GetEquByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "return", scope = GetEquByTypeSrvResponse.class)
+    public JAXBElement<String> createGetEquByTypeSrvResponseReturn(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvResponseReturn_QNAME, String.class, GetEquByTypeSrvResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string", scope = ReqEqutByTypeSrv.class)
+    public JAXBElement<String> createReqEqutByTypeSrvString(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString_QNAME, String.class, ReqEqutByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string1", scope = ReqEqutByTypeSrv.class)
+    public JAXBElement<String> createReqEqutByTypeSrvString1(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString1_QNAME, String.class, ReqEqutByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string2", scope = ReqEqutByTypeSrv.class)
+    public JAXBElement<String> createReqEqutByTypeSrvString2(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString2_QNAME, String.class, ReqEqutByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string3", scope = ReqEqutByTypeSrv.class)
+    public JAXBElement<String> createReqEqutByTypeSrvString3(String value) {
+        return new JAXBElement<String>(_GetEquByCodeSrvString3_QNAME, String.class, ReqEqutByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "return", scope = ReqEqutByTypeSrvResponse.class)
+    public JAXBElement<String> createReqEqutByTypeSrvResponseReturn(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvResponseReturn_QNAME, String.class, ReqEqutByTypeSrvResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string", scope = GetNewEquByTypeSrv.class)
+    public JAXBElement<String> createGetNewEquByTypeSrvString(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString_QNAME, String.class, GetNewEquByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string1", scope = GetNewEquByTypeSrv.class)
+    public JAXBElement<String> createGetNewEquByTypeSrvString1(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString1_QNAME, String.class, GetNewEquByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "int", scope = GetNewEquByTypeSrv.class)
+    public JAXBElement<Integer> createGetNewEquByTypeSrvInt(Integer value) {
+        return new JAXBElement<Integer>(_GetEquByTypeSrvInt_QNAME, Integer.class, GetNewEquByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "int1", scope = GetNewEquByTypeSrv.class)
+    public JAXBElement<Integer> createGetNewEquByTypeSrvInt1(Integer value) {
+        return new JAXBElement<Integer>(_GetEquByTypeSrvInt1_QNAME, Integer.class, GetNewEquByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string2", scope = GetNewEquByTypeSrv.class)
+    public JAXBElement<String> createGetNewEquByTypeSrvString2(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString2_QNAME, String.class, GetNewEquByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string3", scope = GetNewEquByTypeSrv.class)
+    public JAXBElement<String> createGetNewEquByTypeSrvString3(String value) {
+        return new JAXBElement<String>(_GetEquByCodeSrvString3_QNAME, String.class, GetNewEquByTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "return", scope = GetNewEquByTypeSrvResponse.class)
+    public JAXBElement<String> createGetNewEquByTypeSrvResponseReturn(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvResponseReturn_QNAME, String.class, GetNewEquByTypeSrvResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string", scope = GetEquByUniTypeSrv.class)
+    public JAXBElement<String> createGetEquByUniTypeSrvString(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString_QNAME, String.class, GetEquByUniTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string1", scope = GetEquByUniTypeSrv.class)
+    public JAXBElement<String> createGetEquByUniTypeSrvString1(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString1_QNAME, String.class, GetEquByUniTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string2", scope = GetEquByUniTypeSrv.class)
+    public JAXBElement<String> createGetEquByUniTypeSrvString2(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString2_QNAME, String.class, GetEquByUniTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string3", scope = GetEquByUniTypeSrv.class)
+    public JAXBElement<String> createGetEquByUniTypeSrvString3(String value) {
+        return new JAXBElement<String>(_GetEquByCodeSrvString3_QNAME, String.class, GetEquByUniTypeSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "return", scope = GetEquByUniTypeSrvResponse.class)
+    public JAXBElement<String> createGetEquByUniTypeSrvResponseReturn(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvResponseReturn_QNAME, String.class, GetEquByUniTypeSrvResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string", scope = ReqModEquSrv.class)
+    public JAXBElement<String> createReqModEquSrvString(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString_QNAME, String.class, ReqModEquSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string1", scope = ReqModEquSrv.class)
+    public JAXBElement<String> createReqModEquSrvString1(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString1_QNAME, String.class, ReqModEquSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string2", scope = ReqModEquSrv.class)
+    public JAXBElement<String> createReqModEquSrvString2(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvString2_QNAME, String.class, ReqModEquSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string3", scope = ReqModEquSrv.class)
+    public JAXBElement<String> createReqModEquSrvString3(String value) {
+        return new JAXBElement<String>(_GetEquByCodeSrvString3_QNAME, String.class, ReqModEquSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "return", scope = ReqModEquSrvResponse.class)
+    public JAXBElement<String> createReqModEquSrvResponseReturn(String value) {
+        return new JAXBElement<String>(_GetEquCountByTypeSrvResponseReturn_QNAME, String.class, ReqModEquSrvResponse.class, value);
+    }
+
+}

@@ -1,0 +1,10 @@
+package com.el.cmic.callmdm.service;
+
+/**
+ * Created by Vincent on 2016/9/20.
+ */
+public interface CallMdmService {
+    public String addCallWS(String data, String username, String password);
+
+    public String updateCallWS(String data, String username, String password);
+}

@@ -1,0 +1,62 @@
+package com.el.cmic.domain.goods;
+
+import java.util.Date;
+
+/**
+ * 证照  虚拟实体类  FE84101Z  ,FE80101Z
+ * @author zhanhao
+ *
+ */
+public class Licence {
+	
+	/**
+	 * 证照类型 FE84101Z
+	 */
+	private String ZZE8ZZLX;
+	//FE80101Z
+	private String ZZE8ZZLXA;
+	/**
+	 * 证号
+	 */
+	private String ZZE8ZZBM;
+	/**
+	 * 证照有效自
+	 */
+	private Integer ZZEFTJ;
+	/**
+	 * 证照有效至
+	 */
+	private Integer ZZEXDJ;
+	public String getZZE8ZZLX() {
+		return ZZE8ZZLX;
+	}
+	public void setZZE8ZZLX(String zZE8ZZLX) {
+		ZZE8ZZLX = zZE8ZZLX;
+	}
+	public String getZZE8ZZBM() {
+		return ZZE8ZZBM;
+	}
+	public void setZZE8ZZBM(String zZE8ZZBM) {
+		ZZE8ZZBM = zZE8ZZBM;
+	}
+	public Integer getZZEFTJ() {
+		return ZZEFTJ;
+	}
+	public void setZZEFTJ(Integer zZEFTJ) {
+		ZZEFTJ = zZEFTJ;
+	}
+	public Integer getZZEXDJ() {
+		return ZZEXDJ;
+	}
+	public void setZZEXDJ(Integer zZEXDJ) {
+		ZZEXDJ = zZEXDJ;
+	}
+	public String getZZE8ZZLXA() {
+		return ZZE8ZZLXA;
+	}
+	public void setZZE8ZZLXA(String zZE8ZZLXA) {
+		ZZE8ZZLXA = zZE8ZZLXA;
+	}
+	
+	
+}

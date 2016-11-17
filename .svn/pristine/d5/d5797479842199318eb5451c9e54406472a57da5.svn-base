@@ -1,0 +1,11 @@
+package com.el.cmic.common;
+
+/**
+ * Created by Vincent on 2016/10/26.
+ */
+public class SpdInterfaceType {
+    public static final String DEPARTMENTDATA_TYPE="职员部门信息";//职员部门信息
+    public static final String BALE_TYPE="货品信息";//货品信息推送
+    public static final String BUPPLIER_TYPE="供应商信息";//供应商数据推送
+    public static final String BALEPRICE_TYPE="商品配送价";//商品配送价
+}

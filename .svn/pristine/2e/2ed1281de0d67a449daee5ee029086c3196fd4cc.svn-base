@@ -1,0 +1,102 @@
+package com.el.cmic.service.department.impl;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Base64Utils;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.el.cmic.common.SpdInterfaceType;
+import com.el.cmic.common.domain.SpdData;
+import com.el.cmic.common.domain.SpdRequest;
+import com.el.cmic.common.domain.SpdResult;
+import com.el.cmic.domain.department.DepartmentData;
+import com.el.cmic.mapper.department.DepartmentDataMapper;
+import com.el.cmic.service.department.DepartmentDataService;
+import com.el.utils.AddSpaceUtil;
+import com.el.utils.CallWebServiceImp;
+
+@Service
+public class DepartmentDataServiceImpl implements DepartmentDataService{
+	
+	Logger logger = Logger.getLogger(DepartmentDataServiceImpl.class);
+ 
+	@Autowired
+	private DepartmentDataMapper  departmentDataMapper;
+	
+	@Value("${spd.ID}")
+	private String spdId;
+	 
+	@Resource(name="spdRequest")
+	private SpdRequest spdRequest;
+	
+	@Resource(name="callWebServiceImp")
+	private CallWebServiceImp  callWebServiceImp;
+
+	/**
+	 * 部门基础数据推送  查询list
+	 * @return
+	 */
+	@Override
+	public List<DepartmentData> selectDepartmentDatas() {
+		return departmentDataMapper.selectDepartmentDatas();
+	}
+	
+	/**
+	 * 更新 FE8SPD02  EV01 表的状态  Y  or  N
+	 */
+	@Override
+	public void updateEv01(String status,String bmmcu,String bmco) {
+		departmentDataMapper.updateEv01(status,bmmcu,bmco);
+	}
+	
+
+	/**
+	 *  部门基础数据推送    接口
+	 */
+	@Override
+	public void callSpdDepartmentInterface() {
+		List<DepartmentData> arrayList = new ArrayList<DepartmentData>();
+		arrayList=this.selectDepartmentDatas();
+		for(DepartmentData departmentData:arrayList){
+		    try {	
+			    SpdData spdData = new SpdData(SpdInterfaceType.DEPARTMENTDATA_TYPE,spdId,departmentData);
+				//生成data数据
+	            String data = JSON.toJSONString(spdData, SerializerFeature.WriteMapNullValue);
+	            System.out.println(data);
+	            spdRequest.setData(data);
+	            //调用webservice提供的接口（暂时未实现 调用对方接口）
+	            String encodeResult = callWebServiceImp.CallWSI(spdRequest.toMap());
+	            
+	            byte[] bytes = Base64Utils.decodeFromString(encodeResult);
+				String decodeResult = new String(bytes, "utf-8");
+				afterResponse(departmentData,decodeResult);
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+				 logger.error("调用SPD部门基础数据推送 接口失败," + e.getMessage());
+			}
+           
+		}
+		
+	}
+	
+	
+	public  void afterResponse(DepartmentData departmentData,String jsonString){
+		SpdResult spdResult =JSON.parseObject(jsonString,SpdResult.class);
+		 String status = "Y";
+		 //接口调用不成功  更新状态
+		if(!spdResult.isSuccess()){
+			status="E";
+		}
+		updateEv01(status,AddSpaceUtil.addSpanceLeft(departmentData.getMcu(),12),departmentData.getCo());
+	}
+
+}

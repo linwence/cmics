@@ -1,0 +1,26 @@
+package com.el.cmic.ws.mapper;
+
+import com.el.cfg.domain.Fe80101z;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.UpdateProvider;
+
+/**
+ * Created by king_ on 2016/10/11.
+ */
+public interface FE80101ZUpdateByE8ZZBMMapper {
+    @UpdateProvider(type=FE80101ZUpdateByE8ZZBMSqlProvider.class, method="updateByE8ZZBM")
+    int updateByE8ZZBM(@Param("record") Fe80101z record, @Param("datatype") String datatype);
+
+    @Select({
+            "select",
+            "count(1)",
+            "from CRPDTA.FE80101Z",
+            "where  ZZE8ZZBM = #{zze8zzbm}"
+    })
+    int selectByPrimaryKey(String zze8zzbm);
+
+    @InsertProvider(type=FE80101ZUpdateByE8ZZBMSqlProvider.class, method="insertSelective")
+    int insertSelective(Fe80101z record);
+}

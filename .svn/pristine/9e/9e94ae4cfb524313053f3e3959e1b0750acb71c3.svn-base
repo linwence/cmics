@@ -1,0 +1,955 @@
+package com.el.cfg.domain;
+
+import java.math.BigDecimal;
+
+public class F0101 {
+    private BigDecimal aban8;
+
+    private String abalky;
+
+    private String abtax;
+
+    private String abalph;
+
+    private String abdc;
+
+    private String abmcu;
+
+    private String absic;
+
+    private String ablngp;
+
+    private String abat1;
+
+    private String abcm;
+
+    private String abtaxc;
+
+    private String abat2;
+
+    private String abat3;
+
+    private String abat4;
+
+    private String abat5;
+
+    private String abatp;
+
+    private String abatr;
+
+    private String abatpr;
+
+    private String abab3;
+
+    private String abate;
+
+    private String absbli;
+
+    private BigDecimal abeftb;
+
+    private BigDecimal aban81;
+
+    private BigDecimal aban82;
+
+    private BigDecimal aban83;
+
+    private BigDecimal aban84;
+
+    private BigDecimal aban86;
+
+    private BigDecimal aban85;
+
+    private String abac01;
+
+    private String abac02;
+
+    private String abac03;
+
+    private String abac04;
+
+    private String abac05;
+
+    private String abac06;
+
+    private String abac07;
+
+    private String abac08;
+
+    private String abac09;
+
+    private String abac10;
+
+    private String abac11;
+
+    private String abac12;
+
+    private String abac13;
+
+    private String abac14;
+
+    private String abac15;
+
+    private String abac16;
+
+    private String abac17;
+
+    private String abac18;
+
+    private String abac19;
+
+    private String abac20;
+
+    private String abac21;
+
+    private String abac22;
+
+    private String abac23;
+
+    private String abac24;
+
+    private String abac25;
+
+    private String abac26;
+
+    private String abac27;
+
+    private String abac28;
+
+    private String abac29;
+
+    private String abac30;
+
+    private String abglba;
+
+    private BigDecimal abpti;
+
+    private BigDecimal abpdi;
+
+    private String abmsga;
+
+    private String abrmk;
+
+    private String abtxct;
+
+    private String abtx2;
+
+    private String abalp1;
+
+    private String aburcd;
+
+    private BigDecimal aburdt;
+
+    private BigDecimal aburat;
+
+    private BigDecimal aburab;
+
+    private String aburrf;
+
+    private String abuser;
+
+    private String abpid;
+
+    private BigDecimal abupmj;
+
+    private String abjobn;
+
+    private BigDecimal abupmt;
+
+    private String abprgf;
+
+    private String absccltp;
+
+    private String abticker;
+
+    private String abexchg;
+
+    private String abduns;
+
+    private String abclass01;
+
+    private String abclass02;
+
+    private String abclass03;
+
+    private String abclass04;
+
+    private String abclass05;
+
+    private BigDecimal abnoe;
+
+    private BigDecimal abgrowthr;
+
+    private String abyearstar;
+
+    private String abaempgp;
+
+    private String abactin;
+
+    private String abrevrng;
+
+    private BigDecimal absyncs;
+
+    private BigDecimal abperrs;
+
+    private BigDecimal abcaad;
+
+    public BigDecimal getAban8() {
+        return aban8;
+    }
+
+    public void setAban8(BigDecimal aban8) {
+        this.aban8 = aban8;
+    }
+
+    public String getAbalky() {
+        return abalky;
+    }
+
+    public void setAbalky(String abalky) {
+        this.abalky = abalky;
+    }
+
+    public String getAbtax() {
+        return abtax;
+    }
+
+    public void setAbtax(String abtax) {
+        this.abtax = abtax;
+    }
+
+    public String getAbalph() {
+        return abalph;
+    }
+
+    public void setAbalph(String abalph) {
+        this.abalph = abalph;
+    }
+
+    public String getAbdc() {
+        return abdc;
+    }
+
+    public void setAbdc(String abdc) {
+        this.abdc = abdc;
+    }
+
+    public String getAbmcu() {
+        return abmcu;
+    }
+
+    public void setAbmcu(String abmcu) {
+        this.abmcu = abmcu;
+    }
+
+    public String getAbsic() {
+        return absic;
+    }
+
+    public void setAbsic(String absic) {
+        this.absic = absic;
+    }
+
+    public String getAblngp() {
+        return ablngp;
+    }
+
+    public void setAblngp(String ablngp) {
+        this.ablngp = ablngp;
+    }
+
+    public String getAbat1() {
+        return abat1;
+    }
+
+    public void setAbat1(String abat1) {
+        this.abat1 = abat1;
+    }
+
+    public String getAbcm() {
+        return abcm;
+    }
+
+    public void setAbcm(String abcm) {
+        this.abcm = abcm;
+    }
+
+    public String getAbtaxc() {
+        return abtaxc;
+    }
+
+    public void setAbtaxc(String abtaxc) {
+        this.abtaxc = abtaxc;
+    }
+
+    public String getAbat2() {
+        return abat2;
+    }
+
+    public void setAbat2(String abat2) {
+        this.abat2 = abat2;
+    }
+
+    public String getAbat3() {
+        return abat3;
+    }
+
+    public void setAbat3(String abat3) {
+        this.abat3 = abat3;
+    }
+
+    public String getAbat4() {
+        return abat4;
+    }
+
+    public void setAbat4(String abat4) {
+        this.abat4 = abat4;
+    }
+
+    public String getAbat5() {
+        return abat5;
+    }
+
+    public void setAbat5(String abat5) {
+        this.abat5 = abat5;
+    }
+
+    public String getAbatp() {
+        return abatp;
+    }
+
+    public void setAbatp(String abatp) {
+        this.abatp = abatp;
+    }
+
+    public String getAbatr() {
+        return abatr;
+    }
+
+    public void setAbatr(String abatr) {
+        this.abatr = abatr;
+    }
+
+    public String getAbatpr() {
+        return abatpr;
+    }
+
+    public void setAbatpr(String abatpr) {
+        this.abatpr = abatpr;
+    }
+
+    public String getAbab3() {
+        return abab3;
+    }
+
+    public void setAbab3(String abab3) {
+        this.abab3 = abab3;
+    }
+
+    public String getAbate() {
+        return abate;
+    }
+
+    public void setAbate(String abate) {
+        this.abate = abate;
+    }
+
+    public String getAbsbli() {
+        return absbli;
+    }
+
+    public void setAbsbli(String absbli) {
+        this.absbli = absbli;
+    }
+
+    public BigDecimal getAbeftb() {
+        return abeftb;
+    }
+
+    public void setAbeftb(BigDecimal abeftb) {
+        this.abeftb = abeftb;
+    }
+
+    public BigDecimal getAban81() {
+        return aban81;
+    }
+
+    public void setAban81(BigDecimal aban81) {
+        this.aban81 = aban81;
+    }
+
+    public BigDecimal getAban82() {
+        return aban82;
+    }
+
+    public void setAban82(BigDecimal aban82) {
+        this.aban82 = aban82;
+    }
+
+    public BigDecimal getAban83() {
+        return aban83;
+    }
+
+    public void setAban83(BigDecimal aban83) {
+        this.aban83 = aban83;
+    }
+
+    public BigDecimal getAban84() {
+        return aban84;
+    }
+
+    public void setAban84(BigDecimal aban84) {
+        this.aban84 = aban84;
+    }
+
+    public BigDecimal getAban86() {
+        return aban86;
+    }
+
+    public void setAban86(BigDecimal aban86) {
+        this.aban86 = aban86;
+    }
+
+    public BigDecimal getAban85() {
+        return aban85;
+    }
+
+    public void setAban85(BigDecimal aban85) {
+        this.aban85 = aban85;
+    }
+
+    public String getAbac01() {
+        return abac01;
+    }
+
+    public void setAbac01(String abac01) {
+        this.abac01 = abac01;
+    }
+
+    public String getAbac02() {
+        return abac02;
+    }
+
+    public void setAbac02(String abac02) {
+        this.abac02 = abac02;
+    }
+
+    public String getAbac03() {
+        return abac03;
+    }
+
+    public void setAbac03(String abac03) {
+        this.abac03 = abac03;
+    }
+
+    public String getAbac04() {
+        return abac04;
+    }
+
+    public void setAbac04(String abac04) {
+        this.abac04 = abac04;
+    }
+
+    public String getAbac05() {
+        return abac05;
+    }
+
+    public void setAbac05(String abac05) {
+        this.abac05 = abac05;
+    }
+
+    public String getAbac06() {
+        return abac06;
+    }
+
+    public void setAbac06(String abac06) {
+        this.abac06 = abac06;
+    }
+
+    public String getAbac07() {
+        return abac07;
+    }
+
+    public void setAbac07(String abac07) {
+        this.abac07 = abac07;
+    }
+
+    public String getAbac08() {
+        return abac08;
+    }
+
+    public void setAbac08(String abac08) {
+        this.abac08 = abac08;
+    }
+
+    public String getAbac09() {
+        return abac09;
+    }
+
+    public void setAbac09(String abac09) {
+        this.abac09 = abac09;
+    }
+
+    public String getAbac10() {
+        return abac10;
+    }
+
+    public void setAbac10(String abac10) {
+        this.abac10 = abac10;
+    }
+
+    public String getAbac11() {
+        return abac11;
+    }
+
+    public void setAbac11(String abac11) {
+        this.abac11 = abac11;
+    }
+
+    public String getAbac12() {
+        return abac12;
+    }
+
+    public void setAbac12(String abac12) {
+        this.abac12 = abac12;
+    }
+
+    public String getAbac13() {
+        return abac13;
+    }
+
+    public void setAbac13(String abac13) {
+        this.abac13 = abac13;
+    }
+
+    public String getAbac14() {
+        return abac14;
+    }
+
+    public void setAbac14(String abac14) {
+        this.abac14 = abac14;
+    }
+
+    public String getAbac15() {
+        return abac15;
+    }
+
+    public void setAbac15(String abac15) {
+        this.abac15 = abac15;
+    }
+
+    public String getAbac16() {
+        return abac16;
+    }
+
+    public void setAbac16(String abac16) {
+        this.abac16 = abac16;
+    }
+
+    public String getAbac17() {
+        return abac17;
+    }
+
+    public void setAbac17(String abac17) {
+        this.abac17 = abac17;
+    }
+
+    public String getAbac18() {
+        return abac18;
+    }
+
+    public void setAbac18(String abac18) {
+        this.abac18 = abac18;
+    }
+
+    public String getAbac19() {
+        return abac19;
+    }
+
+    public void setAbac19(String abac19) {
+        this.abac19 = abac19;
+    }
+
+    public String getAbac20() {
+        return abac20;
+    }
+
+    public void setAbac20(String abac20) {
+        this.abac20 = abac20;
+    }
+
+    public String getAbac21() {
+        return abac21;
+    }
+
+    public void setAbac21(String abac21) {
+        this.abac21 = abac21;
+    }
+
+    public String getAbac22() {
+        return abac22;
+    }
+
+    public void setAbac22(String abac22) {
+        this.abac22 = abac22;
+    }
+
+    public String getAbac23() {
+        return abac23;
+    }
+
+    public void setAbac23(String abac23) {
+        this.abac23 = abac23;
+    }
+
+    public String getAbac24() {
+        return abac24;
+    }
+
+    public void setAbac24(String abac24) {
+        this.abac24 = abac24;
+    }
+
+    public String getAbac25() {
+        return abac25;
+    }
+
+    public void setAbac25(String abac25) {
+        this.abac25 = abac25;
+    }
+
+    public String getAbac26() {
+        return abac26;
+    }
+
+    public void setAbac26(String abac26) {
+        this.abac26 = abac26;
+    }
+
+    public String getAbac27() {
+        return abac27;
+    }
+
+    public void setAbac27(String abac27) {
+        this.abac27 = abac27;
+    }
+
+    public String getAbac28() {
+        return abac28;
+    }
+
+    public void setAbac28(String abac28) {
+        this.abac28 = abac28;
+    }
+
+    public String getAbac29() {
+        return abac29;
+    }
+
+    public void setAbac29(String abac29) {
+        this.abac29 = abac29;
+    }
+
+    public String getAbac30() {
+        return abac30;
+    }
+
+    public void setAbac30(String abac30) {
+        this.abac30 = abac30;
+    }
+
+    public String getAbglba() {
+        return abglba;
+    }
+
+    public void setAbglba(String abglba) {
+        this.abglba = abglba;
+    }
+
+    public BigDecimal getAbpti() {
+        return abpti;
+    }
+
+    public void setAbpti(BigDecimal abpti) {
+        this.abpti = abpti;
+    }
+
+    public BigDecimal getAbpdi() {
+        return abpdi;
+    }
+
+    public void setAbpdi(BigDecimal abpdi) {
+        this.abpdi = abpdi;
+    }
+
+    public String getAbmsga() {
+        return abmsga;
+    }
+
+    public void setAbmsga(String abmsga) {
+        this.abmsga = abmsga;
+    }
+
+    public String getAbrmk() {
+        return abrmk;
+    }
+
+    public void setAbrmk(String abrmk) {
+        this.abrmk = abrmk;
+    }
+
+    public String getAbtxct() {
+        return abtxct;
+    }
+
+    public void setAbtxct(String abtxct) {
+        this.abtxct = abtxct;
+    }
+
+    public String getAbtx2() {
+        return abtx2;
+    }
+
+    public void setAbtx2(String abtx2) {
+        this.abtx2 = abtx2;
+    }
+
+    public String getAbalp1() {
+        return abalp1;
+    }
+
+    public void setAbalp1(String abalp1) {
+        this.abalp1 = abalp1;
+    }
+
+    public String getAburcd() {
+        return aburcd;
+    }
+
+    public void setAburcd(String aburcd) {
+        this.aburcd = aburcd;
+    }
+
+    public BigDecimal getAburdt() {
+        return aburdt;
+    }
+
+    public void setAburdt(BigDecimal aburdt) {
+        this.aburdt = aburdt;
+    }
+
+    public BigDecimal getAburat() {
+        return aburat;
+    }
+
+    public void setAburat(BigDecimal aburat) {
+        this.aburat = aburat;
+    }
+
+    public BigDecimal getAburab() {
+        return aburab;
+    }
+
+    public void setAburab(BigDecimal aburab) {
+        this.aburab = aburab;
+    }
+
+    public String getAburrf() {
+        return aburrf;
+    }
+
+    public void setAburrf(String aburrf) {
+        this.aburrf = aburrf;
+    }
+
+    public String getAbuser() {
+        return abuser;
+    }
+
+    public void setAbuser(String abuser) {
+        this.abuser = abuser;
+    }
+
+    public String getAbpid() {
+        return abpid;
+    }
+
+    public void setAbpid(String abpid) {
+        this.abpid = abpid;
+    }
+
+    public BigDecimal getAbupmj() {
+        return abupmj;
+    }
+
+    public void setAbupmj(BigDecimal abupmj) {
+        this.abupmj = abupmj;
+    }
+
+    public String getAbjobn() {
+        return abjobn;
+    }
+
+    public void setAbjobn(String abjobn) {
+        this.abjobn = abjobn;
+    }
+
+    public BigDecimal getAbupmt() {
+        return abupmt;
+    }
+
+    public void setAbupmt(BigDecimal abupmt) {
+        this.abupmt = abupmt;
+    }
+
+    public String getAbprgf() {
+        return abprgf;
+    }
+
+    public void setAbprgf(String abprgf) {
+        this.abprgf = abprgf;
+    }
+
+    public String getAbsccltp() {
+        return absccltp;
+    }
+
+    public void setAbsccltp(String absccltp) {
+        this.absccltp = absccltp;
+    }
+
+    public String getAbticker() {
+        return abticker;
+    }
+
+    public void setAbticker(String abticker) {
+        this.abticker = abticker;
+    }
+
+    public String getAbexchg() {
+        return abexchg;
+    }
+
+    public void setAbexchg(String abexchg) {
+        this.abexchg = abexchg;
+    }
+
+    public String getAbduns() {
+        return abduns;
+    }
+
+    public void setAbduns(String abduns) {
+        this.abduns = abduns;
+    }
+
+    public String getAbclass01() {
+        return abclass01;
+    }
+
+    public void setAbclass01(String abclass01) {
+        this.abclass01 = abclass01;
+    }
+
+    public String getAbclass02() {
+        return abclass02;
+    }
+
+    public void setAbclass02(String abclass02) {
+        this.abclass02 = abclass02;
+    }
+
+    public String getAbclass03() {
+        return abclass03;
+    }
+
+    public void setAbclass03(String abclass03) {
+        this.abclass03 = abclass03;
+    }
+
+    public String getAbclass04() {
+        return abclass04;
+    }
+
+    public void setAbclass04(String abclass04) {
+        this.abclass04 = abclass04;
+    }
+
+    public String getAbclass05() {
+        return abclass05;
+    }
+
+    public void setAbclass05(String abclass05) {
+        this.abclass05 = abclass05;
+    }
+
+    public BigDecimal getAbnoe() {
+        return abnoe;
+    }
+
+    public void setAbnoe(BigDecimal abnoe) {
+        this.abnoe = abnoe;
+    }
+
+    public BigDecimal getAbgrowthr() {
+        return abgrowthr;
+    }
+
+    public void setAbgrowthr(BigDecimal abgrowthr) {
+        this.abgrowthr = abgrowthr;
+    }
+
+    public String getAbyearstar() {
+        return abyearstar;
+    }
+
+    public void setAbyearstar(String abyearstar) {
+        this.abyearstar = abyearstar;
+    }
+
+    public String getAbaempgp() {
+        return abaempgp;
+    }
+
+    public void setAbaempgp(String abaempgp) {
+        this.abaempgp = abaempgp;
+    }
+
+    public String getAbactin() {
+        return abactin;
+    }
+
+    public void setAbactin(String abactin) {
+        this.abactin = abactin;
+    }
+
+    public String getAbrevrng() {
+        return abrevrng;
+    }
+
+    public void setAbrevrng(String abrevrng) {
+        this.abrevrng = abrevrng;
+    }
+
+    public BigDecimal getAbsyncs() {
+        return absyncs;
+    }
+
+    public void setAbsyncs(BigDecimal absyncs) {
+        this.absyncs = absyncs;
+    }
+
+    public BigDecimal getAbperrs() {
+        return abperrs;
+    }
+
+    public void setAbperrs(BigDecimal abperrs) {
+        this.abperrs = abperrs;
+    }
+
+    public BigDecimal getAbcaad() {
+        return abcaad;
+    }
+
+    public void setAbcaad(BigDecimal abcaad) {
+        this.abcaad = abcaad;
+    }
+}

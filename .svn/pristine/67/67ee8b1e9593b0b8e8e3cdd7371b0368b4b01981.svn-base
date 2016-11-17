@@ -1,0 +1,93 @@
+package com.el.cmic.ws.service;
+
+
+import com.el.cfg.domain.Fe80101;
+import com.el.cfg.domain.Fe841003;
+import com.el.cmic.ws.mapper.FE80101UpdateByPKMapper;
+import com.el.cmic.ws.mapper.FE841003SelectByAn8Mapper;
+import com.el.cmic.ws.mapper.FE841003UpdateByPKMapper;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+
+/**
+ * Created by king_ on 2016/10/13.
+ */
+@Service
+public class ModC0ESToERPServiceImpl implements ModC0ESToERPService {
+    Logger logger = Logger.getLogger(ModC0ESToERPServiceImpl.class);
+    @Autowired
+    FE841003UpdateByPKMapper fe841003UpdateByPKMapper;
+    @Autowired
+    FE841003SelectByAn8Mapper fe841003SelectByAn8Mapper;
+    @Autowired
+    FE80101UpdateByPKMapper fe80101UpdateByPKMapper;
+    @Value("${schema}")
+    private String schema;
+    @Transactional
+    public String updateFE841003(BigDecimal Doco, String EorS) {
+        logger.info("客商更新成功，记录标记位");
+        try {
+            Fe841003 fe841003 = new Fe841003();
+            fe841003.setSqukid(Doco);
+            fe841003.setSqflag(EorS);
+            fe841003UpdateByPKMapper.updateByPrimaryKeySelective(schema, fe841003);
+        }catch (Exception e){
+            logger.error("------------------------------------------------------------------------------------------");
+            logger.error("客商标记位失败"+e.getMessage());
+            logger.error("------------------------------------------------------------------------------------------");
+        }
+        return null;
+    }
+    @Transactional
+    public String updateFE80101(BigDecimal ukid,BigDecimal an8) {
+        logger.info("客商更新成功，将变更单数据写入客商表");
+        try {
+            Fe841003 fe841003 = fe841003SelectByAn8Mapper.selectByPrimaryKey(ukid);
+            Fe80101 fe80101 = new Fe80101();
+
+            fe80101.setKsan8(an8);
+            if (fe841003.getSqa427() == null) {
+                fe80101.setKse8jycs(" ");
+            } else {
+                fe80101.setKse8jycs(fe841003.getSqa427());
+            }
+            if (fe841003.getSqe8tym() == null) {
+                fe80101.setKse8ckdz(" ");
+            } else {
+                fe80101.setKse8ckdz(fe841003.getSqe8tym());
+            }
+            if (fe841003.getSqcnem() == null) {
+                fe80101.setKse8fr(" ");
+            } else {
+                fe80101.setKse8fr(fe841003.getSqcnem());
+            }
+
+            if (fe841003.getSqcnicl() == null) {
+                fe80101.setKse8qyfzr(" ");
+            } else {
+                fe80101.setKse8qyfzr(fe841003.getSqcnicl());
+            }
+
+            if (fe841003.getSqcnyp() == null) {
+                fe80101.setKse8ywlxr(" ");
+            } else {
+                fe80101.setKse8ywlxr(fe841003.getSqcnyp());
+            }
+
+            fe80101UpdateByPKMapper.updateByPrimaryKeySelective(schema, fe80101, "C011");
+
+        }catch (Exception e){
+            logger.error("------------------------------------------------------------------------------------------");
+            logger.error("客商将变更单数据写入客商表失败"+e.getMessage());
+            logger.error("------------------------------------------------------------------------------------------");
+        }
+
+
+        return null;
+    }
+}

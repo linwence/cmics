@@ -1,0 +1,459 @@
+package com.el.cfg.dao;
+
+import com.el.cfg.domain.FE84101;
+import org.apache.ibatis.jdbc.SQL;
+
+public class FE84101SqlProvider {
+
+    public String insertSelective(FE84101 record) {
+        SQL sql = new SQL();
+        sql.INSERT_INTO("CRPDTA.FE84101");
+        
+        if (record.getSplitm() != null) {
+            sql.VALUES("SPLITM", "#{splitm,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpev01() != null) {
+            sql.VALUES("SPEV01", "#{spev01,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpdsc1() != null) {
+            sql.VALUES("SPDSC1", "#{spdsc1,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8name() != null) {
+            sql.VALUES("SPE8NAME", "#{spe8name,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpdsc2() != null) {
+            sql.VALUES("SPDSC2", "#{spdsc2,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8jx() != null) {
+            sql.VALUES("SPE8JX", "#{spe8jx,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpaitm() != null) {
+            sql.VALUES("SPAITM", "#{spaitm,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpan8() != null) {
+            sql.VALUES("SPAN8", "#{span8,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSporig() != null) {
+            sql.VALUES("SPORIG", "#{sporig,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8pzwh() != null) {
+            sql.VALUES("SPE8PZWH", "#{spe8pzwh,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8zdyl() != null) {
+            sql.VALUES("SPE8ZDYL", "#{spe8zdyl,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8jhg() != null) {
+            sql.VALUES("SPE8JHG", "#{spe8jhg,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8ztw() != null) {
+            sql.VALUES("SPE8ZTW", "#{spe8ztw,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8gfg() != null) {
+            sql.VALUES("SPE8GFG", "#{spe8gfg,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8ptyp() != null) {
+            sql.VALUES("SPE8PTYP", "#{spe8ptyp,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8atcdl() != null) {
+            sql.VALUES("SPE8ATCDL", "#{spe8atcdl,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8atcxl() != null) {
+            sql.VALUES("SPE8ATCXL", "#{spe8atcxl,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8yyks() != null) {
+            sql.VALUES("SPE8YYKS", "#{spe8yyks,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8fxdj() != null) {
+            sql.VALUES("SPE8FXDJ", "#{spe8fxdj,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8cctj() != null) {
+            sql.VALUES("SPE8CCTJ", "#{spe8cctj,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8qtcc() != null) {
+            sql.VALUES("SPE8QTCC", "#{spe8qtcc,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8jgg() != null) {
+            sql.VALUES("SPE8JGG", "#{spe8jgg,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8sffc() != null) {
+            sql.VALUES("SPE8SFFC", "#{spe8sffc,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8tym() != null) {
+            sql.VALUES("SPE8TYM", "#{spe8tym,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8jdsj() != null) {
+            sql.VALUES("SPE8JDSJ", "#{spe8jdsj,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getSpe8xlhgl() != null) {
+            sql.VALUES("SPE8XLHGL", "#{spe8xlhgl,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8zdyh() != null) {
+            sql.VALUES("SPE8ZDYH", "#{spe8zdyh,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8yhzq() != null) {
+            sql.VALUES("SPE8YHZQ", "#{spe8yhzq,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpe8bgbs() != null) {
+            sql.VALUES("SPE8BGBS", "#{spe8bgbs,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8spxz() != null) {
+            sql.VALUES("SPE8SPXZ", "#{spe8spxz,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8shflbm() != null) {
+            sql.VALUES("SPE8SHFLBM", "#{spe8shflbm,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8yhnr() != null) {
+            sql.VALUES("SPE8YHNR", "#{spe8yhnr,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8yhzc() != null) {
+            sql.VALUES("SPE8YHZC", "#{spe8yhzc,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8lsl() != null) {
+            sql.VALUES("SPE8LSL", "#{spe8lsl,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8kce() != null) {
+            sql.VALUES("SPE8KCE", "#{spe8kce,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpurcd() != null) {
+            sql.VALUES("SPURCD", "#{spurcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpurdt() != null) {
+            sql.VALUES("SPURDT", "#{spurdt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpurat() != null) {
+            sql.VALUES("SPURAT", "#{spurat,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpurab() != null) {
+            sql.VALUES("SPURAB", "#{spurab,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpev02() != null) {
+            sql.VALUES("SPEV02", "#{spev02,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpev03() != null) {
+            sql.VALUES("SPEV03", "#{spev03,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpev04() != null) {
+            sql.VALUES("SPEV04", "#{spev04,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpev05() != null) {
+            sql.VALUES("SPEV05", "#{spev05,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpuser() != null) {
+            sql.VALUES("SPUSER", "#{spuser,jdbcType=OTHER}");
+        }
+        
+        if (record.getSppid() != null) {
+            sql.VALUES("SPPID", "#{sppid,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpjobn() != null) {
+            sql.VALUES("SPJOBN", "#{spjobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpupmj() != null) {
+            sql.VALUES("SPUPMJ", "#{spupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpupmt() != null) {
+            sql.VALUES("SPUPMT", "#{spupmt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpidate() != null) {
+            sql.VALUES("SPIDATE", "#{spidate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getSpdf01() != null) {
+            sql.VALUES("SPDF01", "#{spdf01,jdbcType=OTHER}");
+        }
+        
+        if (record.getSprdate() != null) {
+            sql.VALUES("SPRDATE", "#{sprdate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getSpdf02() != null) {
+            sql.VALUES("SPDF02", "#{spdf02,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpukid() != null) {
+            sql.VALUES("SPUKID", "#{spukid,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpstatus() != null) {
+            sql.VALUES("SPSTATUS", "#{spstatus,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpflag() != null) {
+            sql.VALUES("SPFLAG", "#{spflag,jdbcType=OTHER}");
+        }
+        
+        return sql.toString();
+    }
+
+    public String updateByPrimaryKeySelective(FE84101 record) {
+        SQL sql = new SQL();
+        sql.UPDATE("CRPDTA.FE84101");
+        
+        if (record.getSpev01() != null) {
+            sql.SET("SPEV01 = #{spev01,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpdsc1() != null) {
+            sql.SET("SPDSC1 = #{spdsc1,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8name() != null) {
+            sql.SET("SPE8NAME = #{spe8name,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpdsc2() != null) {
+            sql.SET("SPDSC2 = #{spdsc2,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8jx() != null) {
+            sql.SET("SPE8JX = #{spe8jx,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpaitm() != null) {
+            sql.SET("SPAITM = #{spaitm,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpan8() != null) {
+            sql.SET("SPAN8 = #{span8,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSporig() != null) {
+            sql.SET("SPORIG = #{sporig,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8pzwh() != null) {
+            sql.SET("SPE8PZWH = #{spe8pzwh,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8zdyl() != null) {
+            sql.SET("SPE8ZDYL = #{spe8zdyl,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8jhg() != null) {
+            sql.SET("SPE8JHG = #{spe8jhg,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8ztw() != null) {
+            sql.SET("SPE8ZTW = #{spe8ztw,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8gfg() != null) {
+            sql.SET("SPE8GFG = #{spe8gfg,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8ptyp() != null) {
+            sql.SET("SPE8PTYP = #{spe8ptyp,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8atcdl() != null) {
+            sql.SET("SPE8ATCDL = #{spe8atcdl,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8atcxl() != null) {
+            sql.SET("SPE8ATCXL = #{spe8atcxl,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8yyks() != null) {
+            sql.SET("SPE8YYKS = #{spe8yyks,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8fxdj() != null) {
+            sql.SET("SPE8FXDJ = #{spe8fxdj,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8cctj() != null) {
+            sql.SET("SPE8CCTJ = #{spe8cctj,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8qtcc() != null) {
+            sql.SET("SPE8QTCC = #{spe8qtcc,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8jgg() != null) {
+            sql.SET("SPE8JGG = #{spe8jgg,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8sffc() != null) {
+            sql.SET("SPE8SFFC = #{spe8sffc,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8tym() != null) {
+            sql.SET("SPE8TYM = #{spe8tym,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8jdsj() != null) {
+            sql.SET("SPE8JDSJ = #{spe8jdsj,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getSpe8xlhgl() != null) {
+            sql.SET("SPE8XLHGL = #{spe8xlhgl,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8zdyh() != null) {
+            sql.SET("SPE8ZDYH = #{spe8zdyh,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8yhzq() != null) {
+            sql.SET("SPE8YHZQ = #{spe8yhzq,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpe8bgbs() != null) {
+            sql.SET("SPE8BGBS = #{spe8bgbs,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8spxz() != null) {
+            sql.SET("SPE8SPXZ = #{spe8spxz,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8shflbm() != null) {
+            sql.SET("SPE8SHFLBM = #{spe8shflbm,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8yhnr() != null) {
+            sql.SET("SPE8YHNR = #{spe8yhnr,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8yhzc() != null) {
+            sql.SET("SPE8YHZC = #{spe8yhzc,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8lsl() != null) {
+            sql.SET("SPE8LSL = #{spe8lsl,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpe8kce() != null) {
+            sql.SET("SPE8KCE = #{spe8kce,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpurcd() != null) {
+            sql.SET("SPURCD = #{spurcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpurdt() != null) {
+            sql.SET("SPURDT = #{spurdt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpurat() != null) {
+            sql.SET("SPURAT = #{spurat,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpurab() != null) {
+            sql.SET("SPURAB = #{spurab,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpev02() != null) {
+            sql.SET("SPEV02 = #{spev02,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpev03() != null) {
+            sql.SET("SPEV03 = #{spev03,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpev04() != null) {
+            sql.SET("SPEV04 = #{spev04,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpev05() != null) {
+            sql.SET("SPEV05 = #{spev05,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpuser() != null) {
+            sql.SET("SPUSER = #{spuser,jdbcType=OTHER}");
+        }
+        
+        if (record.getSppid() != null) {
+            sql.SET("SPPID = #{sppid,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpjobn() != null) {
+            sql.SET("SPJOBN = #{spjobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpupmj() != null) {
+            sql.SET("SPUPMJ = #{spupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpupmt() != null) {
+            sql.SET("SPUPMT = #{spupmt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpidate() != null) {
+            sql.SET("SPIDATE = #{spidate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getSpdf01() != null) {
+            sql.SET("SPDF01 = #{spdf01,jdbcType=OTHER}");
+        }
+        
+        if (record.getSprdate() != null) {
+            sql.SET("SPRDATE = #{sprdate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getSpdf02() != null) {
+            sql.SET("SPDF02 = #{spdf02,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpukid() != null) {
+            sql.SET("SPUKID = #{spukid,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getSpstatus() != null) {
+            sql.SET("SPSTATUS = #{spstatus,jdbcType=OTHER}");
+        }
+        
+        if (record.getSpflag() != null) {
+            sql.SET("SPFLAG = #{spflag,jdbcType=OTHER}");
+        }
+        
+        sql.WHERE("SPLITM = #{splitm,jdbcType=OTHER}");
+        
+        return sql.toString();
+    }
+}

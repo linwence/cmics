@@ -1,0 +1,1691 @@
+package com.el.cfg.dao;
+
+import com.el.cfg.domain.F4101;
+import org.apache.ibatis.jdbc.SQL;
+
+public class F4101SqlProvider {
+
+    public String insertSelective(F4101 record) {
+        SQL sql = new SQL();
+        sql.INSERT_INTO("CRPDTA.F4101");
+        
+        if (record.getImitm() != null) {
+            sql.VALUES("IMITM", "#{imitm,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImlitm() != null) {
+            sql.VALUES("IMLITM", "#{imlitm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImaitm() != null) {
+            sql.VALUES("IMAITM", "#{imaitm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdsc1() != null) {
+            sql.VALUES("IMDSC1", "#{imdsc1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdsc2() != null) {
+            sql.VALUES("IMDSC2", "#{imdsc2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrtx() != null) {
+            sql.VALUES("IMSRTX", "#{imsrtx,jdbcType=OTHER}");
+        }
+        
+        if (record.getImaln() != null) {
+            sql.VALUES("IMALN", "#{imaln,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp1() != null) {
+            sql.VALUES("IMSRP1", "#{imsrp1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp2() != null) {
+            sql.VALUES("IMSRP2", "#{imsrp2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp3() != null) {
+            sql.VALUES("IMSRP3", "#{imsrp3,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp4() != null) {
+            sql.VALUES("IMSRP4", "#{imsrp4,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp5() != null) {
+            sql.VALUES("IMSRP5", "#{imsrp5,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp6() != null) {
+            sql.VALUES("IMSRP6", "#{imsrp6,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp7() != null) {
+            sql.VALUES("IMSRP7", "#{imsrp7,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp8() != null) {
+            sql.VALUES("IMSRP8", "#{imsrp8,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp9() != null) {
+            sql.VALUES("IMSRP9", "#{imsrp9,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp0() != null) {
+            sql.VALUES("IMSRP0", "#{imsrp0,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp1() != null) {
+            sql.VALUES("IMPRP1", "#{imprp1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp2() != null) {
+            sql.VALUES("IMPRP2", "#{imprp2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp3() != null) {
+            sql.VALUES("IMPRP3", "#{imprp3,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp4() != null) {
+            sql.VALUES("IMPRP4", "#{imprp4,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp5() != null) {
+            sql.VALUES("IMPRP5", "#{imprp5,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp6() != null) {
+            sql.VALUES("IMPRP6", "#{imprp6,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp7() != null) {
+            sql.VALUES("IMPRP7", "#{imprp7,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp8() != null) {
+            sql.VALUES("IMPRP8", "#{imprp8,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp9() != null) {
+            sql.VALUES("IMPRP9", "#{imprp9,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp0() != null) {
+            sql.VALUES("IMPRP0", "#{imprp0,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcdcd() != null) {
+            sql.VALUES("IMCDCD", "#{imcdcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpdgr() != null) {
+            sql.VALUES("IMPDGR", "#{impdgr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdsgp() != null) {
+            sql.VALUES("IMDSGP", "#{imdsgp,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprgr() != null) {
+            sql.VALUES("IMPRGR", "#{imprgr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImrprc() != null) {
+            sql.VALUES("IMRPRC", "#{imrprc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImorpr() != null) {
+            sql.VALUES("IMORPR", "#{imorpr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImbuyr() != null) {
+            sql.VALUES("IMBUYR", "#{imbuyr,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImdraw() != null) {
+            sql.VALUES("IMDRAW", "#{imdraw,jdbcType=OTHER}");
+        }
+        
+        if (record.getImrvno() != null) {
+            sql.VALUES("IMRVNO", "#{imrvno,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdsze() != null) {
+            sql.VALUES("IMDSZE", "#{imdsze,jdbcType=OTHER}");
+        }
+        
+        if (record.getImvcud() != null) {
+            sql.VALUES("IMVCUD", "#{imvcud,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcars() != null) {
+            sql.VALUES("IMCARS", "#{imcars,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcarp() != null) {
+            sql.VALUES("IMCARP", "#{imcarp,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImshcn() != null) {
+            sql.VALUES("IMSHCN", "#{imshcn,jdbcType=OTHER}");
+        }
+        
+        if (record.getImshcm() != null) {
+            sql.VALUES("IMSHCM", "#{imshcm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom1() != null) {
+            sql.VALUES("IMUOM1", "#{imuom1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom2() != null) {
+            sql.VALUES("IMUOM2", "#{imuom2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom3() != null) {
+            sql.VALUES("IMUOM3", "#{imuom3,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom4() != null) {
+            sql.VALUES("IMUOM4", "#{imuom4,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom6() != null) {
+            sql.VALUES("IMUOM6", "#{imuom6,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom8() != null) {
+            sql.VALUES("IMUOM8", "#{imuom8,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom9() != null) {
+            sql.VALUES("IMUOM9", "#{imuom9,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuwum() != null) {
+            sql.VALUES("IMUWUM", "#{imuwum,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuvm1() != null) {
+            sql.VALUES("IMUVM1", "#{imuvm1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsutm() != null) {
+            sql.VALUES("IMSUTM", "#{imsutm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImumvw() != null) {
+            sql.VALUES("IMUMVW", "#{imumvw,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcycl() != null) {
+            sql.VALUES("IMCYCL", "#{imcycl,jdbcType=OTHER}");
+        }
+        
+        if (record.getImglpt() != null) {
+            sql.VALUES("IMGLPT", "#{imglpt,jdbcType=OTHER}");
+        }
+        
+        if (record.getImplev() != null) {
+            sql.VALUES("IMPLEV", "#{implev,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpplv() != null) {
+            sql.VALUES("IMPPLV", "#{impplv,jdbcType=OTHER}");
+        }
+        
+        if (record.getImclev() != null) {
+            sql.VALUES("IMCLEV", "#{imclev,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprpo() != null) {
+            sql.VALUES("IMPRPO", "#{imprpo,jdbcType=OTHER}");
+        }
+        
+        if (record.getImckav() != null) {
+            sql.VALUES("IMCKAV", "#{imckav,jdbcType=OTHER}");
+        }
+        
+        if (record.getImbpfg() != null) {
+            sql.VALUES("IMBPFG", "#{imbpfg,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrce() != null) {
+            sql.VALUES("IMSRCE", "#{imsrce,jdbcType=OTHER}");
+        }
+        
+        if (record.getImot1y() != null) {
+            sql.VALUES("IMOT1Y", "#{imot1y,jdbcType=OTHER}");
+        }
+        
+        if (record.getImot2y() != null) {
+            sql.VALUES("IMOT2Y", "#{imot2y,jdbcType=OTHER}");
+        }
+        
+        if (record.getImstdp() != null) {
+            sql.VALUES("IMSTDP", "#{imstdp,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImfrmp() != null) {
+            sql.VALUES("IMFRMP", "#{imfrmp,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImthrp() != null) {
+            sql.VALUES("IMTHRP", "#{imthrp,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImstdg() != null) {
+            sql.VALUES("IMSTDG", "#{imstdg,jdbcType=OTHER}");
+        }
+        
+        if (record.getImfrgd() != null) {
+            sql.VALUES("IMFRGD", "#{imfrgd,jdbcType=OTHER}");
+        }
+        
+        if (record.getImthgd() != null) {
+            sql.VALUES("IMTHGD", "#{imthgd,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcoty() != null) {
+            sql.VALUES("IMCOTY", "#{imcoty,jdbcType=OTHER}");
+        }
+        
+        if (record.getImstkt() != null) {
+            sql.VALUES("IMSTKT", "#{imstkt,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlnty() != null) {
+            sql.VALUES("IMLNTY", "#{imlnty,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcont() != null) {
+            sql.VALUES("IMCONT", "#{imcont,jdbcType=OTHER}");
+        }
+        
+        if (record.getImback() != null) {
+            sql.VALUES("IMBACK", "#{imback,jdbcType=OTHER}");
+        }
+        
+        if (record.getImifla() != null) {
+            sql.VALUES("IMIFLA", "#{imifla,jdbcType=OTHER}");
+        }
+        
+        if (record.getImtfla() != null) {
+            sql.VALUES("IMTFLA", "#{imtfla,jdbcType=OTHER}");
+        }
+        
+        if (record.getIminmg() != null) {
+            sql.VALUES("IMINMG", "#{iminmg,jdbcType=OTHER}");
+        }
+        
+        if (record.getImabcs() != null) {
+            sql.VALUES("IMABCS", "#{imabcs,jdbcType=OTHER}");
+        }
+        
+        if (record.getImabcm() != null) {
+            sql.VALUES("IMABCM", "#{imabcm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImabci() != null) {
+            sql.VALUES("IMABCI", "#{imabci,jdbcType=OTHER}");
+        }
+        
+        if (record.getImovr() != null) {
+            sql.VALUES("IMOVR", "#{imovr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImwarr() != null) {
+            sql.VALUES("IMWARR", "#{imwarr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcmcg() != null) {
+            sql.VALUES("IMCMCG", "#{imcmcg,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrnr() != null) {
+            sql.VALUES("IMSRNR", "#{imsrnr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpmth() != null) {
+            sql.VALUES("IMPMTH", "#{impmth,jdbcType=OTHER}");
+        }
+        
+        if (record.getImfifo() != null) {
+            sql.VALUES("IMFIFO", "#{imfifo,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlots() != null) {
+            sql.VALUES("IMLOTS", "#{imlots,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsld() != null) {
+            sql.VALUES("IMSLD", "#{imsld,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImanpl() != null) {
+            sql.VALUES("IMANPL", "#{imanpl,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmpst() != null) {
+            sql.VALUES("IMMPST", "#{immpst,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpctm() != null) {
+            sql.VALUES("IMPCTM", "#{impctm,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmmpc() != null) {
+            sql.VALUES("IMMMPC", "#{immmpc,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImptsc() != null) {
+            sql.VALUES("IMPTSC", "#{imptsc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsns() != null) {
+            sql.VALUES("IMSNS", "#{imsns,jdbcType=OTHER}");
+        }
+        
+        if (record.getImltlv() != null) {
+            sql.VALUES("IMLTLV", "#{imltlv,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImltmf() != null) {
+            sql.VALUES("IMLTMF", "#{imltmf,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImltcm() != null) {
+            sql.VALUES("IMLTCM", "#{imltcm,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImopc() != null) {
+            sql.VALUES("IMOPC", "#{imopc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImopv() != null) {
+            sql.VALUES("IMOPV", "#{imopv,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImacq() != null) {
+            sql.VALUES("IMACQ", "#{imacq,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmlq() != null) {
+            sql.VALUES("IMMLQ", "#{immlq,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImltpu() != null) {
+            sql.VALUES("IMLTPU", "#{imltpu,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmpsp() != null) {
+            sql.VALUES("IMMPSP", "#{immpsp,jdbcType=OTHER}");
+        }
+        
+        if (record.getImmrpp() != null) {
+            sql.VALUES("IMMRPP", "#{immrpp,jdbcType=OTHER}");
+        }
+        
+        if (record.getImitc() != null) {
+            sql.VALUES("IMITC", "#{imitc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImordw() != null) {
+            sql.VALUES("IMORDW", "#{imordw,jdbcType=OTHER}");
+        }
+        
+        if (record.getImmtf1() != null) {
+            sql.VALUES("IMMTF1", "#{immtf1,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmtf2() != null) {
+            sql.VALUES("IMMTF2", "#{immtf2,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmtf3() != null) {
+            sql.VALUES("IMMTF3", "#{immtf3,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmtf4() != null) {
+            sql.VALUES("IMMTF4", "#{immtf4,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmtf5() != null) {
+            sql.VALUES("IMMTF5", "#{immtf5,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImexpd() != null) {
+            sql.VALUES("IMEXPD", "#{imexpd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImdefd() != null) {
+            sql.VALUES("IMDEFD", "#{imdefd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImsflt() != null) {
+            sql.VALUES("IMSFLT", "#{imsflt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmake() != null) {
+            sql.VALUES("IMMAKE", "#{immake,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcoby() != null) {
+            sql.VALUES("IMCOBY", "#{imcoby,jdbcType=OTHER}");
+        }
+        
+        if (record.getImllx() != null) {
+            sql.VALUES("IMLLX", "#{imllx,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcmgl() != null) {
+            sql.VALUES("IMCMGL", "#{imcmgl,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcomh() != null) {
+            sql.VALUES("IMCOMH", "#{imcomh,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImurcd() != null) {
+            sql.VALUES("IMURCD", "#{imurcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getImurdt() != null) {
+            sql.VALUES("IMURDT", "#{imurdt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImurat() != null) {
+            sql.VALUES("IMURAT", "#{imurat,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImurab() != null) {
+            sql.VALUES("IMURAB", "#{imurab,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImurrf() != null) {
+            sql.VALUES("IMURRF", "#{imurrf,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuser() != null) {
+            sql.VALUES("IMUSER", "#{imuser,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpid() != null) {
+            sql.VALUES("IMPID", "#{impid,jdbcType=OTHER}");
+        }
+        
+        if (record.getImjobn() != null) {
+            sql.VALUES("IMJOBN", "#{imjobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getImupmj() != null) {
+            sql.VALUES("IMUPMJ", "#{imupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImtday() != null) {
+            sql.VALUES("IMTDAY", "#{imtday,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImupcn() != null) {
+            sql.VALUES("IMUPCN", "#{imupcn,jdbcType=OTHER}");
+        }
+        
+        if (record.getImscc0() != null) {
+            sql.VALUES("IMSCC0", "#{imscc0,jdbcType=OTHER}");
+        }
+        
+        if (record.getImumup() != null) {
+            sql.VALUES("IMUMUP", "#{imumup,jdbcType=OTHER}");
+        }
+        
+        if (record.getImumdf() != null) {
+            sql.VALUES("IMUMDF", "#{imumdf,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums0() != null) {
+            sql.VALUES("IMUMS0", "#{imums0,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums1() != null) {
+            sql.VALUES("IMUMS1", "#{imums1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums2() != null) {
+            sql.VALUES("IMUMS2", "#{imums2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums3() != null) {
+            sql.VALUES("IMUMS3", "#{imums3,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums4() != null) {
+            sql.VALUES("IMUMS4", "#{imums4,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums5() != null) {
+            sql.VALUES("IMUMS5", "#{imums5,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums6() != null) {
+            sql.VALUES("IMUMS6", "#{imums6,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums7() != null) {
+            sql.VALUES("IMUMS7", "#{imums7,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums8() != null) {
+            sql.VALUES("IMUMS8", "#{imums8,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpoc() != null) {
+            sql.VALUES("IMPOC", "#{impoc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImavrt() != null) {
+            sql.VALUES("IMAVRT", "#{imavrt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImeqty() != null) {
+            sql.VALUES("IMEQTY", "#{imeqty,jdbcType=OTHER}");
+        }
+        
+        if (record.getImwtrq() != null) {
+            sql.VALUES("IMWTRQ", "#{imwtrq,jdbcType=OTHER}");
+        }
+        
+        if (record.getImtmpl() != null) {
+            sql.VALUES("IMTMPL", "#{imtmpl,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg1() != null) {
+            sql.VALUES("IMSEG1", "#{imseg1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg2() != null) {
+            sql.VALUES("IMSEG2", "#{imseg2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg3() != null) {
+            sql.VALUES("IMSEG3", "#{imseg3,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg4() != null) {
+            sql.VALUES("IMSEG4", "#{imseg4,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg5() != null) {
+            sql.VALUES("IMSEG5", "#{imseg5,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg6() != null) {
+            sql.VALUES("IMSEG6", "#{imseg6,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg7() != null) {
+            sql.VALUES("IMSEG7", "#{imseg7,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg8() != null) {
+            sql.VALUES("IMSEG8", "#{imseg8,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg9() != null) {
+            sql.VALUES("IMSEG9", "#{imseg9,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg0() != null) {
+            sql.VALUES("IMSEG0", "#{imseg0,jdbcType=OTHER}");
+        }
+        
+        if (record.getImmic() != null) {
+            sql.VALUES("IMMIC", "#{immic,jdbcType=OTHER}");
+        }
+        
+        if (record.getImaing() != null) {
+            sql.VALUES("IMAING", "#{imaing,jdbcType=OTHER}");
+        }
+        
+        if (record.getImbbdd() != null) {
+            sql.VALUES("IMBBDD", "#{imbbdd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcmdm() != null) {
+            sql.VALUES("IMCMDM", "#{imcmdm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlecm() != null) {
+            sql.VALUES("IMLECM", "#{imlecm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImledd() != null) {
+            sql.VALUES("IMLEDD", "#{imledd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImpefd() != null) {
+            sql.VALUES("IMPEFD", "#{impefd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImsbdd() != null) {
+            sql.VALUES("IMSBDD", "#{imsbdd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImu1dd() != null) {
+            sql.VALUES("IMU1DD", "#{imu1dd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImu2dd() != null) {
+            sql.VALUES("IMU2DD", "#{imu2dd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImu3dd() != null) {
+            sql.VALUES("IMU3DD", "#{imu3dd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImu4dd() != null) {
+            sql.VALUES("IMU4DD", "#{imu4dd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImu5dd() != null) {
+            sql.VALUES("IMU5DD", "#{imu5dd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImdltl() != null) {
+            sql.VALUES("IMDLTL", "#{imdltl,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImdppo() != null) {
+            sql.VALUES("IMDPPO", "#{imdppo,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdual() != null) {
+            sql.VALUES("IMDUAL", "#{imdual,jdbcType=OTHER}");
+        }
+        
+        if (record.getImxdck() != null) {
+            sql.VALUES("IMXDCK", "#{imxdck,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlaf() != null) {
+            sql.VALUES("IMLAF", "#{imlaf,jdbcType=OTHER}");
+        }
+        
+        if (record.getImltfm() != null) {
+            sql.VALUES("IMLTFM", "#{imltfm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImrwla() != null) {
+            sql.VALUES("IMRWLA", "#{imrwla,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlnpa() != null) {
+            sql.VALUES("IMLNPA", "#{imlnpa,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlotc() != null) {
+            sql.VALUES("IMLOTC", "#{imlotc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImapsc() != null) {
+            sql.VALUES("IMAPSC", "#{imapsc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImauom() != null) {
+            sql.VALUES("IMAUOM", "#{imauom,jdbcType=OTHER}");
+        }
+        
+        if (record.getImconb() != null) {
+            sql.VALUES("IMCONB", "#{imconb,jdbcType=OTHER}");
+        }
+        
+        if (record.getImgcmp() != null) {
+            sql.VALUES("IMGCMP", "#{imgcmp,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpri1() != null) {
+            sql.VALUES("IMPRI1", "#{impri1,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImpri2() != null) {
+            sql.VALUES("IMPRI2", "#{impri2,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImashl() != null) {
+            sql.VALUES("IMASHL", "#{imashl,jdbcType=OTHER}");
+        }
+        
+        if (record.getImvminv() != null) {
+            sql.VALUES("IMVMINV", "#{imvminv,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcmeth() != null) {
+            sql.VALUES("IMCMETH", "#{imcmeth,jdbcType=OTHER}");
+        }
+        
+        if (record.getImexpi() != null) {
+            sql.VALUES("IMEXPI", "#{imexpi,jdbcType=OTHER}");
+        }
+        
+        if (record.getImopth() != null) {
+            sql.VALUES("IMOPTH", "#{imopth,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcuth() != null) {
+            sql.VALUES("IMCUTH", "#{imcuth,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImumth() != null) {
+            sql.VALUES("IMUMTH", "#{imumth,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlmfg() != null) {
+            sql.VALUES("IMLMFG", "#{imlmfg,jdbcType=OTHER}");
+        }
+        
+        if (record.getImline() != null) {
+            sql.VALUES("IMLINE", "#{imline,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdftpct() != null) {
+            sql.VALUES("IMDFTPCT", "#{imdftpct,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImkbit() != null) {
+            sql.VALUES("IMKBIT", "#{imkbit,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdfenditm() != null) {
+            sql.VALUES("IMDFENDITM", "#{imdfenditm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImkanexll() != null) {
+            sql.VALUES("IMKANEXLL", "#{imkanexll,jdbcType=OTHER}");
+        }
+        
+        if (record.getImscpsell() != null) {
+            sql.VALUES("IMSCPSELL", "#{imscpsell,jdbcType=OTHER}");
+        }
+        
+        if (record.getImmopth() != null) {
+            sql.VALUES("IMMOPTH", "#{immopth,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmcuth() != null) {
+            sql.VALUES("IMMCUTH", "#{immcuth,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcumth() != null) {
+            sql.VALUES("IMCUMTH", "#{imcumth,jdbcType=OTHER}");
+        }
+        
+        if (record.getImatprn() != null) {
+            sql.VALUES("IMATPRN", "#{imatprn,jdbcType=OTHER}");
+        }
+        
+        if (record.getImatpca() != null) {
+            sql.VALUES("IMATPCA", "#{imatpca,jdbcType=OTHER}");
+        }
+        
+        if (record.getImatpac() != null) {
+            sql.VALUES("IMATPAC", "#{imatpac,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcoore() != null) {
+            sql.VALUES("IMCOORE", "#{imcoore,jdbcType=OTHER}");
+        }
+        
+        if (record.getImvcpfc() != null) {
+            sql.VALUES("IMVCPFC", "#{imvcpfc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpnyn() != null) {
+            sql.VALUES("IMPNYN", "#{impnyn,jdbcType=OTHER}");
+        }
+        
+        return sql.toString();
+    }
+
+    public String updateByPrimaryKeySelective(F4101 record) {
+        SQL sql = new SQL();
+        sql.UPDATE("CRPDTA.F4101");
+        
+        if (record.getImlitm() != null) {
+            sql.SET("IMLITM = #{imlitm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImaitm() != null) {
+            sql.SET("IMAITM = #{imaitm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdsc1() != null) {
+            sql.SET("IMDSC1 = #{imdsc1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdsc2() != null) {
+            sql.SET("IMDSC2 = #{imdsc2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrtx() != null) {
+            sql.SET("IMSRTX = #{imsrtx,jdbcType=OTHER}");
+        }
+        
+        if (record.getImaln() != null) {
+            sql.SET("IMALN = #{imaln,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp1() != null) {
+            sql.SET("IMSRP1 = #{imsrp1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp2() != null) {
+            sql.SET("IMSRP2 = #{imsrp2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp3() != null) {
+            sql.SET("IMSRP3 = #{imsrp3,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp4() != null) {
+            sql.SET("IMSRP4 = #{imsrp4,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp5() != null) {
+            sql.SET("IMSRP5 = #{imsrp5,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp6() != null) {
+            sql.SET("IMSRP6 = #{imsrp6,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp7() != null) {
+            sql.SET("IMSRP7 = #{imsrp7,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp8() != null) {
+            sql.SET("IMSRP8 = #{imsrp8,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp9() != null) {
+            sql.SET("IMSRP9 = #{imsrp9,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrp0() != null) {
+            sql.SET("IMSRP0 = #{imsrp0,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp1() != null) {
+            sql.SET("IMPRP1 = #{imprp1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp2() != null) {
+            sql.SET("IMPRP2 = #{imprp2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp3() != null) {
+            sql.SET("IMPRP3 = #{imprp3,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp4() != null) {
+            sql.SET("IMPRP4 = #{imprp4,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp5() != null) {
+            sql.SET("IMPRP5 = #{imprp5,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp6() != null) {
+            sql.SET("IMPRP6 = #{imprp6,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp7() != null) {
+            sql.SET("IMPRP7 = #{imprp7,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp8() != null) {
+            sql.SET("IMPRP8 = #{imprp8,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp9() != null) {
+            sql.SET("IMPRP9 = #{imprp9,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprp0() != null) {
+            sql.SET("IMPRP0 = #{imprp0,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcdcd() != null) {
+            sql.SET("IMCDCD = #{imcdcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpdgr() != null) {
+            sql.SET("IMPDGR = #{impdgr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdsgp() != null) {
+            sql.SET("IMDSGP = #{imdsgp,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprgr() != null) {
+            sql.SET("IMPRGR = #{imprgr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImrprc() != null) {
+            sql.SET("IMRPRC = #{imrprc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImorpr() != null) {
+            sql.SET("IMORPR = #{imorpr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImbuyr() != null) {
+            sql.SET("IMBUYR = #{imbuyr,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImdraw() != null) {
+            sql.SET("IMDRAW = #{imdraw,jdbcType=OTHER}");
+        }
+        
+        if (record.getImrvno() != null) {
+            sql.SET("IMRVNO = #{imrvno,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdsze() != null) {
+            sql.SET("IMDSZE = #{imdsze,jdbcType=OTHER}");
+        }
+        
+        if (record.getImvcud() != null) {
+            sql.SET("IMVCUD = #{imvcud,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcars() != null) {
+            sql.SET("IMCARS = #{imcars,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcarp() != null) {
+            sql.SET("IMCARP = #{imcarp,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImshcn() != null) {
+            sql.SET("IMSHCN = #{imshcn,jdbcType=OTHER}");
+        }
+        
+        if (record.getImshcm() != null) {
+            sql.SET("IMSHCM = #{imshcm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom1() != null) {
+            sql.SET("IMUOM1 = #{imuom1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom2() != null) {
+            sql.SET("IMUOM2 = #{imuom2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom3() != null) {
+            sql.SET("IMUOM3 = #{imuom3,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom4() != null) {
+            sql.SET("IMUOM4 = #{imuom4,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom6() != null) {
+            sql.SET("IMUOM6 = #{imuom6,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom8() != null) {
+            sql.SET("IMUOM8 = #{imuom8,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuom9() != null) {
+            sql.SET("IMUOM9 = #{imuom9,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuwum() != null) {
+            sql.SET("IMUWUM = #{imuwum,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuvm1() != null) {
+            sql.SET("IMUVM1 = #{imuvm1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsutm() != null) {
+            sql.SET("IMSUTM = #{imsutm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImumvw() != null) {
+            sql.SET("IMUMVW = #{imumvw,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcycl() != null) {
+            sql.SET("IMCYCL = #{imcycl,jdbcType=OTHER}");
+        }
+        
+        if (record.getImglpt() != null) {
+            sql.SET("IMGLPT = #{imglpt,jdbcType=OTHER}");
+        }
+        
+        if (record.getImplev() != null) {
+            sql.SET("IMPLEV = #{implev,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpplv() != null) {
+            sql.SET("IMPPLV = #{impplv,jdbcType=OTHER}");
+        }
+        
+        if (record.getImclev() != null) {
+            sql.SET("IMCLEV = #{imclev,jdbcType=OTHER}");
+        }
+        
+        if (record.getImprpo() != null) {
+            sql.SET("IMPRPO = #{imprpo,jdbcType=OTHER}");
+        }
+        
+        if (record.getImckav() != null) {
+            sql.SET("IMCKAV = #{imckav,jdbcType=OTHER}");
+        }
+        
+        if (record.getImbpfg() != null) {
+            sql.SET("IMBPFG = #{imbpfg,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrce() != null) {
+            sql.SET("IMSRCE = #{imsrce,jdbcType=OTHER}");
+        }
+        
+        if (record.getImot1y() != null) {
+            sql.SET("IMOT1Y = #{imot1y,jdbcType=OTHER}");
+        }
+        
+        if (record.getImot2y() != null) {
+            sql.SET("IMOT2Y = #{imot2y,jdbcType=OTHER}");
+        }
+        
+        if (record.getImstdp() != null) {
+            sql.SET("IMSTDP = #{imstdp,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImfrmp() != null) {
+            sql.SET("IMFRMP = #{imfrmp,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImthrp() != null) {
+            sql.SET("IMTHRP = #{imthrp,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImstdg() != null) {
+            sql.SET("IMSTDG = #{imstdg,jdbcType=OTHER}");
+        }
+        
+        if (record.getImfrgd() != null) {
+            sql.SET("IMFRGD = #{imfrgd,jdbcType=OTHER}");
+        }
+        
+        if (record.getImthgd() != null) {
+            sql.SET("IMTHGD = #{imthgd,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcoty() != null) {
+            sql.SET("IMCOTY = #{imcoty,jdbcType=OTHER}");
+        }
+        
+        if (record.getImstkt() != null) {
+            sql.SET("IMSTKT = #{imstkt,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlnty() != null) {
+            sql.SET("IMLNTY = #{imlnty,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcont() != null) {
+            sql.SET("IMCONT = #{imcont,jdbcType=OTHER}");
+        }
+        
+        if (record.getImback() != null) {
+            sql.SET("IMBACK = #{imback,jdbcType=OTHER}");
+        }
+        
+        if (record.getImifla() != null) {
+            sql.SET("IMIFLA = #{imifla,jdbcType=OTHER}");
+        }
+        
+        if (record.getImtfla() != null) {
+            sql.SET("IMTFLA = #{imtfla,jdbcType=OTHER}");
+        }
+        
+        if (record.getIminmg() != null) {
+            sql.SET("IMINMG = #{iminmg,jdbcType=OTHER}");
+        }
+        
+        if (record.getImabcs() != null) {
+            sql.SET("IMABCS = #{imabcs,jdbcType=OTHER}");
+        }
+        
+        if (record.getImabcm() != null) {
+            sql.SET("IMABCM = #{imabcm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImabci() != null) {
+            sql.SET("IMABCI = #{imabci,jdbcType=OTHER}");
+        }
+        
+        if (record.getImovr() != null) {
+            sql.SET("IMOVR = #{imovr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImwarr() != null) {
+            sql.SET("IMWARR = #{imwarr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcmcg() != null) {
+            sql.SET("IMCMCG = #{imcmcg,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsrnr() != null) {
+            sql.SET("IMSRNR = #{imsrnr,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpmth() != null) {
+            sql.SET("IMPMTH = #{impmth,jdbcType=OTHER}");
+        }
+        
+        if (record.getImfifo() != null) {
+            sql.SET("IMFIFO = #{imfifo,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlots() != null) {
+            sql.SET("IMLOTS = #{imlots,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsld() != null) {
+            sql.SET("IMSLD = #{imsld,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImanpl() != null) {
+            sql.SET("IMANPL = #{imanpl,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmpst() != null) {
+            sql.SET("IMMPST = #{immpst,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpctm() != null) {
+            sql.SET("IMPCTM = #{impctm,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmmpc() != null) {
+            sql.SET("IMMMPC = #{immmpc,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImptsc() != null) {
+            sql.SET("IMPTSC = #{imptsc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImsns() != null) {
+            sql.SET("IMSNS = #{imsns,jdbcType=OTHER}");
+        }
+        
+        if (record.getImltlv() != null) {
+            sql.SET("IMLTLV = #{imltlv,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImltmf() != null) {
+            sql.SET("IMLTMF = #{imltmf,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImltcm() != null) {
+            sql.SET("IMLTCM = #{imltcm,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImopc() != null) {
+            sql.SET("IMOPC = #{imopc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImopv() != null) {
+            sql.SET("IMOPV = #{imopv,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImacq() != null) {
+            sql.SET("IMACQ = #{imacq,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmlq() != null) {
+            sql.SET("IMMLQ = #{immlq,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImltpu() != null) {
+            sql.SET("IMLTPU = #{imltpu,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmpsp() != null) {
+            sql.SET("IMMPSP = #{immpsp,jdbcType=OTHER}");
+        }
+        
+        if (record.getImmrpp() != null) {
+            sql.SET("IMMRPP = #{immrpp,jdbcType=OTHER}");
+        }
+        
+        if (record.getImitc() != null) {
+            sql.SET("IMITC = #{imitc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImordw() != null) {
+            sql.SET("IMORDW = #{imordw,jdbcType=OTHER}");
+        }
+        
+        if (record.getImmtf1() != null) {
+            sql.SET("IMMTF1 = #{immtf1,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmtf2() != null) {
+            sql.SET("IMMTF2 = #{immtf2,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmtf3() != null) {
+            sql.SET("IMMTF3 = #{immtf3,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmtf4() != null) {
+            sql.SET("IMMTF4 = #{immtf4,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmtf5() != null) {
+            sql.SET("IMMTF5 = #{immtf5,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImexpd() != null) {
+            sql.SET("IMEXPD = #{imexpd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImdefd() != null) {
+            sql.SET("IMDEFD = #{imdefd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImsflt() != null) {
+            sql.SET("IMSFLT = #{imsflt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmake() != null) {
+            sql.SET("IMMAKE = #{immake,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcoby() != null) {
+            sql.SET("IMCOBY = #{imcoby,jdbcType=OTHER}");
+        }
+        
+        if (record.getImllx() != null) {
+            sql.SET("IMLLX = #{imllx,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcmgl() != null) {
+            sql.SET("IMCMGL = #{imcmgl,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcomh() != null) {
+            sql.SET("IMCOMH = #{imcomh,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImurcd() != null) {
+            sql.SET("IMURCD = #{imurcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getImurdt() != null) {
+            sql.SET("IMURDT = #{imurdt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImurat() != null) {
+            sql.SET("IMURAT = #{imurat,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImurab() != null) {
+            sql.SET("IMURAB = #{imurab,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImurrf() != null) {
+            sql.SET("IMURRF = #{imurrf,jdbcType=OTHER}");
+        }
+        
+        if (record.getImuser() != null) {
+            sql.SET("IMUSER = #{imuser,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpid() != null) {
+            sql.SET("IMPID = #{impid,jdbcType=OTHER}");
+        }
+        
+        if (record.getImjobn() != null) {
+            sql.SET("IMJOBN = #{imjobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getImupmj() != null) {
+            sql.SET("IMUPMJ = #{imupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImtday() != null) {
+            sql.SET("IMTDAY = #{imtday,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImupcn() != null) {
+            sql.SET("IMUPCN = #{imupcn,jdbcType=OTHER}");
+        }
+        
+        if (record.getImscc0() != null) {
+            sql.SET("IMSCC0 = #{imscc0,jdbcType=OTHER}");
+        }
+        
+        if (record.getImumup() != null) {
+            sql.SET("IMUMUP = #{imumup,jdbcType=OTHER}");
+        }
+        
+        if (record.getImumdf() != null) {
+            sql.SET("IMUMDF = #{imumdf,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums0() != null) {
+            sql.SET("IMUMS0 = #{imums0,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums1() != null) {
+            sql.SET("IMUMS1 = #{imums1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums2() != null) {
+            sql.SET("IMUMS2 = #{imums2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums3() != null) {
+            sql.SET("IMUMS3 = #{imums3,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums4() != null) {
+            sql.SET("IMUMS4 = #{imums4,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums5() != null) {
+            sql.SET("IMUMS5 = #{imums5,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums6() != null) {
+            sql.SET("IMUMS6 = #{imums6,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums7() != null) {
+            sql.SET("IMUMS7 = #{imums7,jdbcType=OTHER}");
+        }
+        
+        if (record.getImums8() != null) {
+            sql.SET("IMUMS8 = #{imums8,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpoc() != null) {
+            sql.SET("IMPOC = #{impoc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImavrt() != null) {
+            sql.SET("IMAVRT = #{imavrt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImeqty() != null) {
+            sql.SET("IMEQTY = #{imeqty,jdbcType=OTHER}");
+        }
+        
+        if (record.getImwtrq() != null) {
+            sql.SET("IMWTRQ = #{imwtrq,jdbcType=OTHER}");
+        }
+        
+        if (record.getImtmpl() != null) {
+            sql.SET("IMTMPL = #{imtmpl,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg1() != null) {
+            sql.SET("IMSEG1 = #{imseg1,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg2() != null) {
+            sql.SET("IMSEG2 = #{imseg2,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg3() != null) {
+            sql.SET("IMSEG3 = #{imseg3,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg4() != null) {
+            sql.SET("IMSEG4 = #{imseg4,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg5() != null) {
+            sql.SET("IMSEG5 = #{imseg5,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg6() != null) {
+            sql.SET("IMSEG6 = #{imseg6,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg7() != null) {
+            sql.SET("IMSEG7 = #{imseg7,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg8() != null) {
+            sql.SET("IMSEG8 = #{imseg8,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg9() != null) {
+            sql.SET("IMSEG9 = #{imseg9,jdbcType=OTHER}");
+        }
+        
+        if (record.getImseg0() != null) {
+            sql.SET("IMSEG0 = #{imseg0,jdbcType=OTHER}");
+        }
+        
+        if (record.getImmic() != null) {
+            sql.SET("IMMIC = #{immic,jdbcType=OTHER}");
+        }
+        
+        if (record.getImaing() != null) {
+            sql.SET("IMAING = #{imaing,jdbcType=OTHER}");
+        }
+        
+        if (record.getImbbdd() != null) {
+            sql.SET("IMBBDD = #{imbbdd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcmdm() != null) {
+            sql.SET("IMCMDM = #{imcmdm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlecm() != null) {
+            sql.SET("IMLECM = #{imlecm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImledd() != null) {
+            sql.SET("IMLEDD = #{imledd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImpefd() != null) {
+            sql.SET("IMPEFD = #{impefd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImsbdd() != null) {
+            sql.SET("IMSBDD = #{imsbdd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImu1dd() != null) {
+            sql.SET("IMU1DD = #{imu1dd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImu2dd() != null) {
+            sql.SET("IMU2DD = #{imu2dd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImu3dd() != null) {
+            sql.SET("IMU3DD = #{imu3dd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImu4dd() != null) {
+            sql.SET("IMU4DD = #{imu4dd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImu5dd() != null) {
+            sql.SET("IMU5DD = #{imu5dd,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImdltl() != null) {
+            sql.SET("IMDLTL = #{imdltl,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImdppo() != null) {
+            sql.SET("IMDPPO = #{imdppo,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdual() != null) {
+            sql.SET("IMDUAL = #{imdual,jdbcType=OTHER}");
+        }
+        
+        if (record.getImxdck() != null) {
+            sql.SET("IMXDCK = #{imxdck,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlaf() != null) {
+            sql.SET("IMLAF = #{imlaf,jdbcType=OTHER}");
+        }
+        
+        if (record.getImltfm() != null) {
+            sql.SET("IMLTFM = #{imltfm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImrwla() != null) {
+            sql.SET("IMRWLA = #{imrwla,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlnpa() != null) {
+            sql.SET("IMLNPA = #{imlnpa,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlotc() != null) {
+            sql.SET("IMLOTC = #{imlotc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImapsc() != null) {
+            sql.SET("IMAPSC = #{imapsc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImauom() != null) {
+            sql.SET("IMAUOM = #{imauom,jdbcType=OTHER}");
+        }
+        
+        if (record.getImconb() != null) {
+            sql.SET("IMCONB = #{imconb,jdbcType=OTHER}");
+        }
+        
+        if (record.getImgcmp() != null) {
+            sql.SET("IMGCMP = #{imgcmp,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpri1() != null) {
+            sql.SET("IMPRI1 = #{impri1,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImpri2() != null) {
+            sql.SET("IMPRI2 = #{impri2,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImashl() != null) {
+            sql.SET("IMASHL = #{imashl,jdbcType=OTHER}");
+        }
+        
+        if (record.getImvminv() != null) {
+            sql.SET("IMVMINV = #{imvminv,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcmeth() != null) {
+            sql.SET("IMCMETH = #{imcmeth,jdbcType=OTHER}");
+        }
+        
+        if (record.getImexpi() != null) {
+            sql.SET("IMEXPI = #{imexpi,jdbcType=OTHER}");
+        }
+        
+        if (record.getImopth() != null) {
+            sql.SET("IMOPTH = #{imopth,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcuth() != null) {
+            sql.SET("IMCUTH = #{imcuth,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImumth() != null) {
+            sql.SET("IMUMTH = #{imumth,jdbcType=OTHER}");
+        }
+        
+        if (record.getImlmfg() != null) {
+            sql.SET("IMLMFG = #{imlmfg,jdbcType=OTHER}");
+        }
+        
+        if (record.getImline() != null) {
+            sql.SET("IMLINE = #{imline,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdftpct() != null) {
+            sql.SET("IMDFTPCT = #{imdftpct,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImkbit() != null) {
+            sql.SET("IMKBIT = #{imkbit,jdbcType=OTHER}");
+        }
+        
+        if (record.getImdfenditm() != null) {
+            sql.SET("IMDFENDITM = #{imdfenditm,jdbcType=OTHER}");
+        }
+        
+        if (record.getImkanexll() != null) {
+            sql.SET("IMKANEXLL = #{imkanexll,jdbcType=OTHER}");
+        }
+        
+        if (record.getImscpsell() != null) {
+            sql.SET("IMSCPSELL = #{imscpsell,jdbcType=OTHER}");
+        }
+        
+        if (record.getImmopth() != null) {
+            sql.SET("IMMOPTH = #{immopth,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImmcuth() != null) {
+            sql.SET("IMMCUTH = #{immcuth,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getImcumth() != null) {
+            sql.SET("IMCUMTH = #{imcumth,jdbcType=OTHER}");
+        }
+        
+        if (record.getImatprn() != null) {
+            sql.SET("IMATPRN = #{imatprn,jdbcType=OTHER}");
+        }
+        
+        if (record.getImatpca() != null) {
+            sql.SET("IMATPCA = #{imatpca,jdbcType=OTHER}");
+        }
+        
+        if (record.getImatpac() != null) {
+            sql.SET("IMATPAC = #{imatpac,jdbcType=OTHER}");
+        }
+        
+        if (record.getImcoore() != null) {
+            sql.SET("IMCOORE = #{imcoore,jdbcType=OTHER}");
+        }
+        
+        if (record.getImvcpfc() != null) {
+            sql.SET("IMVCPFC = #{imvcpfc,jdbcType=OTHER}");
+        }
+        
+        if (record.getImpnyn() != null) {
+            sql.SET("IMPNYN = #{impnyn,jdbcType=OTHER}");
+        }
+        
+        sql.WHERE("IMITM = #{imitm,jdbcType=DECIMAL}");
+        
+        return sql.toString();
+    }
+}

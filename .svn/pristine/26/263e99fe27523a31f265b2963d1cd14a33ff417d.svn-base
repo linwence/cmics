@@ -1,0 +1,165 @@
+/**
+ * 
+ */
+package com.el.cmic.service.inbound;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.el.cfg.domain.F4211;
+import com.el.cfg.domain.F4311;
+import com.el.cmic.common.BillType;
+import com.el.cmic.common.domain.WmsResult;
+import com.el.cmic.domain.ckcancelback.CkCancelBackOrder;
+import com.el.cmic.domain.ckcancelback.CkCancelBackOrderDtl;
+import com.el.cmic.domain.inbound.InboundPush;
+import com.el.cmic.domain.inbound.InboundPushDetail;
+import com.el.cmic.domain.inbound.InboundPushSerial;
+import com.el.cmic.mapper.ckcancelback.CkCancelBackMapper;
+import com.el.cmic.mapper.inbound.InboundBackMapper;
+import com.el.cmic.mapper.inbound.InboundF4211Mapper;
+import com.el.cmic.mapper.inbound.InboundF4311Mapper;
+import com.el.cmic.mapper.inbound.InboundPushDetailMapper;
+import com.el.cmic.mapper.inbound.InboundPushMapper;
+
+/**
+ * @author ELSIAN
+ *
+ */
+@Service
+public class InboundServiceImpl implements InboundService {
+
+	@Autowired
+    protected InboundPushMapper inboundPushMapper;
+
+    @Autowired
+    private InboundBackMapper inboundBackMapper;
+
+    @Autowired
+    protected InboundPushDetailMapper inboundPushDetailMapper;
+
+	@Autowired
+    protected InboundF4211Mapper inboundF4211Mapper;
+
+	@Autowired
+    protected InboundF4311Mapper inboundF4311Mapper;
+
+	/* (non-Javadoc)
+	 * @see com.el.cmic.service.inbound.InboundService#getInboundPushList()
+	 */
+	public List<InboundPush> getInboundPushList() {
+		List<InboundPush> list = inboundPushMapper.selectAll();
+		if (list != null && !list.isEmpty()) {
+			for (InboundPush row : list) {
+				List<InboundPushDetail> details = inboundPushDetailMapper.selectAll();
+				row.setDetails(details);
+			}
+		}
+		return list;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.el.cmic.service.inbound.InboundService#getInboundPushListWithDetails()
+	 */
+	public List<InboundPush> getInboundPushListWithDetails() {
+		List<InboundPush> list = inboundPushMapper.selectAllWithDetails();
+		return list;
+	}
+	
+
+	/* (non-Javadoc)
+	 * @see com.el.cmic.service.inbound.InboundService#getPushData()
+	 */
+    public String getPushData() {
+		List<InboundPush> list = inboundPushMapper.selectAllWithDetails();
+		return JSON.toJSONString(list, SerializerFeature.WriteMapNullValue, SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.WriteNullListAsEmpty, SerializerFeature.SortField);
+    }
+
+	/* (non-Javadoc)
+	 * @see com.el.cmic.service.inbound.InboundService#updateF4211Status(java.util.List)
+	 */
+	@Override
+    @Transactional
+	public int updateF4211Status(List<F4211> updList) {
+		//return f4211Mapper.updateStatusBatch(updList);
+		int cnt = 0;
+		if (updList != null && updList.size() > 0) {
+			for (F4211 row : updList) {
+				cnt += inboundF4211Mapper.updateStatus(row);
+			}
+		}
+		return cnt;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.el.cmic.service.inbound.InboundService#updateF4311Status(java.util.List)
+	 */
+	@Override
+    @Transactional
+    public int updateF4311Status(List<F4311> updList) {
+		//return f4311Mapper.updateStatusBatch(updList);
+		int cnt = 0;
+		if (updList != null && updList.size() > 0) {
+			for (F4311 row : updList) {
+				cnt += inboundF4311Mapper.updateStatus(row);
+			}
+		}
+		return cnt;
+	}
+
+
+    @Override
+    @Transactional
+    public WmsResult acceptData(String data) {
+        WmsResult wmsResult = new WmsResult(true, "0000", "成功");
+
+        InboundPush inboundPush = JSON.parseObject(data, InboundPush.class);
+
+        if ("2".equals(inboundPush.getRktype())) {
+        	// 2 销退入库
+        	inboundBackMapper.insertF47131(inboundPush);
+        	for (InboundPushDetail detail : inboundPush.getDetails()) {
+        		inboundBackMapper.insertF47132(inboundPush, detail);
+        		for (InboundPushSerial serial : detail.getSerials()) {
+            		inboundBackMapper.insertFe8wms04(inboundPush, detail, serial);
+        		}
+        	}
+        } else if ("1".equals(inboundPush.getRktype()) || "10".equals(inboundPush.getRktype())) {
+        	// 1采购入库、10调拨入库
+        	inboundBackMapper.insertF47071(inboundPush);
+        	for (InboundPushDetail detail : inboundPush.getDetails()) {
+        		inboundBackMapper.insertF47072(inboundPush, detail);
+        		for (InboundPushSerial serial : detail.getSerials()) {
+            		inboundBackMapper.insertFe8wms04(inboundPush, detail, serial);
+        		}
+        	}
+        } else if ("?".equals(inboundPush.getRktype())) {
+        	// 库存调整
+        	inboundBackMapper.insertF47121(inboundPush);
+        	for (InboundPushDetail detail : inboundPush.getDetails()) {
+        		inboundBackMapper.insertF47122(inboundPush, detail);
+        		for (InboundPushSerial serial : detail.getSerials()) {
+            		inboundBackMapper.insertFe8wms04(inboundPush, detail, serial);
+        		}
+        	}
+        } else if ("?".equals(inboundPush.getRktype())) {
+        	// 组装拆配入库
+        	for (InboundPushDetail detail : inboundPush.getDetails()) {
+        		inboundBackMapper.insertFe8wms05(inboundPush, detail);
+        		for (InboundPushSerial serial : detail.getSerials()) {
+            		inboundBackMapper.insertFe8wms04(inboundPush, detail, serial);
+        		}
+        	}
+        }
+
+        return wmsResult;
+
+    }
+
+}

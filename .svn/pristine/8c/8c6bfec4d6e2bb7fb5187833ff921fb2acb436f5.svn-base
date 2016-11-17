@@ -1,0 +1,12 @@
+package com.el.cmic.common;
+
+/**
+ * Created by Vincent on 2016/10/25.
+ * 用来描述单据类型的值
+ */
+public class BillType {
+    public final static String FLAG_SO="SO";//销售订单
+    public final static String FLAG_OP="OP";//采购
+    public final static String FLAG_IA="IA";//组装拆配
+
+}

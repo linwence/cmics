@@ -1,0 +1,267 @@
+package com.el.cmic.mapper.inbound;
+
+import java.math.BigDecimal;
+
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.jdbc.SQL;
+
+import com.el.cmic.domain.inbound.InboundPush;
+import com.el.cmic.domain.inbound.InboundPushDetail;
+import com.el.cmic.domain.inbound.InboundPushSerial;
+
+public interface InboundBackMapper {
+
+    final String UPMJ = "(SELECT TO_CHAR(sysdate, 'YYYYDDD') - 1900000 JULIAN  FROM DUAL)";
+    final String TDAY = "(SELECT TO_CHAR(sysdate, 'HH24MISS') JULIAN  FROM DUAL)";
+
+    final class SqlProvider extends SQL {
+
+        public String insertFe8wms04(@Param("inboundPush") InboundPush inboundPush, @Param("inboundPushDetail") InboundPushDetail inboundPushDetail, @Param("inboundPushSerial") InboundPushSerial inboundPushSerial) {
+            INSERT_INTO("Fe8wms04");
+            VALUES("XLPTUT01", "#{inboundPushSerial.serial}");
+            VALUES("XLAA05", "#{inboundPushSerial.type}");
+            VALUES("XLCA01", "1");
+            VALUES("XLUPRC", "#{inboundPushSerial.pack,jdbcType=NUMERIC}*100");
+            VALUES("XLUORG", "#{inboundPushSerial.ists,jdbcType=NUMERIC}*100");
+            VALUES("XLLITM", "#{inboundPushDetail.litm}");
+            VALUES("XLPTUT02", "#{inboundPushDetail.lot1}");
+            VALUES("XLUSER", "'WMS'");
+            VALUES("XLPID", "'Interface'");
+//            VALUES("XLJOBN", "'Server'");
+            VALUES("XLUPMJ", UPMJ);
+            VALUES("XLTDAY", TDAY);
+            return toString();
+        }
+
+        public String insertFe8wms05(@Param("inboundPush") InboundPush inboundPush, @Param("inboundPushDetail") InboundPushDetail inboundPushDetail) {
+            INSERT_INTO("FE8WMS05");
+            VALUES("XLMCU", "(select LSMCU from FE8WMS21 where LSE8WLZXID=#{inboundPush.mcu})");
+            VALUES("XLCA01", "#{inboundPush.rktype}");
+            VALUES("XLKCOO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("SZDOCO", "#{inboundPush.doco}");
+            VALUES("XLDCTO", "#{inboundPush.dcto}");
+            VALUES("XLCF01", "#{inboundPushDetail.remark}");
+            VALUES("XLLNID", "#{inboundPushDetail.lnid,jdbcType=NUMERIC}*1000");
+            VALUES("XLLITM", "#{inboundPushDetail.litm}");
+            VALUES("XLPTUT01", "#{inboundPushDetail.lot1}");
+            VALUES("XLPTUT02", "#{inboundPushDetail.lot2}");
+            VALUES("XLCA02", "#{inboundPushDetail.rp30}");
+            VALUES("XLUPRC", "#{inboundPushDetail.urec,jdbcType=NUMERIC}*100");
+            VALUES("XLPRRC", "#{inboundPushDetail.disq,jdbcType=NUMERIC}*100");
+            VALUES("XLAMC3", "#{inboundPushDetail.amc3,jdbcType=NUMERIC}*100");
+            VALUES("XLTRDJ", "#{inboundPushDetail.addjj,jdbcType=NUMERIC}");
+            VALUES("XLPEFJ", "#{inboundPushDetail.exdjj,jdbcType=NUMERIC}");
+            VALUES("XLPSDJ", "#{inboundPushDetail.prdjj,jdbcType=NUMERIC}");
+            VALUES("XLGRWT", "#{inboundPushDetail.pack,jdbcType=NUMERIC}*100");
+            VALUES("XLUSER", "'WMS'");
+            VALUES("XLPID", "'Interface'");
+            //VALUES("XLJOBN", "'Server'");
+            VALUES("XLUPMJ", UPMJ);
+            VALUES("XLTDAY", TDAY);
+            return toString();
+        }
+
+        public String insertF47071(@Param("inboundPush") InboundPush inboundPush) {
+            INSERT_INTO("F47071");
+            VALUES("SYEKCO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("SYEDOC", "#{inboundPush.edoc}");
+            VALUES("SYEDST", "'861'");
+            VALUES("SYEDER", "'R'");
+            VALUES("SYEDSP", "'N'");
+            VALUES("SYTPUR", "'02'");
+            VALUES("SYRATY", "'2'");
+            VALUES("SYDCTO", "#{inboundPush.dcto}");
+            VALUES("SYSFXO", "'000'");
+            VALUES("SYAN8", "(SELECT PHAN8 from F4301 where PHDOCO=#{inboundPush.doco} and PHDCTO=#{inboundPush.dcto})");
+            VALUES("SYSHAN", "(SELECT PHSHAN from F4301 where PHDOCO=#{inboundPush.doco} and PHDCTO=#{inboundPush.dcto})");
+            VALUES("SYUSER", "'WMS'");
+            VALUES("SYPID", "'Interface'");
+            VALUES("SYJOBN", "'Server'");
+            VALUES("SYUPMJ", UPMJ);
+            VALUES("SYTDAY", TDAY);
+            VALUES("SYMCU", "(select LSMCU from FE8WMS21 where LSE8WLZXID=#{inboundPush.mcu})");
+            VALUES("SYKCOO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("SYEDCT", "#{inboundPush.dcto}");
+            VALUES("SYDOCO", "#{inboundPush.doco}");
+            return toString();
+        }
+
+        public String insertF47072(@Param("inboundPush") InboundPush inboundPush, @Param("inboundPushDetail") InboundPushDetail inboundPushDetail) {
+            INSERT_INTO("F47072");
+            VALUES("SZEKCO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("SZEDOC", "#{inboundPush.edoc}");
+            VALUES("SZEDCT", "#{inboundPush.dcto}");
+            VALUES("SZEDST", "'861'");
+            VALUES("SZEDER", "'R'");
+            VALUES("SZEDSP", "'N'");
+            VALUES("SZLSTS", "'7'");
+            VALUES("SZKCOO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("SZDOCO", "#{inboundPush.doco}");
+            VALUES("SZDCTO", "#{inboundPush.dcto}");
+            VALUES("SZSFXO", "'000'");
+            VALUES("SZMCU", "(select LSMCU from FE8WMS21 where LSE8WLZXID=#{inboundPush.mcu})");
+            VALUES("SZAN8", "(SELECT pdan8 from F4311 where pddoco=#{inboundPush.doco} and pddcto=#{inboundPush.dcto} and pdlnid=#{inboundPushDetail.lnid}*1000)");
+            VALUES("SZSHAN", "(SELECT pdSHAN from F4311 where pddoco=#{inboundPush.doco} and pddcto=#{inboundPush.dcto} and pdlnid=#{inboundPushDetail.lnid}*1000)");
+            VALUES("SZLOTN", "''");
+            VALUES("SZUORG", "(SELECT pdUORG from F4311 where pddoco=#{inboundPush.doco} and pddcto=#{inboundPush.dcto} and pdlnid=#{inboundPushDetail.lnid}*1000)");
+            VALUES("SZUSER", "'WMS'");
+            VALUES("SZPID", "'Interface'");
+            VALUES("SZJOBN", "'Server'");
+            VALUES("SZUPMJ", UPMJ);
+            VALUES("SZTDAY", TDAY);
+            VALUES("SZEDLN", "#{inboundPushDetail.lnid}*1000");
+            VALUES("SZLNID", "#{inboundPushDetail.lnid}*1000");
+            VALUES("SZLITM", "#{inboundPushDetail.litm}");
+            VALUES("SZUREC", "#{inboundPushDetail.urec,jdbcType=NUMERIC}*100");
+            VALUES("SZADDJ", "#{inboundPushDetail.addjj,jdbcType=NUMERIC}");
+
+            return toString();
+        }
+
+        public String insertF47131(@Param("inboundPush") InboundPush inboundPush) {
+            INSERT_INTO("F47131");
+            VALUES("SYEKCO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("SYEDOC", "#{inboundPush.edoc}");
+            VALUES("SYEDCT", "#{inboundPush.dcto}");
+            VALUES("SYEDST", "'860'");
+            VALUES("SYEDDT", UPMJ);
+            VALUES("SYEDER", "'R'");
+            VALUES("SYEDSP", "'N'");
+            VALUES("SYTPUR", "'4'");
+            VALUES("SYSFXO", "'000'");
+            VALUES("SYAN8", "(SELECT shan8 from F4201 where shdoco=#{inboundPush.doco} and shdcto=#{inboundPush.dcto})");
+            VALUES("SYSHAN", "(SELECT shshan from F4201 where shdoco=#{inboundPush.doco} and shdcto=#{inboundPush.dcto})");
+            VALUES("SYDRQJ", "(SELECT shtrdj  from F4201 where shdoco=#{inboundPush.doco} and shdcto=#{inboundPush.dcto})");
+            VALUES("SYTRDJ", "(SELECT shtrdj  from F4201 where shdoco=#{inboundPush.doco} and shdcto=#{inboundPush.dcto})");
+            VALUES("SYUSER", "'WMS'");
+            VALUES("SYPID", "'Interface'");
+            VALUES("SYJOBN", "'Server'");
+            VALUES("SYUPMJ", UPMJ);
+            VALUES("SYTDAY", TDAY);
+            VALUES("SYMCU", "(select LSMCU from FE8WMS21 where LSE8WLZXID=#{inboundPush.mcu})");
+            VALUES("SYDCTO", "#{inboundPush.dcto}");
+            VALUES("SYKCOO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("SYDOCO", "#{inboundPush.doco}");
+            return toString();
+        }
+
+        public String insertF47132(@Param("inboundPush") InboundPush inboundPush, @Param("inboundPushDetail") InboundPushDetail inboundPushDetail) {
+            INSERT_INTO("F47132");
+            VALUES("SZEKCO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("SZEDOC", "#{inboundPush.edoc}");
+            VALUES("SZEDCT", "#{inboundPush.dcto}");
+            VALUES("SZEDST", "'860'");
+            VALUES("SZEDER", "'R'");
+            VALUES("SZEDSP", "'N'");
+            VALUES("SZLSTS", "'7'");
+            VALUES("SZKCOO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("SZDOCO", "#{inboundPush.doco}");
+            VALUES("SZDCTO", "#{inboundPush.dcto}");
+            VALUES("SZSFXO", "'000'");
+            VALUES("SZMCU", "(select LSMCU from FE8WMS21 where LSE8WLZXID=#{inboundPush.mcu})");
+            VALUES("SZAN8", "(SELECT sdan8 from F4211 where sddoco=#{inboundPush.doco} and sddcto=#{inboundPush.dcto} and sdlnid=#{inboundPushDetail.lnid}*1000)");
+            VALUES("SZSHAN", "(SELECT sdshan from F4211 where sddoco=#{inboundPush.doco} and sddcto=#{inboundPush.dcto} and sdlnid=#{inboundPushDetail.lnid}*1000)");
+            VALUES("SZLOTN", "';");
+            VALUES("SZUORG", "(SELECT sduorg from F4211 where sddoco=#{inboundPush.doco} and sddcto=#{inboundPush.dcto} and sdlnid=#{inboundPushDetail.lnid}*1000)");
+            VALUES("SZUSER", "'WMS'");
+            VALUES("SZPID", "'Interface'");
+            VALUES("SZJOBN", "'Server'");
+            VALUES("SZUPMJ", UPMJ);
+            VALUES("SZTDAY", TDAY);
+            VALUES("SZEDLN", "#{inboundPushDetail.lnid}*1000");
+            VALUES("SZLNID", "#{inboundPushDetail.lnid}*1000");
+            VALUES("SZLITM", "#{inboundPushDetail.litm}");
+            VALUES("SZSOQS", "#{inboundPushDetail.urec,jdbcType=NUMERIC}*100");
+            VALUES("SZADDJ", "#{inboundPushDetail.addjj,jdbcType=NUMERIC}");
+            return toString();
+        }
+
+        public String insertF47121(@Param("inboundPush") InboundPush inboundPush) {
+            INSERT_INTO("F47121");
+            VALUES("M1EDTY", "'2'");
+            VALUES("M1EKCO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("M1EDOC", "#{inboundPush.edoc}");
+            VALUES("M1EDCT", "#{inboundPush.dcto}");
+            VALUES("M1EDST", "'852'");
+            VALUES("M1EDDT", UPMJ);
+            VALUES("M1EDER", "'R'");
+            VALUES("M1EDSP", "'N'");
+            VALUES("M1TPUR", "'4'");
+            VALUES("M1SFXO", "'000'");
+//            VALUES("M1AN8", "(SELECT shan8 from F4201 where shdoco=#{inboundPush.doco} and shdcto=#{inboundPush.dcto})");
+//            VALUES("M1SHAN", "(SELECT shshan from F4201 where shdoco=#{inboundPush.doco} and shdcto=#{inboundPush.dcto})");
+            VALUES("M1USER", "'WMS'");
+            VALUES("M1PID", "'Interface'");
+            VALUES("M1JOBN", "'Server'");
+            VALUES("M1UPMJ", UPMJ);
+            VALUES("M1TDAY", TDAY);
+            VALUES("M1MCU", "(select LSMCU from FE8WMS21 where LSE8WLZXID=#{inboundPush.mcu})");
+            VALUES("M1DCTO", "#{inboundPush.dcto}");
+            VALUES("M1KCOO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("M1DOCO", "#{inboundPush.doco}");
+            return toString();
+        }
+
+        public String insertF47122(@Param("inboundPush") InboundPush inboundPush, @Param("inboundPushDetail") InboundPushDetail inboundPushDetail) {
+            INSERT_INTO("F47122");
+            VALUES("MJEDTY", "'2'");
+            VALUES("MJEKCO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("MJEDOC", "#{inboundPush.edoc}");
+            VALUES("MJEDCT", "#{inboundPush.dcto}");
+            VALUES("MJEDST", "'852'");
+            VALUES("MJEDER", "'R'");
+            VALUES("MJEDSP", "'N'");
+            VALUES("MJLSTS", "'7'");
+            VALUES("MJKCOO", "(select LSCO from FE8WMS20 where LSE8HZBM=#{inboundPush.co})");
+            VALUES("MJDOCO", "#{inboundPush.doco}");
+            VALUES("MJDCTO", "#{inboundPush.dcto}");
+            VALUES("MJSFXO", "'000'");
+            VALUES("MJMCU", "(select LSMCU from FE8WMS21 where LSE8WLZXID=#{inboundPush.mcu})");
+//            VALUES("MJAN8", "(SELECT sdan8 from F4211 where sddoco=#{inboundPush.doco} and sddcto=#{inboundPush.dcto} and sdlnid=#{inboundPushDetail.lnid}*1000)");
+//            VALUES("MJSHAN", "(SELECT sdshan from F4211 where sddoco=#{inboundPush.doco} and sddcto=#{inboundPush.dcto} and sdlnid=#{inboundPushDetail.lnid}*1000)");
+//            VALUES("MJLOTN", "';");
+//            VALUES("MJUORG", "(SELECT sduorg from F4211 where sddoco=#{inboundPush.doco} and sddcto=#{inboundPush.dcto} and sdlnid=#{inboundPushDetail.lnid}*1000)");
+            VALUES("MJUSER", "'WMS'");
+            VALUES("MJPID", "'Interface'");
+            VALUES("MJJOBN", "'Server'");
+            VALUES("MJUPMJ", UPMJ);
+            VALUES("MJTDAY", TDAY);
+            VALUES("MJEDLN", "#{inboundPushDetail.lnid}*1000");
+            VALUES("MJLNID", "#{inboundPushDetail.lnid}*1000");
+            VALUES("MJLITM", "#{inboundPushDetail.litm}");
+            VALUES("MJTRQT", "#{inboundPushDetail.urec,jdbcType=NUMERIC}*100");
+            VALUES("MJTRDJ", "#{inboundPushDetail.addjj,jdbcType=NUMERIC}");
+            return toString();
+        }
+
+    }
+
+    @InsertProvider(type = SqlProvider.class, method = "insertFe8wms04")
+    int insertFe8wms04(@Param("inboundPush") InboundPush inboundPush, @Param("inboundPushDetail") InboundPushDetail inboundPushDetail, @Param("inboundPushSerial") InboundPushSerial inboundPushSerial);
+
+    @InsertProvider(type = SqlProvider.class, method = "insertFe8wms05")
+    int insertFe8wms05(@Param("inboundPush") InboundPush inboundPush, @Param("inboundPushDetail") InboundPushDetail inboundPushDetail);
+
+    @InsertProvider(type = SqlProvider.class, method = "insertF47071")
+    @SelectKey(statement = "SELECT F47071_SEQ.NEXTVAL FROM DUAL", keyProperty = "inboundPush.edoc", resultType = BigDecimal.class, before = true)
+    int insertF47071(@Param("inboundPush") InboundPush inboundPush);
+
+    @InsertProvider(type = SqlProvider.class, method = "insertF47072")
+    int insertF47072(@Param("inboundPush") InboundPush inboundPush, @Param("inboundPushDetail") InboundPushDetail inboundPushDetail);
+
+    @InsertProvider(type = SqlProvider.class, method = "insertF47131")
+    @SelectKey(statement = "SELECT F47131_SEQ.NEXTVAL FROM DUAL", keyProperty = "inboundPush.edoc", resultType = BigDecimal.class, before = true)
+    int insertF47131(@Param("inboundPush") InboundPush inboundPush);
+
+    @InsertProvider(type = SqlProvider.class, method = "insertF47132")
+    int insertF47132(@Param("inboundPush") InboundPush inboundPush, @Param("inboundPushDetail") InboundPushDetail inboundPushDetail);
+
+    @InsertProvider(type = SqlProvider.class, method = "insertF47121")
+    @SelectKey(statement = "SELECT F47121_SEQ.NEXTVAL FROM DUAL", keyProperty = "inboundPush.edoc", resultType = BigDecimal.class, before = true)
+    int insertF47121(@Param("inboundPush") InboundPush inboundPush);
+
+    @InsertProvider(type = SqlProvider.class, method = "insertF47122")
+    int insertF47122(@Param("inboundPush") InboundPush inboundPush, @Param("inboundPushDetail") InboundPushDetail inboundPushDetail);
+}

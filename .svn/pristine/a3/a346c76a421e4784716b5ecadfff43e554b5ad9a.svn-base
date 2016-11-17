@@ -1,0 +1,13 @@
+package com.el.cmic.service.goods;
+
+import java.util.List;
+
+import com.el.cmic.domain.goods.Bales;
+import com.el.cmic.domain.goods.Licence;
+
+public interface BalesService {
+
+	public List<Bales> selectBalesList();
+	
+	public List<Licence> selectLicenceList(String litm);
+}

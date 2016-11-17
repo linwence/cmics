@@ -1,0 +1,35 @@
+package com.el.cmic.common.service;
+
+import com.el.cmic.common.domain.WmsResult;
+import com.el.utils.Md5Util;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+/**
+ * Created by Vincent on 2016/10/28.
+ */
+@Service
+public class ValidParamServiceImpl implements ValidParamService {
+    @Value("${wms.AppPassword}")
+    private String appPassword;
+
+    @Override
+    public WmsResult validData(String data) {
+        //// TODO: 2016/10/28 需要对数据进行处理 
+        WmsResult wmsResult = new WmsResult();
+        return wmsResult;
+    }
+
+    @Override
+    public WmsResult validSign(String timestamp, String data, String sign) {
+        String calcSign = Md5Util.getMD5(timestamp, data, appPassword);
+        if (!sign.equals(calcSign)) {
+            WmsResult wmsResult = new WmsResult();
+            wmsResult.setSuccess(false);
+            wmsResult.setCode("1001");
+            wmsResult.setMessage("签名不合法,接收到的Sign=" + sign + ";计算出的Sign=" + calcSign);
+            return wmsResult;
+        }
+        return null;
+    }
+}

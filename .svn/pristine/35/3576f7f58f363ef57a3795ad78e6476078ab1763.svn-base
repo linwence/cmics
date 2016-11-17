@@ -1,0 +1,38 @@
+package com.el.cmic.service.goods.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.el.cmic.domain.goods.CustomPItem;
+import com.el.cmic.domain.goods.CustomPropel;
+import com.el.cmic.mapper.goods.CustomPropelMapper;
+import com.el.cmic.service.goods.CustomPropelService;
+
+@Service
+public class CustomPropelServiceImpl implements CustomPropelService {
+
+	@Autowired
+	private CustomPropelMapper customPropelMapper;
+	public List<CustomPropel> selectCustomPropelList() {
+		List<CustomPropel> cusProList = customPropelMapper.selectCustomPropelList();
+		//取明细地址
+		for(CustomPropel customPropel:cusProList){
+			List<CustomPItem>  cusProItemList= new ArrayList<CustomPItem>();
+			if(customPropel.getAban8() != null){
+				cusProItemList=this.selectCustomPItemList(customPropel.getAban8().toString());
+				customPropel.setList(cusProItemList);
+			}
+		}
+		
+		return cusProList;
+	}
+	
+	@Override
+	public List<CustomPItem> selectCustomPItemList(String an8) {
+		return customPropelMapper.selectCustomPItemList(an8);
+	}
+
+}

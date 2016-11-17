@@ -1,0 +1,6 @@
+spd.Url = http://www.jk-soft.com.cn:172/interface/UpLoadData
+spd.AppKey=AppKey
+spd.AppPassword=MD5
+spd.Ver=1
+spd.ID=JKSPD
+spd.timer=10

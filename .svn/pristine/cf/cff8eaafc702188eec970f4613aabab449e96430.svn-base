@@ -1,0 +1,28 @@
+package com.el.cmic.service.goods;
+
+import java.util.List;
+
+import com.el.cmic.domain.goods.Bale;
+
+public interface BaleService {
+	
+
+	/**
+	 * 商品基础数据推送  查询list
+	 * @return
+	 */
+	public List<Bale> selectBales();
+	
+	
+	/**
+	 * FE8SPD01 EV01  更新状态
+	 * @return
+	 */
+	public Integer  updateEv01(String status,String spitm);
+	
+	/**
+	 * 商品基础数据推送   入口
+	 */
+	public void  callBaleInterface();
+
+}

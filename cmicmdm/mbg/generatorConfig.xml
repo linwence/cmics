@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!--
+防止当前 DB 连接用户访问其他 SCHEMA 的同名表:
+
+1. 查看当前用户权限
+
+```sql
+SELECT * FROM USER_SYS_PRIVS;
+SELECT * FROM USER_TAB_PRIVS;
+SELECT * FROM USER_ROLE_PRIVS;
+```
+
+2. 如发现有任何`ANY`系统权限, 可以使用一下SQL生成REVOKE语句, 并用`system`用户执行以收回当前用户**任意**访问权限。
+
+```sql
+SELECT 'REVOKE ' || PRIVILEGE || ' FROM ' || USERNAME || ';'
+  FROM USER_SYS_PRIVS WHERE PRIVILEGE LIKE '%ANY%';
+```
+-->
+
+<!-- @see http://www.mybatis.org/generator/configreference/xmlconfig.html -->
+<generatorConfiguration>
+
+  <classPathEntry location="${jdbc.jar}"/>
+
+  <context id="MySqlDomain" targetRuntime="MyBatis3Simple">
+
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+    <plugin type="com.el.mybatis.plugins.DbCommentPlugin"/>
+    <plugin type="com.el.mybatis.plugins.DbAuditPlugin"/>
+
+    <commentGenerator>
+      <property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+
+    <jdbcConnection driverClass="${jdbc.driverClassName}"
+                    connectionURL="${jdbc.url}"
+                    userId="${jdbc.username}"
+                    password="${jdbc.password}">
+      <property name="remarks" value="true"/>
+    </jdbcConnection>
+
+    <javaTypeResolver type="${gen.jtresolver}">
+      <property name="forceBigDecimals" value="false"/> <!-- default -->
+    </javaTypeResolver>
+
+    <javaModelGenerator
+      targetPackage="${gen.pkg.domain}"
+      targetProject="${gen.src.dir}/java">
+      <property name="enableSubPackages" value="false"/> <!-- default -->
+    </javaModelGenerator>
+
+    <sqlMapGenerator
+      targetPackage="${gen.pkg.mapper}"
+      targetProject="${gen.src.dir}/resources">
+      <property name="enableSubPackages" value="false"/> <!-- default -->
+    </sqlMapGenerator>
+
+    <javaClientGenerator type="ANNOTATEDMAPPER"
+                         targetPackage="${gen.pkg.mapper}"
+                         targetProject="${gen.src.dir}/java">
+      <property name="enableSubPackages" value="false"/> <!-- default -->
+    </javaClientGenerator>
+
+    <!--
+  SELECT (   '<table tableName="'
+          || table_name
+          || '" domainObjectName="'
+          || REPLACE (INITCAP (table_name), '_')
+          || '" enableInsert="false" enableDeleteByPrimaryKey="false" enableUpdateByPrimaryKey="false"/>') AS mapper
+    FROM user_tables
+   WHERE table_name LIKE 'F_%'
+ORDER BY table_name;
+    -->
+    <table tableName="FE84101" domainObjectName="Fe84101" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE84101Z" domainObjectName="Fe84101z" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE841001" domainObjectName="Fe841001" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE841002" domainObjectName="Fe841002" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE80101" domainObjectName="Fe80101" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE841003" domainObjectName="Fe841003" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE841004" domainObjectName="Fe841004" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE841005" domainObjectName="Fe841005" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="F4101" domainObjectName="F4101" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="F0101" domainObjectName="F0101" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+
+
+    <!--
+  SELECT (   '<table tableName="'
+          || table_name
+          || '" domainObjectName="'
+          || REPLACE (INITCAP (table_name), '_')
+          || '"><generatedKey column="ID" sqlStatement="SELECT SEQ_'
+          || table_name
+          || '.NEXTVAL FROM DUAL"/></table>') AS mapper
+    FROM user_tables
+   WHERE table_name LIKE 'T_%'
+ORDER BY table_name;
+    -->
+
+    <table tableName="FE8LOG01" domainObjectName="Fe8log01"><generatedKey column="LGUKID" sqlStatement="SELECT Fe8log01_Seq.NEXTVAL FROM DUAL"/></table>
+
+
+
+  </context>
+
+</generatorConfiguration>

@@ -1,0 +1,59 @@
+package com.el.cmic.service.customer.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.el.cmic.domain.customer.CustomPItem;
+import com.el.cmic.domain.customer.CustomPropel;
+import com.el.cmic.domain.goods.Licence;
+import com.el.cmic.mapper.customer.CustomPropelMapper;
+import com.el.cmic.service.customer.CustomPropelService;
+
+@Service
+public class CustomPropelServiceImpl implements CustomPropelService {
+
+	@Autowired
+	private CustomPropelMapper customPropelMapper;
+	
+	@Transactional(propagation=Propagation.NOT_SUPPORTED,readOnly=true)
+	public List<CustomPropel> selectCustomPropelList() {
+		List<CustomPropel> cusProList = customPropelMapper.selectCustomPropelList();
+		//取明细地址  和证照明细
+		for(CustomPropel customPropel:cusProList){
+			List<CustomPItem>  cusProItemList= new ArrayList<CustomPItem>();
+			List<Licence> licenceList = new ArrayList<Licence>();
+			if(customPropel.getAban8() != null){
+				cusProItemList=this.selectCustomPItemList(customPropel.getAban8().toString());
+				licenceList = this.selectLicenceList(customPropel.getAban8().toString());
+				customPropel.setList(cusProItemList);
+				customPropel.setLicenceList(licenceList);
+			}
+		}
+		
+		return cusProList;
+	}
+	
+	@Override
+	@Transactional(propagation=Propagation.NOT_SUPPORTED,readOnly=true)
+	public List<CustomPItem> selectCustomPItemList(String an8) {
+		return customPropelMapper.selectCustomPItemList(an8);
+	}
+
+	@Override
+	@Transactional(propagation=Propagation.NOT_SUPPORTED,readOnly=true)
+	public List<Licence> selectLicenceList(String an8) {
+		return customPropelMapper.selectLicenceList(an8);
+	}
+
+	@Override
+	@Transactional 
+	public Integer updateJdeStatus(String flag,String BSAN8) {
+		return customPropelMapper.updataJdeStatus(flag, BSAN8);
+	}
+
+}

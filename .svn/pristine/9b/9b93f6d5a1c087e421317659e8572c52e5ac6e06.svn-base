@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package com.el.cmic.service.inbound;
+
+import java.util.List;
+
+import com.el.cfg.domain.F4211;
+import com.el.cfg.domain.F4311;
+import com.el.cmic.common.domain.WmsResult;
+import com.el.cmic.domain.inbound.InboundPush;
+
+/**
+ * @author ELSIAN
+ *
+ */
+public interface InboundService {
+
+    List<InboundPush> getInboundPushList();
+
+    List<InboundPush> getInboundPushListWithDetails();
+    
+    String getPushData();
+    
+    int updateF4211Status(List<F4211> updList);
+
+    int updateF4311Status(List<F4311> updList);
+    
+    public WmsResult acceptData(String data);
+    
+    public void callWmsInboundPushInterface();
+}

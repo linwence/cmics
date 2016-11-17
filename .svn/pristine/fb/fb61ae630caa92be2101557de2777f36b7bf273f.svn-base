@@ -1,0 +1,36 @@
+package com.el.cmic.ws.mapper;
+
+import com.el.cfg.domain.Fe841001;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.jdbc.SQL;
+import org.springframework.stereotype.Repository;
+
+/**
+ * Created by king_ on 2016/10/11.
+ */
+@Repository(value = "fe841001UpdateByDocoMapper")
+public interface FE841001UpdateByDocoMapper {
+
+    final class SqlProvider extends SQL{
+        public String updateByDoco(@Param("schema")String schema,@Param("record") Fe841001 record){
+
+
+            UPDATE(schema+".FE841001");
+
+
+            if (record.getSqflag() != null) {
+                SET("SQFLAG = #{record.sqflag}");
+            }
+
+            WHERE("Trim(SQUKIDP) = #{record.squkidp}");
+
+            return toString();
+        }
+
+    }
+
+    @UpdateProvider(type=SqlProvider.class, method="updateByDoco")
+    int updateByDoco(@Param("schema")String schema,@Param("record") Fe841001 record);
+
+}

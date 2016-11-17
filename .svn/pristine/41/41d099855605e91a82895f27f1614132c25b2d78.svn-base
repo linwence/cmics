@@ -1,0 +1,68 @@
+package com.el.cmic.domain.goods;
+
+/**
+ * 客户信息推送  地址明细
+ * @author zhanhao
+ *
+ */
+public class CustomPItem {
+	
+	private String bsan8;
+	/**
+	 * 地址编号
+	 */
+	private String PA8;
+	/**
+	 * 收货地址
+	 */
+	private String address;
+	/**
+	 * 使用部门
+	 */
+	private String mcu;
+	/**
+	 * 联系人 
+	 */
+	private String mlnm;
+	/**
+	 * 联系电话
+	 */
+	private String tellPhone;
+	public String getPA8() {
+		return PA8;
+	}
+	public void setPA8(String pA8) {
+		PA8 = pA8;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getMcu() {
+		return mcu;
+	}
+	public void setMcu(String mcu) {
+		this.mcu = mcu;
+	}
+	public String getMlnm() {
+		return mlnm;
+	}
+	public void setMlnm(String mlnm) {
+		this.mlnm = mlnm;
+	}
+	public String getTellPhone() {
+		return tellPhone;
+	}
+	public void setTellPhone(String tellPhone) {
+		this.tellPhone = tellPhone;
+	}
+	public String getBsan8() {
+		return bsan8;
+	}
+	public void setBsan8(String bsan8) {
+		this.bsan8 = bsan8;
+	}
+
+}

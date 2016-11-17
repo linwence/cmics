@@ -1,0 +1,352 @@
+package com.el.cmic.domain.ck;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.annotation.JSONType;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.el.cfg.domain.Ve8ck001;
+import com.el.cfg.domain.Ve8ck002;
+import com.alibaba.fastjson.JSON;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Created by Vincent on 2016/10/24.
+ */
+@JSONType(orders = {"物流中心","出库类型","货主","通知单号","客户编号","客户名称","业务员","是否代收款","是否急送","运输方式",
+"说明","收货地址","通知单日期","客户类型","业务部门","联系人","联系电话","电商订单收货地址","备用字段一","备用字段二","备用字段三","备用字段四","备用字段五",
+"开票货主","订单类型","业务类型","通知单明细"})
+public class CkOrder {
+    /**
+     * null - VE8CK001.MCU
+     */
+    @JSONField(name = "物流中心")
+    private String mcu;
+
+    /**
+     * null - VE8CK001.CKTYPE
+     */
+    @JSONField(name = "出库类型")
+    private String cktype;
+    /**
+     * null - VE8CK001.CO
+     */
+    @JSONField(name = "货主")
+    private String co;
+    @JSONField(name = "通知单号")
+    private BigDecimal doco;
+    @JSONField(name = "客户编号")
+    private BigDecimal an8;
+    @JSONField(name = "客户名称")
+    private String alph;
+    @JSONField(name = "业务员")
+    private String vr01;
+    @JSONField(name = "是否代收款")
+    private byte dskFlag = 0;
+    @JSONField(name = "是否急送")
+    private byte jsFlag = 0;
+    @JSONField(name = "运输方式")
+    private byte transport = 0;
+    @JSONField(name = "说明")
+    private String remark;
+    @JSONField(name = "收货地址")
+    private String address;
+    @JSONField(name = "通知单日期",format = "yyyy-MM-dd")
+    private Date trdjDate;
+    @JSONField(name = "客户类型")
+    private int cutstomType = 1;
+    @JSONField(name = "业务部门")
+    private String deptname;
+    @JSONField(name = "联系人")
+    private String contactMan;
+    @JSONField(name = "联系电话")
+    private String phone;
+    @JSONField(name = "电商订单收货地址")
+    private String eCommAddress;
+    @JSONField(name = "备用字段一")
+    private String memo1;
+    @JSONField(name = "备用字段二")
+    private String memo2;
+    @JSONField(name = "备用字段三")
+    private String memo3;
+    @JSONField(name = "备用字段四")
+    private String memo4;
+    @JSONField(name = "备用字段五")
+    private String memo5;
+    @JSONField(name = "开票货主")
+    private String orderOwner;
+
+    @JSONField(name = "订单类型")
+    private String dcto;
+    @JSONField(name = "业务类型")
+    private String flag;
+    @JSONField(name = "通知单明细")
+    private List<CkOrderDtl> ckOrderDtlList;
+
+    public String getMcu() {
+        return mcu;
+    }
+
+    public void setMcu(String mcu) {
+        this.mcu = mcu;
+    }
+
+    public String getDcto() {
+        return dcto;
+    }
+
+    public void setDcto(String dcto) {
+        this.dcto = dcto;
+    }
+
+    public String getCktype() {
+        return cktype;
+    }
+
+    public byte getDskFlag() {
+        return dskFlag;
+    }
+
+    public void setDskFlag(byte dskFlag) {
+        this.dskFlag = dskFlag;
+    }
+
+    public void setCktype(String cktype) {
+        this.cktype = cktype;
+    }
+
+    public String getCo() {
+        return co;
+    }
+
+    public void setCo(String co) {
+        this.co = co;
+    }
+
+    public BigDecimal getDoco() {
+        return doco;
+    }
+
+    public void setDoco(BigDecimal doco) {
+        this.doco = doco;
+    }
+
+    public BigDecimal getAn8() {
+        return an8;
+    }
+
+    public void setAn8(BigDecimal an8) {
+        this.an8 = an8;
+    }
+
+    public String getAlph() {
+        return alph;
+    }
+
+    public void setAlph(String alph) {
+        this.alph = alph;
+    }
+
+    public String getVr01() {
+        return vr01;
+    }
+
+    public void setVr01(String vr01) {
+        this.vr01 = vr01;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Date getTrdjDate() {
+        return trdjDate;
+    }
+
+    public void setTrdjDate(Date trdjDate) {
+        this.trdjDate = trdjDate;
+    }
+
+    public String getDeptname() {
+        return deptname;
+    }
+
+    public void setDeptname(String deptname) {
+        this.deptname = deptname;
+    }
+
+    public List<CkOrderDtl> getCkOrderDtlList() {
+        return ckOrderDtlList;
+    }
+
+    public void setCkOrderDtlList(List<CkOrderDtl> ckOrderDtlList) {
+        this.ckOrderDtlList = ckOrderDtlList;
+    }
+
+    public byte getJsFlag() {
+        return jsFlag;
+    }
+
+    public void setJsFlag(byte jsFlag) {
+        this.jsFlag = jsFlag;
+    }
+
+    public byte getTransport() {
+        return transport;
+    }
+
+    public void setTransport(byte transport) {
+        this.transport = transport;
+    }
+
+    public int getCutstomType() {
+        return cutstomType;
+    }
+
+    public void setCutstomType(int cutstomType) {
+        this.cutstomType = cutstomType;
+    }
+
+    public String getContactMan() {
+        return contactMan;
+    }
+
+    public void setContactMan(String contactMan) {
+        this.contactMan = contactMan;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String geteCommAddress() {
+        return eCommAddress;
+    }
+
+    public void seteCommAddress(String eCommAddress) {
+        this.eCommAddress = eCommAddress;
+    }
+
+    public String getMemo1() {
+        return memo1;
+    }
+
+    public void setMemo1(String memo1) {
+        this.memo1 = memo1;
+    }
+
+    public String getMemo2() {
+        return memo2;
+    }
+
+    public void setMemo2(String memo2) {
+        this.memo2 = memo2;
+    }
+
+    public String getMemo3() {
+        return memo3;
+    }
+
+    public void setMemo3(String memo3) {
+        this.memo3 = memo3;
+    }
+
+    public String getMemo4() {
+        return memo4;
+    }
+
+    public void setMemo4(String memo4) {
+        this.memo4 = memo4;
+    }
+
+    public String getMemo5() {
+        return memo5;
+    }
+
+    public void setMemo5(String memo5) {
+        this.memo5 = memo5;
+    }
+
+    public String getOrderOwner() {
+        return orderOwner;
+    }
+
+    public void setOrderOwner(String orderOwner) {
+        this.orderOwner = orderOwner;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    @Override
+    public String toString() {
+        return "CkOrder{" +
+                "mcu='" + mcu + '\'' +
+                ", cktype='" + cktype + '\'' +
+                ", co='" + co + '\'' +
+                ", doco=" + doco +
+                ", an8=" + an8 +
+                ", alph='" + alph + '\'' +
+                ", vr01='" + vr01 + '\'' +
+                ", dskFlag=" + dskFlag +
+                ", jsFlag=" + jsFlag +
+                ", transport=" + transport +
+                ", remark='" + remark + '\'' +
+                ", address='" + address + '\'' +
+                ", trdj=" + trdjDate +
+                ", cutstomType=" + cutstomType +
+                ", deptname='" + deptname + '\'' +
+                ", contactMan='" + contactMan + '\'' +
+                ", phone='" + phone + '\'' +
+                ", eCommAddressList=" + eCommAddress +
+                ", memo1='" + memo1 + '\'' +
+                ", memo2='" + memo2 + '\'' +
+                ", memo3='" + memo3 + '\'' +
+                ", memo4='" + memo4 + '\'' +
+                ", memo5='" + memo5 + '\'' +
+                ", orderOwner='" + orderOwner + '\'' +
+                ", dcto='" + dcto + '\'' +
+                ", ckOrderDtlList=" + ckOrderDtlList +
+                '}';
+    }
+
+    public static void main(String[] args) {
+        CkOrder ckOrder = new CkOrder();
+        ckOrder.setMcu("物流");
+        ckOrder.setCo("1");
+        ckOrder.setCktype("出库类型");
+        ckOrder.setDcto("sss");
+        List<CkOrderDtl> ve8ck002List = new ArrayList<CkOrderDtl>();
+        CkOrderDtl ckOrderDtl = new CkOrderDtl();
+        ve8ck002List.add(ckOrderDtl);
+        ckOrder.setCkOrderDtlList(ve8ck002List);
+        CkData ckData = new CkData();
+        ckData.setCkOrder(ckOrder);
+
+        String data = JSON.toJSONString(ckData, SerializerFeature.WriteMapNullValue);
+        System.out.print(data);
+    }
+}

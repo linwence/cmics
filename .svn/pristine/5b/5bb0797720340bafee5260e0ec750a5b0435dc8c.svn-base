@@ -1,0 +1,556 @@
+package com.el.cfg.domain;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+public class FE84101 {
+    private String splitm;
+
+    private String spev01;
+
+    private String spdsc1;
+
+    private String spe8name;
+
+    private String spdsc2;
+
+    private String spe8jx;
+
+    private String spaitm;
+
+    private BigDecimal span8;
+
+    private String sporig;
+
+    private String spe8pzwh;
+
+    private String spe8zdyl;
+
+    private String spe8jhg;
+
+    private String spe8ztw;
+
+    private String spe8gfg;
+
+    private String spe8ptyp;
+
+    private String spe8atcdl;
+
+    private String spe8atcxl;
+
+    private String spe8yyks;
+
+    private String spe8fxdj;
+
+    private String spe8cctj;
+
+    private String spe8qtcc;
+
+    private String spe8jgg;
+
+    private String spe8sffc;
+
+    private String spe8tym;
+
+    private Date spe8jdsj;
+
+    private String spe8xlhgl;
+
+    private String spe8zdyh;
+
+    private BigDecimal spe8yhzq;
+
+    private String spe8bgbs;
+
+    private String spe8spxz;
+
+    private String spe8shflbm;
+
+    private String spe8yhnr;
+
+    private String spe8yhzc;
+
+    private String spe8lsl;
+
+    private BigDecimal spe8kce;
+
+    private String spurcd;
+
+    private BigDecimal spurdt;
+
+    private BigDecimal spurat;
+
+    private BigDecimal spurab;
+
+    private String spev02;
+
+    private String spev03;
+
+    private String spev04;
+
+    private String spev05;
+
+    private String spuser;
+
+    private String sppid;
+
+    private String spjobn;
+
+    private BigDecimal spupmj;
+
+    private BigDecimal spupmt;
+
+    private Date spidate;
+
+    private String spdf01;
+
+    private Date sprdate;
+
+    private String spdf02;
+
+    private BigDecimal spukid;
+
+    private String spstatus;
+
+    private String spflag;
+
+    public String getSplitm() {
+        return splitm;
+    }
+
+    public void setSplitm(String splitm) {
+        this.splitm = splitm;
+    }
+
+    public String getSpev01() {
+        return spev01;
+    }
+
+    public void setSpev01(String spev01) {
+        this.spev01 = spev01;
+    }
+
+    public String getSpdsc1() {
+        return spdsc1;
+    }
+
+    public void setSpdsc1(String spdsc1) {
+        this.spdsc1 = spdsc1;
+    }
+
+    public String getSpe8name() {
+        return spe8name;
+    }
+
+    public void setSpe8name(String spe8name) {
+        this.spe8name = spe8name;
+    }
+
+    public String getSpdsc2() {
+        return spdsc2;
+    }
+
+    public void setSpdsc2(String spdsc2) {
+        this.spdsc2 = spdsc2;
+    }
+
+    public String getSpe8jx() {
+        return spe8jx;
+    }
+
+    public void setSpe8jx(String spe8jx) {
+        this.spe8jx = spe8jx;
+    }
+
+    public String getSpaitm() {
+        return spaitm;
+    }
+
+    public void setSpaitm(String spaitm) {
+        this.spaitm = spaitm;
+    }
+
+    public BigDecimal getSpan8() {
+        return span8;
+    }
+
+    public void setSpan8(BigDecimal span8) {
+        this.span8 = span8;
+    }
+
+    public String getSporig() {
+        return sporig;
+    }
+
+    public void setSporig(String sporig) {
+        this.sporig = sporig;
+    }
+
+    public String getSpe8pzwh() {
+        return spe8pzwh;
+    }
+
+    public void setSpe8pzwh(String spe8pzwh) {
+        this.spe8pzwh = spe8pzwh;
+    }
+
+    public String getSpe8zdyl() {
+        return spe8zdyl;
+    }
+
+    public void setSpe8zdyl(String spe8zdyl) {
+        this.spe8zdyl = spe8zdyl;
+    }
+
+    public String getSpe8jhg() {
+        return spe8jhg;
+    }
+
+    public void setSpe8jhg(String spe8jhg) {
+        this.spe8jhg = spe8jhg;
+    }
+
+    public String getSpe8ztw() {
+        return spe8ztw;
+    }
+
+    public void setSpe8ztw(String spe8ztw) {
+        this.spe8ztw = spe8ztw;
+    }
+
+    public String getSpe8gfg() {
+        return spe8gfg;
+    }
+
+    public void setSpe8gfg(String spe8gfg) {
+        this.spe8gfg = spe8gfg;
+    }
+
+    public String getSpe8ptyp() {
+        return spe8ptyp;
+    }
+
+    public void setSpe8ptyp(String spe8ptyp) {
+        this.spe8ptyp = spe8ptyp;
+    }
+
+    public String getSpe8atcdl() {
+        return spe8atcdl;
+    }
+
+    public void setSpe8atcdl(String spe8atcdl) {
+        this.spe8atcdl = spe8atcdl;
+    }
+
+    public String getSpe8atcxl() {
+        return spe8atcxl;
+    }
+
+    public void setSpe8atcxl(String spe8atcxl) {
+        this.spe8atcxl = spe8atcxl;
+    }
+
+    public String getSpe8yyks() {
+        return spe8yyks;
+    }
+
+    public void setSpe8yyks(String spe8yyks) {
+        this.spe8yyks = spe8yyks;
+    }
+
+    public String getSpe8fxdj() {
+        return spe8fxdj;
+    }
+
+    public void setSpe8fxdj(String spe8fxdj) {
+        this.spe8fxdj = spe8fxdj;
+    }
+
+    public String getSpe8cctj() {
+        return spe8cctj;
+    }
+
+    public void setSpe8cctj(String spe8cctj) {
+        this.spe8cctj = spe8cctj;
+    }
+
+    public String getSpe8qtcc() {
+        return spe8qtcc;
+    }
+
+    public void setSpe8qtcc(String spe8qtcc) {
+        this.spe8qtcc = spe8qtcc;
+    }
+
+    public String getSpe8jgg() {
+        return spe8jgg;
+    }
+
+    public void setSpe8jgg(String spe8jgg) {
+        this.spe8jgg = spe8jgg;
+    }
+
+    public String getSpe8sffc() {
+        return spe8sffc;
+    }
+
+    public void setSpe8sffc(String spe8sffc) {
+        this.spe8sffc = spe8sffc;
+    }
+
+    public String getSpe8tym() {
+        return spe8tym;
+    }
+
+    public void setSpe8tym(String spe8tym) {
+        this.spe8tym = spe8tym;
+    }
+
+    public Date getSpe8jdsj() {
+        return spe8jdsj;
+    }
+
+    public void setSpe8jdsj(Date spe8jdsj) {
+        this.spe8jdsj = spe8jdsj;
+    }
+
+    public String getSpe8xlhgl() {
+        return spe8xlhgl;
+    }
+
+    public void setSpe8xlhgl(String spe8xlhgl) {
+        this.spe8xlhgl = spe8xlhgl;
+    }
+
+    public String getSpe8zdyh() {
+        return spe8zdyh;
+    }
+
+    public void setSpe8zdyh(String spe8zdyh) {
+        this.spe8zdyh = spe8zdyh;
+    }
+
+    public BigDecimal getSpe8yhzq() {
+        return spe8yhzq;
+    }
+
+    public void setSpe8yhzq(BigDecimal spe8yhzq) {
+        this.spe8yhzq = spe8yhzq;
+    }
+
+    public String getSpe8bgbs() {
+        return spe8bgbs;
+    }
+
+    public void setSpe8bgbs(String spe8bgbs) {
+        this.spe8bgbs = spe8bgbs;
+    }
+
+    public String getSpe8spxz() {
+        return spe8spxz;
+    }
+
+    public void setSpe8spxz(String spe8spxz) {
+        this.spe8spxz = spe8spxz;
+    }
+
+    public String getSpe8shflbm() {
+        return spe8shflbm;
+    }
+
+    public void setSpe8shflbm(String spe8shflbm) {
+        this.spe8shflbm = spe8shflbm;
+    }
+
+    public String getSpe8yhnr() {
+        return spe8yhnr;
+    }
+
+    public void setSpe8yhnr(String spe8yhnr) {
+        this.spe8yhnr = spe8yhnr;
+    }
+
+    public String getSpe8yhzc() {
+        return spe8yhzc;
+    }
+
+    public void setSpe8yhzc(String spe8yhzc) {
+        this.spe8yhzc = spe8yhzc;
+    }
+
+    public String getSpe8lsl() {
+        return spe8lsl;
+    }
+
+    public void setSpe8lsl(String spe8lsl) {
+        this.spe8lsl = spe8lsl;
+    }
+
+    public BigDecimal getSpe8kce() {
+        return spe8kce;
+    }
+
+    public void setSpe8kce(BigDecimal spe8kce) {
+        this.spe8kce = spe8kce;
+    }
+
+    public String getSpurcd() {
+        return spurcd;
+    }
+
+    public void setSpurcd(String spurcd) {
+        this.spurcd = spurcd;
+    }
+
+    public BigDecimal getSpurdt() {
+        return spurdt;
+    }
+
+    public void setSpurdt(BigDecimal spurdt) {
+        this.spurdt = spurdt;
+    }
+
+    public BigDecimal getSpurat() {
+        return spurat;
+    }
+
+    public void setSpurat(BigDecimal spurat) {
+        this.spurat = spurat;
+    }
+
+    public BigDecimal getSpurab() {
+        return spurab;
+    }
+
+    public void setSpurab(BigDecimal spurab) {
+        this.spurab = spurab;
+    }
+
+    public String getSpev02() {
+        return spev02;
+    }
+
+    public void setSpev02(String spev02) {
+        this.spev02 = spev02;
+    }
+
+    public String getSpev03() {
+        return spev03;
+    }
+
+    public void setSpev03(String spev03) {
+        this.spev03 = spev03;
+    }
+
+    public String getSpev04() {
+        return spev04;
+    }
+
+    public void setSpev04(String spev04) {
+        this.spev04 = spev04;
+    }
+
+    public String getSpev05() {
+        return spev05;
+    }
+
+    public void setSpev05(String spev05) {
+        this.spev05 = spev05;
+    }
+
+    public String getSpuser() {
+        return spuser;
+    }
+
+    public void setSpuser(String spuser) {
+        this.spuser = spuser;
+    }
+
+    public String getSppid() {
+        return sppid;
+    }
+
+    public void setSppid(String sppid) {
+        this.sppid = sppid;
+    }
+
+    public String getSpjobn() {
+        return spjobn;
+    }
+
+    public void setSpjobn(String spjobn) {
+        this.spjobn = spjobn;
+    }
+
+    public BigDecimal getSpupmj() {
+        return spupmj;
+    }
+
+    public void setSpupmj(BigDecimal spupmj) {
+        this.spupmj = spupmj;
+    }
+
+    public BigDecimal getSpupmt() {
+        return spupmt;
+    }
+
+    public void setSpupmt(BigDecimal spupmt) {
+        this.spupmt = spupmt;
+    }
+
+    public Date getSpidate() {
+        return spidate;
+    }
+
+    public void setSpidate(Date spidate) {
+        this.spidate = spidate;
+    }
+
+    public String getSpdf01() {
+        return spdf01;
+    }
+
+    public void setSpdf01(String spdf01) {
+        this.spdf01 = spdf01;
+    }
+
+    public Date getSprdate() {
+        return sprdate;
+    }
+
+    public void setSprdate(Date sprdate) {
+        this.sprdate = sprdate;
+    }
+
+    public String getSpdf02() {
+        return spdf02;
+    }
+
+    public void setSpdf02(String spdf02) {
+        this.spdf02 = spdf02;
+    }
+
+    public BigDecimal getSpukid() {
+        return spukid;
+    }
+
+    public void setSpukid(BigDecimal spukid) {
+        this.spukid = spukid;
+    }
+
+    public String getSpstatus() {
+        return spstatus;
+    }
+
+    public void setSpstatus(String spstatus) {
+        this.spstatus = spstatus;
+    }
+
+    public String getSpflag() {
+        return spflag;
+    }
+
+    public void setSpflag(String spflag) {
+        this.spflag = spflag;
+    }
+}

@@ -1,0 +1,132 @@
+package com.el.cmic.mapper.customer;
+
+import java.util.List;
+
+import com.el.cmic.domain.customer.CustomLicence;
+import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.jdbc.SQL;
+
+import com.el.cmic.domain.customer.CustomPItem;
+import com.el.cmic.domain.customer.CustomPropel;
+import com.el.cmic.domain.goods.Licence;
+import com.el.utils.ReadPropertiesUtil;
+
+public interface CustomPropelMapper {
+
+    /**
+     * 查询客户信息推送 主信息
+     *
+     * @return
+     */
+    @SelectProvider(type = CustomPropelMapper.sqlProvider.class, method = CustomPropelMapper.sqlProvider.selectCustomPropelList)
+    public List<CustomPropel> selectCustomPropelList();
+
+
+    /**
+     * 根据an8  查询  客户信息 地址明细
+     *
+     * @param an8
+     * @return
+     */
+    @SelectProvider(type = CustomPropelMapper.sqlProvider.class, method = CustomPropelMapper.sqlProvider.selectCustomPItemList)
+    public List<CustomPItem> selectCustomPItemList(String an8);
+
+    /**
+     * 根据an8   查询  客户证照信息
+     *
+     * @param an8
+     * @return
+     */
+    @SelectProvider(type = CustomPropelMapper.sqlProvider.class, method = CustomPropelMapper.sqlProvider.selectLicenceList)
+    public List<CustomLicence> selectLicenceList(String an8);
+
+
+    /**
+     * 更新FE8WMS02  EV01状态
+     *
+     * @param falg
+     * @return
+     */
+    @UpdateProvider(type = CustomPropelMapper.sqlProvider.class, method = CustomPropelMapper.sqlProvider.updataJdeStatus)
+    public Integer updataJdeStatus(String falg, String BSAN8);
+
+
+    /**
+     * 定义sql  内部类
+     *
+     * @author zhanhao
+     */
+    class sqlProvider extends SQL {
+        //动态 获取  db.properties  文件属性值
+        private static final String schema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "schema");
+        private static final String ctlSchema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "ctlSchema");
+
+
+        private static final String selectCustomPropelList = "selectCustomPropelList";
+
+        public String selectCustomPropelList() {
+            String sql = " select fe20.LSE8HZBM,feo2.BSAN8,fe01.KSE8WMSHZ,fo01.ABAN8,CASE  WHEN fo01.ABAT1 = 'V' THEN   0    ELSE   1 END ABAT1,fo01.ABALPH,fe01.KSE8BYM,"
+                    + "  (fo16.ALADD1 ||fo16.ALADD2||fo16.ALADD3|| fo16.ALADD4) as address ,null acceptAddress,(select fo11.WWMLNM from " + schema + ".F0111 fo11 where  feo2.BSAN8 = fo11.WWAN8 and rownum=1) WWMLNM," +
+                    " (select (fo15.WPAR1 || fo15.WPPH1) from CRPDTA.F0115 fo15 where feo2.BSAN8 = fo15.WPAN8 and fo15.WPPHTP = ''and rownum=1) as tell," +
+                    " case when nvl(fe01.KSCUSTS,'P')='P' then'启用' else '禁用' end KSCUSTS,"
+                    + "  fo010.ccname as KSE8WMSHZM,NVL(fe01.KSE8JDSJ,sysdate) as KSE8JDSJ,fo01.ABTAX,(fo15copy.WPAR1||fo15copy.WPPH1) as fax,0 as sendLevel "
+                    + " from " + schema + ".FE8WMS02  feo2 "
+                    + " left  join  " + schema + ".FE80101 fe01  on feo2.BSAN8 =fe01.KSAN8"
+                    + " left join " + schema + ".F0101    fo01 on feo2.BSAN8  =fo01.ABAN8"
+                    + " left join " + schema + ".F0006    fo06 on fo06.MCMCU   =fo01.Abmcu  "//货主改变
+                    + " inner join " + schema + ".FE8WMS20    fe20 on fo06.Mcco   =fe20.lsco   "//货主改变
+                    + " left join " + schema + ".F0116   fo16 on feo2.BSAN8=fo16.ALAN8"
+                    //+ " left join " + schema + ".F0111 fo11 on feo2.BSAN8=fo11.WWAN8"
+                    //+ " left join " + schema + ".F0115   fo15 on (feo2.BSAN8=fo15.WPAN8 and  fo15.WPPHTP = '')"
+                    + " left join  " + schema + ".F0115 fo15copy on (feo2.BSAN8=fo15copy.WPAN8 and   fo15copy.WPPHTP = 'FAX')" +
+                    " INNER JOIN " + schema + ".F0010 fo010 on fo06.mcco = fo010.ccco"
+
+                    + " WHERE feo2.BSEV01='N'";
+            return sql;
+        }
+
+        private static final String selectCustomPItemList = "selectCustomPItemList";
+
+        public String selectCustomPItemList(String an8) {
+            String sql = " select  maan8  as an8,(fo16.ALADD1 || fo16.ALADD2 || fo16.ALADD3 || fo16.ALADD4) as address , '' as mcu ,fo11.WWMLNM as mlnm ,  (fo15.WPAR1 || fo15.WPPH1) as tellPhone "
+                    + "	from " + schema + ".f0150  fo50 "
+                    + " left join " + schema + ".F0116   fo16 on fo50.maan8=fo16.ALAN8"
+                    + " left join " + schema + ".F0111 fo11 on fo50.maan8=fo11.WWAN8"
+                    + " left join " + schema + ".F0115   fo15 on (fo50.maan8=fo15.WPAN8  and  fo15.WPPHTP = '')"
+                    + " WHERE fo50.mapa8=" + an8;
+            return sql;
+        }
+
+        private static final String selectLicenceList = "selectLicenceList";
+
+        public String selectLicenceList(String an8) {
+            String sql = "select f5.drdl01 as ZZE8ZZLXA , fz.ZZE8ZZBM, " +
+                    "CASE WHEN ZZEFTJ is null then" +
+                    " null" +
+                    " else " +
+                    " (to_date(trunc(ZZEFTJ / 1000) + 1900 || '-01-01', 'yyyy-MM-dd') +" +
+                    " mod(ZZEFTJ, 1000) - 1)  " +
+                    " END as ZZEFTJ," +
+                    " CASE WHEN ZZEXDJ is null then" +
+                    " null" +
+                    " else " +
+                    " (to_date(trunc(ZZEXDJ / 1000) + 1900 || '-01-01', 'yyyy-MM-dd') +" +
+                    " mod(ZZEXDJ, 1000) - 1)  " +
+                    " END as ZZEXDJ"
+                    + "	from " + schema + ".FE80101Z  "
+                    + " fz left join   " + ctlSchema + ".f0005  f5 on (trim(fz.ZZE8ZZLXA)=trim(f5.drky)  and drsy = 'E8' AND DRRT = '10')"
+                    + " where  fz.zzan8='" + an8 + "'";
+            return sql;
+        }
+
+        private static final String updataJdeStatus = "updataJdeStatus";
+
+        public String updataJdeStatus(String flag, String BSAN8) {
+            String sql = "update " + schema + ".FE8WMS02 set BSEV01='" + flag + "' where BSAN8='" + BSAN8 + "'";
+            return sql;
+        }
+
+    }
+
+}

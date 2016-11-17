@@ -1,0 +1,285 @@
+package com.el.cmic.domain.goods;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 货品 虚拟实体(货品信息推送)
+ * @author zhanhao
+ *
+ */
+public class Bales {
+
+	/**
+	 * FE8WMS01
+	 */
+	private String bslitm;
+	 /**
+     *  货主 - F0006.MCCO
+     */
+    private String mcco;
+    /**
+     *  编号 - F4101.IMLITM
+     */
+    private String imlitm;
+
+    /**
+     *  名称 - FE84101.SPE8NAME
+     */
+    private String spe8name;
+	
+    /**
+     *  查询码 - F4101.IMSRTX
+     */
+    private String imsrtx;
+	
+    /**
+     *  建档时间 - FE84101.SPE8JDSJ
+     */
+    private Date spe8jdsj;
+    /**
+     *  规格 - F4101.IMDSC2
+     */
+    private String imdsc2;
+    
+    /**
+     *  产地 - FE84101.SPORIG
+     */
+    private String sporig;
+    
+    /**
+     *  单位 - F4101.IMUOM1
+     */
+    private String imuom1;
+    
+    /**
+     *  有效期 - F4101.IMSLD
+     */
+    private BigDecimal imsld;
+    /**
+     *  状态 - F4101.IMSTKT
+     */
+    private String imstkt;
+    /**
+     * 货主名称   F0010.CCNAME 
+     */
+    private String ccname;
+    
+    /**
+     *  通用名称 - FE84101.SPE8TYM
+     */
+    private String spe8tym;
+    
+    /**
+     *  是否唯一码监管 - FE84101.SPE8XLHGL
+     */
+    private String spe8xlhgl;
+    
+    /**
+     *  养护周期 - FE84101.SPE8YHZQ
+     */
+    private BigDecimal spe8yhzq;
+    
+    /**
+     *  分类1 - F4101.IMSRP3
+     */
+    private String imsrp3; 
+    /**
+     *  分类2 - F4101.IMSRP5
+     */
+    private String imsrp5;
+    /**
+     *  重点养护品种 - FE84101.SPE8ZDYH
+     */
+    private String spe8zdyh;
+    /**
+     *  生产厂商 - F0101.ABALPH
+     */
+    private String abalph;
+    /**
+     *  剂型 - FE84101.SPE8JX
+     */
+    private String spe8jx;
+    /**
+     *  储存条件 - FE84101.SPE8CCTJ
+     */
+    private String spe8cctj;
+    
+    /**
+     * 证照明细
+     */
+    private List<Licence> licenceList;
+    
+    /**
+     * 翻译用的map
+     */
+    public Map<String,Object> entiryMap = new  HashMap();
+    
+    
+    
+	public String getMcco() {
+		return mcco;
+	}
+	public void setMcco(String mcco) {
+		this.mcco = mcco; 
+		entiryMap.put("货主", mcco);
+	}
+	public String getImlitm() {
+		return imlitm;
+	}
+	public void setImlitm(String imlitm) {
+		this.imlitm = imlitm;
+		entiryMap.put("编号", imlitm);
+	}
+	public String getSpe8name() {
+		return spe8name;
+	}
+	public void setSpe8name(String spe8name) {
+		this.spe8name = spe8name;
+		entiryMap.put("名称", spe8name);
+	}
+	public String getImsrtx() {
+		return imsrtx;
+	}
+	public void setImsrtx(String imsrtx) {
+		this.imsrtx = imsrtx;
+		entiryMap.put("查询码 ", imsrtx);
+	}
+	public Date getSpe8jdsj() {
+		entiryMap.put("建档时间",this.spe8jdsj);
+		return spe8jdsj;
+	}
+	public void setSpe8jdsj(Date spe8jdsj) {
+		entiryMap.put("建档时间",this.spe8jdsj);
+		this.spe8jdsj = spe8jdsj;
+	}
+	public String getImdsc2() {
+		return imdsc2;
+	}
+	public void setImdsc2(String imdsc2) {
+		this.imdsc2 = imdsc2;
+		entiryMap.put("规格", imdsc2);
+	}
+	public String getSporig() {
+		return sporig;
+	}
+	public void setSporig(String sporig) {
+		this.sporig = sporig;
+		entiryMap.put("产地",sporig);
+	}
+	public String getImuom1() {
+		return imuom1;
+	}
+	public void setImuom1(String imuom1) {
+		this.imuom1 = imuom1;
+		entiryMap.put("单位",imuom1);
+	}
+	public BigDecimal getImsld() {
+		return imsld;
+	}
+	public void setImsld(BigDecimal imsld) {
+		this.imsld = imsld;
+		entiryMap.put("有效期",imsld);
+	}
+	public String getImstkt() {
+		return imstkt;
+	}
+	public void setImstkt(String imstkt) {
+		this.imstkt = imstkt;
+		entiryMap.put("状态", imstkt);
+	}
+	public String getCcname() {
+		return ccname;
+	}
+	public void setCcname(String ccname) {
+		this.ccname = ccname;
+		entiryMap.put("货主名称",ccname);
+	}
+	public String getSpe8tym() {
+		return spe8tym;
+	}
+	public void setSpe8tym(String spe8tym) {
+		this.spe8tym = spe8tym;
+		entiryMap.put("通用名称",spe8tym);
+	}
+	public String getSpe8xlhgl() {
+		return spe8xlhgl;
+	}
+	public void setSpe8xlhgl(String spe8xlhgl) {
+		this.spe8xlhgl = spe8xlhgl;
+		entiryMap.put("是否唯一码监管",spe8xlhgl);
+	}
+	public BigDecimal getSpe8yhzq() {
+		return spe8yhzq;
+	}
+	public void setSpe8yhzq(BigDecimal spe8yhzq) {
+		this.spe8yhzq = spe8yhzq;
+		entiryMap.put("养护周期",spe8yhzq);
+	}
+	public String getImsrp3() {
+		return imsrp3;
+	}
+	public void setImsrp3(String imsrp3) {
+		this.imsrp3 = imsrp3;
+		entiryMap.put("分类1",imsrp3);
+	}
+	public String getImsrp5() {
+		return imsrp5;
+	}
+	public void setImsrp5(String imsrp5) {
+		this.imsrp5 = imsrp5;
+		entiryMap.put("分类2",imsrp5 );
+	}
+	public String getSpe8zdyh() {
+		return spe8zdyh;
+	}
+	public void setSpe8zdyh(String spe8zdyh) {
+		this.spe8zdyh = spe8zdyh;
+		entiryMap.put("重点养护品种",spe8zdyh);
+	}
+	public String getAbalph() {
+		return abalph;
+	}
+	public void setAbalph(String abalph) {
+		this.abalph = abalph;
+		entiryMap.put("生产厂商 ",abalph);
+	}
+	public String getSpe8jx() {
+		return spe8jx;
+	}
+	public void setSpe8jx(String spe8jx) {
+		this.spe8jx = spe8jx;
+		entiryMap.put("剂型",spe8jx);
+	}
+	public String getSpe8cctj() {
+		return spe8cctj;
+	}
+	public void setSpe8cctj(String spe8cctj) {
+		this.spe8cctj = spe8cctj;
+		entiryMap.put("储存条件",spe8cctj);
+	}
+	public Map<String, Object> getEntiryMap() {
+		return entiryMap;
+	}
+	public void setEntiryMap(Map<String, Object> entiryMap) {
+		this.entiryMap = entiryMap;
+	}
+	public List<Licence> getLicenceList() {
+		return licenceList;
+	}
+	public void setLicenceList(List<Licence> licenceList) {
+		this.licenceList = licenceList;
+	}
+	public String getBslitm() {
+		return bslitm;
+	}
+	public void setBslitm(String bslitm) {
+		this.bslitm = bslitm;
+	}
+    
+    
+	
+}

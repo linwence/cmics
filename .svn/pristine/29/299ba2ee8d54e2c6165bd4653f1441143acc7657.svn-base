@@ -1,0 +1,159 @@
+package com.el.cfg.dao;
+
+import com.el.cfg.domain.FE80101Z;
+import com.el.cfg.domain.FE80101ZKey;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.type.JdbcType;
+
+public interface FE80101ZMapper {
+    @Delete({
+        "delete from CRPDTA.FE80101Z",
+        "where ZZAN8 = #{zzan8,jdbcType=DECIMAL}",
+          "and ZZE8ZZLX = #{zze8zzlx,jdbcType=OTHER}",
+          "and ZZE8ZZBM = #{zze8zzbm,jdbcType=OTHER}"
+    })
+    int deleteByPrimaryKey(FE80101ZKey key);
+
+    @Insert({
+        "insert into CRPDTA.FE80101Z (ZZAN8, ZZE8ZZLX, ",
+        "ZZE8ZZBM, ZZALPH, ZZDOCO, ",
+        "ZZPF1, ZZEFTJ, ZZEXDJ, ",
+        "ZZE8JYFW, ZZFTTL, ZZVR01, ",
+        "ZZVR02, ZZURCD, ZZURDT, ",
+        "ZZURAT, ZZURAB, ",
+        "ZZURRF, ZZEV02, ZZEV03, ",
+        "ZZEV04, ZZEV05, ZZDL01, ",
+        "ZZDL02, ZZDL03, ZZDL010, ",
+        "ZZDL011, ZZUSER, ZZPID, ",
+        "ZZJOBN, ZZUPMJ, ZZUPMT, ",
+        "ZZIDATE, ZZDF01, ",
+        "ZZRDATE, ZZDF02, ",
+        "ZZUKID, ZZSTATUS, ",
+        "ZZFLAG)",
+        "values (#{zzan8,jdbcType=DECIMAL}, #{zze8zzlx,jdbcType=OTHER}, ",
+        "#{zze8zzbm,jdbcType=OTHER}, #{zzalph,jdbcType=OTHER}, #{zzdoco,jdbcType=DECIMAL}, ",
+        "#{zzpf1,jdbcType=OTHER}, #{zzeftj,jdbcType=DECIMAL}, #{zzexdj,jdbcType=DECIMAL}, ",
+        "#{zze8jyfw,jdbcType=OTHER}, #{zzfttl,jdbcType=OTHER}, #{zzvr01,jdbcType=OTHER}, ",
+        "#{zzvr02,jdbcType=OTHER}, #{zzurcd,jdbcType=OTHER}, #{zzurdt,jdbcType=DECIMAL}, ",
+        "#{zzurat,jdbcType=DECIMAL}, #{zzurab,jdbcType=DECIMAL}, ",
+        "#{zzurrf,jdbcType=OTHER}, #{zzev02,jdbcType=OTHER}, #{zzev03,jdbcType=OTHER}, ",
+        "#{zzev04,jdbcType=OTHER}, #{zzev05,jdbcType=OTHER}, #{zzdl01,jdbcType=OTHER}, ",
+        "#{zzdl02,jdbcType=OTHER}, #{zzdl03,jdbcType=OTHER}, #{zzdl010,jdbcType=OTHER}, ",
+        "#{zzdl011,jdbcType=OTHER}, #{zzuser,jdbcType=OTHER}, #{zzpid,jdbcType=OTHER}, ",
+        "#{zzjobn,jdbcType=OTHER}, #{zzupmj,jdbcType=DECIMAL}, #{zzupmt,jdbcType=DECIMAL}, ",
+        "#{zzidate,jdbcType=TIMESTAMP}, #{zzdf01,jdbcType=OTHER}, ",
+        "#{zzrdate,jdbcType=TIMESTAMP}, #{zzdf02,jdbcType=OTHER}, ",
+        "#{zzukid,jdbcType=DECIMAL}, #{zzstatus,jdbcType=OTHER}, ",
+        "#{zzflag,jdbcType=OTHER})"
+    })
+    int insert(FE80101Z record);
+
+    @InsertProvider(type=FE80101ZSqlProvider.class, method="insertSelective")
+    int insertSelective(FE80101Z record);
+
+    @Select({
+        "select",
+        "ZZAN8, ZZE8ZZLX, ZZE8ZZBM, ZZALPH, ZZDOCO, ZZPF1, ZZEFTJ, ZZEXDJ, ZZE8JYFW, ",
+        "ZZFTTL, ZZVR01, ZZVR02, ZZURCD, ZZURDT, ZZURAT, ZZURAB, ZZURRF, ZZEV02, ZZEV03, ",
+        "ZZEV04, ZZEV05, ZZDL01, ZZDL02, ZZDL03, ZZDL010, ZZDL011, ZZUSER, ZZPID, ZZJOBN, ",
+        "ZZUPMJ, ZZUPMT, ZZIDATE, ZZDF01, ZZRDATE, ZZDF02, ZZUKID, ZZSTATUS, ZZFLAG",
+        "from CRPDTA.FE80101Z",
+        "where ZZAN8 = #{zzan8,jdbcType=DECIMAL}",
+          "and ZZE8ZZLX = #{zze8zzlx,jdbcType=OTHER}",
+          "and ZZE8ZZBM = #{zze8zzbm,jdbcType=OTHER}"
+    })
+    @Results({
+        @Result(column="ZZAN8", property="zzan8", jdbcType=JdbcType.DECIMAL, id=true),
+        @Result(column="ZZE8ZZLX", property="zze8zzlx", jdbcType=JdbcType.OTHER, id=true),
+        @Result(column="ZZE8ZZBM", property="zze8zzbm", jdbcType=JdbcType.OTHER, id=true),
+        @Result(column="ZZALPH", property="zzalph", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZDOCO", property="zzdoco", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZPF1", property="zzpf1", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZEFTJ", property="zzeftj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZEXDJ", property="zzexdj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZE8JYFW", property="zze8jyfw", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZFTTL", property="zzfttl", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZVR01", property="zzvr01", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZVR02", property="zzvr02", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZURCD", property="zzurcd", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZURDT", property="zzurdt", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZURAT", property="zzurat", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZURAB", property="zzurab", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZURRF", property="zzurrf", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZEV02", property="zzev02", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZEV03", property="zzev03", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZEV04", property="zzev04", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZEV05", property="zzev05", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZDL01", property="zzdl01", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZDL02", property="zzdl02", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZDL03", property="zzdl03", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZDL010", property="zzdl010", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZDL011", property="zzdl011", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZUSER", property="zzuser", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZPID", property="zzpid", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZJOBN", property="zzjobn", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZUPMJ", property="zzupmj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZUPMT", property="zzupmt", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZIDATE", property="zzidate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="ZZDF01", property="zzdf01", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZRDATE", property="zzrdate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="ZZDF02", property="zzdf02", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZUKID", property="zzukid", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZSTATUS", property="zzstatus", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZFLAG", property="zzflag", jdbcType=JdbcType.OTHER)
+    })
+    FE80101Z selectByPrimaryKey(FE80101ZKey key);
+
+    @UpdateProvider(type=FE80101ZSqlProvider.class, method="updateByPrimaryKeySelective")
+    int updateByPrimaryKeySelective(FE80101Z record);
+
+    @Update({
+        "update CRPDTA.FE80101Z",
+        "set ZZALPH = #{zzalph,jdbcType=OTHER},",
+          "ZZDOCO = #{zzdoco,jdbcType=DECIMAL},",
+          "ZZPF1 = #{zzpf1,jdbcType=OTHER},",
+          "ZZEFTJ = #{zzeftj,jdbcType=DECIMAL},",
+          "ZZEXDJ = #{zzexdj,jdbcType=DECIMAL},",
+          "ZZE8JYFW = #{zze8jyfw,jdbcType=OTHER},",
+          "ZZFTTL = #{zzfttl,jdbcType=OTHER},",
+          "ZZVR01 = #{zzvr01,jdbcType=OTHER},",
+          "ZZVR02 = #{zzvr02,jdbcType=OTHER},",
+          "ZZURCD = #{zzurcd,jdbcType=OTHER},",
+          "ZZURDT = #{zzurdt,jdbcType=DECIMAL},",
+          "ZZURAT = #{zzurat,jdbcType=DECIMAL},",
+          "ZZURAB = #{zzurab,jdbcType=DECIMAL},",
+          "ZZURRF = #{zzurrf,jdbcType=OTHER},",
+          "ZZEV02 = #{zzev02,jdbcType=OTHER},",
+          "ZZEV03 = #{zzev03,jdbcType=OTHER},",
+          "ZZEV04 = #{zzev04,jdbcType=OTHER},",
+          "ZZEV05 = #{zzev05,jdbcType=OTHER},",
+          "ZZDL01 = #{zzdl01,jdbcType=OTHER},",
+          "ZZDL02 = #{zzdl02,jdbcType=OTHER},",
+          "ZZDL03 = #{zzdl03,jdbcType=OTHER},",
+          "ZZDL010 = #{zzdl010,jdbcType=OTHER},",
+          "ZZDL011 = #{zzdl011,jdbcType=OTHER},",
+          "ZZUSER = #{zzuser,jdbcType=OTHER},",
+          "ZZPID = #{zzpid,jdbcType=OTHER},",
+          "ZZJOBN = #{zzjobn,jdbcType=OTHER},",
+          "ZZUPMJ = #{zzupmj,jdbcType=DECIMAL},",
+          "ZZUPMT = #{zzupmt,jdbcType=DECIMAL},",
+          "ZZIDATE = #{zzidate,jdbcType=TIMESTAMP},",
+          "ZZDF01 = #{zzdf01,jdbcType=OTHER},",
+          "ZZRDATE = #{zzrdate,jdbcType=TIMESTAMP},",
+          "ZZDF02 = #{zzdf02,jdbcType=OTHER},",
+          "ZZUKID = #{zzukid,jdbcType=DECIMAL},",
+          "ZZSTATUS = #{zzstatus,jdbcType=OTHER},",
+          "ZZFLAG = #{zzflag,jdbcType=OTHER}",
+        "where ZZAN8 = #{zzan8,jdbcType=DECIMAL}",
+          "and ZZE8ZZLX = #{zze8zzlx,jdbcType=OTHER}",
+          "and ZZE8ZZBM = #{zze8zzbm,jdbcType=OTHER}"
+    })
+    int updateByPrimaryKey(FE80101Z record);
+}

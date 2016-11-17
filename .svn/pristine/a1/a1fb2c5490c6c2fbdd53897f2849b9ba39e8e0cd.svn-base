@@ -1,0 +1,62 @@
+package com.el.cmic.service.repertory.impl;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.alibaba.fastjson.JSONObject;
+import com.el.cmic.domain.repertory.InInvertoryCancel;
+import com.el.cmic.domain.repertory.InInvertoryCancelItem;
+import com.el.cmic.mapper.repertory.InInvertoryCancelMapper;
+import com.el.cmic.service.repertory.InInvertoryCancelService;
+
+@Service
+public class InInvertoryCancelServiceImpl implements  InInvertoryCancelService {
+
+	@Autowired
+	private InInvertoryCancelMapper inInvertoryCancelMapper;
+	
+	
+	/**
+	 * 入库取消返回推送  使用
+	 */
+	@Transactional
+	public void updateOperation(String  data){
+		 InInvertoryCancel	inInvertoryCancel =JSONObject.toJavaObject(JSONObject.parseObject(data), InInvertoryCancel.class);
+		for(InInvertoryCancelItem inInvertoryCancelItem:inInvertoryCancel.getiICIList()){
+			Map<String,String> mapParam = new HashMap<String,String>();
+			mapParam.put("qxdcto", inInvertoryCancel.getQxdcto());
+			mapParam.put("qxlnid", inInvertoryCancelItem.getQxlnid().toString());
+			mapParam.put("qxdoco", inInvertoryCancel.getQxdoco().toString());
+			//申请取消数量与“实际取消数量”是否相等，相等更新EV01=S（成功取消）,不相等更新EV01=D(取消失败)
+			if(inInvertoryCancelItem.getApplyQuant().compareTo(inInvertoryCancelItem.getSocn())==0){
+				mapParam.put("qxev01", "S");
+			}else{
+				mapParam.put("qxev01", "D");
+			}
+			this.updateInInvertoryCancel(mapParam);
+		}
+	}
+	
+	/**
+	 * 入库取消返回推送  使用
+	 */
+	@Override
+	@Transactional
+	public Integer updateInInvertoryCancel(Map<String, String> paramMap) {
+		return inInvertoryCancelMapper.updateInInvertoryCancel(paramMap);
+	}
+
+	/**
+	 * 入库单取消使用  wms提供服务
+	 */
+	@Override
+	public List<InInvertoryCancel> selectInInvertoryCancel() {
+		return inInvertoryCancelMapper.selectInInvertoryCancel();
+	}
+
+}

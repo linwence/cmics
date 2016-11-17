@@ -1,0 +1,13 @@
+package com.el.cmic.ws.mapper;
+
+import com.el.cfg.domain.Fe841001;
+import org.apache.ibatis.annotations.UpdateProvider;
+
+/**
+ * Created by king_ on 2016/10/11.
+ */
+public interface FE841001UpdateByDocoMapper {
+    @UpdateProvider(type=FE841001UpdateByDocoSqlProvider.class, method="updateByDoco")
+    int updateByDoco(Fe841001 record);
+
+}

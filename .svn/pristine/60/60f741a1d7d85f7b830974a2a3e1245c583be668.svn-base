@@ -1,0 +1,31 @@
+package com.el.cmic.ws.mapper;
+
+import com.el.cfg.domain.Fe841003;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.type.JdbcType;
+
+import java.math.BigDecimal;
+
+/**
+ * Created by king_ on 2016/10/14.
+ */
+public interface FE841003SelectByAn8Mapper {
+    @Select({
+            "select",
+            "SQA427, SQE8TYM, SQCNEM, SQCNICL, SQCNYP ",
+            "from CRPDTA.FE841003",
+            "where SQAN8 = #{an8}"
+    })
+    @Results({
+            @Result(column="SQUKID", property="squkid", jdbcType= JdbcType.DECIMAL, id=true),
+            @Result(column="SQA427", property="sqa427", jdbcType=JdbcType.OTHER),
+            @Result(column="SQE8TYM", property="sqe8tym", jdbcType=JdbcType.OTHER),
+            @Result(column="SQCNEM", property="sqcnem", jdbcType=JdbcType.OTHER),
+            @Result(column="SQCNICL", property="sqcnicl", jdbcType=JdbcType.OTHER),
+            @Result(column="SQCNYP", property="sqcnyp", jdbcType=JdbcType.OTHER)
+
+    })
+    Fe841003 selectByPrimaryKey(BigDecimal an8);
+}

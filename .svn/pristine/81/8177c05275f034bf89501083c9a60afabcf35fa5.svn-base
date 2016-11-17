@@ -1,0 +1,397 @@
+package com.el.cfg.domain;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+public class Fe8wms04 implements Serializable {
+    /**
+     *  null - FE8WMS04.XLPTUT01
+     */
+    private String xlptut01;
+
+    /**
+     *  null - FE8WMS04.XLAA05
+     */
+    private String xlaa05;
+
+    /**
+     *  null - FE8WMS04.XLCA01
+     */
+    private BigDecimal xlca01;
+
+    /**
+     *  null - FE8WMS04.XLUPRC
+     */
+    private BigDecimal xluprc;
+
+    /**
+     *  null - FE8WMS04.XLUORG
+     */
+    private BigDecimal xluorg;
+
+    /**
+     *  null - FE8WMS04.XLLITM
+     */
+    private String xllitm;
+
+    /**
+     *  null - FE8WMS04.XLPTUT02
+     */
+    private String xlptut02;
+
+    /**
+     *  null - FE8WMS04.XLUSER
+     */
+    private String xluser;
+
+    /**
+     *  null - FE8WMS04.XLPID
+     */
+    private String xlpid;
+
+    /**
+     *  null - FE8WMS04.XLUPMJ
+     */
+    private Integer xlupmj;
+
+    /**
+     *  null - FE8WMS04.XLTDAY
+     */
+    private BigDecimal xltday;
+
+    /**
+     *  null - FE8WMS04.XLKCOO
+     */
+    private String xlkcoo;
+
+    /**
+     *  null - FE8WMS04.XLDCTO
+     */
+    private String xldcto;
+
+    /**
+     *  null - FE8WMS04.XLDOCO
+     */
+    private BigDecimal xldoco;
+
+    /**
+     *  null - FE8WMS04.XLLNID
+     */
+    private BigDecimal xllnid;
+
+    /**
+     *  null - FE8WMS04.XLDL01
+     */
+    private String xldl01;
+
+    /**
+     *  null - FE8WMS04.XLDL02
+     */
+    private String xldl02;
+
+    /**
+     *  null - FE8WMS04.XLDL03
+     */
+    private String xldl03;
+
+    /**
+     *  null - FE8WMS04.XLAB01
+     */
+    private BigDecimal xlab01;
+
+    /**
+     *  null - FE8WMS04.XLAB02
+     */
+    private BigDecimal xlab02;
+
+    /**
+     *  null - FE8WMS04.XLAB03
+     */
+    private BigDecimal xlab03;
+
+    /**
+     *  null - FE8WMS04.XLEV01
+     */
+    private String xlev01;
+
+    /**
+     *  null - FE8WMS04.XLEV02
+     */
+    private String xlev02;
+
+    /**
+     *  null - FE8WMS04.XLDL010
+     */
+    private String xldl010;
+
+    /**
+     *  null - FE8WMS04.XLLOTN
+     */
+    private String xllotn;
+
+    /**
+     *  null - FE8WMS04.XLLOT1
+     */
+    private String xllot1;
+
+    /**
+     *  null - FE8WMS04.XLLOT2
+     */
+    private String xllot2;
+
+    private static final long serialVersionUID = 1L;
+
+    public String getXlptut01() {
+        return xlptut01;
+    }
+
+    public void setXlptut01(String xlptut01) {
+        this.xlptut01 = xlptut01;
+    }
+
+    public String getXlaa05() {
+        return xlaa05;
+    }
+
+    public void setXlaa05(String xlaa05) {
+        this.xlaa05 = xlaa05;
+    }
+
+    public BigDecimal getXlca01() {
+        return xlca01;
+    }
+
+    public void setXlca01(BigDecimal xlca01) {
+        this.xlca01 = xlca01;
+    }
+
+    public BigDecimal getXluprc() {
+        return xluprc;
+    }
+
+    public void setXluprc(BigDecimal xluprc) {
+        this.xluprc = xluprc;
+    }
+
+    public BigDecimal getXluorg() {
+        return xluorg;
+    }
+
+    public void setXluorg(BigDecimal xluorg) {
+        this.xluorg = xluorg;
+    }
+
+    public String getXllitm() {
+        return xllitm;
+    }
+
+    public void setXllitm(String xllitm) {
+        this.xllitm = xllitm;
+    }
+
+    public String getXlptut02() {
+        return xlptut02;
+    }
+
+    public void setXlptut02(String xlptut02) {
+        this.xlptut02 = xlptut02;
+    }
+
+    public String getXluser() {
+        return xluser;
+    }
+
+    public void setXluser(String xluser) {
+        this.xluser = xluser;
+    }
+
+    public String getXlpid() {
+        return xlpid;
+    }
+
+    public void setXlpid(String xlpid) {
+        this.xlpid = xlpid;
+    }
+
+    public Integer getXlupmj() {
+        return xlupmj;
+    }
+
+    public void setXlupmj(Integer xlupmj) {
+        this.xlupmj = xlupmj;
+    }
+
+    public BigDecimal getXltday() {
+        return xltday;
+    }
+
+    public void setXltday(BigDecimal xltday) {
+        this.xltday = xltday;
+    }
+
+    public String getXlkcoo() {
+        return xlkcoo;
+    }
+
+    public void setXlkcoo(String xlkcoo) {
+        this.xlkcoo = xlkcoo;
+    }
+
+    public String getXldcto() {
+        return xldcto;
+    }
+
+    public void setXldcto(String xldcto) {
+        this.xldcto = xldcto;
+    }
+
+    public BigDecimal getXldoco() {
+        return xldoco;
+    }
+
+    public void setXldoco(BigDecimal xldoco) {
+        this.xldoco = xldoco;
+    }
+
+    public BigDecimal getXllnid() {
+        return xllnid;
+    }
+
+    public void setXllnid(BigDecimal xllnid) {
+        this.xllnid = xllnid;
+    }
+
+    public String getXldl01() {
+        return xldl01;
+    }
+
+    public void setXldl01(String xldl01) {
+        this.xldl01 = xldl01;
+    }
+
+    public String getXldl02() {
+        return xldl02;
+    }
+
+    public void setXldl02(String xldl02) {
+        this.xldl02 = xldl02;
+    }
+
+    public String getXldl03() {
+        return xldl03;
+    }
+
+    public void setXldl03(String xldl03) {
+        this.xldl03 = xldl03;
+    }
+
+    public BigDecimal getXlab01() {
+        return xlab01;
+    }
+
+    public void setXlab01(BigDecimal xlab01) {
+        this.xlab01 = xlab01;
+    }
+
+    public BigDecimal getXlab02() {
+        return xlab02;
+    }
+
+    public void setXlab02(BigDecimal xlab02) {
+        this.xlab02 = xlab02;
+    }
+
+    public BigDecimal getXlab03() {
+        return xlab03;
+    }
+
+    public void setXlab03(BigDecimal xlab03) {
+        this.xlab03 = xlab03;
+    }
+
+    public String getXlev01() {
+        return xlev01;
+    }
+
+    public void setXlev01(String xlev01) {
+        this.xlev01 = xlev01;
+    }
+
+    public String getXlev02() {
+        return xlev02;
+    }
+
+    public void setXlev02(String xlev02) {
+        this.xlev02 = xlev02;
+    }
+
+    public String getXldl010() {
+        return xldl010;
+    }
+
+    public void setXldl010(String xldl010) {
+        this.xldl010 = xldl010;
+    }
+
+    public String getXllotn() {
+        return xllotn;
+    }
+
+    public void setXllotn(String xllotn) {
+        this.xllotn = xllotn;
+    }
+
+    public String getXllot1() {
+        return xllot1;
+    }
+
+    public void setXllot1(String xllot1) {
+        this.xllot1 = xllot1;
+    }
+
+    public String getXllot2() {
+        return xllot2;
+    }
+
+    public void setXllot2(String xllot2) {
+        this.xllot2 = xllot2;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", xlptut01=").append(xlptut01);
+        sb.append(", xlaa05=").append(xlaa05);
+        sb.append(", xlca01=").append(xlca01);
+        sb.append(", xluprc=").append(xluprc);
+        sb.append(", xluorg=").append(xluorg);
+        sb.append(", xllitm=").append(xllitm);
+        sb.append(", xlptut02=").append(xlptut02);
+        sb.append(", xluser=").append(xluser);
+        sb.append(", xlpid=").append(xlpid);
+        sb.append(", xlupmj=").append(xlupmj);
+        sb.append(", xltday=").append(xltday);
+        sb.append(", xlkcoo=").append(xlkcoo);
+        sb.append(", xldcto=").append(xldcto);
+        sb.append(", xldoco=").append(xldoco);
+        sb.append(", xllnid=").append(xllnid);
+        sb.append(", xldl01=").append(xldl01);
+        sb.append(", xldl02=").append(xldl02);
+        sb.append(", xldl03=").append(xldl03);
+        sb.append(", xlab01=").append(xlab01);
+        sb.append(", xlab02=").append(xlab02);
+        sb.append(", xlab03=").append(xlab03);
+        sb.append(", xlev01=").append(xlev01);
+        sb.append(", xlev02=").append(xlev02);
+        sb.append(", xldl010=").append(xldl010);
+        sb.append(", xllotn=").append(xllotn);
+        sb.append(", xllot1=").append(xllot1);
+        sb.append(", xllot2=").append(xllot2);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

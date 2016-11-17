@@ -1,0 +1,402 @@
+package com.el.cmic.ws.service;
+
+import com.el.cmic.ws.domain.*;
+import com.el.utils.JAXBListUtil;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.jws.WebService;
+import java.math.BigDecimal;
+import java.util.Iterator;
+
+/**
+ * Created by Vincent on 2016/9/13.
+ */
+@WebService(endpointInterface = "com.el.cmic.ws.service.ReceiveMdmService", serviceName = "receive")
+public class ReceiveMdmServiceImpl implements ReceiveMdmService {
+    @Autowired
+    AddE01ToERPService addE01ToERPService;
+    @Autowired
+    AddE02ToERPService addE02ToERPService;
+    @Autowired
+    AddE03ToERPService addE03ToERPService;
+    @Autowired
+    AddE04ToERPService addE04ToERPService;
+    @Autowired
+    AddC01ToERPService addC01ToERPService;
+    @Autowired
+    ModE0ESToERPService modE0ESToERPService;
+    @Autowired
+    ModC0ESToERPService modC0ESToERPService;
+    @Autowired
+    AddM01ToERPService addM01ToERPService;
+    @Autowired
+    ModM0ESToERPService modM0ESToERPService;
+
+    public String receive(String info) {
+
+        Document doc = null;
+        String datatype = "";
+        String functype = "";
+        String no ="";
+        String reqno = "";
+        try{
+            doc = DocumentHelper.parseText(info); // 将字符串转为XML
+
+
+            Element rootElt = doc.getRootElement(); // 获取根节点
+            Iterator headeriter = rootElt.elementIterator("header"); // 获取根节点下的子节点header
+            PhE001OutHeader phE001OutHeader = new PhE001OutHeader();
+            if (headeriter.hasNext()){
+                Element headerEle = (Element) headeriter.next();
+                datatype = headerEle.elementTextTrim("datatype");
+                functype = headerEle.elementTextTrim("functypr");
+                //System.out.println(headerEle.asXML());
+
+                JAXBListUtil jaxbListUtil=new JAXBListUtil(PhE001OutHeader.class,JAXBListUtil.CollectionWrapper.class);
+                String[] str1 = phE001OutHeader.getSubmitbillinfo().split(";");
+                String[] str2 = str1[0].split("-");
+                no = str2[1];
+                if(str1.length==2){
+                    String[] str3 = str1[1].split("-");
+                    reqno = str3[1];
+                }
+
+                phE001OutHeader=jaxbListUtil.fromXml(headerEle.asXML());
+                //System.out.println( phE001OutHeader.toString());
+            }
+
+            if(functype.equals("MOD")){
+                if(datatype.equals("E01")||datatype.equals("E02")||datatype.equals("E03")||datatype.equals("E04")) {
+                    if (phE001OutHeader.getErrcode().equals("ERR011")) {
+                        BigDecimal bigDecimal = new BigDecimal(reqno);
+                        modE0ESToERPService.updateFE841001(bigDecimal,"E");
+                    }
+                    if (phE001OutHeader.getErrcode().equals("SUCCESS")) {
+                        if (!reqno.equals(null)) {
+                            BigDecimal bigDecimal = new BigDecimal(reqno);
+                            modE0ESToERPService.updateFE841001(bigDecimal,"S");
+                        }
+                    }
+                }
+                if(datatype.equals("C01")){
+                    if (phE001OutHeader.getErrcode().equals("ERR011")) {
+                        BigDecimal bigDecimal = new BigDecimal(reqno);
+                        modC0ESToERPService.updateFE841003(bigDecimal,"E");
+                    }
+                    if (phE001OutHeader.getErrcode().equals("SUCCESS")) {
+                        if (!reqno.equals(null)) {
+                            BigDecimal bd= new BigDecimal(no);
+                            BigDecimal bigDecimal = new BigDecimal(reqno);
+                            modC0ESToERPService.updateFE841003(bigDecimal,"S");
+                            modC0ESToERPService.updateFE80101(bd);
+                        }
+                    }
+                }
+                if(datatype.equals("M01")){
+                    if (phE001OutHeader.getErrcode().equals("ERR011")) {
+                        BigDecimal bigDecimal = new BigDecimal(reqno);
+                        modM0ESToERPService.updateFE841005(bigDecimal,"E");
+                    }
+                    if (phE001OutHeader.getErrcode().equals("SUCCESS")) {
+                        if (!reqno.equals(null)) {
+                            BigDecimal bigDecimal = new BigDecimal(reqno);
+                            modM0ESToERPService.updateFE841005(bigDecimal,"S");
+                        }
+                    }
+
+                }
+            }
+//------------------------------------ADD--------------------------------------------------------------------------------
+            /*if(functype.equals("ADD")) {*/
+
+
+                Iterator contentiter = rootElt.elementIterator("content");
+                if (contentiter.hasNext()) {
+                    Element contentEle = (Element) contentiter.next();
+                    //System.out.println(contentEle.asXML());
+                    //String count = contentEle.elementTextTrim("count");
+
+                    Iterator detailiter = contentEle.elementIterator("detail");
+                    while (detailiter.hasNext()) {                        //detail解析 循环执行
+                        Element detailEle = (Element) detailiter.next();//detail节点
+                        Iterator mainiter = detailEle.elementIterator("main");
+                        if (mainiter.hasNext()) {
+                            Element mainEle = (Element) mainiter.next();
+                            if (datatype.equals("E01")) {
+                                JAXBListUtil jaxbListUtil = new JAXBListUtil(PhE001OutMain.class, JAXBListUtil.CollectionWrapper.class);
+                                PhE001OutMain phE001OutMain = jaxbListUtil.fromXml(mainEle.asXML());
+                                PhE001OutsublineB phE001OutsublineB = new PhE001OutsublineB();
+                                //System.out.println(phE001OutMain);
+
+                                Iterator subiter = detailEle.elementIterator("sub");
+                                if (subiter.hasNext()) {
+                                    Element subEle = (Element) subiter.next();
+                                    Iterator sublineiter = subEle.elementIterator("subline");
+
+                                        if (sublineiter.hasNext()) {
+                                            Element sublineEle = (Element) sublineiter.next();
+                                            jaxbListUtil = new JAXBListUtil(PhE001OutsublineB.class, JAXBListUtil.CollectionWrapper.class);
+                                            phE001OutsublineB = jaxbListUtil.fromXml(sublineEle.asXML());
+                                            //System.out.println(phE001OutsublineB);
+                                        }
+
+                                }
+                                addE01ToERPService.AddE01ToERP(phE001OutHeader,phE001OutMain,phE001OutsublineB,no);
+                            }
+
+                            if (datatype.equals("E02")) {
+                                JAXBListUtil jaxbListUtil = new JAXBListUtil(PhE002OutMain.class, JAXBListUtil.CollectionWrapper.class);
+                                PhE002OutMain phE002OutMain = jaxbListUtil.fromXml(mainEle.asXML());
+                                //System.out.println(phE002OutMain);
+                                addE02ToERPService.addE02ToERP(phE001OutHeader,phE002OutMain,no);
+
+                            }
+
+                            if (datatype.equals("E03")) {
+                                JAXBListUtil jaxbListUtil = new JAXBListUtil(PhE003OutMain.class, JAXBListUtil.CollectionWrapper.class);
+                                PhE003OutMain phE003OutMain = jaxbListUtil.fromXml(mainEle.asXML());
+                                //System.out.println(phE003OutMain);
+                                addE03ToERPService.addE03ToERP(phE001OutHeader,phE003OutMain,no);
+                            }
+                            if (datatype.equals("E04")) {
+                                JAXBListUtil jaxbListUtil = new JAXBListUtil(PhE004OutMain.class, JAXBListUtil.CollectionWrapper.class);
+                                PhE004OutMain phE004OutMain = jaxbListUtil.fromXml(mainEle.asXML());
+                                System.out.println(phE004OutMain);
+                                addE04ToERPService.addE04ToERP(phE001OutHeader,phE004OutMain,no);
+
+                            }
+
+                            if (datatype.equals("C01")) {
+                                JAXBListUtil jaxbListUtil = new JAXBListUtil(PhC001OutMain.class, JAXBListUtil.CollectionWrapper.class);
+                                PhC001OutMain phC001OutMain = jaxbListUtil.fromXml(mainEle.asXML());
+                                System.out.println(phC001OutMain);
+                                Iterator subiter = detailEle.elementIterator("sub");
+                                if (subiter.hasNext()) {
+                                    Element subEle = (Element) subiter.next();
+                                    Iterator sublineiter = subEle.elementIterator("subline");
+
+                                    PhC001OutSublineB phC001OutSublineB = new PhC001OutSublineB();
+                                    PhC001OutSublineYY phC001OutSublineYY = new PhC001OutSublineYY();
+                                    PhC001OutSublineJCYLJG phC001OutSublineJCYLJG = new PhC001OutSublineJCYLJG();
+                                    PhC001OutSublineGR phC001OutSublineGR = new PhC001OutSublineGR();
+                                    PhC001OutSublineQT phC001OutSublineQT = new PhC001OutSublineQT();
+
+                                    if (sublineiter.hasNext()) {
+                                        Element sublineEle = (Element) sublineiter.next();
+                                        jaxbListUtil = new JAXBListUtil(PhC001OutSublineB.class, JAXBListUtil.CollectionWrapper.class);
+                                        phC001OutSublineB = jaxbListUtil.fromXml(sublineEle.asXML());
+                                        System.out.println(phC001OutSublineB);
+                                    }
+                                   /* if (sublineiter.hasNext()) {
+                                        Element sublineEle = (Element) sublineiter.next();
+                                        jaxbListUtil = new JAXBListUtil(PhC001OutSublineCSC.class, JAXBListUtil.CollectionWrapper.class);
+                                        PhC001OutSublineCSC phC001OutSublineCSC = jaxbListUtil.fromXml(sublineEle.asXML());
+                                        System.out.println(phC001OutSublineCSC);
+                                    }*/
+                                   /* if (sublineiter.hasNext()) {
+                                        Element sublineEle = (Element) sublineiter.next();
+                                        jaxbListUtil = new JAXBListUtil(PhC001OutSublineJXS.class, JAXBListUtil.CollectionWrapper.class);
+                                        PhC001OutSublineJXS phC001OutSublineJXS = jaxbListUtil.fromXml(sublineEle.asXML());
+                                        System.out.println(phC001OutSublineJXS);
+                                    }
+                                    if (sublineiter.hasNext()) {
+                                        Element sublineEle = (Element) sublineiter.next();
+                                        jaxbListUtil = new JAXBListUtil(PhC001OutSublineJKS.class, JAXBListUtil.CollectionWrapper.class);
+                                        PhC001OutSublineJKS phC001OutSublineJKS = jaxbListUtil.fromXml(sublineEle.asXML());
+                                        System.out.println(phC001OutSublineJKS);
+                                    }*/
+                                    if (sublineiter.hasNext()) {
+                                        Element sublineEle = (Element) sublineiter.next();
+                                        jaxbListUtil = new JAXBListUtil(PhC001OutSublineYY.class, JAXBListUtil.CollectionWrapper.class);
+                                        phC001OutSublineYY = jaxbListUtil.fromXml(sublineEle.asXML());
+                                        System.out.println(phC001OutSublineYY);
+                                    }
+                                    if (sublineiter.hasNext()) {
+                                        Element sublineEle = (Element) sublineiter.next();
+                                        jaxbListUtil = new JAXBListUtil(PhC001OutSublineJCYLJG.class, JAXBListUtil.CollectionWrapper.class);
+                                        phC001OutSublineJCYLJG = jaxbListUtil.fromXml(sublineEle.asXML());
+                                        System.out.println(phC001OutSublineJCYLJG);
+                                    }
+                                    if (sublineiter.hasNext()) {
+                                        Element sublineEle = (Element) sublineiter.next();
+                                        jaxbListUtil = new JAXBListUtil(PhC001OutSublineGR.class, JAXBListUtil.CollectionWrapper.class);
+                                        phC001OutSublineGR = jaxbListUtil.fromXml(sublineEle.asXML());
+                                        System.out.println(phC001OutSublineGR);
+                                    }
+                                    if (sublineiter.hasNext()) {
+                                        Element sublineEle = (Element) sublineiter.next();
+                                        jaxbListUtil = new JAXBListUtil(PhC001OutSublineQT.class, JAXBListUtil.CollectionWrapper.class);
+                                        phC001OutSublineQT = jaxbListUtil.fromXml(sublineEle.asXML());
+                                        System.out.println(phC001OutSublineQT);
+                                    }
+
+                                    addC01ToERPService.addC01ToERP(phE001OutHeader,phC001OutMain,phC001OutSublineYY,
+                                            phC001OutSublineJCYLJG,phC001OutSublineGR,phC001OutSublineQT,phC001OutSublineB,no);
+                                }
+
+                            }
+                            if (datatype.equals("M01")) {
+                                JAXBListUtil jaxbListUtil = new JAXBListUtil(PhM001OutMain.class, JAXBListUtil.CollectionWrapper.class);
+                                PhM001OutMain phM001OutMain = jaxbListUtil.fromXml(mainEle.asXML());
+                                addM01ToERPService.addM01ToERP(phE001OutHeader,phM001OutMain,no);
+                                System.out.println(phM001OutMain);
+                            }
+                        }
+                        Iterator subiter = detailEle.elementIterator("sub");
+                        if (subiter.hasNext()) {
+                            Element subEle = (Element) subiter.next();
+                            Iterator sublineiter = subEle.elementIterator("subline");
+                            if (datatype.equals("E01")) {
+                                if (sublineiter.hasNext()) {
+                                    Element sublineEle = (Element) sublineiter.next();
+                                    JAXBListUtil jaxbListUtil = new JAXBListUtil(PhE001OutsublineB.class, JAXBListUtil.CollectionWrapper.class);
+                                    PhE001OutsublineB phE001OutsublineB = jaxbListUtil.fromXml(sublineEle.asXML());
+                                    System.out.println(phE001OutsublineB);
+                                }
+                            }
+                            if (datatype.equals("E01") || datatype.equals("E02") || datatype.equals("E03")) {
+                                if (sublineiter.hasNext()) {
+                                    Element sublineEle = (Element) sublineiter.next();
+                                    JAXBListUtil jaxbListUtil = new JAXBListUtil(PhE001OutsublineA.class, JAXBListUtil.CollectionWrapper.class);
+                                    PhE001OutsublineA phE001OutsublineA = jaxbListUtil.fromXml(sublineEle.asXML());
+                                    System.out.println(phE001OutsublineA);
+                                }
+                            }
+
+                            /*if (datatype.equals("C01")) {
+                                if (sublineiter.hasNext()) {
+                                    Element sublineEle = (Element) sublineiter.next();
+                                    JAXBListUtil jaxbListUtil = new JAXBListUtil(PhC001OutSublineB.class, JAXBListUtil.CollectionWrapper.class);
+                                    PhC001OutSublineB phC001OutSublineB = jaxbListUtil.fromXml(sublineEle.asXML());
+                                    System.out.println(phC001OutSublineB);
+                                }
+                                if (sublineiter.hasNext()) {
+                                    Element sublineEle = (Element) sublineiter.next();
+                                    JAXBListUtil jaxbListUtil = new JAXBListUtil(PhC001OutSublineCSC.class, JAXBListUtil.CollectionWrapper.class);
+                                    PhC001OutSublineCSC phC001OutSublineCSC = jaxbListUtil.fromXml(sublineEle.asXML());
+                                    System.out.println(phC001OutSublineCSC);
+                                }
+                                if (sublineiter.hasNext()) {
+                                    Element sublineEle = (Element) sublineiter.next();
+                                    JAXBListUtil jaxbListUtil = new JAXBListUtil(PhC001OutSublineJXS.class, JAXBListUtil.CollectionWrapper.class);
+                                    PhC001OutSublineJXS phC001OutSublineJXS = jaxbListUtil.fromXml(sublineEle.asXML());
+                                    System.out.println(phC001OutSublineJXS);
+                                }
+                                if (sublineiter.hasNext()) {
+                                    Element sublineEle = (Element) sublineiter.next();
+                                    JAXBListUtil jaxbListUtil = new JAXBListUtil(PhC001OutSublineJKS.class, JAXBListUtil.CollectionWrapper.class);
+                                    PhC001OutSublineJKS phC001OutSublineJKS = jaxbListUtil.fromXml(sublineEle.asXML());
+                                    System.out.println(phC001OutSublineJKS);
+                                }
+                                if (sublineiter.hasNext()) {
+                                    Element sublineEle = (Element) sublineiter.next();
+                                    JAXBListUtil jaxbListUtil = new JAXBListUtil(PhC001OutSublineYY.class, JAXBListUtil.CollectionWrapper.class);
+                                    PhC001OutSublineYY phC001OutSublineYY = jaxbListUtil.fromXml(sublineEle.asXML());
+                                    System.out.println(phC001OutSublineYY);
+                                }
+                                if (sublineiter.hasNext()) {
+                                    Element sublineEle = (Element) sublineiter.next();
+                                    JAXBListUtil jaxbListUtil = new JAXBListUtil(PhC001OutSublineJCYLJG.class, JAXBListUtil.CollectionWrapper.class);
+                                    PhC001OutSublineJCYLJG phC001OutSublineJCYLJG = jaxbListUtil.fromXml(sublineEle.asXML());
+                                    System.out.println(phC001OutSublineJCYLJG);
+                                }
+                                if (sublineiter.hasNext()) {
+                                    Element sublineEle = (Element) sublineiter.next();
+                                    JAXBListUtil jaxbListUtil = new JAXBListUtil(PhC001OutSublineGR.class, JAXBListUtil.CollectionWrapper.class);
+                                    PhC001OutSublineGR phC001OutSublineGR = jaxbListUtil.fromXml(sublineEle.asXML());
+                                    System.out.println(phC001OutSublineGR);
+                                }
+                                if (sublineiter.hasNext()) {
+                                    Element sublineEle = (Element) sublineiter.next();
+                                    JAXBListUtil jaxbListUtil = new JAXBListUtil(PhC001OutSublineQT.class, JAXBListUtil.CollectionWrapper.class);
+                                    PhC001OutSublineQT phC001OutSublineQT = jaxbListUtil.fromXml(sublineEle.asXML());
+                                    System.out.println(phC001OutSublineQT);
+                                }
+                            }*/
+                        }
+                    }
+                }
+
+
+            //if add }
+//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------MOD----------------------------------------------------------------
+
+        }catch (Exception e){
+            if(e.getClass().toString().equals("class org.dom4j.DocumentException")){
+
+                RePhXmlHeader rePhXmlHeader = new RePhXmlHeader();
+                rePhXmlHeader.setDatatype(datatype);
+                rePhXmlHeader.setFunctype(functype);
+                rePhXmlHeader.setDirection("TOMDM");
+                rePhXmlHeader.setErrcode("ERR013");
+                rePhXmlHeader.setMsg("格式不正确");
+
+                RePhXml rePhXml = new RePhXml();
+                rePhXml.setRePhXmlHeader(rePhXmlHeader);
+
+                JAXBListUtil jaxbListUtil=new JAXBListUtil(RePhXml.class,JAXBListUtil.CollectionWrapper.class);
+                String retXml =jaxbListUtil.toXml(rePhXml,"utf-8");
+                System.out.println(retXml);
+                return retXml;
+
+            }
+            else{
+                RePhXmlHeader rePhXmlHeader = new RePhXmlHeader();
+                rePhXmlHeader.setDatatype(datatype);
+                rePhXmlHeader.setFunctype(functype);
+                rePhXmlHeader.setDirection("TOMDM");
+                rePhXmlHeader.setErrcode("ERR");
+                rePhXmlHeader.setMsg("错误");
+
+                RePhXml rePhXml = new RePhXml();
+                rePhXml.setRePhXmlHeader(rePhXmlHeader);
+
+                JAXBListUtil jaxbListUtil=new JAXBListUtil(RePhXml.class,JAXBListUtil.CollectionWrapper.class);
+                String retXml =jaxbListUtil.toXml(rePhXml,"utf-8");
+                System.out.println(retXml);
+                e.printStackTrace();
+                return retXml;
+
+            }
+            //e.printStackTrace();
+        }
+
+        RePhXmlHeader rePhXmlHeader = new RePhXmlHeader();
+        rePhXmlHeader.setDatatype("E03");
+        rePhXmlHeader.setFunctype("ADD");
+        rePhXmlHeader.setDirection("TOMDM");
+        rePhXmlHeader.setErrcode("SUCCESS");
+        rePhXmlHeader.setMsg("接收成功");
+
+        RePhXml rePhXml = new RePhXml();
+        rePhXml.setRePhXmlHeader(rePhXmlHeader);
+
+        JAXBListUtil jaxbListUtil=new JAXBListUtil(RePhXml.class,JAXBListUtil.CollectionWrapper.class);
+        String retXml =jaxbListUtil.toXml(rePhXml,"utf-8");
+        System.out.println(retXml);
+        return retXml;
+    }
+
+
+
+/*
+    public String validXml(String info) {
+
+        return "";
+    }
+
+    public void saveLog(String info) {
+
+    }*/
+
+/*    public static void main(String[] args) {
+        String xml="";
+        ReceiveMdmServiceImpl receiveMdmService=new ReceiveMdmServiceImpl();
+        receiveMdmService.receive(xml);
+
+    }*/
+}

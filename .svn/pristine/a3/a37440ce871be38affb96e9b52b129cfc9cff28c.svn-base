@@ -1,0 +1,12 @@
+package com.el.cmic.ws.mapper;
+
+import com.el.cfg.domain.Fe841003;
+import org.apache.ibatis.annotations.UpdateProvider;
+
+/**
+ * Created by king_ on 2016/10/13.
+ */
+public interface FE841003UpdateByPKMapper {
+    @UpdateProvider(type=FE841003UpdateByPKSqlProvider.class, method="updateByPrimaryKeySelective")
+    int updateByPrimaryKeySelective(Fe841003 record);
+}

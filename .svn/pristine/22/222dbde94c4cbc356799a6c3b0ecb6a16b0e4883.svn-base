@@ -1,0 +1,73 @@
+package com.el.cmic.callmdm.service;
+
+import com.el.cmic.callmdm.domain.RqE001InputHeader;
+import com.el.cmic.callmdm.domain.RqE001InputProductE01;
+import com.el.utils.JAXBListUtil;
+import com.el.utils.JAXBUtil;
+
+import javax.xml.bind.JAXBException;
+import java.io.IOException;
+
+/**
+ * Created by Vincent on 2016/9/20.
+ */
+public class RqECallMdmServiceImpl implements CallMdmService {
+    public String addCallWS(String data, String username, String password) {
+
+
+        return null;
+    }
+
+    public String updateCallWS(String data, String username, String password) {
+        return null;
+    }
+
+    private String genDataXml() {
+        RqE001InputHeader rqE001InputHeader = new RqE001InputHeader();
+        rqE001InputHeader.setDataType("E01");
+        rqE001InputHeader.setDirection("升水");
+        rqE001InputHeader.setFuncType("ADD");
+        rqE001InputHeader.setMsg("");
+        rqE001InputHeader.setSubmitbillinfo("");
+
+        RqE001InputProductE01 rqE001InputProductE01 = new RqE001InputProductE01();
+        rqE001InputProductE01.setProductcode("产品编码");
+        rqE001InputProductE01.setProductname("名");
+        rqE001InputProductE01.setProducttype("规格型号");
+        rqE001InputProductE01.setPk_mfname("生产厂家");
+        rqE001InputProductE01.setPk_mfcountry("生产国");
+        rqE001InputProductE01.setForm("剂型");
+        rqE001InputProductE01.setSync("商品名");
+        rqE001InputProductE01.setFileno("批准文号");
+        rqE001InputProductE01.setPk_weight("最小包装单位");
+        rqE001InputProductE01.setLicenseno("生产企业生产许可证号");
+        rqE001InputProductE01.setHibcode("HIBC编码");
+        rqE001InputProductE01.setGmdncode("GMDN编码");
+        rqE001InputProductE01.setGs1code("GS1编码");
+        rqE001InputProductE01.setPk_label("厂牌");
+        rqE001InputProductE01.setPk_productclass("产品大类");
+        rqE001InputProductE01.setPk_yltsfl("特殊分类");
+        rqE001InputProductE01.setPk_department("应用科室");
+
+        try {
+            JAXBUtil<RqE001InputHeader> jaxbUtil = new JAXBUtil<RqE001InputHeader>();
+            String headerXml = jaxbUtil.marshal(rqE001InputHeader);
+            System.out.println(headerXml);
+
+            JAXBUtil<RqE001InputProductE01> jaxbUtilProd = new JAXBUtil<RqE001InputProductE01>();
+            String prodXml=jaxbUtilProd.marshal(rqE001InputProductE01);
+            System.out.println(prodXml);
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static void main(String[] args) {
+        RqECallMdmServiceImpl rqECallMdmService = new RqECallMdmServiceImpl();
+        rqECallMdmService.genDataXml();
+    }
+}

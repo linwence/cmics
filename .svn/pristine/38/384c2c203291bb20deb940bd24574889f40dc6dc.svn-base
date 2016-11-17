@@ -1,0 +1,153 @@
+package com.el.cfg.dao;
+
+import com.el.cfg.domain.FE84101Z;
+import com.el.cfg.domain.FE84101ZKey;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.type.JdbcType;
+
+public interface FE84101ZMapper {
+    @Delete({
+        "delete from CRPDTA.FE84101Z",
+        "where ZZLITM = #{zzlitm,jdbcType=OTHER}",
+          "and ZZE8ZZLX = #{zze8zzlx,jdbcType=OTHER}",
+          "and ZZE8ZZBM = #{zze8zzbm,jdbcType=OTHER}"
+    })
+    int deleteByPrimaryKey(FE84101ZKey key);
+
+    @Insert({
+        "insert into CRPDTA.FE84101Z (ZZLITM, ZZE8ZZLX, ",
+        "ZZE8ZZBM, ZZDOCO, ",
+        "ZZDSC1, ZZE8NAME, ZZDSC2, ",
+        "ZZEFTJ, ZZEXDJ, ",
+        "ZZFTTL, ZZURCD, ZZURDT, ",
+        "ZZURAT, ZZURAB, ",
+        "ZZDL01, ZZDL02, ZZDL03, ",
+        "ZZDL010, ZZDL011, ZZEV02, ",
+        "ZZEV03, ZZEV04, ZZEV05, ",
+        "ZZUSER, ZZPID, ZZJOBN, ",
+        "ZZUPMJ, ZZUPMT, ",
+        "ZZIDATE, ZZDF01, ",
+        "ZZRDATE, ZZDF02, ",
+        "ZZUKID, ZZSTATUS, ",
+        "ZZFLAG)",
+        "values (#{zzlitm,jdbcType=OTHER}, #{zze8zzlx,jdbcType=OTHER}, ",
+        "#{zze8zzbm,jdbcType=OTHER}, #{zzdoco,jdbcType=DECIMAL}, ",
+        "#{zzdsc1,jdbcType=OTHER}, #{zze8name,jdbcType=OTHER}, #{zzdsc2,jdbcType=OTHER}, ",
+        "#{zzeftj,jdbcType=DECIMAL}, #{zzexdj,jdbcType=DECIMAL}, ",
+        "#{zzfttl,jdbcType=OTHER}, #{zzurcd,jdbcType=OTHER}, #{zzurdt,jdbcType=DECIMAL}, ",
+        "#{zzurat,jdbcType=DECIMAL}, #{zzurab,jdbcType=DECIMAL}, ",
+        "#{zzdl01,jdbcType=OTHER}, #{zzdl02,jdbcType=OTHER}, #{zzdl03,jdbcType=OTHER}, ",
+        "#{zzdl010,jdbcType=OTHER}, #{zzdl011,jdbcType=OTHER}, #{zzev02,jdbcType=OTHER}, ",
+        "#{zzev03,jdbcType=OTHER}, #{zzev04,jdbcType=OTHER}, #{zzev05,jdbcType=OTHER}, ",
+        "#{zzuser,jdbcType=OTHER}, #{zzpid,jdbcType=OTHER}, #{zzjobn,jdbcType=OTHER}, ",
+        "#{zzupmj,jdbcType=DECIMAL}, #{zzupmt,jdbcType=DECIMAL}, ",
+        "#{zzidate,jdbcType=TIMESTAMP}, #{zzdf01,jdbcType=OTHER}, ",
+        "#{zzrdate,jdbcType=TIMESTAMP}, #{zzdf02,jdbcType=OTHER}, ",
+        "#{zzukid,jdbcType=DECIMAL}, #{zzstatus,jdbcType=OTHER}, ",
+        "#{zzflag,jdbcType=OTHER})"
+    })
+    int insert(FE84101Z record);
+
+    @InsertProvider(type=FE84101ZSqlProvider.class, method="insertSelective")
+    int insertSelective(FE84101Z record);
+
+    @Select({
+        "select",
+        "ZZLITM, ZZE8ZZLX, ZZE8ZZBM, ZZDOCO, ZZDSC1, ZZE8NAME, ZZDSC2, ZZEFTJ, ZZEXDJ, ",
+        "ZZFTTL, ZZURCD, ZZURDT, ZZURAT, ZZURAB, ZZDL01, ZZDL02, ZZDL03, ZZDL010, ZZDL011, ",
+        "ZZEV02, ZZEV03, ZZEV04, ZZEV05, ZZUSER, ZZPID, ZZJOBN, ZZUPMJ, ZZUPMT, ZZIDATE, ",
+        "ZZDF01, ZZRDATE, ZZDF02, ZZUKID, ZZSTATUS, ZZFLAG",
+        "from CRPDTA.FE84101Z",
+        "where ZZLITM = #{zzlitm,jdbcType=OTHER}",
+          "and ZZE8ZZLX = #{zze8zzlx,jdbcType=OTHER}",
+          "and ZZE8ZZBM = #{zze8zzbm,jdbcType=OTHER}"
+    })
+    @Results({
+        @Result(column="ZZLITM", property="zzlitm", jdbcType=JdbcType.OTHER, id=true),
+        @Result(column="ZZE8ZZLX", property="zze8zzlx", jdbcType=JdbcType.OTHER, id=true),
+        @Result(column="ZZE8ZZBM", property="zze8zzbm", jdbcType=JdbcType.OTHER, id=true),
+        @Result(column="ZZDOCO", property="zzdoco", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZDSC1", property="zzdsc1", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZE8NAME", property="zze8name", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZDSC2", property="zzdsc2", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZEFTJ", property="zzeftj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZEXDJ", property="zzexdj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZFTTL", property="zzfttl", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZURCD", property="zzurcd", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZURDT", property="zzurdt", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZURAT", property="zzurat", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZURAB", property="zzurab", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZDL01", property="zzdl01", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZDL02", property="zzdl02", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZDL03", property="zzdl03", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZDL010", property="zzdl010", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZDL011", property="zzdl011", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZEV02", property="zzev02", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZEV03", property="zzev03", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZEV04", property="zzev04", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZEV05", property="zzev05", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZUSER", property="zzuser", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZPID", property="zzpid", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZJOBN", property="zzjobn", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZUPMJ", property="zzupmj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZUPMT", property="zzupmt", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZIDATE", property="zzidate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="ZZDF01", property="zzdf01", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZRDATE", property="zzrdate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="ZZDF02", property="zzdf02", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZUKID", property="zzukid", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ZZSTATUS", property="zzstatus", jdbcType=JdbcType.OTHER),
+        @Result(column="ZZFLAG", property="zzflag", jdbcType=JdbcType.OTHER)
+    })
+    FE84101Z selectByPrimaryKey(FE84101ZKey key);
+
+    @UpdateProvider(type=FE84101ZSqlProvider.class, method="updateByPrimaryKeySelective")
+    int updateByPrimaryKeySelective(FE84101Z record);
+
+    @Update({
+        "update CRPDTA.FE84101Z",
+        "set ZZDOCO = #{zzdoco,jdbcType=DECIMAL},",
+          "ZZDSC1 = #{zzdsc1,jdbcType=OTHER},",
+          "ZZE8NAME = #{zze8name,jdbcType=OTHER},",
+          "ZZDSC2 = #{zzdsc2,jdbcType=OTHER},",
+          "ZZEFTJ = #{zzeftj,jdbcType=DECIMAL},",
+          "ZZEXDJ = #{zzexdj,jdbcType=DECIMAL},",
+          "ZZFTTL = #{zzfttl,jdbcType=OTHER},",
+          "ZZURCD = #{zzurcd,jdbcType=OTHER},",
+          "ZZURDT = #{zzurdt,jdbcType=DECIMAL},",
+          "ZZURAT = #{zzurat,jdbcType=DECIMAL},",
+          "ZZURAB = #{zzurab,jdbcType=DECIMAL},",
+          "ZZDL01 = #{zzdl01,jdbcType=OTHER},",
+          "ZZDL02 = #{zzdl02,jdbcType=OTHER},",
+          "ZZDL03 = #{zzdl03,jdbcType=OTHER},",
+          "ZZDL010 = #{zzdl010,jdbcType=OTHER},",
+          "ZZDL011 = #{zzdl011,jdbcType=OTHER},",
+          "ZZEV02 = #{zzev02,jdbcType=OTHER},",
+          "ZZEV03 = #{zzev03,jdbcType=OTHER},",
+          "ZZEV04 = #{zzev04,jdbcType=OTHER},",
+          "ZZEV05 = #{zzev05,jdbcType=OTHER},",
+          "ZZUSER = #{zzuser,jdbcType=OTHER},",
+          "ZZPID = #{zzpid,jdbcType=OTHER},",
+          "ZZJOBN = #{zzjobn,jdbcType=OTHER},",
+          "ZZUPMJ = #{zzupmj,jdbcType=DECIMAL},",
+          "ZZUPMT = #{zzupmt,jdbcType=DECIMAL},",
+          "ZZIDATE = #{zzidate,jdbcType=TIMESTAMP},",
+          "ZZDF01 = #{zzdf01,jdbcType=OTHER},",
+          "ZZRDATE = #{zzrdate,jdbcType=TIMESTAMP},",
+          "ZZDF02 = #{zzdf02,jdbcType=OTHER},",
+          "ZZUKID = #{zzukid,jdbcType=DECIMAL},",
+          "ZZSTATUS = #{zzstatus,jdbcType=OTHER},",
+          "ZZFLAG = #{zzflag,jdbcType=OTHER}",
+        "where ZZLITM = #{zzlitm,jdbcType=OTHER}",
+          "and ZZE8ZZLX = #{zze8zzlx,jdbcType=OTHER}",
+          "and ZZE8ZZBM = #{zze8zzbm,jdbcType=OTHER}"
+    })
+    int updateByPrimaryKey(FE84101Z record);
+}

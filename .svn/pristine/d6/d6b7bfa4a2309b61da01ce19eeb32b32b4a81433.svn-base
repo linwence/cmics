@@ -1,0 +1,16 @@
+package com.el.cmic.service.repertory;
+
+import java.util.Map;
+
+public interface InInvertoryCancelService {
+	
+	/**
+	 * 接收json字符串 处理
+	 * @param data
+	 */
+	public void updateOperation(String  data);
+	
+	
+	public Integer updateInInvertoryCancel(Map<String,String> paramMap);
+
+}

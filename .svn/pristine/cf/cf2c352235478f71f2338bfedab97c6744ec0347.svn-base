@@ -1,0 +1,4 @@
+jdbc.driverClassName=oracle.jdbc.OracleDriver
+jdbc.url=jdbc:oracle:thin:@10.17.9.234:1521:JDETESTDB
+jdbc.username=CRPDTA
+jdbc.password=CRPDTA

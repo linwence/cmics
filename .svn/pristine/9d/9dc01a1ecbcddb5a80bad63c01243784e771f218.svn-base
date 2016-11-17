@@ -1,0 +1,339 @@
+package com.el.cmic.callmdm.service;
+
+import com.el.cfg.domain.*;
+import com.el.cmic.callmdm.domain.*;
+import com.el.cmic.callmdm.mapper.CustomerMapper;
+import com.el.cmic.common.domain.MdmDataType;
+import com.el.cmic.common.domain.MdmDirection;
+import com.el.cmic.common.domain.MdmFuncType;
+import com.el.utils.JAXBListUtil;
+import nc.itf.mdm.ws.custom.QxmdmCusService;
+import nc.itf.mdm.ws.custom.QxmdmCusServicePortType;
+import org.apache.log4j.Logger;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * 客商调用主数据接口
+ * Created by Vincent on 2016/10/11.
+ */
+@Service
+public class RqCCallMdmServiceImpl implements CallMdmService {
+    Logger logger = Logger.getLogger(RqCCallMdmServiceImpl.class);
+    @Value("${schema}")
+    private String schema;
+    @Value("${mdm.username}")
+    private String mdmUserName;
+
+    @Value("${mdm.password}")
+    private String mdmPassword;
+
+    private String doco = "0";
+
+    @Autowired
+    private CustomerMapper customerMapper;
+    @Autowired
+    private Fe8Log01Service fe8Log01ServiceImpl;
+
+    @Autowired
+    private RqC001Service rqC001ServiceImpl;
+
+    public void addCallWS() {
+        callWs(MdmFuncType.FUNC_TYPE_ADD);
+    }
+
+    public void updateCallWS() {
+        callWs(MdmFuncType.FUNC_TYPE_MOD);
+    }
+
+    private void callWs(String funcType) {
+        List<RqC001InputCustomC01> rqC001InputCustomC01List = customerMapper.customQry(schema, funcType);
+        for (RqC001InputCustomC01 rqC001InputCustomC01 : rqC001InputCustomC01List
+                ) {
+            try {
+                String an8 = rqC001InputCustomC01.getAn8();
+                String data = genDataXml(rqC001InputCustomC01, funcType);
+                logger.info(data);
+                fe8Log01ServiceImpl.saveFe8Log01(fe8Log01ServiceImpl.INTER_ACTIVE_REQUEST, an8,
+                        MdmDataType.DATA_TYPE_C01, data, "INFO", funcType, "");
+
+                String responseXml = callQxmdmCusService(data, rqC001InputCustomC01.getEv01(), funcType);
+
+                afterResponse(responseXml, an8, funcType);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.error(e);
+            }
+        }
+    }
+
+    private String genDataXml(RqC001InputCustomC01 rqC001InputCustomC01, String funcType) {
+        JAXBListUtil jaxbListUtil = null;
+        String xml = "";
+        doco = rqC001InputCustomC01.getUkid();
+        String an8 = rqC001InputCustomC01.getAn8();
+        if (StringUtils.isEmpty(an8)) {
+            an8 = "0";
+        }
+        String billInfo = getBillInfo(an8, doco);
+
+        RqInputHeader rqInputHeader = this.getRqE001InputHeader(MdmDataType.DATA_TYPE_C01, billInfo, MdmDirection.TO_MDM, funcType);
+
+        jaxbListUtil = new JAXBListUtil(RqInputHeader.class);
+        String header = jaxbListUtil.toXml(rqInputHeader, "utf-8");
+        System.out.println(header);
+
+        jaxbListUtil = new JAXBListUtil(RqC001InputCustomC01.class);
+        // rqE001InputProductE01.setPk_mfcountry("CN");
+        // rqE001InputProductE01.setPk_mfname("0");
+        //rqE001InputProductE01.setProducttype("1111");
+
+        rqC001InputCustomC01.setUkid(null); //设置UKID为null由于ukid不需要导出到xml中
+        rqC001InputCustomC01.setEv01(null);
+        rqC001InputCustomC01.setAn8(null);
+        String rqCumstomXml = jaxbListUtil.toXml(rqC001InputCustomC01, "utf-8");
+        System.out.println(rqCumstomXml);
+
+        //获取客户证照
+
+        String subLineBXml = getSubLineB(an8);
+
+        String subLineCscXml = "";
+        if (rqC001InputCustomC01.getIsscs().equals("Y")) {
+            subLineCscXml = getSubLineCsc(an8);
+        }
+        String subLineJxsXml = "";
+        if (rqC001InputCustomC01.getIsjxs().equals("Y")) {
+            subLineJxsXml = getSubLineJxs(an8);
+        }
+        String subLineJksXml = "";
+        if (rqC001InputCustomC01.getIsjks().equals("Y")) {
+            subLineJksXml = getSubLineJks(an8);
+        }
+        String subLineYYXml = "";
+        if (rqC001InputCustomC01.getIsyy().equals("Y")) {
+            subLineYYXml = getSubLineYY(an8);
+        }
+        String subLineJcyljg = "";
+        if (!StringUtils.isEmpty(rqC001InputCustomC01.getIsjcyljg()) && rqC001InputCustomC01.getIsjcyljg().equals("Y")) {
+            subLineJcyljg = getSubLineJcyljg(an8);
+        }
+        String subLineGrXml = "";
+        if (rqC001InputCustomC01.getIsgr().equals("Y")) {
+            subLineGrXml = getSubLineGr(an8);
+        }
+        String subLineQtXml = "";
+        if (rqC001InputCustomC01.getIsqt().equals("Y")) {
+            subLineQtXml = getSubLineQt(an8);
+        }
+        StringBuilder subLineBuilder = new StringBuilder();
+        subLineBuilder = subLineBuilder.append(subLineBXml).append(subLineCscXml).append(subLineJxsXml).append(subLineJksXml).append(subLineYYXml).append(subLineJcyljg).append(subLineGrXml).append(subLineQtXml);
+        if (subLineBuilder.length() > 0) {
+            subLineBuilder.insert(0, "<sub>").append("</sub>");
+        }
+        String subLineXml = subLineBuilder.toString();
+        String detail = "<detail>" + rqCumstomXml + subLineXml + "</detail>";
+        System.out.println(detail);
+
+        String content = "<content><count>1</count>" + detail + "</content>";
+        xml = "<?xml version='1.0' encoding='utf-8'?><xml>" + header + content + "</xml>";
+        System.out.println("===========================================");
+        System.out.println(xml);
+
+
+        return xml;
+    }
+
+    private String getSubLineB(String customCode) {
+        RqC001InputSubLineB rqC001InputSubLineB = new RqC001InputSubLineB();
+        JAXBListUtil jaxbListUtil;//获取客商证照
+        String subLineB = "";
+        List<RqC001InputBC01> rqC001InputBC01List = customerMapper.customBQry(schema, customCode);
+        if (rqC001InputBC01List != null && rqC001InputBC01List.size() > 0) {
+            rqC001InputSubLineB.setSubname("b");
+            rqC001InputSubLineB.setRqC001InputBC01List(rqC001InputBC01List);
+            jaxbListUtil = new JAXBListUtil(RqC001InputSubLineB.class, JAXBListUtil.CollectionWrapper.class);
+            subLineB = jaxbListUtil.toXml(rqC001InputSubLineB, "utf-8");
+        }
+        return !StringUtils.isEmpty(subLineB) ? subLineB : "";
+    }
+
+    private String getSubLineCsc(String customCode) {
+        RqC001InputSubLineCsc rqC001InputSubLineCsc = new RqC001InputSubLineCsc();
+        JAXBListUtil jaxbListUtil;//获取CSC
+        String subLineCscXml = "";
+        RqC001InputCsc rqC001InputCsc = customerMapper.customCscQry(customCode);
+        if (rqC001InputCsc != null) {
+            rqC001InputSubLineCsc.setSubname("csc");
+            rqC001InputSubLineCsc.setRqC001InputCsc(rqC001InputCsc);
+            jaxbListUtil = new JAXBListUtil(RqC001InputSubLineCsc.class);
+            subLineCscXml = jaxbListUtil.toXml(rqC001InputSubLineCsc, "utf-8");
+        }
+        return !StringUtils.isEmpty(subLineCscXml) ? subLineCscXml : "";
+    }
+
+    private String getSubLineJxs(String customCode) {
+        RqC001InputSubLineJXS rqC001InputSubLineJXS = new RqC001InputSubLineJXS();
+        JAXBListUtil jaxbListUtil;
+        String subLineJxsXml = "";
+        RqC001InputJXS rqC001InputJXS = customerMapper.customJXSQry(customCode);
+        if (rqC001InputJXS != null) {
+            rqC001InputSubLineJXS.setSubname("jxs");
+            rqC001InputSubLineJXS.setRqC001InputJXS(rqC001InputJXS);
+            jaxbListUtil = new JAXBListUtil(RqC001InputSubLineJXS.class);
+            subLineJxsXml = jaxbListUtil.toXml(rqC001InputSubLineJXS, "utf-8");
+        }
+        return !StringUtils.isEmpty(subLineJxsXml) ? subLineJxsXml : "";
+    }
+
+    private String getSubLineJks(String customCode) {
+        RqC001InputSubLineJKS rqC001InputSubLineJKS = new RqC001InputSubLineJKS();
+        JAXBListUtil jaxbListUtil;
+        String subLineJksXml = "";
+        RqC001InputJks rqC001InputJks = customerMapper.customJksQry(customCode);
+        if (rqC001InputJks != null) {
+            rqC001InputSubLineJKS.setSubname("jks");
+            rqC001InputSubLineJKS.setRqC001InputJks(rqC001InputJks);
+            jaxbListUtil = new JAXBListUtil(RqC001InputSubLineJKS.class);
+            subLineJksXml = jaxbListUtil.toXml(rqC001InputSubLineJKS, "utf-8");
+        }
+        return !StringUtils.isEmpty(subLineJksXml) ? subLineJksXml : "";
+    }
+
+    private String getSubLineYY(String customCode) {
+        RqC001InputSubLineYY rqC001InputSubLineYY = new RqC001InputSubLineYY();
+        JAXBListUtil jaxbListUtil;
+        String subLineYYXml = "";
+        RqC001InputYYOrJcyljg rqC001InputYYOrJcyljg = customerMapper.customYyOrJcyljgQry(schema, customCode);
+        if (rqC001InputYYOrJcyljg != null) {
+            rqC001InputSubLineYY.setSubname("yy");
+            rqC001InputSubLineYY.setRqC001InputYYOrJcyljg(rqC001InputYYOrJcyljg);
+            jaxbListUtil = new JAXBListUtil(RqC001InputSubLineYY.class);
+            subLineYYXml = jaxbListUtil.toXml(rqC001InputSubLineYY, "utf-8");
+        }
+        return !StringUtils.isEmpty(subLineYYXml) ? subLineYYXml : "";
+    }
+
+    private String getSubLineJcyljg(String customCode) {
+        RqC001InputSubLineJcyljg rqC001InputSubLineJcyljg = new RqC001InputSubLineJcyljg();
+        JAXBListUtil jaxbListUtil;
+        String subLineJcyljgXml = "";
+        RqC001InputYYOrJcyljg rqC001InputJcyljg = customerMapper.customYyOrJcyljgQry(schema, customCode);
+        if (rqC001InputJcyljg != null) {
+            rqC001InputSubLineJcyljg.setSubname("jcyljg");
+            rqC001InputSubLineJcyljg.setRqC001InputJcyljg(rqC001InputJcyljg);
+            jaxbListUtil = new JAXBListUtil(RqC001InputSubLineJcyljg.class);
+            subLineJcyljgXml = jaxbListUtil.toXml(rqC001InputSubLineJcyljg, "utf-8");
+        }
+        return !StringUtils.isEmpty(subLineJcyljgXml) ? subLineJcyljgXml : "";
+    }
+
+    private String getSubLineGr(String customCode) {
+        RqC001InputSubLineGR rqC001InputSubLineGR = new RqC001InputSubLineGR();
+        JAXBListUtil jaxbListUtil;
+        String subLineGrXml = "";
+        RqC001InputGR rqC001InputGR = customerMapper.customGr(schema, customCode);
+        if (rqC001InputGR != null) {
+            rqC001InputSubLineGR.setSubname("gr");
+            rqC001InputSubLineGR.setRqC001InputGR(rqC001InputGR);
+            jaxbListUtil = new JAXBListUtil(RqC001InputSubLineGR.class);
+            subLineGrXml = jaxbListUtil.toXml(rqC001InputSubLineGR, "utf-8");
+        }
+        return !StringUtils.isEmpty(subLineGrXml) ? subLineGrXml : "";
+    }
+
+    private String getSubLineQt(String customCode) {
+        RqC001InputSubLineQT rqC001InputSubLineQT = new RqC001InputSubLineQT();
+        JAXBListUtil jaxbListUtil;
+        String subLineQtXml = "";
+        RqC001InputQT rqC001InputQT = customerMapper.customQt(schema, customCode);
+        if (rqC001InputQT != null) {
+            rqC001InputSubLineQT.setSubname("qt");
+            rqC001InputSubLineQT.setRqC001InputQT(rqC001InputQT);
+            jaxbListUtil = new JAXBListUtil(RqC001InputSubLineQT.class);
+            subLineQtXml = jaxbListUtil.toXml(rqC001InputSubLineQT, "utf-8");
+        }
+        return !StringUtils.isEmpty(subLineQtXml) ? subLineQtXml : "";
+    }
+
+    private String callQxmdmCusService(String data, String ev01Flag, String funcType) throws Exception {
+
+        QxmdmCusService qxmdmCusService = new QxmdmCusService();
+        QxmdmCusServicePortType qxmdmCusServicePortType = qxmdmCusService.getQxmdmCusServiceSOAP11PortHttp();
+        String responseXml = "";
+        if (StringUtils.isEmpty(ev01Flag)) {
+            ev01Flag = "";
+        }
+        if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD) || (funcType.equals(MdmFuncType.FUNC_TYPE_MOD) && !ev01Flag.equals("Y"))) {
+            //调用新增接口
+            responseXml = qxmdmCusServicePortType.reqCusSrv(data, mdmUserName, mdmPassword);
+        } else {
+            //调用商品变更接口
+            responseXml = qxmdmCusServicePortType.reqModCusSrv(data, mdmUserName, mdmPassword);
+        }
+        return responseXml;
+    }
+
+    private void afterResponse(String responseXml, String an8, String funcType) throws DocumentException {
+        BigDecimal an8Num = new BigDecimal(an8);
+        Document document = DocumentHelper.parseText(responseXml);
+        Element root = document.getRootElement();
+        Element headerElement = root.element("header");
+        Element errCode = headerElement.element("errcode");
+        Element dataType = headerElement.element("datatype");
+        Element msg = headerElement.element("msg");
+
+        String logType = "";
+        String flag = "";
+        String ev01 = null;
+        String codeValue = "";
+        if (!errCode.equals("SUCCESS")) {
+            logType = "ERROR";
+            flag = "E";
+        } else {
+            logType = "INFO";
+            Element codeinfo = headerElement.element("codeinfo");
+            Element code = codeinfo.element("code");
+            Element codeValueElement = code.element("codevalue");
+            flag = "Y";
+            ev01 = "N";
+            codeValue = codeValueElement.getText();
+        }
+
+        if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
+            Fe80101 fe80101 = new Fe80101();
+            fe80101.setKsan8(an8Num);
+            fe80101.setKsflag(flag);
+            fe80101.setKsev01(ev01);
+            rqC001ServiceImpl.updateFE80101(fe80101);//目的是为了更新传输状态Flag以及临时码标志
+
+            if (flag.equals("Y")) {//只有是返回成功了，才更新临时码
+                F0101 f0101 = new F0101();
+                f0101.setAban8(an8Num);
+                f0101.setAbalky(codeValue);
+                rqC001ServiceImpl.updateF0101(f0101);//记录临时码
+            }
+        } else {
+            Fe841003 fe841003 = new Fe841003();
+            fe841003.setSqflag(flag);
+            fe841003.setSqukid(new BigDecimal(this.doco));
+
+            rqC001ServiceImpl.updateFe841003(fe841003);//修改申请单状态
+
+        }
+        //记录日志
+        fe8Log01ServiceImpl.saveFe8Log01(fe8Log01ServiceImpl.INTER_ACTIVE_RESPONSE, an8, dataType.getText(), responseXml, logType, funcType, msg.getText());
+
+    }
+}

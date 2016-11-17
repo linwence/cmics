@@ -1,0 +1,969 @@
+package com.el.cmic.domain.inbound;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.annotation.JSONType;
+import com.el.utils.DateUtil;
+
+@JSONType(orders={"通知单行号","货品编号","数量","批号","灭菌批号","库类型","预到货日期","货品名称","有效期至","生产日期","促销批号","币种","原币金额","本币金额","汇率","入直配区","注册证号","原出库日期","原出库数量","原出库单号","子表ID","其他信息","序列号明细","子件清单明细","归还子件清单明细","子件唯一码明细"})
+public class InboundPushDetail implements Serializable {
+    /**
+     *  null - VE8RK002.CO
+     */
+    @JSONField (name="货主", serialize=false)
+    private String co;
+
+    /**
+     *  null - VE8RK002.DOCO
+     */
+    @JSONField (name="通知单号", serialize=false)
+    private BigDecimal doco;
+
+    /**
+     *  null - VE8RK002.DCTO
+     */
+    @JSONField (name="订单类型", serialize=false)
+    private String dcto;
+
+    /**
+     *  null - VE8RK002.LNID
+     */
+    @JSONField (name="通知单行号")
+    private BigDecimal lnid;
+
+    /**
+     *  null - VE8RK002.LITM
+     */
+    @JSONField (name="货品编号")
+    private String litm;
+
+    /**
+     *  null - VE8RK002.UORG
+     */
+    @JSONField (name="数量")
+    private BigDecimal uorg;
+
+    /**
+     *  null - VE8RK002.LOT1
+     */
+    @JSONField (name="批号")
+    private String lot1;
+
+    /**
+     *  null - VE8RK002.LOT2
+     */
+    @JSONField (name="灭菌批号")
+    private String lot2;
+
+    /**
+     *  null - VE8RK002.RP30
+     */
+    @JSONField (name="库类型")
+    private String rp30;
+
+    /**
+     *  null
+     */
+    @JSONField (name="收货数量", serialize=false)
+    private BigDecimal urec;
+
+    /**
+     *  null
+     */
+    @JSONField (name="拒收数量", serialize=false)
+    private BigDecimal disq;
+
+    /**
+     *  null
+     */
+    @JSONField (name="入库日期", format="yyyy-MM-dd", serialize=false)
+    private Date addj;
+
+    /**
+     *  null
+     */
+    @JSONField (name="入库日期J", serialize=false)
+    private BigDecimal addjj;
+
+    /**
+     *  null - VE8RK002.YDDJ
+     */
+    @JSONField (name="预到货日期", format="yyyy-MM-dd")
+    private Date yddj;
+
+    /**
+     *  null - VE8RK002.DSC1
+     */
+    @JSONField (name="货品名称")
+    private String dsc1;
+
+    /**
+     *  null
+     */
+    @JSONField (name="有效期至", format="yyyy-MM-dd")
+    private Date exdj;
+
+    /**
+     *  null
+     */
+    @JSONField (name="生产日期", format="yyyy-MM-dd")
+    private Date prdj;
+
+    /**
+     *  null
+     */
+    @JSONField (name="拒收原因", serialize=false)
+    private String drcd;
+
+    /**
+     *  null - VE8RK002.CXPH
+     */
+    @JSONField (name="促销批号")
+    private BigDecimal cxph;
+
+    /**
+     *  null
+     */
+    @JSONField (name="包装", serialize=false)
+    private BigDecimal pack;
+
+    /**
+     *  null
+     */
+    @JSONField (name="说明", serialize=false)
+    private String remark;
+
+    /**
+     *  null
+     */
+    @JSONField (name="验收员", serialize=false)
+    private String chkr;
+
+    /**
+     *  null
+     */
+    @JSONField (name="币种")
+    private String crcd;
+
+    /**
+     *  null
+     */
+    @JSONField (name="原币金额")
+    private BigDecimal amt;
+
+    /**
+     *  null
+     */
+    @JSONField (name="本币金额")
+    private BigDecimal bamt;
+
+    /**
+     *  null
+     */
+    @JSONField (name="汇率")
+    private BigDecimal crr;
+
+    /**
+     *  null
+     */
+    @JSONField (name="打印批号", serialize=false)
+    private String prtb;
+
+    /**
+     *  null
+     */
+    @JSONField (name="打印效期", format="yyyy-MM-dd", serialize=false)
+    private Date prtj;
+
+    /**
+     *  null
+     */
+    @JSONField (name="批号自定义备注1", serialize=false)
+    private String brmk1;
+
+    /**
+     *  null
+     */
+    @JSONField (name="批号自定义备注2", serialize=false)
+    private String brmk2;
+
+    /**
+     *  null
+     */
+    @JSONField (name="批号自定义备注3", serialize=false)
+    private String brmk3;
+
+    /**
+     *  null
+     */
+    @JSONField (name="批号自定义备注4", serialize=false)
+    private String brmk4;
+
+    /**
+     *  null - VE8RK002.RZPQ
+     */
+    @JSONField (name="入直配区")
+    private String rzpq;
+
+    /**
+     *  null - VE8RK002.ZCZH
+     */
+    @JSONField (name="注册证号")
+    private String zczh;
+
+    /**
+     *  null
+     */
+    @JSONField (name="原出库日期", format="yyyy-MM-dd")
+    private Date outj;
+
+    /**
+     *  null
+     */
+    @JSONField (name="原出库数量")
+    private BigDecimal outq;
+    
+    /**
+     *  null
+     */
+    @JSONField (name="原出库单号")
+    private String outno;
+
+    /**
+     *  null
+     */
+    @JSONField (name="子表ID")
+    private BigDecimal chdid;
+
+    /**
+     *  null
+     */
+    @JSONField (name="其他信息")
+    private String other;
+
+    /**
+     *  null
+     */
+    @JSONField (name="备用字段一", serialize=false)
+    private String rsv1;
+
+    /**
+     *  null
+     */
+    @JSONField (name="备用字段二", serialize=false)
+    private String rsv2;
+
+    /**
+     *  null
+     */
+    @JSONField (name="备用字段三", serialize=false)
+    private String rsv3;
+
+    /**
+     *  null - VE8RK001.LTTR
+     */
+	@JSONField(name = "上一状态", serialize=false)
+    private String lttr;
+
+    /**
+     *  null - VE8RK001.NXTR
+     */
+	@JSONField(name = "下一状态", serialize=false)
+    private String nxtr;
+
+    /**
+     *  null - VE8RK001.FLAG
+     */
+	@JSONField(name = "业务类型", serialize=false)
+    private String flag;
+
+    /**
+     *  null
+     */
+    @JSONField (name="序列号明细")
+    private List<InboundPushSerial> serials;
+
+    /**
+     *  null
+     */
+    @JSONField (name="子件清单明细")
+    private List<InboundPushComponent> components;
+
+    /**
+     *  null
+     */
+    @JSONField (name="归还子件清单明细")
+    private List<InboundPushReturnComponent> returncoms;
+
+    /**
+     *  null
+     */
+    @JSONField (name="子件唯一码明细")
+    private List<InboundPushComponentUnique> comuniques;
+
+    /**
+     *  null
+     */
+//    @JSONField (name="组装品序列号明细", serialize=false)
+//    private List<InboundPushAssembleSerial> assembleSns;
+
+    /**
+     *  null
+     */
+//    @JSONField (name="组装品电子监管码明细", serialize=false)
+//    private List<InboundPushAssembleRegulation> assembleReguls;
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+	 * 
+	 */
+	public InboundPushDetail() {
+		serials = new ArrayList<InboundPushSerial>();
+		serials.add(new InboundPushSerial());
+		components = new ArrayList<InboundPushComponent>();
+		components.add(new InboundPushComponent());
+		returncoms = new ArrayList<InboundPushReturnComponent>();
+		returncoms.add(new InboundPushReturnComponent());
+		comuniques = new ArrayList<InboundPushComponentUnique>();
+		comuniques.add(new InboundPushComponentUnique());
+	}
+
+	public String getCo() {
+        return co;
+    }
+
+    public void setCo(String co) {
+        this.co = co;
+    }
+
+    public BigDecimal getDoco() {
+        return doco;
+    }
+
+    public void setDoco(BigDecimal doco) {
+        this.doco = doco;
+    }
+
+    public String getDcto() {
+        return dcto;
+    }
+
+    public void setDcto(String dcto) {
+        this.dcto = dcto;
+    }
+
+    public BigDecimal getLnid() {
+        return lnid;
+    }
+
+    public void setLnid(BigDecimal lnid) {
+        this.lnid = lnid;
+    }
+
+    public String getLitm() {
+        return litm;
+    }
+
+    public void setLitm(String litm) {
+        this.litm = litm;
+    }
+
+    public BigDecimal getUorg() {
+        return uorg;
+    }
+
+    public void setUorg(BigDecimal uorg) {
+        this.uorg = uorg;
+    }
+
+    public String getLot1() {
+        return lot1;
+    }
+
+    public void setLot1(String lot1) {
+        this.lot1 = lot1;
+    }
+
+    public String getLot2() {
+        return lot2;
+    }
+
+    public void setLot2(String lot2) {
+        this.lot2 = lot2;
+    }
+
+    public String getRp30() {
+        return rp30;
+    }
+
+    public void setRp30(String rp30) {
+        this.rp30 = rp30;
+    }
+
+    public Date getYddj() {
+        return yddj;
+    }
+
+    public void setYddj(Date yddj) {
+        this.yddj = yddj;
+    }
+
+    public String getDsc1() {
+        return dsc1;
+    }
+
+    public void setDsc1(String dsc1) {
+        this.dsc1 = dsc1;
+    }
+
+    public BigDecimal getCxph() {
+        return cxph;
+    }
+
+    public void setCxph(BigDecimal cxph) {
+        this.cxph = cxph;
+    }
+
+    public String getRzpq() {
+        return rzpq;
+    }
+
+    public void setRzpq(String rzpq) {
+        this.rzpq = rzpq;
+    }
+
+    public String getZczh() {
+        return zczh;
+    }
+
+    public void setZczh(String zczh) {
+        this.zczh = zczh;
+    }
+
+    /**
+	 * @return the exdj
+	 */
+	public Date getExdj() {
+		return exdj;
+	}
+
+	/**
+	 * @param exdj the exdj to set
+	 */
+	public void setExdj(Date exdj) {
+		this.exdj = exdj;
+	}
+
+	/**
+	 * @return the prdj
+	 */
+	public Date getPrdj() {
+		return prdj;
+	}
+
+	/**
+	 * @param prdj the prdj to set
+	 */
+	public void setPrdj(Date prdj) {
+		this.prdj = prdj;
+	}
+
+	/**
+	 * @return the crcd
+	 */
+	public String getCrcd() {
+		return crcd;
+	}
+
+	/**
+	 * @param crcd the crcd to set
+	 */
+	public void setCrcd(String crcd) {
+		this.crcd = crcd;
+	}
+
+	/**
+	 * @return the amt
+	 */
+	public BigDecimal getAmt() {
+		return amt;
+	}
+
+	/**
+	 * @param amt the amt to set
+	 */
+	public void setAmt(BigDecimal amt) {
+		this.amt = amt;
+	}
+
+	/**
+	 * @return the bamt
+	 */
+	public BigDecimal getBamt() {
+		return bamt;
+	}
+
+	/**
+	 * @param bamt the bamt to set
+	 */
+	public void setBamt(BigDecimal bamt) {
+		this.bamt = bamt;
+	}
+
+	/**
+	 * @return the crr
+	 */
+	public BigDecimal getCrr() {
+		return crr;
+	}
+
+	/**
+	 * @param crr the crr to set
+	 */
+	public void setCrr(BigDecimal crr) {
+		this.crr = crr;
+	}
+
+	/**
+	 * @return the outj
+	 */
+	public Date getOutj() {
+		return outj;
+	}
+
+	/**
+	 * @param outj the outj to set
+	 */
+	public void setOutj(Date outj) {
+		this.outj = outj;
+	}
+
+	/**
+	 * @return the outq
+	 */
+	public BigDecimal getOutq() {
+		return outq;
+	}
+
+	/**
+	 * @param outq the outq to set
+	 */
+	public void setOutq(BigDecimal outq) {
+		this.outq = outq;
+	}
+
+	/**
+	 * @return the outno
+	 */
+	public String getOutno() {
+		return outno;
+	}
+
+	/**
+	 * @param outno the outno to set
+	 */
+	public void setOutno(String outno) {
+		this.outno = outno;
+	}
+
+	/**
+	 * @return the chdid
+	 */
+	public BigDecimal getChdid() {
+		return chdid;
+	}
+
+	/**
+	 * @param chdid the chdid to set
+	 */
+	public void setChdid(BigDecimal chdid) {
+		this.chdid = chdid;
+	}
+
+	/**
+	 * @return the other
+	 */
+	public String getOther() {
+		return other;
+	}
+
+	/**
+	 * @param other the other to set
+	 */
+	public void setOther(String other) {
+		this.other = other;
+	}
+
+	/**
+	 * @return the lttr
+	 */
+	public String getLttr() {
+		return lttr;
+	}
+
+	/**
+	 * @param lttr the lttr to set
+	 */
+	public void setLttr(String lttr) {
+		this.lttr = lttr;
+	}
+
+	/**
+	 * @return the nxtr
+	 */
+	public String getNxtr() {
+		return nxtr;
+	}
+
+	/**
+	 * @param nxtr the nxtr to set
+	 */
+	public void setNxtr(String nxtr) {
+		this.nxtr = nxtr;
+	}
+
+	/**
+	 * @return the flag
+	 */
+	public String getFlag() {
+		return flag;
+	}
+
+	/**
+	 * @param flag the flag to set
+	 */
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	/**
+	 * @return the urec
+	 */
+	public BigDecimal getUrec() {
+		return urec;
+	}
+
+	/**
+	 * @param urec the urec to set
+	 */
+	public void setUrec(BigDecimal urec) {
+		this.urec = urec;
+	}
+
+	/**
+	 * @return the disq
+	 */
+	public BigDecimal getDisq() {
+		return disq;
+	}
+
+	/**
+	 * @param disq the disq to set
+	 */
+	public void setDisq(BigDecimal disq) {
+		this.disq = disq;
+	}
+
+	/**
+	 * @return the addj
+	 */
+	public Date getAddj() {
+		return addj;
+	}
+
+	/**
+	 * @param addj the addj to set
+	 */
+	public void setAddj(Date addj) {
+		this.addj = addj;
+		if (addj != null) {
+			this.addjj = new BigDecimal(DateUtil.dateToJuLian(addj));
+		}
+	}
+
+	/**
+	 * @return the addjj
+	 */
+	public BigDecimal getAddjj() {
+		return addjj;
+	}
+
+	/**
+	 * @param addjj the addjj to set
+	 */
+	public void setAddjj(BigDecimal addjj) {
+		this.addjj = addjj;
+	}
+
+	/**
+	 * @return the drcd
+	 */
+	public String getDrcd() {
+		return drcd;
+	}
+
+	/**
+	 * @param drcd the drcd to set
+	 */
+	public void setDrcd(String drcd) {
+		this.drcd = drcd;
+	}
+
+	/**
+	 * @return the pack
+	 */
+	public BigDecimal getPack() {
+		return pack;
+	}
+
+	/**
+	 * @param pack the pack to set
+	 */
+	public void setPack(BigDecimal pack) {
+		this.pack = pack;
+	}
+
+	/**
+	 * @return the remark
+	 */
+	public String getRemark() {
+		return remark;
+	}
+
+	/**
+	 * @param remark the remark to set
+	 */
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	/**
+	 * @return the chkr
+	 */
+	public String getChkr() {
+		return chkr;
+	}
+
+	/**
+	 * @param chkr the chkr to set
+	 */
+	public void setChkr(String chkr) {
+		this.chkr = chkr;
+	}
+
+	/**
+	 * @return the prtb
+	 */
+	public String getPrtb() {
+		return prtb;
+	}
+
+	/**
+	 * @param prtb the prtb to set
+	 */
+	public void setPrtb(String prtb) {
+		this.prtb = prtb;
+	}
+
+	/**
+	 * @return the prtj
+	 */
+	public Date getPrtj() {
+		return prtj;
+	}
+
+	/**
+	 * @param prtj the prtj to set
+	 */
+	public void setPrtj(Date prtj) {
+		this.prtj = prtj;
+	}
+
+	/**
+	 * @return the brmk1
+	 */
+	public String getBrmk1() {
+		return brmk1;
+	}
+
+	/**
+	 * @param brmk1 the brmk1 to set
+	 */
+	public void setBrmk1(String brmk1) {
+		this.brmk1 = brmk1;
+	}
+
+	/**
+	 * @return the brmk2
+	 */
+	public String getBrmk2() {
+		return brmk2;
+	}
+
+	/**
+	 * @param brmk2 the brmk2 to set
+	 */
+	public void setBrmk2(String brmk2) {
+		this.brmk2 = brmk2;
+	}
+
+	/**
+	 * @return the brmk3
+	 */
+	public String getBrmk3() {
+		return brmk3;
+	}
+
+	/**
+	 * @param brmk3 the brmk3 to set
+	 */
+	public void setBrmk3(String brmk3) {
+		this.brmk3 = brmk3;
+	}
+
+	/**
+	 * @return the brmk4
+	 */
+	public String getBrmk4() {
+		return brmk4;
+	}
+
+	/**
+	 * @param brmk4 the brmk4 to set
+	 */
+	public void setBrmk4(String brmk4) {
+		this.brmk4 = brmk4;
+	}
+
+	/**
+	 * @return the rsv1
+	 */
+	public String getRsv1() {
+		return rsv1;
+	}
+
+	/**
+	 * @param rsv1 the rsv1 to set
+	 */
+	public void setRsv1(String rsv1) {
+		this.rsv1 = rsv1;
+	}
+
+	/**
+	 * @return the rsv2
+	 */
+	public String getRsv2() {
+		return rsv2;
+	}
+
+	/**
+	 * @param rsv2 the rsv2 to set
+	 */
+	public void setRsv2(String rsv2) {
+		this.rsv2 = rsv2;
+	}
+
+	/**
+	 * @return the rsv3
+	 */
+	public String getRsv3() {
+		return rsv3;
+	}
+
+	/**
+	 * @param rsv3 the rsv3 to set
+	 */
+	public void setRsv3(String rsv3) {
+		this.rsv3 = rsv3;
+	}
+
+	/**
+	 * @return the serials
+	 */
+	public List<InboundPushSerial> getSerials() {
+		return serials;
+	}
+
+	/**
+	 * @param serials the serials to set
+	 */
+	public void setSerials(List<InboundPushSerial> serials) {
+		this.serials = serials;
+	}
+
+	/**
+	 * @return the components
+	 */
+	public List<InboundPushComponent> getComponents() {
+		return components;
+	}
+
+	/**
+	 * @param components the components to set
+	 */
+	public void setComponents(List<InboundPushComponent> components) {
+		this.components = components;
+	}
+
+	/**
+	 * @return the returncoms
+	 */
+	public List<InboundPushReturnComponent> getReturncoms() {
+		return returncoms;
+	}
+
+	/**
+	 * @param returncoms the returncoms to set
+	 */
+	public void setReturncoms(List<InboundPushReturnComponent> returncoms) {
+		this.returncoms = returncoms;
+	}
+
+	/**
+	 * @return the comuniques
+	 */
+	public List<InboundPushComponentUnique> getComuniques() {
+		return comuniques;
+	}
+
+	/**
+	 * @param comuniques the comuniques to set
+	 */
+	public void setComuniques(List<InboundPushComponentUnique> comuniques) {
+		this.comuniques = comuniques;
+	}
+
+	@Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", co=").append(co);
+        sb.append(", doco=").append(doco);
+        sb.append(", dcto=").append(dcto);
+        sb.append(", lnid=").append(lnid);
+        sb.append(", litm=").append(litm);
+        sb.append(", uorg=").append(uorg);
+        sb.append(", lot1=").append(lot1);
+        sb.append(", lot2=").append(lot2);
+        sb.append(", rp30=").append(rp30);
+        sb.append(", yddj=").append(yddj);
+        sb.append(", dsc1=").append(dsc1);
+        sb.append(", cxph=").append(cxph);
+        sb.append(", rzpq=").append(rzpq);
+        sb.append(", zczh=").append(zczh);
+        sb.append(", lttr=").append(lttr);
+        sb.append(", nxtr=").append(nxtr);
+        sb.append(", flag=").append(flag);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

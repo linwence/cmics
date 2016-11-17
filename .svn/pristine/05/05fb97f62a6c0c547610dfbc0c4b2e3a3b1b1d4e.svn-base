@@ -1,0 +1,96 @@
+package com.el.cmic.mapper.inbound;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.type.JdbcType;
+
+import com.el.cmic.domain.inbound.InboundPush;
+import com.el.cmic.domain.inbound.InboundPushDetail;
+
+public interface InboundPushMapper {
+	@Select({ "select",
+			"MCU as MCU, WMSMCU as WMSMCU, RKTYPE, CO, WMSCO, DOCO, DCTO, AN8, CASE WHEN YDDJ > 0 THEN TO_CHAR(TO_DATE(YDDJ+1900000, 'YYYYDDD'), 'YYYY-MM-DD') ELSE '' END AS YDDJ, ALPH, nvl(trim(VR01),'-') as VR01, CASE WHEN TRDJ > 0 THEN TO_CHAR(TO_DATE(TRDJ+1900000, 'YYYYDDD'), 'YYYY-MM-DD') ELSE '' END AS TRDJ, REMARK, AT1, DEPTNAME",
+			"from ${tableSchema}.VE8RK001" })
+	@Results({ @Result(column = "MCU", property = "mcu", jdbcType = JdbcType.NCHAR),
+			@Result(column = "WMSMCU", property = "wmsmcu", jdbcType = JdbcType.NCHAR),
+			@Result(column = "RKTYPE", property = "rktype", jdbcType = JdbcType.NCHAR),
+			@Result(column = "CO", property = "kcoo", jdbcType = JdbcType.NCHAR),
+			@Result(column = "WMSCO", property = "wmsco", jdbcType = JdbcType.NCHAR),
+			@Result(column = "DOCO", property = "doco", jdbcType = JdbcType.DECIMAL),
+			@Result(column = "DCTO", property = "dcto", jdbcType = JdbcType.NCHAR),
+			@Result(column = "AN8", property = "an8", jdbcType = JdbcType.DECIMAL),
+			@Result(column = "YDDJ", property = "yddj", jdbcType = JdbcType.DATE),
+			@Result(column = "ALPH", property = "alph", jdbcType = JdbcType.NCHAR),
+			@Result(column = "VR01", property = "vr01", jdbcType = JdbcType.VARCHAR),
+			@Result(column = "TRDJ", property = "trdj", jdbcType = JdbcType.DATE),
+			@Result(column = "REMARK", property = "remark", jdbcType = JdbcType.CHAR),
+			@Result(column = "AT1", property = "at1", jdbcType = JdbcType.NCHAR),
+			@Result(column = "DEPTNAME", property = "deptname", jdbcType = JdbcType.CHAR) })
+	List<InboundPush> selectAll();
+
+	List<InboundPush> selectAllWithDetails(@Param("co") String co);
+
+	@Update({ "update F4211", "set SDNXTR = '560',", "SDLTTR = #{nxtr,jdbcType=NCHAR},", "SDUSER = 'WMS',",
+			"SDPID = 'Interface',", "SDJOBN = 'Server',",
+			"SDUPMJ = (select TO_CHAR(sysdate, 'YYYYDDD') - 1900000 from dual),",
+			"SDTDAY = (select TO_CHAR(sysdate, 'HH24MISS') from dual)", "where SDDOCO = #{doco,jdbcType=DECIMAL}",
+			"and SDDCTO = #{dcto,jdbcType=NCHAR}", "and SDKCOO = #{kcoo,jdbcType=NCHAR}",
+			"and SDLNID = #{lnid,jdbcType=DECIMAL}" })
+	int updateF4211Status(InboundPushDetail record);
+
+	// @Update({
+	// "<script>",
+	// "<foreach collection='updList' item='upd' separator=';'>",
+	// "update F4211",
+	// "set SDNXTR = #{upd.sdnxtr,jdbcType=NCHAR},",
+	// "SDLTTR = #{upd.sdlttr,jdbcType=NCHAR},",
+	// "SDUSER = #{upd.sduser,jdbcType=NCHAR},",
+	// "SDPID = #{upd.sdpid,jdbcType=NCHAR},",
+	// "SDJOBN = #{upd.sdjobn,jdbcType=NCHAR},",
+	// "SDUPMJ = #{upd.sdupmj,jdbcType=DECIMAL},",
+	// "SDTDAY = #{upd.sdtday,jdbcType=DECIMAL}",
+	// "where SDDOCO = #{upd.sddoco,jdbcType=DECIMAL}",
+	// "and SDDCTO = #{upd.sddcto,jdbcType=NCHAR}",
+	// "and SDKCOO = #{upd.sdkcoo,jdbcType=NCHAR}",
+	// "and SDLNID = #{upd.sdlnid,jdbcType=DECIMAL}",
+	// "</foreach>",
+	// "</script>"
+	// })
+	// int updateF4211StatusBatch(@Param("updList") List<F4211> updList);
+
+	@Update({ "update F4311", "set PDNXTR = '400',", "PDLTTR = #{nxtr,jdbcType=NCHAR},", "PDUSER = 'WMS',",
+			"PDPID = 'Interface',", "PDJOBN = 'Server',",
+			"PDUPMJ = (select TO_CHAR(sysdate, 'YYYYDDD') - 1900000 from dual),",
+			"PDTDAY = (select TO_CHAR(sysdate, 'HH24MISS') from dual)", "where PDDOCO = #{doco,jdbcType=DECIMAL}",
+			"and PDDCTO = #{dcto,jdbcType=NCHAR}", "and PDKCOO = #{kcoo,jdbcType=NCHAR}", "and PDSFXO = N'000'",
+			"and PDLNID = #{lnid,jdbcType=DECIMAL}" })
+	int updateF4311Status(InboundPushDetail record);
+
+	// @Update({
+	// "<script>",
+	// "<foreach collection='updList' item='upd' separator=';'>",
+	// "update F4311",
+	// "set PDNXTR = #{upd.pdnxtr,jdbcType=NCHAR},",
+	// "PDLTTR = #{upd.pdlttr,jdbcType=NCHAR},",
+	// "PDUSER = #{upd.pduser,jdbcType=NCHAR},",
+	// "PDPID = #{upd.pdpid,jdbcType=NCHAR},",
+	// "PDJOBN = #{upd.pdjobn,jdbcType=NCHAR},",
+	// "PDUPMJ = #{upd.pdupmj,jdbcType=DECIMAL},",
+	// "PDTDAY = #{upd.pdtday,jdbcType=DECIMAL}",
+	// "where PDDOCO = #{upd.pddoco,jdbcType=DECIMAL}",
+	// "and PDDCTO = #{upd.pddcto,jdbcType=NCHAR}",
+	// "and PDKCOO = #{upd.pdkcoo,jdbcType=NCHAR}",
+	// "and PDSFXO = #{upd.pdsfxo,jdbcType=NCHAR}",
+	// "and PDLNID = #{upd.pdlnid,jdbcType=DECIMAL}",
+	// "</foreach>",
+	// "</script>"
+	// })
+	// int updateF4311StatusBatch(@Param("updList") List<F4311> updList);
+
+	@Update({ "update FE8WMS03", "set BSEV01 = 'Y',", "BSUSER = 'WMS',", "BSPID = 'Interface',",
+			// "BSJOBN = 'Server',",
+			"BSUPMJ = (select TO_CHAR(sysdate, 'YYYYDDD') - 1900000 from dual),",
+			"BSTDAY = (select TO_CHAR(sysdate, 'HH24MISS') from dual)", "where BSUKID = #{ukid,jdbcType=DECIMAL}" })
+	int updateFE8WMS03Status(InboundPushDetail record);
+}

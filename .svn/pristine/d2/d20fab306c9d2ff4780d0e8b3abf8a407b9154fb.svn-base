@@ -1,0 +1,85 @@
+package com.el.cmic.service.supplier.impl;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Base64Utils;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.el.cmic.common.SpdInterfaceType;
+import com.el.cmic.common.domain.SpdData;
+import com.el.cmic.common.domain.SpdRequest;
+import com.el.cmic.common.domain.SpdResult;
+import com.el.cmic.domain.supplier.Supplier;
+import com.el.cmic.mapper.supplier.SupplierMapper;
+import com.el.cmic.service.supplier.SupplierService;
+import com.el.utils.CallWebServiceImp;
+
+@Service
+public class SupplierServiceImpl implements SupplierService{
+
+	@Autowired
+	private SupplierMapper supplierMapper;
+	
+	@Value("${spd.ID}")
+	private String spdId;
+	
+	@Resource(name="spdRequest")
+	private SpdRequest spdRequest;
+	
+	@Resource(name="callWebServiceImp")
+	private CallWebServiceImp  callWebServiceImp;
+	
+	@Override
+	public List<Supplier> selectSupplier() {
+		return supplierMapper.selectSupplier();
+	}
+
+	@Override
+	public Integer updateEv01(String status, String span8) {
+		return supplierMapper.updateEv01(status, span8);
+	}
+
+	@Override
+	public void callSupplierInterface() {
+		List<Supplier> supplierList = new ArrayList<Supplier>();
+		supplierList=this.selectSupplier();
+		System.out.println(supplierList);
+		for(Supplier supplier:supplierList){
+			try {
+				SpdData spdData = new SpdData(SpdInterfaceType.BUPPLIER_TYPE,spdId,supplier);
+				//生成data数据
+	            String data = JSON.toJSONString(spdData, SerializerFeature.WriteMapNullValue);
+	            System.out.println(data);
+	            spdRequest.setData(data);
+				//调用webservice提供的接口（暂时未实现 调用对方接口）
+	            String encodeResult;
+				encodeResult = callWebServiceImp.CallWSI(spdRequest.toMap());
+				byte[] bytes = Base64Utils.decodeFromString(encodeResult);
+				String decodeResult = new String(bytes, "utf-8");
+			   afterResponse(supplier,decodeResult);
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void afterResponse(Supplier supplier,String jsonString){
+		SpdResult spdResult =JSON.parseObject(jsonString,SpdResult.class);
+		 String status = "Y";
+		 //接口调用不成功  更新状态
+		if(!spdResult.isSuccess()){
+			status="E";
+		}
+		updateEv01(status,supplier.getSpan8());
+	}
+
+	
+}

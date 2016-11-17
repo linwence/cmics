@@ -1,0 +1,42 @@
+package com.el.cmic.callmdm.mapper;
+
+import com.el.cfg.domain.F4101;
+import com.el.cfg.domain.FE84101;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.jdbc.SQL;
+import org.springframework.util.StringUtils;
+
+/**
+ * Created by Vincent on 2016/10/9.
+ */
+public interface RqE001Mapper {
+
+    final class SqlProvider extends SQL {
+        public String updateFe84101(FE84101 fe84101) {
+            UPDATE("FE84101");
+            if (!StringUtils.isEmpty(fe84101.getSpev01())) {
+                SET("Spev01=#{spev01}");
+            }
+            if (!StringUtils.isEmpty(fe84101.getSpflag())) {
+                SET("spflag=#{spflag}");
+            }
+            WHERE("SPLITM=#{splitm}");
+            return toString();
+        }
+
+        public String updateF4101(F4101 f4101) {
+            UPDATE("F4101");
+            SET("IMAITM=#{imaitm}");
+            WHERE("imlitm=#{imlitm}");
+            return toString();
+        }
+
+    }
+
+    @UpdateProvider(type = SqlProvider.class, method = "updateFe84101")
+    int updateFe84101(FE84101 fe84101);
+
+    @UpdateProvider(type = SqlProvider.class, method = "updateF4101")
+    int updateF4101(F4101 f4101);
+}

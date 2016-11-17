@@ -1,0 +1,82 @@
+package com.el.cmic.controller.goods;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.fastjson.JSON;
+import com.el.cmic.domain.goods.Bales;
+import com.el.cmic.domain.goods.BalesConvert;
+import com.el.cmic.service.goods.BalesService;
+import com.el.utils.Base64Util;
+import com.el.utils.HttpRequest;
+
+
+/**
+ * 关于商品相关的接口
+ * @author zhanhao
+ *
+ */
+@Controller
+@RequestMapping("/Bales/")
+public class BalesController {
+	
+	@Autowired
+	public BalesService  balesService;
+	
+	
+	/**
+	 * 货品信息推送
+	 */
+	public String sendBalesList(){
+		String urlStr="";//接口地址
+		String result="";//响应结果
+		String data = this.selectBalesList();//业务数据
+		
+		Map<String,Object> paramMap = new HashMap<String,Object>();
+		paramMap.put("appkey", "");
+		paramMap.put("timestamp", "");
+		paramMap.put("sign", "");
+		paramMap.put("ver", "");
+		paramMap.put("data",data);
+		//发送post请求
+		result=HttpRequest.sendPost(urlStr, paramMap);
+		return result;
+	}
+	
+	/**
+	 * 查询货品信息  返回base64 加密字符串
+	 * @return Map
+	 */
+	public String selectBalesList(){
+		String data=""; //返回结果字符串
+		List<Bales> balesList = new ArrayList<Bales> ();
+		balesList = balesService.selectBalesList();
+		//英汉翻译
+		List<Map> list =BalesConvert.balesEntityToMap(balesList);
+		
+		Map<String,Object> map01 = new HashMap<String,Object>();
+		Map<String,Object> map02 = new HashMap<String,Object>();
+		map02.put("list", list);
+		map01.put("接口类型", "货品信息");
+		map01.put("接收系统标识","JKWMS");
+		map01.put("接口数据",map02);
+		
+		//map  转json字符串
+		String str =JSON.toJSONString(map01, true);
+		
+		//base64 加密
+		data = Base64Util.encodeBase64(str);
+		
+		return data;
+	}
+	
+	
+
+}

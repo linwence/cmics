@@ -1,0 +1,13 @@
+package com.el.cmic.service.goods;
+
+import java.util.List;
+
+import com.el.cmic.domain.goods.CustomPItem;
+import com.el.cmic.domain.goods.CustomPropel;
+
+public interface CustomPropelService {
+
+	public List<CustomPropel>  selectCustomPropelList();
+	
+	public List<CustomPItem>  selectCustomPItemList(String an8);
+}

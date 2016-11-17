@@ -1,0 +1,56 @@
+package com.el.cmic.mapper.goods;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.jdbc.SQL;
+
+import com.el.cmic.domain.goods.Bale;
+
+public interface BaleMapepr {
+	
+	
+	/**
+	 * 商品基础数据推送  查询list
+	 * @return
+	 */
+	@SelectProvider(type=BaleMapepr.sqlProvider.class,method=BaleMapepr.sqlProvider.selectBales)
+	public List<Bale>  selectBales();
+	
+	/**
+	 * FE8SPD01 EV01  更新状态
+	 * @return
+	 */
+	@UpdateProvider(type=BaleMapepr.sqlProvider.class,method=BaleMapepr.sqlProvider.updateEv01)
+	public Integer  updateEv01(@Param("status") String status,@Param("splitm") String splitm);
+
+	class  sqlProvider extends SQL{
+		
+		//动态 获取  db.properties  文件属性值
+		public static final String selectBales="selectBales";
+		public String selectBales(){
+			String sql="select feD01.SPLITM ,f401.IMLITM ,fe101.SPE8NAME,fe101.SPE8TYM,f401.IMDSC1 ,f401.IMDSC2 ,f0101.ABALPH,f0005.DRDL01,fe101. SPE8PZWH,"
+					+ " (select   listagg(trim(to_char(ZZE8ZZBM)),',') within group( order by ZZE8ZZBM) as  ZZE8Z2ZBM from FE84101Z     where ZZLITM=f401.IMLITM) as ZZE8ZZBM ,"
+					+ " (select    min(ZZEXDJ)  from FE84101Z     where ZZLITM=f401.IMLITM) as ZZEXDJ ,"
+					+ " case when f401.IMSTKT='O' then 1 else 0  end as fencun"
+					+ " from FE8SPD01 feD01"
+					+ " left join   F4101 f401  on feD01.SPITM = f401.IMITM"
+					+ " left join FE84101  fe101  on feD01.SPLITM = fe101.SPLITM"
+					+ " left join  F0101 f0101  on  f0101.ABAN8 = fe101.SPAN8"
+					+ " left join  crpctl.F0005  f0005  on (f0005.DRKY = f401.IMUOM1 AND f0005.DRSY='00' AND f0005.DRRT = 'UM')"
+					+ "   where feD01.SPEV01='N'";
+			return sql;
+		}
+		
+		public static final String updateEv01="updateEv01";
+		public String  updateEv01(@Param("status") String status,@Param("splitm") String splitm){
+				UPDATE("FE8SPD01");
+	            SET("SPEV01=#{status}");
+	            WHERE("SPLITM =#{splitm}");
+	            return toString();
+		}
+	}
+}

@@ -1,0 +1,35 @@
+package com.el.cfg.domain;
+
+import java.math.BigDecimal;
+
+public class FE80101ZKey {
+    private BigDecimal zzan8;
+
+    private String zze8zzlx;
+
+    private String zze8zzbm;
+
+    public BigDecimal getZzan8() {
+        return zzan8;
+    }
+
+    public void setZzan8(BigDecimal zzan8) {
+        this.zzan8 = zzan8;
+    }
+
+    public String getZze8zzlx() {
+        return zze8zzlx;
+    }
+
+    public void setZze8zzlx(String zze8zzlx) {
+        this.zze8zzlx = zze8zzlx;
+    }
+
+    public String getZze8zzbm() {
+        return zze8zzbm;
+    }
+
+    public void setZze8zzbm(String zze8zzbm) {
+        this.zze8zzbm = zze8zzbm;
+    }
+}

@@ -1,0 +1,25 @@
+package com.el.cfg.domain;
+
+import java.math.BigDecimal;
+
+public class F0116Key {
+    private BigDecimal alan8;
+
+    private BigDecimal aleftb;
+
+    public BigDecimal getAlan8() {
+        return alan8;
+    }
+
+    public void setAlan8(BigDecimal alan8) {
+        this.alan8 = alan8;
+    }
+
+    public BigDecimal getAleftb() {
+        return aleftb;
+    }
+
+    public void setAleftb(BigDecimal aleftb) {
+        this.aleftb = aleftb;
+    }
+}

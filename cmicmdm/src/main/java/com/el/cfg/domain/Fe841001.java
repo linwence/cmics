@@ -1,0 +1,1462 @@
+package com.el.cfg.domain;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
+
+public class Fe841001 implements Serializable {
+    /**
+     *  null - FE841001.SQUKIDP
+     */
+    private BigDecimal squkidp;
+
+    /**
+     *  null - FE841001.SQKCOO
+     */
+    private String sqkcoo;
+
+    /**
+     *  null - FE841001.SQLITM
+     */
+    private String sqlitm;
+
+    /**
+     *  null - FE841001.SQITM
+     */
+    private BigDecimal sqitm;
+
+    /**
+     *  null - FE841001.SQEV01
+     */
+    private String sqev01;
+
+    /**
+     *  null - FE841001.SQAITM
+     */
+    private String sqaitm;
+
+    /**
+     *  null - FE841001.SQDSC1
+     */
+    private String sqdsc1;
+
+    /**
+     *  null - FE841001.SQE8NAME
+     */
+    private String sqe8name;
+
+    /**
+     *  null - FE841001.SQDSC2
+     */
+    private String sqdsc2;
+
+    /**
+     *  null - FE841001.SQE8JX
+     */
+    private String sqe8jx;
+
+    /**
+     *  null - FE841001.SQSRTX
+     */
+    private String sqsrtx;
+
+    /**
+     *  null - FE841001.SQACLT
+     */
+    private BigDecimal sqaclt;
+
+    /**
+     *  null - FE841001.SQACPL
+     */
+    private BigDecimal sqacpl;
+
+    /**
+     *  null - FE841001.SQAN8
+     */
+    private BigDecimal sqan8;
+
+    /**
+     *  null - FE841001.SQAC28
+     */
+    private String sqac28;
+
+    /**
+     *  null - FE841001.SQE8SCXKZ
+     */
+    private String sqe8scxkz;
+
+    /**
+     *  null - FE841001.SQE8SCBAH
+     */
+    private String sqe8scbah;
+
+    /**
+     *  null - FE841001.SQORIG
+     */
+    private String sqorig;
+
+    /**
+     *  null - FE841001.SQE8PZWH
+     */
+    private String sqe8pzwh;
+
+    /**
+     *  null - FE841001.SQE8ZDYL
+     */
+    private String sqe8zdyl;
+
+    /**
+     *  null - FE841001.SQE8JHG
+     */
+    private String sqe8jhg;
+
+    /**
+     *  null - FE841001.SQE8ZTW
+     */
+    private String sqe8ztw;
+
+    /**
+     *  null - FE841001.SQE8GFG
+     */
+    private String sqe8gfg;
+
+    /**
+     *  null - FE841001.SQE8PTYP
+     */
+    private String sqe8ptyp;
+
+    /**
+     *  null - FE841001.SQE8ATCDL
+     */
+    private String sqe8atcdl;
+
+    /**
+     *  null - FE841001.SQE8ATCXL
+     */
+    private String sqe8atcxl;
+
+    /**
+     *  null - FE841001.SQE8YYKS
+     */
+    private String sqe8yyks;
+
+    /**
+     *  null - FE841001.SQE8FXDJ
+     */
+    private String sqe8fxdj;
+
+    /**
+     *  null - FE841001.SQE8CCTJ
+     */
+    private String sqe8cctj;
+
+    /**
+     *  null - FE841001.SQE8QTCC
+     */
+    private String sqe8qtcc;
+
+    /**
+     *  null - FE841001.SQE8JGG
+     */
+    private String sqe8jgg;
+
+    /**
+     *  null - FE841001.SQVR01
+     */
+    private String sqvr01;
+
+    /**
+     *  null - FE841001.SQIR01
+     */
+    private String sqir01;
+
+    /**
+     *  null - FE841001.SQVR02
+     */
+    private String sqvr02;
+
+    /**
+     *  null - FE841001.SQIR02
+     */
+    private String sqir02;
+
+    /**
+     *  null - FE841001.SQVR03
+     */
+    private String sqvr03;
+
+    /**
+     *  null - FE841001.SQDSC3
+     */
+    private String sqdsc3;
+
+    /**
+     *  null - FE841001.SQVR04
+     */
+    private String sqvr04;
+
+    /**
+     *  null - FE841001.SQIR04
+     */
+    private String sqir04;
+
+    /**
+     *  null - FE841001.SQSRP3
+     */
+    private String sqsrp3;
+
+    /**
+     *  null - FE841001.SQDSE3
+     */
+    private String sqdse3;
+
+    /**
+     *  null - FE841001.SQSRP4
+     */
+    private String sqsrp4;
+
+    /**
+     *  null - FE841001.SQBFNM
+     */
+    private String sqbfnm;
+
+    /**
+     *  null - FE841001.SQDSE4
+     */
+    private String sqdse4;
+
+    /**
+     *  null - FE841001.SQSRP5
+     */
+    private String sqsrp5;
+
+    /**
+     *  null - FE841001.SQBFNN
+     */
+    private String sqbfnn;
+
+    /**
+     *  null - FE841001.SQDSE5
+     */
+    private String sqdse5;
+
+    /**
+     *  null - FE841001.SQUOM1
+     */
+    private String squom1;
+
+    /**
+     *  null - FE841001.SQDL01
+     */
+    private String sqdl01;
+
+    /**
+     *  null - FE841001.SQBFNU
+     */
+    private String sqbfnu;
+
+    /**
+     *  null - FE841001.SQBFPL
+     */
+    private String sqbfpl;
+
+    /**
+     *  null - FE841001.SQUKID
+     */
+    private BigDecimal squkid;
+
+    /**
+     *  null - FE841001.SQURCD
+     */
+    private String squrcd;
+
+    /**
+     *  null - FE841001.SQURDT
+     */
+    private Integer squrdt;
+
+    /**
+     *  null - FE841001.SQURAT
+     */
+    private BigDecimal squrat;
+
+    /**
+     *  null - FE841001.SQURAB
+     */
+    private BigDecimal squrab;
+
+    /**
+     *  null - FE841001.SQEV02
+     */
+    private String sqev02;
+
+    /**
+     *  null - FE841001.SQEV03
+     */
+    private String sqev03;
+
+    /**
+     *  null - FE841001.SQEV04
+     */
+    private String sqev04;
+
+    /**
+     *  null - FE841001.SQEV05
+     */
+    private String sqev05;
+
+    /**
+     *  null - FE841001.SQUSER
+     */
+    private String squser;
+
+    /**
+     *  null - FE841001.SQPID
+     */
+    private String sqpid;
+
+    /**
+     *  null - FE841001.SQJOBN
+     */
+    private String sqjobn;
+
+    /**
+     *  null - FE841001.SQUPMJ
+     */
+    private Integer squpmj;
+
+    /**
+     *  null - FE841001.SQUPMT
+     */
+    private BigDecimal squpmt;
+
+    /**
+     *  null - FE841001.SQIDATE
+     */
+    private Date sqidate;
+
+    /**
+     *  null - FE841001.SQDF01
+     */
+    private String sqdf01;
+
+    /**
+     *  null - FE841001.SQRDATE
+     */
+    private Date sqrdate;
+
+    /**
+     *  null - FE841001.SQDF02
+     */
+    private String sqdf02;
+
+    /**
+     *  null - FE841001.SQSTATUS
+     */
+    private String sqstatus;
+
+    /**
+     *  null - FE841001.SQFLAG
+     */
+    private String sqflag;
+
+    /**
+     *  null - FE841001.SQFIL2
+     */
+    private String sqfil2;
+
+    /**
+     *  null - FE841001.SQBFPM
+     */
+    private String sqbfpm;
+
+    /**
+     *  null - FE841001.SQAIT1
+     */
+    private BigDecimal sqait1;
+
+    /**
+     *  null - FE841001.SQAIT2
+     */
+    private BigDecimal sqait2;
+
+    /**
+     *  null - FE841001.SQA001
+     */
+    private String sqa001;
+
+    /**
+     *  null - FE841001.SQA002
+     */
+    private String sqa002;
+
+    /**
+     *  null - FE841001.SQFIL3
+     */
+    private String sqfil3;
+
+    /**
+     *  null - FE841001.SQA003
+     */
+    private String sqa003;
+
+    /**
+     *  null - FE841001.SQA004
+     */
+    private String sqa004;
+
+    /**
+     *  null - FE841001.SQCJ01
+     */
+    private String sqcj01;
+
+    /**
+     *  null - FE841001.SQACTF
+     */
+    private String sqactf;
+
+    /**
+     *  null - FE841001.SQCJ02
+     */
+    private String sqcj02;
+
+    /**
+     *  null - FE841001.SQCJ03
+     */
+    private String sqcj03;
+
+    /**
+     *  null - FE841001.SQAA06
+     */
+    private String sqaa06;
+
+    /**
+     *  null - FE841001.SQCJ04
+     */
+    private String sqcj04;
+
+    /**
+     *  null - FE841001.SQCJ05
+     */
+    private String sqcj05;
+
+    /**
+     *  null - FE841001.SQA201
+     */
+    private String sqa201;
+
+    /**
+     *  null - FE841001.SQADLM
+     */
+    private BigDecimal sqadlm;
+
+    /**
+     *  null - FE841001.SQA202
+     */
+    private String sqa202;
+
+    /**
+     *  null - FE841001.SQPP01
+     */
+    private String sqpp01;
+
+    /**
+     *  null - FE841001.SQA203
+     */
+    private String sqa203;
+
+    /**
+     *  null - FE841001.SQA204
+     */
+    private String sqa204;
+
+    /**
+     *  null - FE841001.SQE8CPDL
+     */
+    private String sqe8cpdl;
+
+    /**
+     *  null - FE841001.SQE8TSFL
+     */
+    private String sqe8tsfl;
+
+    /**
+     *  null - FE841001.SQE8CPFL
+     */
+    private String sqe8cpfl;
+
+    /**
+     *  null - FE841001.SQGK01
+     */
+    private String sqgk01;
+
+    /**
+     *  null - FE841001.SQGK02
+     */
+    private String sqgk02;
+
+    /**
+     *  null - FE841001.SQGK03
+     */
+    private String sqgk03;
+
+    /**
+     *  null - FE841001.SQE8CP
+     */
+    private String sqe8cp;
+
+    /**
+     *  null - FE841001.SQE8SPXZ
+     */
+    private String sqe8spxz;
+
+    /**
+     *  null - FE841001.SQE8SPLX
+     */
+    private String sqe8splx;
+
+    /**
+     *  null - FE841001.SQPA8
+     */
+    private BigDecimal sqpa8;
+
+    private static final long serialVersionUID = 1L;
+
+    public BigDecimal getSqukidp() {
+        return squkidp;
+    }
+
+    public void setSqukidp(BigDecimal squkidp) {
+        this.squkidp = squkidp;
+    }
+
+    public String getSqkcoo() {
+        return sqkcoo;
+    }
+
+    public void setSqkcoo(String sqkcoo) {
+        this.sqkcoo = sqkcoo;
+    }
+
+    public String getSqlitm() {
+        return sqlitm;
+    }
+
+    public void setSqlitm(String sqlitm) {
+        this.sqlitm = sqlitm;
+    }
+
+    public BigDecimal getSqitm() {
+        return sqitm;
+    }
+
+    public void setSqitm(BigDecimal sqitm) {
+        this.sqitm = sqitm;
+    }
+
+    public String getSqev01() {
+        return sqev01;
+    }
+
+    public void setSqev01(String sqev01) {
+        this.sqev01 = sqev01;
+    }
+
+    public String getSqaitm() {
+        return sqaitm;
+    }
+
+    public void setSqaitm(String sqaitm) {
+        this.sqaitm = sqaitm;
+    }
+
+    public String getSqdsc1() {
+        return sqdsc1;
+    }
+
+    public void setSqdsc1(String sqdsc1) {
+        this.sqdsc1 = sqdsc1;
+    }
+
+    public String getSqe8name() {
+        return sqe8name;
+    }
+
+    public void setSqe8name(String sqe8name) {
+        this.sqe8name = sqe8name;
+    }
+
+    public String getSqdsc2() {
+        return sqdsc2;
+    }
+
+    public void setSqdsc2(String sqdsc2) {
+        this.sqdsc2 = sqdsc2;
+    }
+
+    public String getSqe8jx() {
+        return sqe8jx;
+    }
+
+    public void setSqe8jx(String sqe8jx) {
+        this.sqe8jx = sqe8jx;
+    }
+
+    public String getSqsrtx() {
+        return sqsrtx;
+    }
+
+    public void setSqsrtx(String sqsrtx) {
+        this.sqsrtx = sqsrtx;
+    }
+
+    public BigDecimal getSqaclt() {
+        return sqaclt;
+    }
+
+    public void setSqaclt(BigDecimal sqaclt) {
+        this.sqaclt = sqaclt;
+    }
+
+    public BigDecimal getSqacpl() {
+        return sqacpl;
+    }
+
+    public void setSqacpl(BigDecimal sqacpl) {
+        this.sqacpl = sqacpl;
+    }
+
+    public BigDecimal getSqan8() {
+        return sqan8;
+    }
+
+    public void setSqan8(BigDecimal sqan8) {
+        this.sqan8 = sqan8;
+    }
+
+    public String getSqac28() {
+        return sqac28;
+    }
+
+    public void setSqac28(String sqac28) {
+        this.sqac28 = sqac28;
+    }
+
+    public String getSqe8scxkz() {
+        return sqe8scxkz;
+    }
+
+    public void setSqe8scxkz(String sqe8scxkz) {
+        this.sqe8scxkz = sqe8scxkz;
+    }
+
+    public String getSqe8scbah() {
+        return sqe8scbah;
+    }
+
+    public void setSqe8scbah(String sqe8scbah) {
+        this.sqe8scbah = sqe8scbah;
+    }
+
+    public String getSqorig() {
+        return sqorig;
+    }
+
+    public void setSqorig(String sqorig) {
+        this.sqorig = sqorig;
+    }
+
+    public String getSqe8pzwh() {
+        return sqe8pzwh;
+    }
+
+    public void setSqe8pzwh(String sqe8pzwh) {
+        this.sqe8pzwh = sqe8pzwh;
+    }
+
+    public String getSqe8zdyl() {
+        return sqe8zdyl;
+    }
+
+    public void setSqe8zdyl(String sqe8zdyl) {
+        this.sqe8zdyl = sqe8zdyl;
+    }
+
+    public String getSqe8jhg() {
+        return sqe8jhg;
+    }
+
+    public void setSqe8jhg(String sqe8jhg) {
+        this.sqe8jhg = sqe8jhg;
+    }
+
+    public String getSqe8ztw() {
+        return sqe8ztw;
+    }
+
+    public void setSqe8ztw(String sqe8ztw) {
+        this.sqe8ztw = sqe8ztw;
+    }
+
+    public String getSqe8gfg() {
+        return sqe8gfg;
+    }
+
+    public void setSqe8gfg(String sqe8gfg) {
+        this.sqe8gfg = sqe8gfg;
+    }
+
+    public String getSqe8ptyp() {
+        return sqe8ptyp;
+    }
+
+    public void setSqe8ptyp(String sqe8ptyp) {
+        this.sqe8ptyp = sqe8ptyp;
+    }
+
+    public String getSqe8atcdl() {
+        return sqe8atcdl;
+    }
+
+    public void setSqe8atcdl(String sqe8atcdl) {
+        this.sqe8atcdl = sqe8atcdl;
+    }
+
+    public String getSqe8atcxl() {
+        return sqe8atcxl;
+    }
+
+    public void setSqe8atcxl(String sqe8atcxl) {
+        this.sqe8atcxl = sqe8atcxl;
+    }
+
+    public String getSqe8yyks() {
+        return sqe8yyks;
+    }
+
+    public void setSqe8yyks(String sqe8yyks) {
+        this.sqe8yyks = sqe8yyks;
+    }
+
+    public String getSqe8fxdj() {
+        return sqe8fxdj;
+    }
+
+    public void setSqe8fxdj(String sqe8fxdj) {
+        this.sqe8fxdj = sqe8fxdj;
+    }
+
+    public String getSqe8cctj() {
+        return sqe8cctj;
+    }
+
+    public void setSqe8cctj(String sqe8cctj) {
+        this.sqe8cctj = sqe8cctj;
+    }
+
+    public String getSqe8qtcc() {
+        return sqe8qtcc;
+    }
+
+    public void setSqe8qtcc(String sqe8qtcc) {
+        this.sqe8qtcc = sqe8qtcc;
+    }
+
+    public String getSqe8jgg() {
+        return sqe8jgg;
+    }
+
+    public void setSqe8jgg(String sqe8jgg) {
+        this.sqe8jgg = sqe8jgg;
+    }
+
+    public String getSqvr01() {
+        return sqvr01;
+    }
+
+    public void setSqvr01(String sqvr01) {
+        this.sqvr01 = sqvr01;
+    }
+
+    public String getSqir01() {
+        return sqir01;
+    }
+
+    public void setSqir01(String sqir01) {
+        this.sqir01 = sqir01;
+    }
+
+    public String getSqvr02() {
+        return sqvr02;
+    }
+
+    public void setSqvr02(String sqvr02) {
+        this.sqvr02 = sqvr02;
+    }
+
+    public String getSqir02() {
+        return sqir02;
+    }
+
+    public void setSqir02(String sqir02) {
+        this.sqir02 = sqir02;
+    }
+
+    public String getSqvr03() {
+        return sqvr03;
+    }
+
+    public void setSqvr03(String sqvr03) {
+        this.sqvr03 = sqvr03;
+    }
+
+    public String getSqdsc3() {
+        return sqdsc3;
+    }
+
+    public void setSqdsc3(String sqdsc3) {
+        this.sqdsc3 = sqdsc3;
+    }
+
+    public String getSqvr04() {
+        return sqvr04;
+    }
+
+    public void setSqvr04(String sqvr04) {
+        this.sqvr04 = sqvr04;
+    }
+
+    public String getSqir04() {
+        return sqir04;
+    }
+
+    public void setSqir04(String sqir04) {
+        this.sqir04 = sqir04;
+    }
+
+    public String getSqsrp3() {
+        return sqsrp3;
+    }
+
+    public void setSqsrp3(String sqsrp3) {
+        this.sqsrp3 = sqsrp3;
+    }
+
+    public String getSqdse3() {
+        return sqdse3;
+    }
+
+    public void setSqdse3(String sqdse3) {
+        this.sqdse3 = sqdse3;
+    }
+
+    public String getSqsrp4() {
+        return sqsrp4;
+    }
+
+    public void setSqsrp4(String sqsrp4) {
+        this.sqsrp4 = sqsrp4;
+    }
+
+    public String getSqbfnm() {
+        return sqbfnm;
+    }
+
+    public void setSqbfnm(String sqbfnm) {
+        this.sqbfnm = sqbfnm;
+    }
+
+    public String getSqdse4() {
+        return sqdse4;
+    }
+
+    public void setSqdse4(String sqdse4) {
+        this.sqdse4 = sqdse4;
+    }
+
+    public String getSqsrp5() {
+        return sqsrp5;
+    }
+
+    public void setSqsrp5(String sqsrp5) {
+        this.sqsrp5 = sqsrp5;
+    }
+
+    public String getSqbfnn() {
+        return sqbfnn;
+    }
+
+    public void setSqbfnn(String sqbfnn) {
+        this.sqbfnn = sqbfnn;
+    }
+
+    public String getSqdse5() {
+        return sqdse5;
+    }
+
+    public void setSqdse5(String sqdse5) {
+        this.sqdse5 = sqdse5;
+    }
+
+    public String getSquom1() {
+        return squom1;
+    }
+
+    public void setSquom1(String squom1) {
+        this.squom1 = squom1;
+    }
+
+    public String getSqdl01() {
+        return sqdl01;
+    }
+
+    public void setSqdl01(String sqdl01) {
+        this.sqdl01 = sqdl01;
+    }
+
+    public String getSqbfnu() {
+        return sqbfnu;
+    }
+
+    public void setSqbfnu(String sqbfnu) {
+        this.sqbfnu = sqbfnu;
+    }
+
+    public String getSqbfpl() {
+        return sqbfpl;
+    }
+
+    public void setSqbfpl(String sqbfpl) {
+        this.sqbfpl = sqbfpl;
+    }
+
+    public BigDecimal getSqukid() {
+        return squkid;
+    }
+
+    public void setSqukid(BigDecimal squkid) {
+        this.squkid = squkid;
+    }
+
+    public String getSqurcd() {
+        return squrcd;
+    }
+
+    public void setSqurcd(String squrcd) {
+        this.squrcd = squrcd;
+    }
+
+    public Integer getSqurdt() {
+        return squrdt;
+    }
+
+    public void setSqurdt(Integer squrdt) {
+        this.squrdt = squrdt;
+    }
+
+    public BigDecimal getSqurat() {
+        return squrat;
+    }
+
+    public void setSqurat(BigDecimal squrat) {
+        this.squrat = squrat;
+    }
+
+    public BigDecimal getSqurab() {
+        return squrab;
+    }
+
+    public void setSqurab(BigDecimal squrab) {
+        this.squrab = squrab;
+    }
+
+    public String getSqev02() {
+        return sqev02;
+    }
+
+    public void setSqev02(String sqev02) {
+        this.sqev02 = sqev02;
+    }
+
+    public String getSqev03() {
+        return sqev03;
+    }
+
+    public void setSqev03(String sqev03) {
+        this.sqev03 = sqev03;
+    }
+
+    public String getSqev04() {
+        return sqev04;
+    }
+
+    public void setSqev04(String sqev04) {
+        this.sqev04 = sqev04;
+    }
+
+    public String getSqev05() {
+        return sqev05;
+    }
+
+    public void setSqev05(String sqev05) {
+        this.sqev05 = sqev05;
+    }
+
+    public String getSquser() {
+        return squser;
+    }
+
+    public void setSquser(String squser) {
+        this.squser = squser;
+    }
+
+    public String getSqpid() {
+        return sqpid;
+    }
+
+    public void setSqpid(String sqpid) {
+        this.sqpid = sqpid;
+    }
+
+    public String getSqjobn() {
+        return sqjobn;
+    }
+
+    public void setSqjobn(String sqjobn) {
+        this.sqjobn = sqjobn;
+    }
+
+    public Integer getSqupmj() {
+        return squpmj;
+    }
+
+    public void setSqupmj(Integer squpmj) {
+        this.squpmj = squpmj;
+    }
+
+    public BigDecimal getSqupmt() {
+        return squpmt;
+    }
+
+    public void setSqupmt(BigDecimal squpmt) {
+        this.squpmt = squpmt;
+    }
+
+    public Date getSqidate() {
+        return sqidate;
+    }
+
+    public void setSqidate(Date sqidate) {
+        this.sqidate = sqidate;
+    }
+
+    public String getSqdf01() {
+        return sqdf01;
+    }
+
+    public void setSqdf01(String sqdf01) {
+        this.sqdf01 = sqdf01;
+    }
+
+    public Date getSqrdate() {
+        return sqrdate;
+    }
+
+    public void setSqrdate(Date sqrdate) {
+        this.sqrdate = sqrdate;
+    }
+
+    public String getSqdf02() {
+        return sqdf02;
+    }
+
+    public void setSqdf02(String sqdf02) {
+        this.sqdf02 = sqdf02;
+    }
+
+    public String getSqstatus() {
+        return sqstatus;
+    }
+
+    public void setSqstatus(String sqstatus) {
+        this.sqstatus = sqstatus;
+    }
+
+    public String getSqflag() {
+        return sqflag;
+    }
+
+    public void setSqflag(String sqflag) {
+        this.sqflag = sqflag;
+    }
+
+    public String getSqfil2() {
+        return sqfil2;
+    }
+
+    public void setSqfil2(String sqfil2) {
+        this.sqfil2 = sqfil2;
+    }
+
+    public String getSqbfpm() {
+        return sqbfpm;
+    }
+
+    public void setSqbfpm(String sqbfpm) {
+        this.sqbfpm = sqbfpm;
+    }
+
+    public BigDecimal getSqait1() {
+        return sqait1;
+    }
+
+    public void setSqait1(BigDecimal sqait1) {
+        this.sqait1 = sqait1;
+    }
+
+    public BigDecimal getSqait2() {
+        return sqait2;
+    }
+
+    public void setSqait2(BigDecimal sqait2) {
+        this.sqait2 = sqait2;
+    }
+
+    public String getSqa001() {
+        return sqa001;
+    }
+
+    public void setSqa001(String sqa001) {
+        this.sqa001 = sqa001;
+    }
+
+    public String getSqa002() {
+        return sqa002;
+    }
+
+    public void setSqa002(String sqa002) {
+        this.sqa002 = sqa002;
+    }
+
+    public String getSqfil3() {
+        return sqfil3;
+    }
+
+    public void setSqfil3(String sqfil3) {
+        this.sqfil3 = sqfil3;
+    }
+
+    public String getSqa003() {
+        return sqa003;
+    }
+
+    public void setSqa003(String sqa003) {
+        this.sqa003 = sqa003;
+    }
+
+    public String getSqa004() {
+        return sqa004;
+    }
+
+    public void setSqa004(String sqa004) {
+        this.sqa004 = sqa004;
+    }
+
+    public String getSqcj01() {
+        return sqcj01;
+    }
+
+    public void setSqcj01(String sqcj01) {
+        this.sqcj01 = sqcj01;
+    }
+
+    public String getSqactf() {
+        return sqactf;
+    }
+
+    public void setSqactf(String sqactf) {
+        this.sqactf = sqactf;
+    }
+
+    public String getSqcj02() {
+        return sqcj02;
+    }
+
+    public void setSqcj02(String sqcj02) {
+        this.sqcj02 = sqcj02;
+    }
+
+    public String getSqcj03() {
+        return sqcj03;
+    }
+
+    public void setSqcj03(String sqcj03) {
+        this.sqcj03 = sqcj03;
+    }
+
+    public String getSqaa06() {
+        return sqaa06;
+    }
+
+    public void setSqaa06(String sqaa06) {
+        this.sqaa06 = sqaa06;
+    }
+
+    public String getSqcj04() {
+        return sqcj04;
+    }
+
+    public void setSqcj04(String sqcj04) {
+        this.sqcj04 = sqcj04;
+    }
+
+    public String getSqcj05() {
+        return sqcj05;
+    }
+
+    public void setSqcj05(String sqcj05) {
+        this.sqcj05 = sqcj05;
+    }
+
+    public String getSqa201() {
+        return sqa201;
+    }
+
+    public void setSqa201(String sqa201) {
+        this.sqa201 = sqa201;
+    }
+
+    public BigDecimal getSqadlm() {
+        return sqadlm;
+    }
+
+    public void setSqadlm(BigDecimal sqadlm) {
+        this.sqadlm = sqadlm;
+    }
+
+    public String getSqa202() {
+        return sqa202;
+    }
+
+    public void setSqa202(String sqa202) {
+        this.sqa202 = sqa202;
+    }
+
+    public String getSqpp01() {
+        return sqpp01;
+    }
+
+    public void setSqpp01(String sqpp01) {
+        this.sqpp01 = sqpp01;
+    }
+
+    public String getSqa203() {
+        return sqa203;
+    }
+
+    public void setSqa203(String sqa203) {
+        this.sqa203 = sqa203;
+    }
+
+    public String getSqa204() {
+        return sqa204;
+    }
+
+    public void setSqa204(String sqa204) {
+        this.sqa204 = sqa204;
+    }
+
+    public String getSqe8cpdl() {
+        return sqe8cpdl;
+    }
+
+    public void setSqe8cpdl(String sqe8cpdl) {
+        this.sqe8cpdl = sqe8cpdl;
+    }
+
+    public String getSqe8tsfl() {
+        return sqe8tsfl;
+    }
+
+    public void setSqe8tsfl(String sqe8tsfl) {
+        this.sqe8tsfl = sqe8tsfl;
+    }
+
+    public String getSqe8cpfl() {
+        return sqe8cpfl;
+    }
+
+    public void setSqe8cpfl(String sqe8cpfl) {
+        this.sqe8cpfl = sqe8cpfl;
+    }
+
+    public String getSqgk01() {
+        return sqgk01;
+    }
+
+    public void setSqgk01(String sqgk01) {
+        this.sqgk01 = sqgk01;
+    }
+
+    public String getSqgk02() {
+        return sqgk02;
+    }
+
+    public void setSqgk02(String sqgk02) {
+        this.sqgk02 = sqgk02;
+    }
+
+    public String getSqgk03() {
+        return sqgk03;
+    }
+
+    public void setSqgk03(String sqgk03) {
+        this.sqgk03 = sqgk03;
+    }
+
+    public String getSqe8cp() {
+        return sqe8cp;
+    }
+
+    public void setSqe8cp(String sqe8cp) {
+        this.sqe8cp = sqe8cp;
+    }
+
+    public String getSqe8spxz() {
+        return sqe8spxz;
+    }
+
+    public void setSqe8spxz(String sqe8spxz) {
+        this.sqe8spxz = sqe8spxz;
+    }
+
+    public String getSqe8splx() {
+        return sqe8splx;
+    }
+
+    public void setSqe8splx(String sqe8splx) {
+        this.sqe8splx = sqe8splx;
+    }
+
+    public BigDecimal getSqpa8() {
+        return sqpa8;
+    }
+
+    public void setSqpa8(BigDecimal sqpa8) {
+        this.sqpa8 = sqpa8;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", squkidp=").append(squkidp);
+        sb.append(", sqkcoo=").append(sqkcoo);
+        sb.append(", sqlitm=").append(sqlitm);
+        sb.append(", sqitm=").append(sqitm);
+        sb.append(", sqev01=").append(sqev01);
+        sb.append(", sqaitm=").append(sqaitm);
+        sb.append(", sqdsc1=").append(sqdsc1);
+        sb.append(", sqe8name=").append(sqe8name);
+        sb.append(", sqdsc2=").append(sqdsc2);
+        sb.append(", sqe8jx=").append(sqe8jx);
+        sb.append(", sqsrtx=").append(sqsrtx);
+        sb.append(", sqaclt=").append(sqaclt);
+        sb.append(", sqacpl=").append(sqacpl);
+        sb.append(", sqan8=").append(sqan8);
+        sb.append(", sqac28=").append(sqac28);
+        sb.append(", sqe8scxkz=").append(sqe8scxkz);
+        sb.append(", sqe8scbah=").append(sqe8scbah);
+        sb.append(", sqorig=").append(sqorig);
+        sb.append(", sqe8pzwh=").append(sqe8pzwh);
+        sb.append(", sqe8zdyl=").append(sqe8zdyl);
+        sb.append(", sqe8jhg=").append(sqe8jhg);
+        sb.append(", sqe8ztw=").append(sqe8ztw);
+        sb.append(", sqe8gfg=").append(sqe8gfg);
+        sb.append(", sqe8ptyp=").append(sqe8ptyp);
+        sb.append(", sqe8atcdl=").append(sqe8atcdl);
+        sb.append(", sqe8atcxl=").append(sqe8atcxl);
+        sb.append(", sqe8yyks=").append(sqe8yyks);
+        sb.append(", sqe8fxdj=").append(sqe8fxdj);
+        sb.append(", sqe8cctj=").append(sqe8cctj);
+        sb.append(", sqe8qtcc=").append(sqe8qtcc);
+        sb.append(", sqe8jgg=").append(sqe8jgg);
+        sb.append(", sqvr01=").append(sqvr01);
+        sb.append(", sqir01=").append(sqir01);
+        sb.append(", sqvr02=").append(sqvr02);
+        sb.append(", sqir02=").append(sqir02);
+        sb.append(", sqvr03=").append(sqvr03);
+        sb.append(", sqdsc3=").append(sqdsc3);
+        sb.append(", sqvr04=").append(sqvr04);
+        sb.append(", sqir04=").append(sqir04);
+        sb.append(", sqsrp3=").append(sqsrp3);
+        sb.append(", sqdse3=").append(sqdse3);
+        sb.append(", sqsrp4=").append(sqsrp4);
+        sb.append(", sqbfnm=").append(sqbfnm);
+        sb.append(", sqdse4=").append(sqdse4);
+        sb.append(", sqsrp5=").append(sqsrp5);
+        sb.append(", sqbfnn=").append(sqbfnn);
+        sb.append(", sqdse5=").append(sqdse5);
+        sb.append(", squom1=").append(squom1);
+        sb.append(", sqdl01=").append(sqdl01);
+        sb.append(", sqbfnu=").append(sqbfnu);
+        sb.append(", sqbfpl=").append(sqbfpl);
+        sb.append(", squkid=").append(squkid);
+        sb.append(", squrcd=").append(squrcd);
+        sb.append(", squrdt=").append(squrdt);
+        sb.append(", squrat=").append(squrat);
+        sb.append(", squrab=").append(squrab);
+        sb.append(", sqev02=").append(sqev02);
+        sb.append(", sqev03=").append(sqev03);
+        sb.append(", sqev04=").append(sqev04);
+        sb.append(", sqev05=").append(sqev05);
+        sb.append(", squser=").append(squser);
+        sb.append(", sqpid=").append(sqpid);
+        sb.append(", sqjobn=").append(sqjobn);
+        sb.append(", squpmj=").append(squpmj);
+        sb.append(", squpmt=").append(squpmt);
+        sb.append(", sqidate=").append(sqidate);
+        sb.append(", sqdf01=").append(sqdf01);
+        sb.append(", sqrdate=").append(sqrdate);
+        sb.append(", sqdf02=").append(sqdf02);
+        sb.append(", sqstatus=").append(sqstatus);
+        sb.append(", sqflag=").append(sqflag);
+        sb.append(", sqfil2=").append(sqfil2);
+        sb.append(", sqbfpm=").append(sqbfpm);
+        sb.append(", sqait1=").append(sqait1);
+        sb.append(", sqait2=").append(sqait2);
+        sb.append(", sqa001=").append(sqa001);
+        sb.append(", sqa002=").append(sqa002);
+        sb.append(", sqfil3=").append(sqfil3);
+        sb.append(", sqa003=").append(sqa003);
+        sb.append(", sqa004=").append(sqa004);
+        sb.append(", sqcj01=").append(sqcj01);
+        sb.append(", sqactf=").append(sqactf);
+        sb.append(", sqcj02=").append(sqcj02);
+        sb.append(", sqcj03=").append(sqcj03);
+        sb.append(", sqaa06=").append(sqaa06);
+        sb.append(", sqcj04=").append(sqcj04);
+        sb.append(", sqcj05=").append(sqcj05);
+        sb.append(", sqa201=").append(sqa201);
+        sb.append(", sqadlm=").append(sqadlm);
+        sb.append(", sqa202=").append(sqa202);
+        sb.append(", sqpp01=").append(sqpp01);
+        sb.append(", sqa203=").append(sqa203);
+        sb.append(", sqa204=").append(sqa204);
+        sb.append(", sqe8cpdl=").append(sqe8cpdl);
+        sb.append(", sqe8tsfl=").append(sqe8tsfl);
+        sb.append(", sqe8cpfl=").append(sqe8cpfl);
+        sb.append(", sqgk01=").append(sqgk01);
+        sb.append(", sqgk02=").append(sqgk02);
+        sb.append(", sqgk03=").append(sqgk03);
+        sb.append(", sqe8cp=").append(sqe8cp);
+        sb.append(", sqe8spxz=").append(sqe8spxz);
+        sb.append(", sqe8splx=").append(sqe8splx);
+        sb.append(", sqpa8=").append(sqpa8);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

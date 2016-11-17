@@ -1,0 +1,21 @@
+package com.el.cmic.timetask;
+
+import java.util.TimerTask;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.el.cmic.service.department.DepartmentDataService;
+
+@Component
+public class SpdTimeTask extends TimerTask{
+
+	@Autowired
+	private DepartmentDataService departmentDataService;
+	@Override
+	public void run() {
+		//部门基础数据推送（
+		departmentDataService.callSpdDepartmentInterface();
+	}
+
+}

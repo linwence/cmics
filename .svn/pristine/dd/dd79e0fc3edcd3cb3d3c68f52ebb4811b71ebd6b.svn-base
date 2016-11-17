@@ -1,0 +1,73 @@
+package com.el.cmic.mapper.ckcancel;
+
+import com.el.cmic.domain.ckcancel.CkCancelOrder;
+import com.el.cmic.domain.ckcancel.CkCancelOrderDtl;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.jdbc.SQL;
+
+import java.util.List;
+
+/**
+ * Created by Vincent on 2016/10/29.
+ */
+public interface CkCancelMapper {
+    final class SqlProvider extends SQL {
+
+      public   String selectCkCancelOrderList() {
+            SELECT("DISTINCT QCMCU AS MCU");
+            SELECT("FE8WMS13.LSE8WLZXID AS WMSMCU");
+            SELECT("QCCA01 AS CA01");
+            SELECT("QCKCOO AS KCOO");
+            SELECT("FE8WMS20.LSCO AS WMSKCOO");
+            SELECT("QCDOCO AS DOCO");
+            SELECT("QCAN8 AS AN8");
+            SELECT("QCE8NAME AS E8NAME");
+            SELECT("QCDL01 AS DL01");
+            SELECT("QCTRDJ AS TRDJ");
+            SELECT("QCDCTO AS DCTO");
+            FROM("FE8WMS13");
+            INNER_JOIN("FE8WMS21 ON FE8WMS13.QCMCU=FE8WMS21.LSMCU");
+            INNER_JOIN("FE8WMS20 ON FE8WMS13.QCKCOO=FE8WMS20.LSCO");
+            WHERE("QCEV01='N'");
+            return toString();
+        }
+
+      public   String selectCkCancelOrderDtlList() {
+            SELECT("QCLNID AS LNID");
+            SELECT("QCLITM AS LITM");
+            SELECT("QCUORG AS UORG");
+            SELECT("QCCA02 AS CA02");
+            SELECT("QCLOT1 AS LOT1");
+            SELECT("QCLOT2 AS LOT2");
+            SELECT("QCDSC1 AS DSC1");
+            SELECT("null invalidDate");
+            SELECT("null productDate");
+            FROM("FE8WMS13");
+            WHERE("QCKCOO=#{kcoo}");
+            WHERE("QCDOCO=#{doco}");
+            WHERE("QCDCTO=#{dcto}");
+            return toString();
+        }
+
+       public String updateCkCancel(@Param("ckCancelOrder") CkCancelOrder ckCancelOrder, @Param("ckCancelOrderDtl") CkCancelOrderDtl ckCancelOrderDtl, @Param("status") String status) {
+            UPDATE("FE8WMS13");
+            SET("QCEV01=#{status}");
+            WHERE("QCDCT0=#{ckCancelOrder.DCT0}");
+            WHERE("QCKCOO=#{ckCancelOrder.KCOO}");
+            WHERE("QCDOCO=#{ckCancelOrder.DOCO}");
+            WHERE("QCLNID=#{ckCancelOrderDtl.LNID}");
+            return toString();
+        }
+    }
+
+    @SelectProvider(type = SqlProvider.class, method = "selectCkCancelOrderList")
+    List<CkCancelOrder> selectCkCancelOrderList();
+
+    @SelectProvider(type = SqlProvider.class, method = "selectCkCancelOrderDtlList")
+    List<CkCancelOrderDtl> selectCkCancelOrderDtlList(@Param("kcoo") String kcoo, @Param("doco") String doco, @Param("dcto") String dcto);
+
+    @UpdateProvider(type = SqlProvider.class, method = "updateCkCancel")
+    int updateCkCancel(@Param("ckCancelOrder") CkCancelOrder ckCancelOrder, @Param("ckCancelOrderDtl") CkCancelOrderDtl ckCancelOrderDtl, @Param("status") String status);
+}

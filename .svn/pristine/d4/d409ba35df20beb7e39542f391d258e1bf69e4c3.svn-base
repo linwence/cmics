@@ -1,0 +1,25 @@
+package com.el.cmic.common;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class MapJson {
+	
+	/**
+	 * 
+	 * @param <E>
+	 * @param oneName
+	 * @param twoName
+	 * @param list
+	 * @return
+	 */
+	public static <E> Map<String,Object> resultMapTw(String oneName,String twoName,List<E> list){
+		Map<String,Object> reMap01 = new HashMap<String,Object>();
+		Map<String,List<E> > reMap02 = new HashMap<String,List<E> >();
+		reMap02.put(twoName, list);
+		reMap01.put(oneName, reMap02);
+		return  reMap01;
+	}
+
+}

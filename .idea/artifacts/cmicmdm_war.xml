@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cmicmdm:war">
+    <output-path>$PROJECT_DIR$/cmicmdm/target</output-path>
+    <root id="archive" name="cmicmdm.war">
+      <element id="artifact" artifact-name="cmicmdm:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,95 @@
+package com.el.cmic.service.supplier.impl;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.el.cmic.common.SpdInterfaceType;
+import com.el.cmic.common.domain.SpdData;
+import com.el.cmic.common.domain.SpdRequest;
+import com.el.cmic.common.domain.SpdResult;
+import com.el.cmic.domain.supplier.Supplier;
+import com.el.cmic.mapper.supplier.SupplierMapper;
+import com.el.cmic.service.supplier.SupplierService;
+import com.el.utils.AddSpaceUtil;
+import com.el.utils.CallWebServiceImp;
+import com.el.utils.SpdClientService;
+
+@Service
+public class SupplierServiceImpl implements SupplierService{
+
+	@Autowired
+	private SupplierMapper supplierMapper;
+	
+	@Value("${spd.ID}")
+	private String spdId;
+	
+	@Resource(name="spdRequest")
+	private SpdRequest spdRequest;
+	
+	@Resource(name="callWebServiceImp")
+	private CallWebServiceImp  callWebServiceImp;
+	
+	@Resource(name="spdClientService")
+	private SpdClientService spdClientService;
+	
+	
+	/**
+	 * 供应商数据推送  查询list
+	 * @return
+	 */
+	@Override
+	public List<Supplier> selectSupplier() {
+		return supplierMapper.selectSupplier();
+	}
+
+	/**
+	 * FE8SPD03 EV01  更新状态
+	 * @return
+	 */	
+	@Override
+	@Transactional
+	public Integer updateEv01(String status, String span8 ,String spco) {
+		return supplierMapper.updateEv01(status, span8,spco);
+	}
+
+	/**
+	 * 供应商数据推送    接口调用 入口
+	 */
+	@Override
+	public void callSupplierInterface() {
+		List<Supplier> supplierList = new ArrayList<Supplier>();
+		supplierList=this.selectSupplier();
+		for(Supplier supplier:supplierList){
+			SpdData spdData = new SpdData(SpdInterfaceType.BUPPLIER_TYPE,spdId,supplier,"明细");
+			//生成data数据
+			String data = spdData.toJson();
+			System.out.println(data);
+			//调用spd接口
+			SpdResult  spdResult = spdClientService.callSpdWebService(data);
+			System.out.print("数据测试结果:");
+			System.out.println(spdResult);
+			afterResponse(supplier,spdResult);
+		}
+	}
+	
+	public void afterResponse(Supplier supplier,SpdResult spdResult){
+		System.out.println(spdResult);
+		 String status = "Y";
+		 //接口调用不成功  更新状态
+		if(!spdResult.isSuccess()){
+			status="E";
+		}
+		updateEv01(status,supplier.getAn8(),AddSpaceUtil.addSpanceRight(supplier.getCo(), 5));
+	}
+
+	
+}

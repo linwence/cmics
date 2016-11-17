@@ -1,0 +1,148 @@
+package com.el.cfg.mapper;
+
+import com.el.cfg.domain.F0111;
+import java.math.BigDecimal;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.type.JdbcType;
+
+public interface F0111Mapper {
+    @Select({
+        "select",
+        "WWAN8, WWIDLN, WWDSS5, WWMLNM, WWATTL, WWREM1, WWSLNM, WWALPH, WWDC, WWGNNM, ",
+        "WWMDNM, WWSRNM, WWTYC, WWW001, WWW002, WWW003, WWW004, WWW005, WWW006, WWW007, ",
+        "WWW008, WWW009, WWW010, WWMLN1, WWALP1, WWUSER, WWPID, WWUPMJ, WWJOBN, WWUPMT, ",
+        "WWNTYP, WWNICK, WWGEND, WWDDATE, WWDMON, WWDYR, WWWN001, WWWN002, WWWN003, WWWN004, ",
+        "WWWN005, WWWN006, WWWN007, WWWN008, WWWN009, WWWN010, WWFUCO, WWPCM, WWPCF, ",
+        "WWACTIN, WWCFRGUID, WWSYNCS, WWCAAD",
+        "from F0111",
+        "where WWAN8 = #{wwan8,jdbcType=DECIMAL}",
+          "and WWIDLN = #{wwidln,jdbcType=DECIMAL}"
+    })
+    @Results({
+        @Result(column="WWAN8", property="wwan8", jdbcType=JdbcType.DECIMAL, id=true),
+        @Result(column="WWIDLN", property="wwidln", jdbcType=JdbcType.DECIMAL, id=true),
+        @Result(column="WWDSS5", property="wwdss5", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWMLNM", property="wwmlnm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWATTL", property="wwattl", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWREM1", property="wwrem1", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWSLNM", property="wwslnm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWALPH", property="wwalph", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWDC", property="wwdc", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWGNNM", property="wwgnnm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWMDNM", property="wwmdnm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWSRNM", property="wwsrnm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWTYC", property="wwtyc", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW001", property="www001", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW002", property="www002", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW003", property="www003", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW004", property="www004", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW005", property="www005", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW006", property="www006", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW007", property="www007", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW008", property="www008", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW009", property="www009", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW010", property="www010", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWMLN1", property="wwmln1", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWALP1", property="wwalp1", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWUSER", property="wwuser", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWPID", property="wwpid", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWUPMJ", property="wwupmj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWJOBN", property="wwjobn", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWUPMT", property="wwupmt", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWNTYP", property="wwntyp", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWNICK", property="wwnick", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWGEND", property="wwgend", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWDDATE", property="wwddate", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWDMON", property="wwdmon", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWDYR", property="wwdyr", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWWN001", property="wwwn001", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN002", property="wwwn002", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN003", property="wwwn003", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN004", property="wwwn004", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN005", property="wwwn005", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN006", property="wwwn006", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN007", property="wwwn007", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN008", property="wwwn008", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN009", property="wwwn009", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN010", property="wwwn010", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWFUCO", property="wwfuco", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWPCM", property="wwpcm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWPCF", property="wwpcf", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWACTIN", property="wwactin", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWCFRGUID", property="wwcfrguid", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWSYNCS", property="wwsyncs", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWCAAD", property="wwcaad", jdbcType=JdbcType.DECIMAL)
+    })
+    F0111 selectByPrimaryKey(@Param("wwan8") BigDecimal wwan8, @Param("wwidln") BigDecimal wwidln);
+
+    @Select({
+        "select",
+        "WWAN8, WWIDLN, WWDSS5, WWMLNM, WWATTL, WWREM1, WWSLNM, WWALPH, WWDC, WWGNNM, ",
+        "WWMDNM, WWSRNM, WWTYC, WWW001, WWW002, WWW003, WWW004, WWW005, WWW006, WWW007, ",
+        "WWW008, WWW009, WWW010, WWMLN1, WWALP1, WWUSER, WWPID, WWUPMJ, WWJOBN, WWUPMT, ",
+        "WWNTYP, WWNICK, WWGEND, WWDDATE, WWDMON, WWDYR, WWWN001, WWWN002, WWWN003, WWWN004, ",
+        "WWWN005, WWWN006, WWWN007, WWWN008, WWWN009, WWWN010, WWFUCO, WWPCM, WWPCF, ",
+        "WWACTIN, WWCFRGUID, WWSYNCS, WWCAAD",
+        "from F0111"
+    })
+    @Results({
+        @Result(column="WWAN8", property="wwan8", jdbcType=JdbcType.DECIMAL, id=true),
+        @Result(column="WWIDLN", property="wwidln", jdbcType=JdbcType.DECIMAL, id=true),
+        @Result(column="WWDSS5", property="wwdss5", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWMLNM", property="wwmlnm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWATTL", property="wwattl", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWREM1", property="wwrem1", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWSLNM", property="wwslnm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWALPH", property="wwalph", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWDC", property="wwdc", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWGNNM", property="wwgnnm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWMDNM", property="wwmdnm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWSRNM", property="wwsrnm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWTYC", property="wwtyc", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW001", property="www001", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW002", property="www002", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW003", property="www003", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW004", property="www004", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW005", property="www005", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW006", property="www006", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW007", property="www007", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW008", property="www008", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW009", property="www009", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWW010", property="www010", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWMLN1", property="wwmln1", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWALP1", property="wwalp1", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWUSER", property="wwuser", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWPID", property="wwpid", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWUPMJ", property="wwupmj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWJOBN", property="wwjobn", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWUPMT", property="wwupmt", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWNTYP", property="wwntyp", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWNICK", property="wwnick", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWGEND", property="wwgend", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWDDATE", property="wwddate", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWDMON", property="wwdmon", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWDYR", property="wwdyr", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWWN001", property="wwwn001", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN002", property="wwwn002", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN003", property="wwwn003", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN004", property="wwwn004", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN005", property="wwwn005", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN006", property="wwwn006", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN007", property="wwwn007", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN008", property="wwwn008", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN009", property="wwwn009", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWWN010", property="wwwn010", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWFUCO", property="wwfuco", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWPCM", property="wwpcm", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWPCF", property="wwpcf", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWACTIN", property="wwactin", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWCFRGUID", property="wwcfrguid", jdbcType=JdbcType.NCHAR),
+        @Result(column="WWSYNCS", property="wwsyncs", jdbcType=JdbcType.DECIMAL),
+        @Result(column="WWCAAD", property="wwcaad", jdbcType=JdbcType.DECIMAL)
+    })
+    List<F0111> selectAll();
+}

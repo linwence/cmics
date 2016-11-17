@@ -1,0 +1,108 @@
+package com.el.cfg.dao;
+
+import com.el.cfg.domain.F0116;
+import com.el.cfg.domain.F0116Key;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.type.JdbcType;
+
+public interface F0116Mapper {
+    @Delete({
+        "delete from CRPDTA.F0116",
+        "where ALAN8 = #{alan8,jdbcType=DECIMAL}",
+          "and ALEFTB = #{aleftb,jdbcType=DECIMAL}"
+    })
+    int deleteByPrimaryKey(F0116Key key);
+
+    @Insert({
+        "insert into CRPDTA.F0116 (ALAN8, ALEFTB, ",
+        "ALEFTF, ALADD1, ALADD2, ",
+        "ALADD3, ALADD4, ALADDZ, ",
+        "ALCTY1, ALCOUN, ALADDS, ",
+        "ALCRTE, ALBKML, ALCTR, ",
+        "ALUSER, ALPID, ALUPMJ, ",
+        "ALJOBN, ALUPMT, ALSYNCS, ",
+        "ALCAAD)",
+        "values (#{alan8,jdbcType=DECIMAL}, #{aleftb,jdbcType=DECIMAL}, ",
+        "#{aleftf,jdbcType=OTHER}, #{aladd1,jdbcType=OTHER}, #{aladd2,jdbcType=OTHER}, ",
+        "#{aladd3,jdbcType=OTHER}, #{aladd4,jdbcType=OTHER}, #{aladdz,jdbcType=OTHER}, ",
+        "#{alcty1,jdbcType=OTHER}, #{alcoun,jdbcType=OTHER}, #{aladds,jdbcType=OTHER}, ",
+        "#{alcrte,jdbcType=OTHER}, #{albkml,jdbcType=OTHER}, #{alctr,jdbcType=OTHER}, ",
+        "#{aluser,jdbcType=OTHER}, #{alpid,jdbcType=OTHER}, #{alupmj,jdbcType=DECIMAL}, ",
+        "#{aljobn,jdbcType=OTHER}, #{alupmt,jdbcType=DECIMAL}, #{alsyncs,jdbcType=DECIMAL}, ",
+        "#{alcaad,jdbcType=DECIMAL})"
+    })
+    int insert(F0116 record);
+
+    @InsertProvider(type=F0116SqlProvider.class, method="insertSelective")
+    int insertSelective(F0116 record);
+
+    @Select({
+        "select",
+        "ALAN8, ALEFTB, ALEFTF, ALADD1, ALADD2, ALADD3, ALADD4, ALADDZ, ALCTY1, ALCOUN, ",
+        "ALADDS, ALCRTE, ALBKML, ALCTR, ALUSER, ALPID, ALUPMJ, ALJOBN, ALUPMT, ALSYNCS, ",
+        "ALCAAD",
+        "from CRPDTA.F0116",
+        "where ALAN8 = #{alan8,jdbcType=DECIMAL}",
+          "and ALEFTB = #{aleftb,jdbcType=DECIMAL}"
+    })
+    @Results({
+        @Result(column="ALAN8", property="alan8", jdbcType=JdbcType.DECIMAL, id=true),
+        @Result(column="ALEFTB", property="aleftb", jdbcType=JdbcType.DECIMAL, id=true),
+        @Result(column="ALEFTF", property="aleftf", jdbcType=JdbcType.OTHER),
+        @Result(column="ALADD1", property="aladd1", jdbcType=JdbcType.OTHER),
+        @Result(column="ALADD2", property="aladd2", jdbcType=JdbcType.OTHER),
+        @Result(column="ALADD3", property="aladd3", jdbcType=JdbcType.OTHER),
+        @Result(column="ALADD4", property="aladd4", jdbcType=JdbcType.OTHER),
+        @Result(column="ALADDZ", property="aladdz", jdbcType=JdbcType.OTHER),
+        @Result(column="ALCTY1", property="alcty1", jdbcType=JdbcType.OTHER),
+        @Result(column="ALCOUN", property="alcoun", jdbcType=JdbcType.OTHER),
+        @Result(column="ALADDS", property="aladds", jdbcType=JdbcType.OTHER),
+        @Result(column="ALCRTE", property="alcrte", jdbcType=JdbcType.OTHER),
+        @Result(column="ALBKML", property="albkml", jdbcType=JdbcType.OTHER),
+        @Result(column="ALCTR", property="alctr", jdbcType=JdbcType.OTHER),
+        @Result(column="ALUSER", property="aluser", jdbcType=JdbcType.OTHER),
+        @Result(column="ALPID", property="alpid", jdbcType=JdbcType.OTHER),
+        @Result(column="ALUPMJ", property="alupmj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ALJOBN", property="aljobn", jdbcType=JdbcType.OTHER),
+        @Result(column="ALUPMT", property="alupmt", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ALSYNCS", property="alsyncs", jdbcType=JdbcType.DECIMAL),
+        @Result(column="ALCAAD", property="alcaad", jdbcType=JdbcType.DECIMAL)
+    })
+    F0116 selectByPrimaryKey(F0116Key key);
+
+    @UpdateProvider(type=F0116SqlProvider.class, method="updateByPrimaryKeySelective")
+    int updateByPrimaryKeySelective(F0116 record);
+
+    @Update({
+        "update CRPDTA.F0116",
+        "set ALEFTF = #{aleftf,jdbcType=OTHER},",
+          "ALADD1 = #{aladd1,jdbcType=OTHER},",
+          "ALADD2 = #{aladd2,jdbcType=OTHER},",
+          "ALADD3 = #{aladd3,jdbcType=OTHER},",
+          "ALADD4 = #{aladd4,jdbcType=OTHER},",
+          "ALADDZ = #{aladdz,jdbcType=OTHER},",
+          "ALCTY1 = #{alcty1,jdbcType=OTHER},",
+          "ALCOUN = #{alcoun,jdbcType=OTHER},",
+          "ALADDS = #{aladds,jdbcType=OTHER},",
+          "ALCRTE = #{alcrte,jdbcType=OTHER},",
+          "ALBKML = #{albkml,jdbcType=OTHER},",
+          "ALCTR = #{alctr,jdbcType=OTHER},",
+          "ALUSER = #{aluser,jdbcType=OTHER},",
+          "ALPID = #{alpid,jdbcType=OTHER},",
+          "ALUPMJ = #{alupmj,jdbcType=DECIMAL},",
+          "ALJOBN = #{aljobn,jdbcType=OTHER},",
+          "ALUPMT = #{alupmt,jdbcType=DECIMAL},",
+          "ALSYNCS = #{alsyncs,jdbcType=DECIMAL},",
+          "ALCAAD = #{alcaad,jdbcType=DECIMAL}",
+        "where ALAN8 = #{alan8,jdbcType=DECIMAL}",
+          "and ALEFTB = #{aleftb,jdbcType=DECIMAL}"
+    })
+    int updateByPrimaryKey(F0116 record);
+}

@@ -1,0 +1,39 @@
+package com.el.cmic.service.goods.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.el.cmic.domain.goods.Bales;
+import com.el.cmic.domain.goods.Licence;
+import com.el.cmic.mapper.goods.BalesMapper;
+import com.el.cmic.service.goods.BalesService;
+
+@Service
+public class BalesServiceImpl implements BalesService {
+
+	@Autowired
+	private BalesMapper balesMapper;
+	
+	/**
+	 * 查询货品推送信息 List
+	 */
+	public List<Bales> selectBalesList() {
+		List<Bales> list = balesMapper.selectBalesList();
+		//根据 limt  取证照明细
+		for(Bales  bales:list){
+			if(bales.getImlitm() != null){
+				List<Licence> licenList = this.selectLicenceList(bales.getImlitm());
+				bales.setLicenceList(licenList);
+			}
+		}
+		return  list; 
+	}
+
+	@Override
+	public List<Licence> selectLicenceList(String litm) {
+		return balesMapper.selectLicenceList(litm);
+	}
+
+}

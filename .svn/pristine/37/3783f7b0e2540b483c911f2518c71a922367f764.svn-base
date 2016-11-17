@@ -1,0 +1,184 @@
+package com.el.cfg.mapper;
+
+import com.el.cfg.domain.F0116;
+import org.apache.ibatis.jdbc.SQL;
+
+public class F0116SqlProvider {
+
+    public String insertSelective(F0116 record) {
+        SQL sql = new SQL();
+        sql.INSERT_INTO("CRPDTA.F0116");
+        
+        if (record.getAlan8() != null) {
+            sql.VALUES("ALAN8", "#{alan8,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAleftb() != null) {
+            sql.VALUES("ALEFTB", "#{aleftb,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAleftf() != null) {
+            sql.VALUES("ALEFTF", "#{aleftf,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladd1() != null) {
+            sql.VALUES("ALADD1", "#{aladd1,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladd2() != null) {
+            sql.VALUES("ALADD2", "#{aladd2,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladd3() != null) {
+            sql.VALUES("ALADD3", "#{aladd3,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladd4() != null) {
+            sql.VALUES("ALADD4", "#{aladd4,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladdz() != null) {
+            sql.VALUES("ALADDZ", "#{aladdz,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlcty1() != null) {
+            sql.VALUES("ALCTY1", "#{alcty1,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlcoun() != null) {
+            sql.VALUES("ALCOUN", "#{alcoun,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladds() != null) {
+            sql.VALUES("ALADDS", "#{aladds,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlcrte() != null) {
+            sql.VALUES("ALCRTE", "#{alcrte,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlbkml() != null) {
+            sql.VALUES("ALBKML", "#{albkml,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlctr() != null) {
+            sql.VALUES("ALCTR", "#{alctr,jdbcType=OTHER}");
+        }
+        
+        if (record.getAluser() != null) {
+            sql.VALUES("ALUSER", "#{aluser,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlpid() != null) {
+            sql.VALUES("ALPID", "#{alpid,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlupmj() != null) {
+            sql.VALUES("ALUPMJ", "#{alupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAljobn() != null) {
+            sql.VALUES("ALJOBN", "#{aljobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlupmt() != null) {
+            sql.VALUES("ALUPMT", "#{alupmt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAlsyncs() != null) {
+            sql.VALUES("ALSYNCS", "#{alsyncs,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAlcaad() != null) {
+            sql.VALUES("ALCAAD", "#{alcaad,jdbcType=DECIMAL}");
+        }
+        
+        return sql.toString();
+    }
+
+    public String updateByPrimaryKeySelective(F0116 record) {
+        SQL sql = new SQL();
+        sql.UPDATE("CRPDTA.F0116");
+        
+        if (record.getAleftf() != null) {
+            sql.SET("ALEFTF = #{aleftf,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladd1() != null) {
+            sql.SET("ALADD1 = #{aladd1,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladd2() != null) {
+            sql.SET("ALADD2 = #{aladd2,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladd3() != null) {
+            sql.SET("ALADD3 = #{aladd3,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladd4() != null) {
+            sql.SET("ALADD4 = #{aladd4,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladdz() != null) {
+            sql.SET("ALADDZ = #{aladdz,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlcty1() != null) {
+            sql.SET("ALCTY1 = #{alcty1,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlcoun() != null) {
+            sql.SET("ALCOUN = #{alcoun,jdbcType=OTHER}");
+        }
+        
+        if (record.getAladds() != null) {
+            sql.SET("ALADDS = #{aladds,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlcrte() != null) {
+            sql.SET("ALCRTE = #{alcrte,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlbkml() != null) {
+            sql.SET("ALBKML = #{albkml,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlctr() != null) {
+            sql.SET("ALCTR = #{alctr,jdbcType=OTHER}");
+        }
+        
+        if (record.getAluser() != null) {
+            sql.SET("ALUSER = #{aluser,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlpid() != null) {
+            sql.SET("ALPID = #{alpid,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlupmj() != null) {
+            sql.SET("ALUPMJ = #{alupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAljobn() != null) {
+            sql.SET("ALJOBN = #{aljobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getAlupmt() != null) {
+            sql.SET("ALUPMT = #{alupmt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAlsyncs() != null) {
+            sql.SET("ALSYNCS = #{alsyncs,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getAlcaad() != null) {
+            sql.SET("ALCAAD = #{alcaad,jdbcType=DECIMAL}");
+        }
+        
+        sql.WHERE("ALAN8 = #{alan8,jdbcType=DECIMAL}");
+        sql.WHERE("ALEFTB = #{aleftb,jdbcType=DECIMAL}");
+        
+        return sql.toString();
+    }
+}

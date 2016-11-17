@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- @see https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html -->
+<!-- @see http://logback.qos.ch/manual/appenders.html -->
+<!-- @see http://logback.qos.ch/manual/encoders.html -->
+<configuration>
+
+    <!-- @see org/springframework/boot/logging/logback/base.xml -->
+    <property name="LOG_FILE" value="cmic.log"/>
+    <property name="BATCH_LOG_FILE" value="cmic.batch.log"/>
+    <property name="MONITOR_LOG_FILE" value="cmic.monitor.log"/>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <include resource="logback-${STP_LOG_PROFILE}.xml"/>
+
+
+
+    <logger name="com.el" level="DEBUG"/>
+
+
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

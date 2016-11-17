@@ -1,0 +1,19 @@
+package com.el.cmic.callmdm.service;
+
+import com.el.cfg.domain.F0101;
+import com.el.cfg.domain.Fe80101;
+import com.el.cfg.domain.Fe841003;
+import com.el.cfg.domain.Fe841005;
+
+/**
+ * Created by Vincent on 2016/10/12.
+ */
+public interface RqC001Service {
+    public int updateFE80101(Fe80101 fe80101);
+
+    public int updateF0101(F0101 f0101);
+
+    public int updateFe841003(Fe841003 fe841003);
+
+    public int updateFe841005(Fe841005 fe841005);
+}

@@ -1,0 +1,32 @@
+package com.el.cmic.ws.service;
+
+import javax.jws.WebService;
+
+/**
+ * Created by Vincent on 2016/9/13.
+ */
+@WebService(endpointInterface = "com.el.cmic.ws.service.ReceiveMdmService", serviceName = "receive")
+public class ReceiveMdmServiceImpl implements ReceiveMdmService {
+    public String receive(String info) {
+
+        return null;
+    }
+
+
+
+    public String validXml(String info) {
+
+        return "";
+    }
+
+    public void saveLog(String info) {
+
+    }
+
+    public static void main(String[] args) {
+        String xml="";
+        ReceiveMdmServiceImpl receiveMdmService=new ReceiveMdmServiceImpl();
+        receiveMdmService.receive(xml);
+
+    }
+}

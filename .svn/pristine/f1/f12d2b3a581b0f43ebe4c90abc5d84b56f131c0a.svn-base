@@ -1,0 +1,2095 @@
+package com.el.cfg.domain;
+
+import java.math.BigDecimal;
+
+public class F4101 {
+    private BigDecimal imitm;
+
+    private String imlitm;
+
+    private String imaitm;
+
+    private String imdsc1;
+
+    private String imdsc2;
+
+    private String imsrtx;
+
+    private String imaln;
+
+    private String imsrp1;
+
+    private String imsrp2;
+
+    private String imsrp3;
+
+    private String imsrp4;
+
+    private String imsrp5;
+
+    private String imsrp6;
+
+    private String imsrp7;
+
+    private String imsrp8;
+
+    private String imsrp9;
+
+    private String imsrp0;
+
+    private String imprp1;
+
+    private String imprp2;
+
+    private String imprp3;
+
+    private String imprp4;
+
+    private String imprp5;
+
+    private String imprp6;
+
+    private String imprp7;
+
+    private String imprp8;
+
+    private String imprp9;
+
+    private String imprp0;
+
+    private String imcdcd;
+
+    private String impdgr;
+
+    private String imdsgp;
+
+    private String imprgr;
+
+    private String imrprc;
+
+    private String imorpr;
+
+    private BigDecimal imbuyr;
+
+    private String imdraw;
+
+    private String imrvno;
+
+    private String imdsze;
+
+    private BigDecimal imvcud;
+
+    private BigDecimal imcars;
+
+    private BigDecimal imcarp;
+
+    private String imshcn;
+
+    private String imshcm;
+
+    private String imuom1;
+
+    private String imuom2;
+
+    private String imuom3;
+
+    private String imuom4;
+
+    private String imuom6;
+
+    private String imuom8;
+
+    private String imuom9;
+
+    private String imuwum;
+
+    private String imuvm1;
+
+    private String imsutm;
+
+    private String imumvw;
+
+    private String imcycl;
+
+    private String imglpt;
+
+    private String implev;
+
+    private String impplv;
+
+    private String imclev;
+
+    private String imprpo;
+
+    private String imckav;
+
+    private String imbpfg;
+
+    private String imsrce;
+
+    private String imot1y;
+
+    private String imot2y;
+
+    private BigDecimal imstdp;
+
+    private BigDecimal imfrmp;
+
+    private BigDecimal imthrp;
+
+    private String imstdg;
+
+    private String imfrgd;
+
+    private String imthgd;
+
+    private String imcoty;
+
+    private String imstkt;
+
+    private String imlnty;
+
+    private String imcont;
+
+    private String imback;
+
+    private String imifla;
+
+    private String imtfla;
+
+    private String iminmg;
+
+    private String imabcs;
+
+    private String imabcm;
+
+    private String imabci;
+
+    private String imovr;
+
+    private String imwarr;
+
+    private String imcmcg;
+
+    private String imsrnr;
+
+    private String impmth;
+
+    private String imfifo;
+
+    private String imlots;
+
+    private BigDecimal imsld;
+
+    private BigDecimal imanpl;
+
+    private String immpst;
+
+    private BigDecimal impctm;
+
+    private BigDecimal immmpc;
+
+    private String imptsc;
+
+    private String imsns;
+
+    private BigDecimal imltlv;
+
+    private BigDecimal imltmf;
+
+    private BigDecimal imltcm;
+
+    private String imopc;
+
+    private BigDecimal imopv;
+
+    private BigDecimal imacq;
+
+    private BigDecimal immlq;
+
+    private BigDecimal imltpu;
+
+    private String immpsp;
+
+    private String immrpp;
+
+    private String imitc;
+
+    private String imordw;
+
+    private BigDecimal immtf1;
+
+    private BigDecimal immtf2;
+
+    private BigDecimal immtf3;
+
+    private BigDecimal immtf4;
+
+    private BigDecimal immtf5;
+
+    private BigDecimal imexpd;
+
+    private BigDecimal imdefd;
+
+    private BigDecimal imsflt;
+
+    private String immake;
+
+    private String imcoby;
+
+    private BigDecimal imllx;
+
+    private String imcmgl;
+
+    private BigDecimal imcomh;
+
+    private String imurcd;
+
+    private BigDecimal imurdt;
+
+    private BigDecimal imurat;
+
+    private BigDecimal imurab;
+
+    private String imurrf;
+
+    private String imuser;
+
+    private String impid;
+
+    private String imjobn;
+
+    private BigDecimal imupmj;
+
+    private BigDecimal imtday;
+
+    private String imupcn;
+
+    private String imscc0;
+
+    private String imumup;
+
+    private String imumdf;
+
+    private String imums0;
+
+    private String imums1;
+
+    private String imums2;
+
+    private String imums3;
+
+    private String imums4;
+
+    private String imums5;
+
+    private String imums6;
+
+    private String imums7;
+
+    private String imums8;
+
+    private String impoc;
+
+    private BigDecimal imavrt;
+
+    private String imeqty;
+
+    private String imwtrq;
+
+    private String imtmpl;
+
+    private String imseg1;
+
+    private String imseg2;
+
+    private String imseg3;
+
+    private String imseg4;
+
+    private String imseg5;
+
+    private String imseg6;
+
+    private String imseg7;
+
+    private String imseg8;
+
+    private String imseg9;
+
+    private String imseg0;
+
+    private String immic;
+
+    private String imaing;
+
+    private BigDecimal imbbdd;
+
+    private String imcmdm;
+
+    private String imlecm;
+
+    private BigDecimal imledd;
+
+    private BigDecimal impefd;
+
+    private BigDecimal imsbdd;
+
+    private BigDecimal imu1dd;
+
+    private BigDecimal imu2dd;
+
+    private BigDecimal imu3dd;
+
+    private BigDecimal imu4dd;
+
+    private BigDecimal imu5dd;
+
+    private BigDecimal imdltl;
+
+    private String imdppo;
+
+    private String imdual;
+
+    private String imxdck;
+
+    private String imlaf;
+
+    private String imltfm;
+
+    private String imrwla;
+
+    private String imlnpa;
+
+    private String imlotc;
+
+    private String imapsc;
+
+    private String imauom;
+
+    private String imconb;
+
+    private String imgcmp;
+
+    private BigDecimal impri1;
+
+    private BigDecimal impri2;
+
+    private String imashl;
+
+    private String imvminv;
+
+    private String imcmeth;
+
+    private String imexpi;
+
+    private BigDecimal imopth;
+
+    private BigDecimal imcuth;
+
+    private String imumth;
+
+    private String imlmfg;
+
+    private String imline;
+
+    private BigDecimal imdftpct;
+
+    private String imkbit;
+
+    private String imdfenditm;
+
+    private String imkanexll;
+
+    private String imscpsell;
+
+    private BigDecimal immopth;
+
+    private BigDecimal immcuth;
+
+    private String imcumth;
+
+    private String imatprn;
+
+    private String imatpca;
+
+    private String imatpac;
+
+    private String imcoore;
+
+    private String imvcpfc;
+
+    private String impnyn;
+
+    public BigDecimal getImitm() {
+        return imitm;
+    }
+
+    public void setImitm(BigDecimal imitm) {
+        this.imitm = imitm;
+    }
+
+    public String getImlitm() {
+        return imlitm;
+    }
+
+    public void setImlitm(String imlitm) {
+        this.imlitm = imlitm;
+    }
+
+    public String getImaitm() {
+        return imaitm;
+    }
+
+    public void setImaitm(String imaitm) {
+        this.imaitm = imaitm;
+    }
+
+    public String getImdsc1() {
+        return imdsc1;
+    }
+
+    public void setImdsc1(String imdsc1) {
+        this.imdsc1 = imdsc1;
+    }
+
+    public String getImdsc2() {
+        return imdsc2;
+    }
+
+    public void setImdsc2(String imdsc2) {
+        this.imdsc2 = imdsc2;
+    }
+
+    public String getImsrtx() {
+        return imsrtx;
+    }
+
+    public void setImsrtx(String imsrtx) {
+        this.imsrtx = imsrtx;
+    }
+
+    public String getImaln() {
+        return imaln;
+    }
+
+    public void setImaln(String imaln) {
+        this.imaln = imaln;
+    }
+
+    public String getImsrp1() {
+        return imsrp1;
+    }
+
+    public void setImsrp1(String imsrp1) {
+        this.imsrp1 = imsrp1;
+    }
+
+    public String getImsrp2() {
+        return imsrp2;
+    }
+
+    public void setImsrp2(String imsrp2) {
+        this.imsrp2 = imsrp2;
+    }
+
+    public String getImsrp3() {
+        return imsrp3;
+    }
+
+    public void setImsrp3(String imsrp3) {
+        this.imsrp3 = imsrp3;
+    }
+
+    public String getImsrp4() {
+        return imsrp4;
+    }
+
+    public void setImsrp4(String imsrp4) {
+        this.imsrp4 = imsrp4;
+    }
+
+    public String getImsrp5() {
+        return imsrp5;
+    }
+
+    public void setImsrp5(String imsrp5) {
+        this.imsrp5 = imsrp5;
+    }
+
+    public String getImsrp6() {
+        return imsrp6;
+    }
+
+    public void setImsrp6(String imsrp6) {
+        this.imsrp6 = imsrp6;
+    }
+
+    public String getImsrp7() {
+        return imsrp7;
+    }
+
+    public void setImsrp7(String imsrp7) {
+        this.imsrp7 = imsrp7;
+    }
+
+    public String getImsrp8() {
+        return imsrp8;
+    }
+
+    public void setImsrp8(String imsrp8) {
+        this.imsrp8 = imsrp8;
+    }
+
+    public String getImsrp9() {
+        return imsrp9;
+    }
+
+    public void setImsrp9(String imsrp9) {
+        this.imsrp9 = imsrp9;
+    }
+
+    public String getImsrp0() {
+        return imsrp0;
+    }
+
+    public void setImsrp0(String imsrp0) {
+        this.imsrp0 = imsrp0;
+    }
+
+    public String getImprp1() {
+        return imprp1;
+    }
+
+    public void setImprp1(String imprp1) {
+        this.imprp1 = imprp1;
+    }
+
+    public String getImprp2() {
+        return imprp2;
+    }
+
+    public void setImprp2(String imprp2) {
+        this.imprp2 = imprp2;
+    }
+
+    public String getImprp3() {
+        return imprp3;
+    }
+
+    public void setImprp3(String imprp3) {
+        this.imprp3 = imprp3;
+    }
+
+    public String getImprp4() {
+        return imprp4;
+    }
+
+    public void setImprp4(String imprp4) {
+        this.imprp4 = imprp4;
+    }
+
+    public String getImprp5() {
+        return imprp5;
+    }
+
+    public void setImprp5(String imprp5) {
+        this.imprp5 = imprp5;
+    }
+
+    public String getImprp6() {
+        return imprp6;
+    }
+
+    public void setImprp6(String imprp6) {
+        this.imprp6 = imprp6;
+    }
+
+    public String getImprp7() {
+        return imprp7;
+    }
+
+    public void setImprp7(String imprp7) {
+        this.imprp7 = imprp7;
+    }
+
+    public String getImprp8() {
+        return imprp8;
+    }
+
+    public void setImprp8(String imprp8) {
+        this.imprp8 = imprp8;
+    }
+
+    public String getImprp9() {
+        return imprp9;
+    }
+
+    public void setImprp9(String imprp9) {
+        this.imprp9 = imprp9;
+    }
+
+    public String getImprp0() {
+        return imprp0;
+    }
+
+    public void setImprp0(String imprp0) {
+        this.imprp0 = imprp0;
+    }
+
+    public String getImcdcd() {
+        return imcdcd;
+    }
+
+    public void setImcdcd(String imcdcd) {
+        this.imcdcd = imcdcd;
+    }
+
+    public String getImpdgr() {
+        return impdgr;
+    }
+
+    public void setImpdgr(String impdgr) {
+        this.impdgr = impdgr;
+    }
+
+    public String getImdsgp() {
+        return imdsgp;
+    }
+
+    public void setImdsgp(String imdsgp) {
+        this.imdsgp = imdsgp;
+    }
+
+    public String getImprgr() {
+        return imprgr;
+    }
+
+    public void setImprgr(String imprgr) {
+        this.imprgr = imprgr;
+    }
+
+    public String getImrprc() {
+        return imrprc;
+    }
+
+    public void setImrprc(String imrprc) {
+        this.imrprc = imrprc;
+    }
+
+    public String getImorpr() {
+        return imorpr;
+    }
+
+    public void setImorpr(String imorpr) {
+        this.imorpr = imorpr;
+    }
+
+    public BigDecimal getImbuyr() {
+        return imbuyr;
+    }
+
+    public void setImbuyr(BigDecimal imbuyr) {
+        this.imbuyr = imbuyr;
+    }
+
+    public String getImdraw() {
+        return imdraw;
+    }
+
+    public void setImdraw(String imdraw) {
+        this.imdraw = imdraw;
+    }
+
+    public String getImrvno() {
+        return imrvno;
+    }
+
+    public void setImrvno(String imrvno) {
+        this.imrvno = imrvno;
+    }
+
+    public String getImdsze() {
+        return imdsze;
+    }
+
+    public void setImdsze(String imdsze) {
+        this.imdsze = imdsze;
+    }
+
+    public BigDecimal getImvcud() {
+        return imvcud;
+    }
+
+    public void setImvcud(BigDecimal imvcud) {
+        this.imvcud = imvcud;
+    }
+
+    public BigDecimal getImcars() {
+        return imcars;
+    }
+
+    public void setImcars(BigDecimal imcars) {
+        this.imcars = imcars;
+    }
+
+    public BigDecimal getImcarp() {
+        return imcarp;
+    }
+
+    public void setImcarp(BigDecimal imcarp) {
+        this.imcarp = imcarp;
+    }
+
+    public String getImshcn() {
+        return imshcn;
+    }
+
+    public void setImshcn(String imshcn) {
+        this.imshcn = imshcn;
+    }
+
+    public String getImshcm() {
+        return imshcm;
+    }
+
+    public void setImshcm(String imshcm) {
+        this.imshcm = imshcm;
+    }
+
+    public String getImuom1() {
+        return imuom1;
+    }
+
+    public void setImuom1(String imuom1) {
+        this.imuom1 = imuom1;
+    }
+
+    public String getImuom2() {
+        return imuom2;
+    }
+
+    public void setImuom2(String imuom2) {
+        this.imuom2 = imuom2;
+    }
+
+    public String getImuom3() {
+        return imuom3;
+    }
+
+    public void setImuom3(String imuom3) {
+        this.imuom3 = imuom3;
+    }
+
+    public String getImuom4() {
+        return imuom4;
+    }
+
+    public void setImuom4(String imuom4) {
+        this.imuom4 = imuom4;
+    }
+
+    public String getImuom6() {
+        return imuom6;
+    }
+
+    public void setImuom6(String imuom6) {
+        this.imuom6 = imuom6;
+    }
+
+    public String getImuom8() {
+        return imuom8;
+    }
+
+    public void setImuom8(String imuom8) {
+        this.imuom8 = imuom8;
+    }
+
+    public String getImuom9() {
+        return imuom9;
+    }
+
+    public void setImuom9(String imuom9) {
+        this.imuom9 = imuom9;
+    }
+
+    public String getImuwum() {
+        return imuwum;
+    }
+
+    public void setImuwum(String imuwum) {
+        this.imuwum = imuwum;
+    }
+
+    public String getImuvm1() {
+        return imuvm1;
+    }
+
+    public void setImuvm1(String imuvm1) {
+        this.imuvm1 = imuvm1;
+    }
+
+    public String getImsutm() {
+        return imsutm;
+    }
+
+    public void setImsutm(String imsutm) {
+        this.imsutm = imsutm;
+    }
+
+    public String getImumvw() {
+        return imumvw;
+    }
+
+    public void setImumvw(String imumvw) {
+        this.imumvw = imumvw;
+    }
+
+    public String getImcycl() {
+        return imcycl;
+    }
+
+    public void setImcycl(String imcycl) {
+        this.imcycl = imcycl;
+    }
+
+    public String getImglpt() {
+        return imglpt;
+    }
+
+    public void setImglpt(String imglpt) {
+        this.imglpt = imglpt;
+    }
+
+    public String getImplev() {
+        return implev;
+    }
+
+    public void setImplev(String implev) {
+        this.implev = implev;
+    }
+
+    public String getImpplv() {
+        return impplv;
+    }
+
+    public void setImpplv(String impplv) {
+        this.impplv = impplv;
+    }
+
+    public String getImclev() {
+        return imclev;
+    }
+
+    public void setImclev(String imclev) {
+        this.imclev = imclev;
+    }
+
+    public String getImprpo() {
+        return imprpo;
+    }
+
+    public void setImprpo(String imprpo) {
+        this.imprpo = imprpo;
+    }
+
+    public String getImckav() {
+        return imckav;
+    }
+
+    public void setImckav(String imckav) {
+        this.imckav = imckav;
+    }
+
+    public String getImbpfg() {
+        return imbpfg;
+    }
+
+    public void setImbpfg(String imbpfg) {
+        this.imbpfg = imbpfg;
+    }
+
+    public String getImsrce() {
+        return imsrce;
+    }
+
+    public void setImsrce(String imsrce) {
+        this.imsrce = imsrce;
+    }
+
+    public String getImot1y() {
+        return imot1y;
+    }
+
+    public void setImot1y(String imot1y) {
+        this.imot1y = imot1y;
+    }
+
+    public String getImot2y() {
+        return imot2y;
+    }
+
+    public void setImot2y(String imot2y) {
+        this.imot2y = imot2y;
+    }
+
+    public BigDecimal getImstdp() {
+        return imstdp;
+    }
+
+    public void setImstdp(BigDecimal imstdp) {
+        this.imstdp = imstdp;
+    }
+
+    public BigDecimal getImfrmp() {
+        return imfrmp;
+    }
+
+    public void setImfrmp(BigDecimal imfrmp) {
+        this.imfrmp = imfrmp;
+    }
+
+    public BigDecimal getImthrp() {
+        return imthrp;
+    }
+
+    public void setImthrp(BigDecimal imthrp) {
+        this.imthrp = imthrp;
+    }
+
+    public String getImstdg() {
+        return imstdg;
+    }
+
+    public void setImstdg(String imstdg) {
+        this.imstdg = imstdg;
+    }
+
+    public String getImfrgd() {
+        return imfrgd;
+    }
+
+    public void setImfrgd(String imfrgd) {
+        this.imfrgd = imfrgd;
+    }
+
+    public String getImthgd() {
+        return imthgd;
+    }
+
+    public void setImthgd(String imthgd) {
+        this.imthgd = imthgd;
+    }
+
+    public String getImcoty() {
+        return imcoty;
+    }
+
+    public void setImcoty(String imcoty) {
+        this.imcoty = imcoty;
+    }
+
+    public String getImstkt() {
+        return imstkt;
+    }
+
+    public void setImstkt(String imstkt) {
+        this.imstkt = imstkt;
+    }
+
+    public String getImlnty() {
+        return imlnty;
+    }
+
+    public void setImlnty(String imlnty) {
+        this.imlnty = imlnty;
+    }
+
+    public String getImcont() {
+        return imcont;
+    }
+
+    public void setImcont(String imcont) {
+        this.imcont = imcont;
+    }
+
+    public String getImback() {
+        return imback;
+    }
+
+    public void setImback(String imback) {
+        this.imback = imback;
+    }
+
+    public String getImifla() {
+        return imifla;
+    }
+
+    public void setImifla(String imifla) {
+        this.imifla = imifla;
+    }
+
+    public String getImtfla() {
+        return imtfla;
+    }
+
+    public void setImtfla(String imtfla) {
+        this.imtfla = imtfla;
+    }
+
+    public String getIminmg() {
+        return iminmg;
+    }
+
+    public void setIminmg(String iminmg) {
+        this.iminmg = iminmg;
+    }
+
+    public String getImabcs() {
+        return imabcs;
+    }
+
+    public void setImabcs(String imabcs) {
+        this.imabcs = imabcs;
+    }
+
+    public String getImabcm() {
+        return imabcm;
+    }
+
+    public void setImabcm(String imabcm) {
+        this.imabcm = imabcm;
+    }
+
+    public String getImabci() {
+        return imabci;
+    }
+
+    public void setImabci(String imabci) {
+        this.imabci = imabci;
+    }
+
+    public String getImovr() {
+        return imovr;
+    }
+
+    public void setImovr(String imovr) {
+        this.imovr = imovr;
+    }
+
+    public String getImwarr() {
+        return imwarr;
+    }
+
+    public void setImwarr(String imwarr) {
+        this.imwarr = imwarr;
+    }
+
+    public String getImcmcg() {
+        return imcmcg;
+    }
+
+    public void setImcmcg(String imcmcg) {
+        this.imcmcg = imcmcg;
+    }
+
+    public String getImsrnr() {
+        return imsrnr;
+    }
+
+    public void setImsrnr(String imsrnr) {
+        this.imsrnr = imsrnr;
+    }
+
+    public String getImpmth() {
+        return impmth;
+    }
+
+    public void setImpmth(String impmth) {
+        this.impmth = impmth;
+    }
+
+    public String getImfifo() {
+        return imfifo;
+    }
+
+    public void setImfifo(String imfifo) {
+        this.imfifo = imfifo;
+    }
+
+    public String getImlots() {
+        return imlots;
+    }
+
+    public void setImlots(String imlots) {
+        this.imlots = imlots;
+    }
+
+    public BigDecimal getImsld() {
+        return imsld;
+    }
+
+    public void setImsld(BigDecimal imsld) {
+        this.imsld = imsld;
+    }
+
+    public BigDecimal getImanpl() {
+        return imanpl;
+    }
+
+    public void setImanpl(BigDecimal imanpl) {
+        this.imanpl = imanpl;
+    }
+
+    public String getImmpst() {
+        return immpst;
+    }
+
+    public void setImmpst(String immpst) {
+        this.immpst = immpst;
+    }
+
+    public BigDecimal getImpctm() {
+        return impctm;
+    }
+
+    public void setImpctm(BigDecimal impctm) {
+        this.impctm = impctm;
+    }
+
+    public BigDecimal getImmmpc() {
+        return immmpc;
+    }
+
+    public void setImmmpc(BigDecimal immmpc) {
+        this.immmpc = immmpc;
+    }
+
+    public String getImptsc() {
+        return imptsc;
+    }
+
+    public void setImptsc(String imptsc) {
+        this.imptsc = imptsc;
+    }
+
+    public String getImsns() {
+        return imsns;
+    }
+
+    public void setImsns(String imsns) {
+        this.imsns = imsns;
+    }
+
+    public BigDecimal getImltlv() {
+        return imltlv;
+    }
+
+    public void setImltlv(BigDecimal imltlv) {
+        this.imltlv = imltlv;
+    }
+
+    public BigDecimal getImltmf() {
+        return imltmf;
+    }
+
+    public void setImltmf(BigDecimal imltmf) {
+        this.imltmf = imltmf;
+    }
+
+    public BigDecimal getImltcm() {
+        return imltcm;
+    }
+
+    public void setImltcm(BigDecimal imltcm) {
+        this.imltcm = imltcm;
+    }
+
+    public String getImopc() {
+        return imopc;
+    }
+
+    public void setImopc(String imopc) {
+        this.imopc = imopc;
+    }
+
+    public BigDecimal getImopv() {
+        return imopv;
+    }
+
+    public void setImopv(BigDecimal imopv) {
+        this.imopv = imopv;
+    }
+
+    public BigDecimal getImacq() {
+        return imacq;
+    }
+
+    public void setImacq(BigDecimal imacq) {
+        this.imacq = imacq;
+    }
+
+    public BigDecimal getImmlq() {
+        return immlq;
+    }
+
+    public void setImmlq(BigDecimal immlq) {
+        this.immlq = immlq;
+    }
+
+    public BigDecimal getImltpu() {
+        return imltpu;
+    }
+
+    public void setImltpu(BigDecimal imltpu) {
+        this.imltpu = imltpu;
+    }
+
+    public String getImmpsp() {
+        return immpsp;
+    }
+
+    public void setImmpsp(String immpsp) {
+        this.immpsp = immpsp;
+    }
+
+    public String getImmrpp() {
+        return immrpp;
+    }
+
+    public void setImmrpp(String immrpp) {
+        this.immrpp = immrpp;
+    }
+
+    public String getImitc() {
+        return imitc;
+    }
+
+    public void setImitc(String imitc) {
+        this.imitc = imitc;
+    }
+
+    public String getImordw() {
+        return imordw;
+    }
+
+    public void setImordw(String imordw) {
+        this.imordw = imordw;
+    }
+
+    public BigDecimal getImmtf1() {
+        return immtf1;
+    }
+
+    public void setImmtf1(BigDecimal immtf1) {
+        this.immtf1 = immtf1;
+    }
+
+    public BigDecimal getImmtf2() {
+        return immtf2;
+    }
+
+    public void setImmtf2(BigDecimal immtf2) {
+        this.immtf2 = immtf2;
+    }
+
+    public BigDecimal getImmtf3() {
+        return immtf3;
+    }
+
+    public void setImmtf3(BigDecimal immtf3) {
+        this.immtf3 = immtf3;
+    }
+
+    public BigDecimal getImmtf4() {
+        return immtf4;
+    }
+
+    public void setImmtf4(BigDecimal immtf4) {
+        this.immtf4 = immtf4;
+    }
+
+    public BigDecimal getImmtf5() {
+        return immtf5;
+    }
+
+    public void setImmtf5(BigDecimal immtf5) {
+        this.immtf5 = immtf5;
+    }
+
+    public BigDecimal getImexpd() {
+        return imexpd;
+    }
+
+    public void setImexpd(BigDecimal imexpd) {
+        this.imexpd = imexpd;
+    }
+
+    public BigDecimal getImdefd() {
+        return imdefd;
+    }
+
+    public void setImdefd(BigDecimal imdefd) {
+        this.imdefd = imdefd;
+    }
+
+    public BigDecimal getImsflt() {
+        return imsflt;
+    }
+
+    public void setImsflt(BigDecimal imsflt) {
+        this.imsflt = imsflt;
+    }
+
+    public String getImmake() {
+        return immake;
+    }
+
+    public void setImmake(String immake) {
+        this.immake = immake;
+    }
+
+    public String getImcoby() {
+        return imcoby;
+    }
+
+    public void setImcoby(String imcoby) {
+        this.imcoby = imcoby;
+    }
+
+    public BigDecimal getImllx() {
+        return imllx;
+    }
+
+    public void setImllx(BigDecimal imllx) {
+        this.imllx = imllx;
+    }
+
+    public String getImcmgl() {
+        return imcmgl;
+    }
+
+    public void setImcmgl(String imcmgl) {
+        this.imcmgl = imcmgl;
+    }
+
+    public BigDecimal getImcomh() {
+        return imcomh;
+    }
+
+    public void setImcomh(BigDecimal imcomh) {
+        this.imcomh = imcomh;
+    }
+
+    public String getImurcd() {
+        return imurcd;
+    }
+
+    public void setImurcd(String imurcd) {
+        this.imurcd = imurcd;
+    }
+
+    public BigDecimal getImurdt() {
+        return imurdt;
+    }
+
+    public void setImurdt(BigDecimal imurdt) {
+        this.imurdt = imurdt;
+    }
+
+    public BigDecimal getImurat() {
+        return imurat;
+    }
+
+    public void setImurat(BigDecimal imurat) {
+        this.imurat = imurat;
+    }
+
+    public BigDecimal getImurab() {
+        return imurab;
+    }
+
+    public void setImurab(BigDecimal imurab) {
+        this.imurab = imurab;
+    }
+
+    public String getImurrf() {
+        return imurrf;
+    }
+
+    public void setImurrf(String imurrf) {
+        this.imurrf = imurrf;
+    }
+
+    public String getImuser() {
+        return imuser;
+    }
+
+    public void setImuser(String imuser) {
+        this.imuser = imuser;
+    }
+
+    public String getImpid() {
+        return impid;
+    }
+
+    public void setImpid(String impid) {
+        this.impid = impid;
+    }
+
+    public String getImjobn() {
+        return imjobn;
+    }
+
+    public void setImjobn(String imjobn) {
+        this.imjobn = imjobn;
+    }
+
+    public BigDecimal getImupmj() {
+        return imupmj;
+    }
+
+    public void setImupmj(BigDecimal imupmj) {
+        this.imupmj = imupmj;
+    }
+
+    public BigDecimal getImtday() {
+        return imtday;
+    }
+
+    public void setImtday(BigDecimal imtday) {
+        this.imtday = imtday;
+    }
+
+    public String getImupcn() {
+        return imupcn;
+    }
+
+    public void setImupcn(String imupcn) {
+        this.imupcn = imupcn;
+    }
+
+    public String getImscc0() {
+        return imscc0;
+    }
+
+    public void setImscc0(String imscc0) {
+        this.imscc0 = imscc0;
+    }
+
+    public String getImumup() {
+        return imumup;
+    }
+
+    public void setImumup(String imumup) {
+        this.imumup = imumup;
+    }
+
+    public String getImumdf() {
+        return imumdf;
+    }
+
+    public void setImumdf(String imumdf) {
+        this.imumdf = imumdf;
+    }
+
+    public String getImums0() {
+        return imums0;
+    }
+
+    public void setImums0(String imums0) {
+        this.imums0 = imums0;
+    }
+
+    public String getImums1() {
+        return imums1;
+    }
+
+    public void setImums1(String imums1) {
+        this.imums1 = imums1;
+    }
+
+    public String getImums2() {
+        return imums2;
+    }
+
+    public void setImums2(String imums2) {
+        this.imums2 = imums2;
+    }
+
+    public String getImums3() {
+        return imums3;
+    }
+
+    public void setImums3(String imums3) {
+        this.imums3 = imums3;
+    }
+
+    public String getImums4() {
+        return imums4;
+    }
+
+    public void setImums4(String imums4) {
+        this.imums4 = imums4;
+    }
+
+    public String getImums5() {
+        return imums5;
+    }
+
+    public void setImums5(String imums5) {
+        this.imums5 = imums5;
+    }
+
+    public String getImums6() {
+        return imums6;
+    }
+
+    public void setImums6(String imums6) {
+        this.imums6 = imums6;
+    }
+
+    public String getImums7() {
+        return imums7;
+    }
+
+    public void setImums7(String imums7) {
+        this.imums7 = imums7;
+    }
+
+    public String getImums8() {
+        return imums8;
+    }
+
+    public void setImums8(String imums8) {
+        this.imums8 = imums8;
+    }
+
+    public String getImpoc() {
+        return impoc;
+    }
+
+    public void setImpoc(String impoc) {
+        this.impoc = impoc;
+    }
+
+    public BigDecimal getImavrt() {
+        return imavrt;
+    }
+
+    public void setImavrt(BigDecimal imavrt) {
+        this.imavrt = imavrt;
+    }
+
+    public String getImeqty() {
+        return imeqty;
+    }
+
+    public void setImeqty(String imeqty) {
+        this.imeqty = imeqty;
+    }
+
+    public String getImwtrq() {
+        return imwtrq;
+    }
+
+    public void setImwtrq(String imwtrq) {
+        this.imwtrq = imwtrq;
+    }
+
+    public String getImtmpl() {
+        return imtmpl;
+    }
+
+    public void setImtmpl(String imtmpl) {
+        this.imtmpl = imtmpl;
+    }
+
+    public String getImseg1() {
+        return imseg1;
+    }
+
+    public void setImseg1(String imseg1) {
+        this.imseg1 = imseg1;
+    }
+
+    public String getImseg2() {
+        return imseg2;
+    }
+
+    public void setImseg2(String imseg2) {
+        this.imseg2 = imseg2;
+    }
+
+    public String getImseg3() {
+        return imseg3;
+    }
+
+    public void setImseg3(String imseg3) {
+        this.imseg3 = imseg3;
+    }
+
+    public String getImseg4() {
+        return imseg4;
+    }
+
+    public void setImseg4(String imseg4) {
+        this.imseg4 = imseg4;
+    }
+
+    public String getImseg5() {
+        return imseg5;
+    }
+
+    public void setImseg5(String imseg5) {
+        this.imseg5 = imseg5;
+    }
+
+    public String getImseg6() {
+        return imseg6;
+    }
+
+    public void setImseg6(String imseg6) {
+        this.imseg6 = imseg6;
+    }
+
+    public String getImseg7() {
+        return imseg7;
+    }
+
+    public void setImseg7(String imseg7) {
+        this.imseg7 = imseg7;
+    }
+
+    public String getImseg8() {
+        return imseg8;
+    }
+
+    public void setImseg8(String imseg8) {
+        this.imseg8 = imseg8;
+    }
+
+    public String getImseg9() {
+        return imseg9;
+    }
+
+    public void setImseg9(String imseg9) {
+        this.imseg9 = imseg9;
+    }
+
+    public String getImseg0() {
+        return imseg0;
+    }
+
+    public void setImseg0(String imseg0) {
+        this.imseg0 = imseg0;
+    }
+
+    public String getImmic() {
+        return immic;
+    }
+
+    public void setImmic(String immic) {
+        this.immic = immic;
+    }
+
+    public String getImaing() {
+        return imaing;
+    }
+
+    public void setImaing(String imaing) {
+        this.imaing = imaing;
+    }
+
+    public BigDecimal getImbbdd() {
+        return imbbdd;
+    }
+
+    public void setImbbdd(BigDecimal imbbdd) {
+        this.imbbdd = imbbdd;
+    }
+
+    public String getImcmdm() {
+        return imcmdm;
+    }
+
+    public void setImcmdm(String imcmdm) {
+        this.imcmdm = imcmdm;
+    }
+
+    public String getImlecm() {
+        return imlecm;
+    }
+
+    public void setImlecm(String imlecm) {
+        this.imlecm = imlecm;
+    }
+
+    public BigDecimal getImledd() {
+        return imledd;
+    }
+
+    public void setImledd(BigDecimal imledd) {
+        this.imledd = imledd;
+    }
+
+    public BigDecimal getImpefd() {
+        return impefd;
+    }
+
+    public void setImpefd(BigDecimal impefd) {
+        this.impefd = impefd;
+    }
+
+    public BigDecimal getImsbdd() {
+        return imsbdd;
+    }
+
+    public void setImsbdd(BigDecimal imsbdd) {
+        this.imsbdd = imsbdd;
+    }
+
+    public BigDecimal getImu1dd() {
+        return imu1dd;
+    }
+
+    public void setImu1dd(BigDecimal imu1dd) {
+        this.imu1dd = imu1dd;
+    }
+
+    public BigDecimal getImu2dd() {
+        return imu2dd;
+    }
+
+    public void setImu2dd(BigDecimal imu2dd) {
+        this.imu2dd = imu2dd;
+    }
+
+    public BigDecimal getImu3dd() {
+        return imu3dd;
+    }
+
+    public void setImu3dd(BigDecimal imu3dd) {
+        this.imu3dd = imu3dd;
+    }
+
+    public BigDecimal getImu4dd() {
+        return imu4dd;
+    }
+
+    public void setImu4dd(BigDecimal imu4dd) {
+        this.imu4dd = imu4dd;
+    }
+
+    public BigDecimal getImu5dd() {
+        return imu5dd;
+    }
+
+    public void setImu5dd(BigDecimal imu5dd) {
+        this.imu5dd = imu5dd;
+    }
+
+    public BigDecimal getImdltl() {
+        return imdltl;
+    }
+
+    public void setImdltl(BigDecimal imdltl) {
+        this.imdltl = imdltl;
+    }
+
+    public String getImdppo() {
+        return imdppo;
+    }
+
+    public void setImdppo(String imdppo) {
+        this.imdppo = imdppo;
+    }
+
+    public String getImdual() {
+        return imdual;
+    }
+
+    public void setImdual(String imdual) {
+        this.imdual = imdual;
+    }
+
+    public String getImxdck() {
+        return imxdck;
+    }
+
+    public void setImxdck(String imxdck) {
+        this.imxdck = imxdck;
+    }
+
+    public String getImlaf() {
+        return imlaf;
+    }
+
+    public void setImlaf(String imlaf) {
+        this.imlaf = imlaf;
+    }
+
+    public String getImltfm() {
+        return imltfm;
+    }
+
+    public void setImltfm(String imltfm) {
+        this.imltfm = imltfm;
+    }
+
+    public String getImrwla() {
+        return imrwla;
+    }
+
+    public void setImrwla(String imrwla) {
+        this.imrwla = imrwla;
+    }
+
+    public String getImlnpa() {
+        return imlnpa;
+    }
+
+    public void setImlnpa(String imlnpa) {
+        this.imlnpa = imlnpa;
+    }
+
+    public String getImlotc() {
+        return imlotc;
+    }
+
+    public void setImlotc(String imlotc) {
+        this.imlotc = imlotc;
+    }
+
+    public String getImapsc() {
+        return imapsc;
+    }
+
+    public void setImapsc(String imapsc) {
+        this.imapsc = imapsc;
+    }
+
+    public String getImauom() {
+        return imauom;
+    }
+
+    public void setImauom(String imauom) {
+        this.imauom = imauom;
+    }
+
+    public String getImconb() {
+        return imconb;
+    }
+
+    public void setImconb(String imconb) {
+        this.imconb = imconb;
+    }
+
+    public String getImgcmp() {
+        return imgcmp;
+    }
+
+    public void setImgcmp(String imgcmp) {
+        this.imgcmp = imgcmp;
+    }
+
+    public BigDecimal getImpri1() {
+        return impri1;
+    }
+
+    public void setImpri1(BigDecimal impri1) {
+        this.impri1 = impri1;
+    }
+
+    public BigDecimal getImpri2() {
+        return impri2;
+    }
+
+    public void setImpri2(BigDecimal impri2) {
+        this.impri2 = impri2;
+    }
+
+    public String getImashl() {
+        return imashl;
+    }
+
+    public void setImashl(String imashl) {
+        this.imashl = imashl;
+    }
+
+    public String getImvminv() {
+        return imvminv;
+    }
+
+    public void setImvminv(String imvminv) {
+        this.imvminv = imvminv;
+    }
+
+    public String getImcmeth() {
+        return imcmeth;
+    }
+
+    public void setImcmeth(String imcmeth) {
+        this.imcmeth = imcmeth;
+    }
+
+    public String getImexpi() {
+        return imexpi;
+    }
+
+    public void setImexpi(String imexpi) {
+        this.imexpi = imexpi;
+    }
+
+    public BigDecimal getImopth() {
+        return imopth;
+    }
+
+    public void setImopth(BigDecimal imopth) {
+        this.imopth = imopth;
+    }
+
+    public BigDecimal getImcuth() {
+        return imcuth;
+    }
+
+    public void setImcuth(BigDecimal imcuth) {
+        this.imcuth = imcuth;
+    }
+
+    public String getImumth() {
+        return imumth;
+    }
+
+    public void setImumth(String imumth) {
+        this.imumth = imumth;
+    }
+
+    public String getImlmfg() {
+        return imlmfg;
+    }
+
+    public void setImlmfg(String imlmfg) {
+        this.imlmfg = imlmfg;
+    }
+
+    public String getImline() {
+        return imline;
+    }
+
+    public void setImline(String imline) {
+        this.imline = imline;
+    }
+
+    public BigDecimal getImdftpct() {
+        return imdftpct;
+    }
+
+    public void setImdftpct(BigDecimal imdftpct) {
+        this.imdftpct = imdftpct;
+    }
+
+    public String getImkbit() {
+        return imkbit;
+    }
+
+    public void setImkbit(String imkbit) {
+        this.imkbit = imkbit;
+    }
+
+    public String getImdfenditm() {
+        return imdfenditm;
+    }
+
+    public void setImdfenditm(String imdfenditm) {
+        this.imdfenditm = imdfenditm;
+    }
+
+    public String getImkanexll() {
+        return imkanexll;
+    }
+
+    public void setImkanexll(String imkanexll) {
+        this.imkanexll = imkanexll;
+    }
+
+    public String getImscpsell() {
+        return imscpsell;
+    }
+
+    public void setImscpsell(String imscpsell) {
+        this.imscpsell = imscpsell;
+    }
+
+    public BigDecimal getImmopth() {
+        return immopth;
+    }
+
+    public void setImmopth(BigDecimal immopth) {
+        this.immopth = immopth;
+    }
+
+    public BigDecimal getImmcuth() {
+        return immcuth;
+    }
+
+    public void setImmcuth(BigDecimal immcuth) {
+        this.immcuth = immcuth;
+    }
+
+    public String getImcumth() {
+        return imcumth;
+    }
+
+    public void setImcumth(String imcumth) {
+        this.imcumth = imcumth;
+    }
+
+    public String getImatprn() {
+        return imatprn;
+    }
+
+    public void setImatprn(String imatprn) {
+        this.imatprn = imatprn;
+    }
+
+    public String getImatpca() {
+        return imatpca;
+    }
+
+    public void setImatpca(String imatpca) {
+        this.imatpca = imatpca;
+    }
+
+    public String getImatpac() {
+        return imatpac;
+    }
+
+    public void setImatpac(String imatpac) {
+        this.imatpac = imatpac;
+    }
+
+    public String getImcoore() {
+        return imcoore;
+    }
+
+    public void setImcoore(String imcoore) {
+        this.imcoore = imcoore;
+    }
+
+    public String getImvcpfc() {
+        return imvcpfc;
+    }
+
+    public void setImvcpfc(String imvcpfc) {
+        this.imvcpfc = imvcpfc;
+    }
+
+    public String getImpnyn() {
+        return impnyn;
+    }
+
+    public void setImpnyn(String impnyn) {
+        this.impnyn = impnyn;
+    }
+}

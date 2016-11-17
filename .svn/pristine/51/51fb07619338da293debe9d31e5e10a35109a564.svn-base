@@ -1,0 +1,195 @@
+package com.el.cfg.domain;
+
+import java.math.BigDecimal;
+
+public class F0116 extends F0116Key {
+    private String aleftf;
+
+    private String aladd1;
+
+    private String aladd2;
+
+    private String aladd3;
+
+    private String aladd4;
+
+    private String aladdz;
+
+    private String alcty1;
+
+    private String alcoun;
+
+    private String aladds;
+
+    private String alcrte;
+
+    private String albkml;
+
+    private String alctr;
+
+    private String aluser;
+
+    private String alpid;
+
+    private BigDecimal alupmj;
+
+    private String aljobn;
+
+    private BigDecimal alupmt;
+
+    private BigDecimal alsyncs;
+
+    private BigDecimal alcaad;
+
+    public String getAleftf() {
+        return aleftf;
+    }
+
+    public void setAleftf(String aleftf) {
+        this.aleftf = aleftf;
+    }
+
+    public String getAladd1() {
+        return aladd1;
+    }
+
+    public void setAladd1(String aladd1) {
+        this.aladd1 = aladd1;
+    }
+
+    public String getAladd2() {
+        return aladd2;
+    }
+
+    public void setAladd2(String aladd2) {
+        this.aladd2 = aladd2;
+    }
+
+    public String getAladd3() {
+        return aladd3;
+    }
+
+    public void setAladd3(String aladd3) {
+        this.aladd3 = aladd3;
+    }
+
+    public String getAladd4() {
+        return aladd4;
+    }
+
+    public void setAladd4(String aladd4) {
+        this.aladd4 = aladd4;
+    }
+
+    public String getAladdz() {
+        return aladdz;
+    }
+
+    public void setAladdz(String aladdz) {
+        this.aladdz = aladdz;
+    }
+
+    public String getAlcty1() {
+        return alcty1;
+    }
+
+    public void setAlcty1(String alcty1) {
+        this.alcty1 = alcty1;
+    }
+
+    public String getAlcoun() {
+        return alcoun;
+    }
+
+    public void setAlcoun(String alcoun) {
+        this.alcoun = alcoun;
+    }
+
+    public String getAladds() {
+        return aladds;
+    }
+
+    public void setAladds(String aladds) {
+        this.aladds = aladds;
+    }
+
+    public String getAlcrte() {
+        return alcrte;
+    }
+
+    public void setAlcrte(String alcrte) {
+        this.alcrte = alcrte;
+    }
+
+    public String getAlbkml() {
+        return albkml;
+    }
+
+    public void setAlbkml(String albkml) {
+        this.albkml = albkml;
+    }
+
+    public String getAlctr() {
+        return alctr;
+    }
+
+    public void setAlctr(String alctr) {
+        this.alctr = alctr;
+    }
+
+    public String getAluser() {
+        return aluser;
+    }
+
+    public void setAluser(String aluser) {
+        this.aluser = aluser;
+    }
+
+    public String getAlpid() {
+        return alpid;
+    }
+
+    public void setAlpid(String alpid) {
+        this.alpid = alpid;
+    }
+
+    public BigDecimal getAlupmj() {
+        return alupmj;
+    }
+
+    public void setAlupmj(BigDecimal alupmj) {
+        this.alupmj = alupmj;
+    }
+
+    public String getAljobn() {
+        return aljobn;
+    }
+
+    public void setAljobn(String aljobn) {
+        this.aljobn = aljobn;
+    }
+
+    public BigDecimal getAlupmt() {
+        return alupmt;
+    }
+
+    public void setAlupmt(BigDecimal alupmt) {
+        this.alupmt = alupmt;
+    }
+
+    public BigDecimal getAlsyncs() {
+        return alsyncs;
+    }
+
+    public void setAlsyncs(BigDecimal alsyncs) {
+        this.alsyncs = alsyncs;
+    }
+
+    public BigDecimal getAlcaad() {
+        return alcaad;
+    }
+
+    public void setAlcaad(BigDecimal alcaad) {
+        this.alcaad = alcaad;
+    }
+}

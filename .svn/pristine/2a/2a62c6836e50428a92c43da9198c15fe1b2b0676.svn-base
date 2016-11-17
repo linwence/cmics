@@ -1,0 +1,2 @@
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://ws.mdm.itf.nc/QxmdmMfrService")
+package nc.itf.mdm.ws.mfr;

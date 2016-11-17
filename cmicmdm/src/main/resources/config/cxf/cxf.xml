@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+       xsi:schemaLocation="http://cxf.apache.org/jaxws
+	    http://cxf.apache.org/schemas/jaxws.xsd
+	    http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://cxf.apache.org/transports/http/configuration
+	    http://cxf.apache.org/schemas/configuration/http-conf.xsd">
+
+    <!-- Import apache CXF bean definition 固定 -->
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <!--<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"/>-->
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+    <!--
+        CXF发送、接收消息超时设置,对所有的服务生效
+        ConnectionTimeout:连接超时
+        ReceiveTimeout:接收超时
+    -->
+    <!-- <http-conf:conduit name="*.http-conduit">
+       <http-conf:client ConnectionTimeout="1000" ReceiveTimeout="100"/>
+   </http-conf:conduit> -->
+
+    <!--
+        发布服务
+    -->
+    <!-- 测试用 -->
+    <bean id="empWsService" class="com.el.cmic.EmpWsServiceImpl"/>
+    <jaxws:endpoint id="empWsServiceEndPoint" implementor="#empWsService" address="/EmpWebService"/>
+
+    <bean id="mdmReceiveService" class="com.el.cmic.ws.service.ReceiveMdmServiceImpl"/>
+    <jaxws:endpoint id="mdmReceive" implementor="#mdmReceiveService" address="/mdm/receive"/>
+
+</beans>

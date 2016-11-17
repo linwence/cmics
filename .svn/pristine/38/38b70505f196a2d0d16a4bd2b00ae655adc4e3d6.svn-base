@@ -1,0 +1,219 @@
+package com.el.cmic.domain.repertory;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
+/**
+ * 入库单取消
+ * @author zhanhao
+ *
+ */
+public class InInvertoryCancel {
+	  
+	/**
+     *  物流中心 - FE8WMS12.QXMCU
+     */
+	 @JSONField(name="物流中心") 
+    private String qxmcu;
+    
+    /**
+     *  入库类型 - FE8WMS12.QXDCTO
+     */
+	 @JSONField(name="入库类型") 
+    private String qxdcto;
+    
+    /**
+     *  货主 - FE8WMS12.QXKCOO
+     */
+	 @JSONField(name="货主") 
+    private String qxkcoo;
+    
+    /**
+     *  通知单号 - FE8WMS12.QXDOCO
+     */
+	 @JSONField(name="通知单号") 
+    private BigDecimal qxdoco;
+    /**
+     *  客户编号 - FE8WMS12.QXAN8
+     */
+	 @JSONField(name="客户编号") 
+    private BigDecimal qxan8;
+    
+    /**
+     *  客户名称 - FE8WMS12.QXE8NAME
+     */
+	 @JSONField(name="客户名称") 
+    private String qxe8name;
+    /**
+     *  通知单日期 - FE8WMS12.QXTRDJ
+     */
+    private Integer qxtrdj;
+    /**
+     * 通知单日期 虛擬字段  fastjson转换用
+     *      */
+    @JSONField(name="通知单日期") 
+	 private String qxtrdjStr;
+    /**
+     *  通知单行号 - FE8WMS12.QXLNID
+     */
+	 @JSONField(name="通知单行号") 
+    private BigDecimal qxlnid;
+    /**
+     *  货品编号 - FE8WMS12.QXLITM
+     */
+	 @JSONField(name="货品编号") 
+    private String qxlitm;
+    
+    /**
+     *  取消数量 - FE8WMS12.QXUORG
+     */
+	 @JSONField(name="取消数量") 
+    private BigDecimal qxuorg;
+    
+    /**
+     *  货品名称 - FE8WMS12.QXDSC1
+     */
+	 @JSONField(name="货品名称") 
+    private String qxdsc1;
+    
+    /**
+     * 通知单明细
+     */
+	 @JSONField(name="通知单明细") 
+    private List<InInvertoryCancelItem> iICIList;
+    
+    /**
+     * 序列号明细
+     */
+	 @JSONField(name="序列号明细") 
+    private List<Object> iICIListItem;
+	 
+	 
+	public String getQxmcu() {
+		return qxmcu;
+	}
+
+	public void setQxmcu(String qxmcu) {
+		this.qxmcu = qxmcu;
+	}
+
+	public String getQxdcto() {
+		return qxdcto;
+	}
+
+	public void setQxdcto(String qxdcto) {
+		this.qxdcto = qxdcto;
+	}
+
+	public String getQxkcoo() {
+		return qxkcoo;
+	}
+
+	public void setQxkcoo(String qxkcoo) {
+		this.qxkcoo = qxkcoo;
+	}
+
+	public BigDecimal getQxdoco() {
+		return qxdoco;
+	}
+
+	public void setQxdoco(BigDecimal qxdoco) {
+		this.qxdoco = qxdoco;
+	}
+
+	public BigDecimal getQxan8() {
+		return qxan8;
+	}
+
+	public void setQxan8(BigDecimal qxan8) {
+		this.qxan8 = qxan8;
+	}
+
+	public String getQxe8name() {
+		return qxe8name;
+	}
+
+	public void setQxe8name(String qxe8name) {
+		this.qxe8name = qxe8name;
+	}
+
+	public Integer getQxtrdj() {
+		return qxtrdj;
+	}
+
+	public void setQxtrdj(Integer qxtrdj) {
+		this.qxtrdj = qxtrdj;
+	}
+
+	public BigDecimal getQxlnid() {
+		return qxlnid;
+	}
+
+	public void setQxlnid(BigDecimal qxlnid) {
+		this.qxlnid = qxlnid;
+	}
+
+	public String getQxlitm() {
+		return qxlitm;
+	}
+
+	public void setQxlitm(String qxlitm) {
+		this.qxlitm = qxlitm;
+	}
+
+	public BigDecimal getQxuorg() {
+		return qxuorg;
+	}
+
+	public void setQxuorg(BigDecimal qxuorg) {
+		this.qxuorg = qxuorg;
+	}
+
+	public String getQxdsc1() {
+		return qxdsc1;
+	}
+
+	public void setQxdsc1(String qxdsc1) {
+		this.qxdsc1 = qxdsc1;
+	}
+
+	public List<InInvertoryCancelItem> getiICIList() {
+		return iICIList;
+	}
+
+	public void setiICIList(List<InInvertoryCancelItem> iICIList) {
+		this.iICIList = iICIList;
+	}
+
+	public List<Object> getiICIListItem() {
+		return iICIListItem;
+	}
+
+	public void setiICIListItem(List<Object> iICIListItem) {
+		this.iICIListItem = iICIListItem;
+	}
+
+	public String getQxtrdjStr() {
+		return qxtrdjStr;
+	}
+
+	public void setQxtrdjStr(String qxtrdjStr) {
+		this.qxtrdjStr = qxtrdjStr;
+	}
+
+	@Override
+	public String toString() {
+		return "InInvertoryCancel [qxmcu=" + qxmcu + ", qxdcto=" + qxdcto
+				+ ", qxkcoo=" + qxkcoo + ", qxdoco=" + qxdoco + ", qxan8="
+				+ qxan8 + ", qxe8name=" + qxe8name + ", qxtrdj=" + qxtrdj
+				+ ", qxlnid=" + qxlnid + ", qxlitm=" + qxlitm + ", qxuorg="
+				+ qxuorg + ", qxdsc1=" + qxdsc1 + ", iICIList=" + iICIList
+				+ ", iICIListItem=" + iICIListItem + "]";
+	}
+
+	
+		
+
+}

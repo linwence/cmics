@@ -1,0 +1,35 @@
+package com.el.cfg.mapper;
+
+import com.el.cfg.domain.Ve8ck002;
+import java.util.List;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.type.JdbcType;
+
+public interface Ve8ck002Mapper {
+    @Select({
+        "select",
+        "CO, DOCO, DCTO, LNID, LITM, UORG, LOT1, LOT2, DSC1, UPRC, AEXP, FLAG, UKID, ",
+        "LTTR, NXTR",
+        "from VE8CK002"
+    })
+    @Results({
+        @Result(column="CO", property="co", jdbcType=JdbcType.NCHAR),
+        @Result(column="DOCO", property="doco", jdbcType=JdbcType.DECIMAL),
+        @Result(column="DCTO", property="dcto", jdbcType=JdbcType.NCHAR),
+        @Result(column="LNID", property="lnid", jdbcType=JdbcType.DECIMAL),
+        @Result(column="LITM", property="litm", jdbcType=JdbcType.NCHAR),
+        @Result(column="UORG", property="uorg", jdbcType=JdbcType.DECIMAL),
+        @Result(column="LOT1", property="lot1", jdbcType=JdbcType.NCHAR),
+        @Result(column="LOT2", property="lot2", jdbcType=JdbcType.NCHAR),
+        @Result(column="DSC1", property="dsc1", jdbcType=JdbcType.NCHAR),
+        @Result(column="UPRC", property="uprc", jdbcType=JdbcType.DECIMAL),
+        @Result(column="AEXP", property="aexp", jdbcType=JdbcType.DECIMAL),
+        @Result(column="FLAG", property="flag", jdbcType=JdbcType.CHAR),
+        @Result(column="UKID", property="ukid", jdbcType=JdbcType.DECIMAL),
+        @Result(column="LTTR", property="lttr", jdbcType=JdbcType.VARCHAR),
+        @Result(column="NXTR", property="nxtr", jdbcType=JdbcType.VARCHAR)
+    })
+    List<Ve8ck002> selectAll();
+}

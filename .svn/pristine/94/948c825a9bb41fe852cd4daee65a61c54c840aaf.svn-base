@@ -1,0 +1,21 @@
+package com.el.cmic.ws.mapper;
+
+
+import com.el.cfg.domain.Fe84101z;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+
+/**
+ * Created by king_ on 2016/9/29.
+ */
+public interface FE84101ZUpdateByPKMapper {
+;
+
+    @UpdateProvider(type=FE84101ZUpdateByPKSqlProvider.class, method="updateByPrimaryKeySelective")
+    int updateByPrimaryKeySelective(@Param("record") Fe84101z record, @Param("datatype") String datatype);
+
+    @InsertProvider(type=FE84101ZUpdateByPKSqlProvider.class, method="insertSelective")
+    int insertSelective(Fe84101z record);
+}

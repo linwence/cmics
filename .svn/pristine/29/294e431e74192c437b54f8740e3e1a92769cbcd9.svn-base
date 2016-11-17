@@ -1,0 +1,459 @@
+package com.el.cfg.dao;
+
+import com.el.cfg.domain.FE80101;
+import org.apache.ibatis.jdbc.SQL;
+
+public class FE80101SqlProvider {
+
+    public String insertSelective(FE80101 record) {
+        SQL sql = new SQL();
+        sql.INSERT_INTO("CRPDTA.FE80101");
+        
+        if (record.getKsan8() != null) {
+            sql.VALUES("KSAN8", "#{ksan8,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsalph() != null) {
+            sql.VALUES("KSALPH", "#{ksalph,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8name() != null) {
+            sql.VALUES("KSE8NAME", "#{kse8name,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsev01() != null) {
+            sql.VALUES("KSEV01", "#{ksev01,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8scs() != null) {
+            sql.VALUES("KSE8SCS", "#{kse8scs,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8jxs() != null) {
+            sql.VALUES("KSE8JXS", "#{kse8jxs,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8jks() != null) {
+            sql.VALUES("KSE8JKS", "#{kse8jks,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yy() != null) {
+            sql.VALUES("KSE8YY", "#{kse8yy,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yljg() != null) {
+            sql.VALUES("KSE8YLJG", "#{kse8yljg,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8gr() != null) {
+            sql.VALUES("KSE8GR", "#{kse8gr,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8qt() != null) {
+            sql.VALUES("KSE8QT", "#{kse8qt,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8dl() != null) {
+            sql.VALUES("KSE8DL", "#{kse8dl,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8xl() != null) {
+            sql.VALUES("KSE8XL", "#{kse8xl,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yyyl() != null) {
+            sql.VALUES("KSE8YYYL", "#{kse8yyyl,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yygl() != null) {
+            sql.VALUES("KSE8YYGL", "#{kse8yygl,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yysb() != null) {
+            sql.VALUES("KSE8YYSB", "#{kse8yysb,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yygs() != null) {
+            sql.VALUES("KSE8YYGS", "#{kse8yygs,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yljb() != null) {
+            sql.VALUES("KSE8YLJB", "#{kse8yljb,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8tgyf() != null) {
+            sql.VALUES("KSE8TGYF", "#{kse8tgyf,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8dwxz() != null) {
+            sql.VALUES("KSE8DWXZ", "#{kse8dwxz,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yynsr() != null) {
+            sql.VALUES("KSE8YYNSR", "#{kse8yynsr,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKse8sfz() != null) {
+            sql.VALUES("KSE8SFZ", "#{kse8sfz,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8sffc() != null) {
+            sql.VALUES("KSE8SFFC", "#{kse8sffc,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsalky() != null) {
+            sql.VALUES("KSALKY", "#{ksalky,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8wmsid() != null) {
+            sql.VALUES("KSE8WMSID", "#{kse8wmsid,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8wmshz() != null) {
+            sql.VALUES("KSE8WMSHZ", "#{kse8wmshz,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8wmshzm() != null) {
+            sql.VALUES("KSE8WMSHZM", "#{kse8wmshzm,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8bym() != null) {
+            sql.VALUES("KSE8BYM", "#{kse8bym,jdbcType=OTHER}");
+        }
+        
+        if (record.getKscusts() != null) {
+            sql.VALUES("KSCUSTS", "#{kscusts,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8jdsj() != null) {
+            sql.VALUES("KSE8JDSJ", "#{kse8jdsj,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getKsurcd() != null) {
+            sql.VALUES("KSURCD", "#{ksurcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsurdt() != null) {
+            sql.VALUES("KSURDT", "#{ksurdt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsurat() != null) {
+            sql.VALUES("KSURAT", "#{ksurat,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsurab() != null) {
+            sql.VALUES("KSURAB", "#{ksurab,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsurrf() != null) {
+            sql.VALUES("KSURRF", "#{ksurrf,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsev02() != null) {
+            sql.VALUES("KSEV02", "#{ksev02,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsev03() != null) {
+            sql.VALUES("KSEV03", "#{ksev03,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsev04() != null) {
+            sql.VALUES("KSEV04", "#{ksev04,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsev05() != null) {
+            sql.VALUES("KSEV05", "#{ksev05,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsdl01() != null) {
+            sql.VALUES("KSDL01", "#{ksdl01,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsdl02() != null) {
+            sql.VALUES("KSDL02", "#{ksdl02,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsdl03() != null) {
+            sql.VALUES("KSDL03", "#{ksdl03,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsdl010() != null) {
+            sql.VALUES("KSDL010", "#{ksdl010,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsdl011() != null) {
+            sql.VALUES("KSDL011", "#{ksdl011,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsuser() != null) {
+            sql.VALUES("KSUSER", "#{ksuser,jdbcType=OTHER}");
+        }
+        
+        if (record.getKspid() != null) {
+            sql.VALUES("KSPID", "#{kspid,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsjobn() != null) {
+            sql.VALUES("KSJOBN", "#{ksjobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsupmj() != null) {
+            sql.VALUES("KSUPMJ", "#{ksupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsupmt() != null) {
+            sql.VALUES("KSUPMT", "#{ksupmt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsidate() != null) {
+            sql.VALUES("KSIDATE", "#{ksidate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getKsdf01() != null) {
+            sql.VALUES("KSDF01", "#{ksdf01,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsrdate() != null) {
+            sql.VALUES("KSRDATE", "#{ksrdate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getKsdf02() != null) {
+            sql.VALUES("KSDF02", "#{ksdf02,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsukid() != null) {
+            sql.VALUES("KSUKID", "#{ksukid,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsstatus() != null) {
+            sql.VALUES("KSSTATUS", "#{ksstatus,jdbcType=OTHER}");
+        }
+        
+        return sql.toString();
+    }
+
+    public String updateByPrimaryKeySelective(FE80101 record) {
+        SQL sql = new SQL();
+        sql.UPDATE("CRPDTA.FE80101");
+        
+        if (record.getKsalph() != null) {
+            sql.SET("KSALPH = #{ksalph,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8name() != null) {
+            sql.SET("KSE8NAME = #{kse8name,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsev01() != null) {
+            sql.SET("KSEV01 = #{ksev01,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8scs() != null) {
+            sql.SET("KSE8SCS = #{kse8scs,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8jxs() != null) {
+            sql.SET("KSE8JXS = #{kse8jxs,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8jks() != null) {
+            sql.SET("KSE8JKS = #{kse8jks,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yy() != null) {
+            sql.SET("KSE8YY = #{kse8yy,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yljg() != null) {
+            sql.SET("KSE8YLJG = #{kse8yljg,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8gr() != null) {
+            sql.SET("KSE8GR = #{kse8gr,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8qt() != null) {
+            sql.SET("KSE8QT = #{kse8qt,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8dl() != null) {
+            sql.SET("KSE8DL = #{kse8dl,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8xl() != null) {
+            sql.SET("KSE8XL = #{kse8xl,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yyyl() != null) {
+            sql.SET("KSE8YYYL = #{kse8yyyl,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yygl() != null) {
+            sql.SET("KSE8YYGL = #{kse8yygl,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yysb() != null) {
+            sql.SET("KSE8YYSB = #{kse8yysb,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yygs() != null) {
+            sql.SET("KSE8YYGS = #{kse8yygs,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yljb() != null) {
+            sql.SET("KSE8YLJB = #{kse8yljb,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8tgyf() != null) {
+            sql.SET("KSE8TGYF = #{kse8tgyf,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8dwxz() != null) {
+            sql.SET("KSE8DWXZ = #{kse8dwxz,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8yynsr() != null) {
+            sql.SET("KSE8YYNSR = #{kse8yynsr,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKse8sfz() != null) {
+            sql.SET("KSE8SFZ = #{kse8sfz,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8sffc() != null) {
+            sql.SET("KSE8SFFC = #{kse8sffc,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsalky() != null) {
+            sql.SET("KSALKY = #{ksalky,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8wmsid() != null) {
+            sql.SET("KSE8WMSID = #{kse8wmsid,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8wmshz() != null) {
+            sql.SET("KSE8WMSHZ = #{kse8wmshz,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8wmshzm() != null) {
+            sql.SET("KSE8WMSHZM = #{kse8wmshzm,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8bym() != null) {
+            sql.SET("KSE8BYM = #{kse8bym,jdbcType=OTHER}");
+        }
+        
+        if (record.getKscusts() != null) {
+            sql.SET("KSCUSTS = #{kscusts,jdbcType=OTHER}");
+        }
+        
+        if (record.getKse8jdsj() != null) {
+            sql.SET("KSE8JDSJ = #{kse8jdsj,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getKsurcd() != null) {
+            sql.SET("KSURCD = #{ksurcd,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsurdt() != null) {
+            sql.SET("KSURDT = #{ksurdt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsurat() != null) {
+            sql.SET("KSURAT = #{ksurat,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsurab() != null) {
+            sql.SET("KSURAB = #{ksurab,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsurrf() != null) {
+            sql.SET("KSURRF = #{ksurrf,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsev02() != null) {
+            sql.SET("KSEV02 = #{ksev02,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsev03() != null) {
+            sql.SET("KSEV03 = #{ksev03,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsev04() != null) {
+            sql.SET("KSEV04 = #{ksev04,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsev05() != null) {
+            sql.SET("KSEV05 = #{ksev05,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsdl01() != null) {
+            sql.SET("KSDL01 = #{ksdl01,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsdl02() != null) {
+            sql.SET("KSDL02 = #{ksdl02,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsdl03() != null) {
+            sql.SET("KSDL03 = #{ksdl03,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsdl010() != null) {
+            sql.SET("KSDL010 = #{ksdl010,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsdl011() != null) {
+            sql.SET("KSDL011 = #{ksdl011,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsuser() != null) {
+            sql.SET("KSUSER = #{ksuser,jdbcType=OTHER}");
+        }
+        
+        if (record.getKspid() != null) {
+            sql.SET("KSPID = #{kspid,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsjobn() != null) {
+            sql.SET("KSJOBN = #{ksjobn,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsupmj() != null) {
+            sql.SET("KSUPMJ = #{ksupmj,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsupmt() != null) {
+            sql.SET("KSUPMT = #{ksupmt,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsidate() != null) {
+            sql.SET("KSIDATE = #{ksidate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getKsdf01() != null) {
+            sql.SET("KSDF01 = #{ksdf01,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsrdate() != null) {
+            sql.SET("KSRDATE = #{ksrdate,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getKsdf02() != null) {
+            sql.SET("KSDF02 = #{ksdf02,jdbcType=OTHER}");
+        }
+        
+        if (record.getKsukid() != null) {
+            sql.SET("KSUKID = #{ksukid,jdbcType=DECIMAL}");
+        }
+        
+        if (record.getKsstatus() != null) {
+            sql.SET("KSSTATUS = #{ksstatus,jdbcType=OTHER}");
+        }
+        
+        sql.WHERE("KSAN8 = #{ksan8,jdbcType=DECIMAL}");
+        
+        return sql.toString();
+    }
+}

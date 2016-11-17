@@ -1,0 +1,219 @@
+package com.el.cmic.domain.log;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+public class Fe8wmslg implements Serializable {
+    /**
+     * null - FE8WMSLG.LSUKID
+     */
+    private BigDecimal lsukid;
+
+    /**
+     * null - FE8WMSLG.LSKCOO
+     */
+    private String lskcoo;
+
+    /**
+     * null - FE8WMSLG.LSDCTO
+     */
+    private String lsdcto;
+
+    /**
+     * null - FE8WMSLG.LSDOCO
+     */
+    private BigDecimal lsdoco;
+
+    /**
+     * null - FE8WMSLG.LSDL01
+     */
+    private String lsdl01;
+
+    /**
+     * null - FE8WMSLG.LSDL02
+     */
+    private String lsdl02;
+
+    /**
+     * null - FE8WMSLG.LSDL03
+     */
+    private String lsdl03;
+
+    /**
+     * null - FE8WMSLG.LSDL010
+     */
+    private String lsdl010;
+
+    /**
+     * null - FE8WMSLG.LSVAR1
+     */
+    private String lsvar1;
+
+    /**
+     * null - FE8WMSLG.LSUSER
+     */
+    private String lsuser;
+
+    /**
+     * null - FE8WMSLG.LSPID
+     */
+    private String lspid;
+
+    /**
+     * null - FE8WMSLG.LSJOBN
+     */
+    private String lsjobn;
+
+    /**
+     * null - FE8WMSLG.LSUPMJ
+     */
+    private Integer lsupmj;
+
+    /**
+     * null - FE8WMSLG.LSUPMT
+     */
+    private BigDecimal lsupmt;
+
+    private static final long serialVersionUID = 1L;
+
+    public BigDecimal getLsukid() {
+        return lsukid;
+    }
+
+    public void setLsukid(BigDecimal lsukid) {
+        this.lsukid = lsukid;
+    }
+
+    public String getLskcoo() {
+        return lskcoo;
+    }
+
+    public void setLskcoo(String lskcoo) {
+        this.lskcoo = lskcoo;
+    }
+
+    public String getLsdcto() {
+        return lsdcto;
+    }
+
+    public void setLsdcto(String lsdcto) {
+        this.lsdcto = lsdcto;
+    }
+
+    public BigDecimal getLsdoco() {
+        return lsdoco;
+    }
+
+    public void setLsdoco(BigDecimal lsdoco) {
+        this.lsdoco = lsdoco;
+    }
+
+    public String getLsdl01() {
+        return lsdl01;
+    }
+
+    public void setLsdl01(String lsdl01) {
+        this.lsdl01 = lsdl01;
+    }
+
+    public String getLsdl02() {
+        return lsdl02;
+    }
+
+    public void setLsdl02(String lsdl02) {
+        this.lsdl02 = lsdl02;
+    }
+
+    public String getLsdl03() {
+        return lsdl03;
+    }
+
+    public void setLsdl03(String lsdl03) {
+        this.lsdl03 = lsdl03;
+    }
+
+    public String getLsdl010() {
+        return lsdl010;
+    }
+
+    public void setLsdl010(String lsdl010) {
+        this.lsdl010 = lsdl010;
+    }
+
+    public String getLsvar1() {
+        return lsvar1;
+    }
+
+    public void setLsvar1(String lsvar1) {
+        //数据库是5000
+        if (null != lsvar1 && lsvar1.length() > 5000) {
+            lsvar1 = lsvar1.substring(0, 4999);
+        }
+        this.lsvar1 = lsvar1;
+    }
+
+    public String getLsuser() {
+        return lsuser;
+    }
+
+    public void setLsuser(String lsuser) {
+        this.lsuser = lsuser;
+    }
+
+    public String getLspid() {
+        return lspid;
+    }
+
+    public void setLspid(String lspid) {
+        this.lspid = lspid;
+    }
+
+    public String getLsjobn() {
+        return lsjobn;
+    }
+
+    public void setLsjobn(String lsjobn) {
+        this.lsjobn = lsjobn;
+    }
+
+    public Integer getLsupmj() {
+        return lsupmj;
+    }
+
+    public void setLsupmj(Integer lsupmj) {
+        this.lsupmj = lsupmj;
+    }
+
+    public BigDecimal getLsupmt() {
+        return lsupmt;
+    }
+
+    public void setLsupmt(BigDecimal lsupmt) {
+        this.lsupmt = lsupmt;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", lsukid=").append(lsukid);
+        sb.append(", lskcoo=").append(lskcoo);
+        sb.append(", lsdcto=").append(lsdcto);
+        sb.append(", lsdoco=").append(lsdoco);
+        sb.append(", lsdl01=").append(lsdl01);
+        sb.append(", lsdl02=").append(lsdl02);
+        sb.append(", lsdl03=").append(lsdl03);
+        sb.append(", lsdl010=").append(lsdl010);
+        sb.append(", lsvar1=").append(lsvar1);
+        sb.append(", lsuser=").append(lsuser);
+        sb.append(", lspid=").append(lspid);
+        sb.append(", lsjobn=").append(lsjobn);
+        sb.append(", lsupmj=").append(lsupmj);
+        sb.append(", lsupmt=").append(lsupmt);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

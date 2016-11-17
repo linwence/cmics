@@ -1,0 +1,129 @@
+package com.el.cmic.controller.customer;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.alibaba.fastjson.JSON;
+import com.el.cmic.common.domain.WmsData;
+import com.el.cmic.common.domain.WmsRequest;
+import com.el.cmic.controller.OperationJdeController;
+import com.el.cmic.domain.customer.CustomPropel;
+import com.el.cmic.domain.customer.CustomPropelConvert;
+import com.el.cmic.service.customer.CustomPropelService;
+import com.el.utils.Base64Util;
+import com.el.utils.HttpRequest;
+
+/**
+ * 关于客户 的接口 控制器
+ * 
+ * @author zhanhao
+ *
+ */
+@Controller
+@RequestMapping("/Custom/")
+public class CustomPropelController implements OperationJdeController {
+
+	@Autowired
+	private CustomPropelService customPropelService;
+
+	@Override
+	@RequestMapping("rrr")
+	public Map<String, Object> Base64Data() {
+		// 存放 返回结果
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		// 存放base64 字符串
+		String data = "";
+		List<CustomPropel> cList = new ArrayList<CustomPropel>();
+		cList = customPropelService.selectCustomPropelList();
+
+		// 英文转汉语
+		List<Map<String, Object>> list = CustomPropelConvert
+				.cpEntityToMap(cList);
+
+		
+		/*改用公共方法
+		Map<String, Object> map02 = new HashMap<String, Object>();
+		map02.put("明细", list);
+		Map<String, Object> map01 = new HashMap<String, Object>();
+		map01.put("接口类型", "客户信息");
+		map01.put("接收系统标识", "JKWMS");
+		map01.put("接口数据", map02);
+		String str = JSON.toJSONString(map01, true);//toJSONString设定true代表生成prettyJson风格字符串
+		*/
+		WmsData   wmsData = new WmsData("客户信息","JKWMS",list);
+		
+		String strJson = wmsData.toJson();
+		
+		// base64 加密
+		data = Base64Util.encodeBase64(strJson);
+
+		// 保存an8 为更新 数据 做准备
+		List<String> an8List = new ArrayList<String>();
+		for (CustomPropel customPropel : cList) {
+			an8List.add(customPropel.getBsan8());
+		}
+		paramMap.put("an8List", an8List);
+		paramMap.put("data", data);
+
+		return paramMap;
+	}
+
+	@Override
+	public Map<String, Object> sendPostRequest() {
+		Map<String, Object> paramMap = this.Base64Data();// 业务数据
+		String urlStr = "";// 接口地址
+		
+		
+		String postResult = "";// 响应结果
+		String data = paramMap.get("data").toString();// 业务数据
+		
+	/*	
+	 * 更改公共方法
+	 * Map<String, Object> postMap = new HashMap<String, Object>();
+		postMap.put("appkey", "");
+		postMap.put("timestamp", "");
+		postMap.put("data", data);
+		postMap.put("sign", "");
+		postMap.put("ver", "");
+		*/
+		WmsRequest  wmsRequest = new WmsRequest("","",data,"","");
+		// 发送post请求 
+		postResult = HttpRequest.sendPost(urlStr, 	wmsRequest.toMap());
+
+		Map<String, Object> resutlMap = new HashMap<String, Object>();
+		resutlMap.put("postResult", postResult);
+		resutlMap.put("an8List", paramMap.get("an8List"));
+		return resutlMap;
+	}
+
+	@Override
+	public void operationJdeData() {
+		// 获得 wms 响应的结果字符串
+		Map<String, Object> postMap = this.sendPostRequest();
+		// 获取 要更新数据的an8
+		List an8List = (ArrayList) postMap.get("an8List");
+		// 解码
+		String data = Base64Util.decodeBase64(postMap.get("postResult")
+				.toString());
+		Map<String, Object> resutMap = JSON.parseObject(data);
+		Boolean success = (Boolean) resutMap.get("success");
+		// 响应成功
+		if (success) {
+			for (Object an8 : an8List) {
+				customPropelService.updateJdeStatus("Y", an8.toString());
+			}
+		} else {// 响应失败
+			for (Object an8t : an8List) {
+				customPropelService.updateJdeStatus("E", an8t.toString());
+			}
+		}
+
+	}
+
+}

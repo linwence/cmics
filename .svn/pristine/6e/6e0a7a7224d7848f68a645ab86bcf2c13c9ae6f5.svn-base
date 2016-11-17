@@ -1,0 +1,207 @@
+package com.el.cfg.mapper;
+
+import com.el.cfg.domain.FE84101;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.type.JdbcType;
+
+public interface FE84101Mapper {
+    @Delete({
+        "delete from CRPDTA.FE84101",
+        "where SPLITM = #{splitm,jdbcType=OTHER}"
+    })
+    int deleteByPrimaryKey(Object splitm);
+
+    @Insert({
+        "insert into CRPDTA.FE84101 (SPLITM, SPEV01, ",
+        "SPDSC1, SPE8NAME, SPDSC2, ",
+        "SPE8JX, SPAITM, SPAN8, ",
+        "SPORIG, SPE8PZWH, SPE8ZDYL, ",
+        "SPE8JHG, SPE8ZTW, SPE8GFG, ",
+        "SPE8PTYP, SPE8ATCDL, ",
+        "SPE8ATCXL, SPE8YYKS, ",
+        "SPE8FXDJ, SPE8CCTJ, ",
+        "SPE8QTCC, SPE8JGG, SPE8SFFC, ",
+        "SPE8TYM, SPE8JDSJ, ",
+        "SPE8XLHGL, SPE8ZDYH, ",
+        "SPE8YHZQ, SPE8BGBS, ",
+        "SPE8SPXZ, SPE8SHFLBM, ",
+        "SPE8YHNR, SPE8YHZC, ",
+        "SPE8LSL, SPE8KCE, ",
+        "SPURCD, SPURDT, SPURAT, ",
+        "SPURAB, SPEV02, SPEV03, ",
+        "SPEV04, SPEV05, SPUSER, ",
+        "SPPID, SPJOBN, SPUPMJ, ",
+        "SPUPMT, SPIDATE, ",
+        "SPDF01, SPRDATE, ",
+        "SPDF02, SPUKID, SPSTATUS, ",
+        "SPFLAG)",
+        "values (#{splitm,jdbcType=OTHER}, #{spev01,jdbcType=OTHER}, ",
+        "#{spdsc1,jdbcType=OTHER}, #{spe8name,jdbcType=OTHER}, #{spdsc2,jdbcType=OTHER}, ",
+        "#{spe8jx,jdbcType=OTHER}, #{spaitm,jdbcType=OTHER}, #{span8,jdbcType=DECIMAL}, ",
+        "#{sporig,jdbcType=OTHER}, #{spe8pzwh,jdbcType=OTHER}, #{spe8zdyl,jdbcType=OTHER}, ",
+        "#{spe8jhg,jdbcType=OTHER}, #{spe8ztw,jdbcType=OTHER}, #{spe8gfg,jdbcType=OTHER}, ",
+        "#{spe8ptyp,jdbcType=OTHER}, #{spe8atcdl,jdbcType=OTHER}, ",
+        "#{spe8atcxl,jdbcType=OTHER}, #{spe8yyks,jdbcType=OTHER}, ",
+        "#{spe8fxdj,jdbcType=OTHER}, #{spe8cctj,jdbcType=OTHER}, ",
+        "#{spe8qtcc,jdbcType=OTHER}, #{spe8jgg,jdbcType=OTHER}, #{spe8sffc,jdbcType=OTHER}, ",
+        "#{spe8tym,jdbcType=OTHER}, #{spe8jdsj,jdbcType=TIMESTAMP}, ",
+        "#{spe8xlhgl,jdbcType=OTHER}, #{spe8zdyh,jdbcType=OTHER}, ",
+        "#{spe8yhzq,jdbcType=DECIMAL}, #{spe8bgbs,jdbcType=OTHER}, ",
+        "#{spe8spxz,jdbcType=OTHER}, #{spe8shflbm,jdbcType=OTHER}, ",
+        "#{spe8yhnr,jdbcType=OTHER}, #{spe8yhzc,jdbcType=OTHER}, ",
+        "#{spe8lsl,jdbcType=OTHER}, #{spe8kce,jdbcType=DECIMAL}, ",
+        "#{spurcd,jdbcType=OTHER}, #{spurdt,jdbcType=DECIMAL}, #{spurat,jdbcType=DECIMAL}, ",
+        "#{spurab,jdbcType=DECIMAL}, #{spev02,jdbcType=OTHER}, #{spev03,jdbcType=OTHER}, ",
+        "#{spev04,jdbcType=OTHER}, #{spev05,jdbcType=OTHER}, #{spuser,jdbcType=OTHER}, ",
+        "#{sppid,jdbcType=OTHER}, #{spjobn,jdbcType=OTHER}, #{spupmj,jdbcType=DECIMAL}, ",
+        "#{spupmt,jdbcType=DECIMAL}, #{spidate,jdbcType=TIMESTAMP}, ",
+        "#{spdf01,jdbcType=OTHER}, #{sprdate,jdbcType=TIMESTAMP}, ",
+        "#{spdf02,jdbcType=OTHER}, #{spukid,jdbcType=DECIMAL}, #{spstatus,jdbcType=OTHER}, ",
+        "#{spflag,jdbcType=OTHER})"
+    })
+    int insert(FE84101 record);
+
+    @InsertProvider(type=FE84101SqlProvider.class, method="insertSelective")
+    int insertSelective(FE84101 record);
+
+    @Select({
+        "select",
+        "SPLITM, SPEV01, SPDSC1, SPE8NAME, SPDSC2, SPE8JX, SPAITM, SPAN8, SPORIG, SPE8PZWH, ",
+        "SPE8ZDYL, SPE8JHG, SPE8ZTW, SPE8GFG, SPE8PTYP, SPE8ATCDL, SPE8ATCXL, SPE8YYKS, ",
+        "SPE8FXDJ, SPE8CCTJ, SPE8QTCC, SPE8JGG, SPE8SFFC, SPE8TYM, SPE8JDSJ, SPE8XLHGL, ",
+        "SPE8ZDYH, SPE8YHZQ, SPE8BGBS, SPE8SPXZ, SPE8SHFLBM, SPE8YHNR, SPE8YHZC, SPE8LSL, ",
+        "SPE8KCE, SPURCD, SPURDT, SPURAT, SPURAB, SPEV02, SPEV03, SPEV04, SPEV05, SPUSER, ",
+        "SPPID, SPJOBN, SPUPMJ, SPUPMT, SPIDATE, SPDF01, SPRDATE, SPDF02, SPUKID, SPSTATUS, ",
+        "SPFLAG",
+        "from CRPDTA.FE84101",
+        "where SPLITM = #{splitm,jdbcType=OTHER}"
+    })
+    @Results({
+        @Result(column="SPLITM", property="splitm", jdbcType=JdbcType.OTHER, id=true),
+        @Result(column="SPEV01", property="spev01", jdbcType=JdbcType.OTHER),
+        @Result(column="SPDSC1", property="spdsc1", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8NAME", property="spe8name", jdbcType=JdbcType.OTHER),
+        @Result(column="SPDSC2", property="spdsc2", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8JX", property="spe8jx", jdbcType=JdbcType.OTHER),
+        @Result(column="SPAITM", property="spaitm", jdbcType=JdbcType.OTHER),
+        @Result(column="SPAN8", property="span8", jdbcType=JdbcType.DECIMAL),
+        @Result(column="SPORIG", property="sporig", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8PZWH", property="spe8pzwh", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8ZDYL", property="spe8zdyl", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8JHG", property="spe8jhg", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8ZTW", property="spe8ztw", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8GFG", property="spe8gfg", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8PTYP", property="spe8ptyp", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8ATCDL", property="spe8atcdl", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8ATCXL", property="spe8atcxl", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8YYKS", property="spe8yyks", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8FXDJ", property="spe8fxdj", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8CCTJ", property="spe8cctj", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8QTCC", property="spe8qtcc", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8JGG", property="spe8jgg", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8SFFC", property="spe8sffc", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8TYM", property="spe8tym", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8JDSJ", property="spe8jdsj", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="SPE8XLHGL", property="spe8xlhgl", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8ZDYH", property="spe8zdyh", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8YHZQ", property="spe8yhzq", jdbcType=JdbcType.DECIMAL),
+        @Result(column="SPE8BGBS", property="spe8bgbs", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8SPXZ", property="spe8spxz", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8SHFLBM", property="spe8shflbm", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8YHNR", property="spe8yhnr", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8YHZC", property="spe8yhzc", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8LSL", property="spe8lsl", jdbcType=JdbcType.OTHER),
+        @Result(column="SPE8KCE", property="spe8kce", jdbcType=JdbcType.DECIMAL),
+        @Result(column="SPURCD", property="spurcd", jdbcType=JdbcType.OTHER),
+        @Result(column="SPURDT", property="spurdt", jdbcType=JdbcType.DECIMAL),
+        @Result(column="SPURAT", property="spurat", jdbcType=JdbcType.DECIMAL),
+        @Result(column="SPURAB", property="spurab", jdbcType=JdbcType.DECIMAL),
+        @Result(column="SPEV02", property="spev02", jdbcType=JdbcType.OTHER),
+        @Result(column="SPEV03", property="spev03", jdbcType=JdbcType.OTHER),
+        @Result(column="SPEV04", property="spev04", jdbcType=JdbcType.OTHER),
+        @Result(column="SPEV05", property="spev05", jdbcType=JdbcType.OTHER),
+        @Result(column="SPUSER", property="spuser", jdbcType=JdbcType.OTHER),
+        @Result(column="SPPID", property="sppid", jdbcType=JdbcType.OTHER),
+        @Result(column="SPJOBN", property="spjobn", jdbcType=JdbcType.OTHER),
+        @Result(column="SPUPMJ", property="spupmj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="SPUPMT", property="spupmt", jdbcType=JdbcType.DECIMAL),
+        @Result(column="SPIDATE", property="spidate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="SPDF01", property="spdf01", jdbcType=JdbcType.OTHER),
+        @Result(column="SPRDATE", property="sprdate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="SPDF02", property="spdf02", jdbcType=JdbcType.OTHER),
+        @Result(column="SPUKID", property="spukid", jdbcType=JdbcType.DECIMAL),
+        @Result(column="SPSTATUS", property="spstatus", jdbcType=JdbcType.OTHER),
+        @Result(column="SPFLAG", property="spflag", jdbcType=JdbcType.OTHER)
+    })
+    FE84101 selectByPrimaryKey(Object splitm);
+
+    @UpdateProvider(type=FE84101SqlProvider.class, method="updateByPrimaryKeySelective")
+    int updateByPrimaryKeySelective(FE84101 record);
+
+    @Update({
+        "update CRPDTA.FE84101",
+        "set SPEV01 = #{spev01,jdbcType=OTHER},",
+          "SPDSC1 = #{spdsc1,jdbcType=OTHER},",
+          "SPE8NAME = #{spe8name,jdbcType=OTHER},",
+          "SPDSC2 = #{spdsc2,jdbcType=OTHER},",
+          "SPE8JX = #{spe8jx,jdbcType=OTHER},",
+          "SPAITM = #{spaitm,jdbcType=OTHER},",
+          "SPAN8 = #{span8,jdbcType=DECIMAL},",
+          "SPORIG = #{sporig,jdbcType=OTHER},",
+          "SPE8PZWH = #{spe8pzwh,jdbcType=OTHER},",
+          "SPE8ZDYL = #{spe8zdyl,jdbcType=OTHER},",
+          "SPE8JHG = #{spe8jhg,jdbcType=OTHER},",
+          "SPE8ZTW = #{spe8ztw,jdbcType=OTHER},",
+          "SPE8GFG = #{spe8gfg,jdbcType=OTHER},",
+          "SPE8PTYP = #{spe8ptyp,jdbcType=OTHER},",
+          "SPE8ATCDL = #{spe8atcdl,jdbcType=OTHER},",
+          "SPE8ATCXL = #{spe8atcxl,jdbcType=OTHER},",
+          "SPE8YYKS = #{spe8yyks,jdbcType=OTHER},",
+          "SPE8FXDJ = #{spe8fxdj,jdbcType=OTHER},",
+          "SPE8CCTJ = #{spe8cctj,jdbcType=OTHER},",
+          "SPE8QTCC = #{spe8qtcc,jdbcType=OTHER},",
+          "SPE8JGG = #{spe8jgg,jdbcType=OTHER},",
+          "SPE8SFFC = #{spe8sffc,jdbcType=OTHER},",
+          "SPE8TYM = #{spe8tym,jdbcType=OTHER},",
+          "SPE8JDSJ = #{spe8jdsj,jdbcType=TIMESTAMP},",
+          "SPE8XLHGL = #{spe8xlhgl,jdbcType=OTHER},",
+          "SPE8ZDYH = #{spe8zdyh,jdbcType=OTHER},",
+          "SPE8YHZQ = #{spe8yhzq,jdbcType=DECIMAL},",
+          "SPE8BGBS = #{spe8bgbs,jdbcType=OTHER},",
+          "SPE8SPXZ = #{spe8spxz,jdbcType=OTHER},",
+          "SPE8SHFLBM = #{spe8shflbm,jdbcType=OTHER},",
+          "SPE8YHNR = #{spe8yhnr,jdbcType=OTHER},",
+          "SPE8YHZC = #{spe8yhzc,jdbcType=OTHER},",
+          "SPE8LSL = #{spe8lsl,jdbcType=OTHER},",
+          "SPE8KCE = #{spe8kce,jdbcType=DECIMAL},",
+          "SPURCD = #{spurcd,jdbcType=OTHER},",
+          "SPURDT = #{spurdt,jdbcType=DECIMAL},",
+          "SPURAT = #{spurat,jdbcType=DECIMAL},",
+          "SPURAB = #{spurab,jdbcType=DECIMAL},",
+          "SPEV02 = #{spev02,jdbcType=OTHER},",
+          "SPEV03 = #{spev03,jdbcType=OTHER},",
+          "SPEV04 = #{spev04,jdbcType=OTHER},",
+          "SPEV05 = #{spev05,jdbcType=OTHER},",
+          "SPUSER = #{spuser,jdbcType=OTHER},",
+          "SPPID = #{sppid,jdbcType=OTHER},",
+          "SPJOBN = #{spjobn,jdbcType=OTHER},",
+          "SPUPMJ = #{spupmj,jdbcType=DECIMAL},",
+          "SPUPMT = #{spupmt,jdbcType=DECIMAL},",
+          "SPIDATE = #{spidate,jdbcType=TIMESTAMP},",
+          "SPDF01 = #{spdf01,jdbcType=OTHER},",
+          "SPRDATE = #{sprdate,jdbcType=TIMESTAMP},",
+          "SPDF02 = #{spdf02,jdbcType=OTHER},",
+          "SPUKID = #{spukid,jdbcType=DECIMAL},",
+          "SPSTATUS = #{spstatus,jdbcType=OTHER},",
+          "SPFLAG = #{spflag,jdbcType=OTHER}",
+        "where SPLITM = #{splitm,jdbcType=OTHER}"
+    })
+    int updateByPrimaryKey(FE84101 record);
+}

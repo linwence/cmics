@@ -1,0 +1,31 @@
+package com.el.cmic.mapper.goods;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Select;
+
+import com.el.cmic.domain.goods.Bales;
+import com.el.cmic.domain.goods.Licence;
+
+public interface BalesMapper {
+	
+	//暂时 未解决  读取配置文件中的schema
+	@Select("SELECT * FROM   CRPDTA.FE8WMS01 "
+			+ " INNER  join   CRPDTA.F4101  ON  CRPDTA.FE8WMS01.BSLITM =  CRPDTA.F4101.IMLITM"
+			+ " INNER JOIN  CRPDTA.F4102 ON  CRPDTA.F4101.IMLITM =  CRPDTA.F4102.IBLITM "
+			+ " INNER JOIN  CRPDTA.FE84101 ON  CRPDTA.F4101.IMLITM =  CRPDTA.FE84101.SPLITM"
+			+ " INNER JOIN  CRPDTA.F0006 ON  CRPDTA.F4102.IBMCU =  CRPDTA.F0006.MCMCU"
+			+ " INNER JOIN  CRPDTA.F0010 ON  CRPDTA.F0010.CCCO  =  CRPDTA.F0006.MCCO where  CRPDTA.FE8WMS01.BSEV01 ='N'")
+	public List<Bales> selectBalesList();
+	
+	/**
+	 * 证照 明细
+	 * @param litm
+	 * @return
+	 */
+	@Select("select * from CRPDTA.FE84101Z  where  CRPDTA.FE84101Z.zzlitm='${value}'")
+	public List<Licence> selectLicenceList(String litm);
+	
+	  
+}

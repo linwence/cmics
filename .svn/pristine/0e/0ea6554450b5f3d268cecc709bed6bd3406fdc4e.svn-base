@@ -1,0 +1,113 @@
+package com.el.utils;
+
+
+import java.rmi.RemoteException;
+
+import javax.xml.rpc.ParameterMode;
+import javax.xml.rpc.ServiceException;
+
+import org.apache.axis.client.Call;
+import org.apache.axis.client.Service;
+import org.apache.axis.encoding.XMLType;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Base64Utils;
+
+import com.alibaba.fastjson.JSON;
+import com.el.cmic.common.domain.SpdResult;
+
+/**
+ * Created by Vincent on 2016/11/8.
+ * 调用SPD 的WebService 工具类
+ */
+@Component
+@Scope("prototype")
+public class CallSpdWebServiceUtil {
+    Logger logger = Logger.getLogger(CallSpdWebServiceUtil.class);
+    @Value("${spd.AppKey}")
+    private String appKey;
+
+    @Value("${spd.Url}")
+    private String endpoint;
+
+    @Value("${spd.AppPassword}")
+    private String appPassword;
+
+    @Value("${spd.Ver}")
+    private String ver;
+    
+
+    public SpdResult callSpdWebService(String data) {
+        SpdResult spdResult = new SpdResult(true, "0000", "成功");
+        try {
+            logger.info("发送:[原始数据]:" + data);
+            String encodeData = Base64Utils.encodeToString(data.getBytes("utf-8"));
+            String timestamp = DateUtil.getTimeStamp();
+            String sign = Md5Util.md5s(timestamp + encodeData + appPassword);
+            //endpoint = "http://58.221.248.222:168/JKSPDWebService/JKSPDWebService.asmx?wsdl";
+            Service service = new Service();
+            Call call;
+            Object[] object = new Object[5];
+            object[0] = appKey;//"2D5FD939-3648-4951-808E-5BF3EF86451F";//Object是用来存储方法的参数
+            object[1] = timestamp;//时间戳
+            object[2] = encodeData;//data;
+            object[3] = sign;// "sign";
+            object[4] = ver;//"ver";
+            logger.info("发送:[编码数据]:" + "appKey:" + appKey + ";timestamp:" + timestamp + ";data:" + encodeData + ";sign="
+                    + sign + ";ver:" + ver);
+            call = (Call) service.createCall();
+            call.setTargetEndpointAddress(endpoint);// 远程调用路径
+            call.setOperationName("UpLoadData");// 调用的方法名
+            call.setSOAPActionURI("http://localhost/JKSPDWebService/UpLoadData");
+             // 设置参数名:
+            call.addParameter("appkey", // 参数名
+                    XMLType.XSD_STRING,// 参数类型:String
+                    ParameterMode.IN);// 参数模式：'IN' or 'OUT'
+            call.addParameter("timestamp", // 参数名
+                    XMLType.XSD_STRING,// 参数类型:String
+                    ParameterMode.IN);// 参数模式：'IN' or 'OUT'
+            call.addParameter("data", // 参数名
+                    XMLType.XSD_STRING,// 参数类型:String
+                    ParameterMode.IN);// 参数模式：'IN' or 'OUT'
+            call.addParameter("sign", // 参数名
+                    XMLType.XSD_STRING,// 参数类型:String
+                    ParameterMode.IN);// 参数模式：'IN' or 'OUT'
+            call.addParameter("ver", // 参数名
+                    XMLType.XSD_STRING,// 参数类型:String
+                    ParameterMode.IN);// 参数模式：'IN' or 'OUT'
+            // 设置返回值类型：
+            call.setReturnType(XMLType.XSD_STRING);// 返回值类型：String
+
+            String strResult = (String) call.invoke(object);// 远程调用
+            logger.info("返回:[原始数据]:" + strResult);
+            byte[] bytes = Base64Utils.decodeFromString(strResult);
+            String decodeResult = new String(bytes, "utf-8");
+            spdResult = JSON.parseObject(decodeResult, SpdResult.class);
+            logger.info("返回:[解码数据]:" + spdResult);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+            spdResult.setSuccess(false);
+            spdResult.setCode("9999");
+            spdResult.setMessage("调用SPD WebService失败,error:" + e.getMessage());
+            logger.error("调用SPD接口失败,[error]" + e.getMessage());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            spdResult.setSuccess(false);
+            spdResult.setCode("9999");
+            spdResult.setMessage("调用SPD WebService失败,error:" + e.getMessage());
+            logger.error("调用SPD接口失败,[error]" + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            spdResult.setSuccess(false);
+            spdResult.setCode("9999");
+            spdResult.setMessage("调用SPD WebService失败,error:" + e.getMessage());
+            logger.error("调用SPD接口失败,[error]" + e.getMessage());
+        }
+
+        return spdResult;
+    }
+
+
+}

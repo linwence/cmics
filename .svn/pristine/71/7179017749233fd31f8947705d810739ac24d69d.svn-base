@@ -1,0 +1,106 @@
+package com.el.cmic.logaop;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.el.cmic.common.domain.WmsResult;
+import com.el.cmic.domain.log.Fe8wmslg;
+import com.el.cmic.mapper.log.WmsLogMapper;
+import org.apache.log4j.Logger;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Base64Utils;
+
+import java.math.BigDecimal;
+import java.util.Map;
+
+/**
+ * 记录发送给wms的日志和调用时返回的信息
+ * Created by Vincent on 2016/11/6.
+ */
+@Component
+@Aspect
+public class LogAopService {
+    private Logger logger = Logger.getLogger(LogAopService.class);
+    @Autowired
+    private WmsLogMapper wmsLogMapper;
+
+    private Fe8wmslg fe8wmslg;
+
+    @Pointcut("execution(* com.el.utils.HttpRequest.sendPost(..))")
+    private void method() {
+    }
+
+    @Before("method()")
+    public void beforeMethod(JoinPoint joinPoint) {
+        try {
+            Object[] objects = joinPoint.getArgs();
+            Map<String, Object> map = (Map<String, Object>) objects[0];
+            String sendStr = "";
+            String data = (String) map.get("data");
+            byte[] bytes = Base64Utils.decode(data.getBytes("utf-8"));
+            String decodeStr = new String(bytes, "utf-8");
+            logger.info("发送:[原始数据]:" + decodeStr);
+            JSONObject jsonObject = JSON.parseObject(decodeStr);
+            fe8wmslg = (Fe8wmslg) objects[1];
+            fe8wmslg.setLsdl01("INFO");
+            fe8wmslg.setLsdl02("TOWMS");
+            wmsLogMapper.insertFe8wmslg(fe8wmslg);
+
+            for (Map.Entry<String, Object> entity : map.entrySet()) {
+
+                sendStr += entity.getKey() + "=" + entity.getValue() + "&";
+
+            }
+            logger.info("发送:[编码数据]:" + sendStr);
+
+        } catch (Exception e) {
+            logger.error("记录发送数据日志失败,[error]" + e.getMessage());
+        }
+
+    }
+
+    @AfterReturning(pointcut = "method()", returning = "retStr")
+    public void afterMethod(JoinPoint joinPoint, String retStr) {
+        try {
+            System.out.println("返回值:" + retStr);
+            byte[] bytes = Base64Utils.decode(retStr.getBytes("utf-8"));
+            String decodeStr = new String(bytes, "utf-8");
+            logger.info("返回:[原始数据]:" + retStr);
+
+
+            WmsResult wmsResult = JSON.parseObject(decodeStr, WmsResult.class);
+            if (wmsResult.isSuccess()) {
+                fe8wmslg.setLsdl01("INFO");
+                logger.info("返回:[解码数据]:" + decodeStr);
+            } else {
+                fe8wmslg.setLsdl01("ERROR");
+                logger.error("返回:[解码数据]:" + decodeStr);
+            }
+            fe8wmslg.setLsdl02("TOERP");
+            fe8wmslg.setLsdl03("Response");
+            fe8wmslg.setLsvar1(decodeStr);
+            wmsLogMapper.insertFe8wmslg(fe8wmslg);
+        } catch (Exception e) {
+            logger.error("记录发送返回数据日志失败,[error]" + e.getMessage());
+        }
+
+
+    }
+
+    @AfterThrowing(pointcut = "method()", throwing = "ex")
+    public void afterThrow(JoinPoint joinPoint, Exception ex) {
+        logger.error("调用WMS接口失败,[error]" + ex.getMessage());
+        fe8wmslg.setLsdl01("ERROR");
+        fe8wmslg.setLsdl02("TOWMS");
+        fe8wmslg.setLsdl03("Request");
+       /* String message = ex.getMessage();
+        if (message != null && message.length() > 50) {
+            message = message.substring(0, 49);
+        }*/
+        fe8wmslg.setLsvar1(ex.toString());
+        //fe8wmslg.setLsvar1(decodeStr);
+        wmsLogMapper.insertFe8wmslg(fe8wmslg);
+    }
+}

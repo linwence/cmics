@@ -1,0 +1,14 @@
+package com.el.cmic.ws.mapper;
+
+import com.el.cfg.domain.F0116;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.UpdateProvider;
+
+/**
+ * Created by king_ on 2016/10/11.
+ */
+public interface F0116UpdateByAn8Mapper {
+
+    @UpdateProvider(type=F0116UpdateByAn8SqlProvider.class, method="updateByAn8")
+    int updateByAn8(@Param("record") F0116 record, @Param("datatype") String datatype);
+}

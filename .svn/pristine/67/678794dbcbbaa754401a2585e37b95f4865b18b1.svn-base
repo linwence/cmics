@@ -1,0 +1,216 @@
+package com.el.cmic.callmdm.domain;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+/**
+ * Created by Vincent on 2016/10/9.
+ */
+public class FE8Log01 {
+    private Long lgukid;
+    private BigDecimal lgukidp;
+    private String lglitm;
+    private String lgdl01;
+    private String lgdl02;
+    private String lgdl03;
+    private String lgdl04;
+    private String lgdl010;
+    private String lgvar1;
+    private String lguser;
+    private String lgpid;
+    private String lgjobn;
+    private BigDecimal lgupmj;
+    private BigDecimal lgupmt;
+    private Date lgidate;
+    private String lgdf01;
+    private Date lgrdate;
+    private String lgdf02;
+    private String lgstatus;
+    private String lgflag;
+
+    @Override
+    public String toString() {
+        return "FE8Log01{" +
+                "lgukid=" + lgukid +
+                ", lgukidp=" + lgukidp +
+                ", lglitm='" + lglitm + '\'' +
+                ", lgdl01='" + lgdl01 + '\'' +
+                ", lgdl02='" + lgdl02 + '\'' +
+                ", lgdl03='" + lgdl03 + '\'' +
+                ", lgdl04='" + lgdl04 + '\'' +
+                ", lgdl010='" + lgdl010 + '\'' +
+                ", lgvar1='" + lgvar1 + '\'' +
+                ", lguser='" + lguser + '\'' +
+                ", lgpid='" + lgpid + '\'' +
+                ", lgjobn='" + lgjobn + '\'' +
+                ", lgupmj=" + lgupmj +
+                ", lgupmt=" + lgupmt +
+                ", lgidate=" + lgidate +
+                ", lgdf01='" + lgdf01 + '\'' +
+                ", lgrdate=" + lgrdate +
+                ", lgdf02='" + lgdf02 + '\'' +
+                ", lgstatus='" + lgstatus + '\'' +
+                ", lgflag='" + lgflag + '\'' +
+                '}';
+    }
+
+    public Long getLgukid() {
+        return lgukid;
+    }
+
+    public void setLgukid(Long lgukid) {
+        this.lgukid = lgukid;
+    }
+
+    public BigDecimal getLgukidp() {
+        return lgukidp;
+    }
+
+    public void setLgukidp(BigDecimal lgukidp) {
+        this.lgukidp = lgukidp;
+    }
+
+    public String getLglitm() {
+        return lglitm;
+    }
+
+    public void setLglitm(String lglitm) {
+        this.lglitm = lglitm;
+    }
+
+    public String getLgdl01() {
+        return lgdl01;
+    }
+
+    public void setLgdl01(String lgdl01) {
+        this.lgdl01 = lgdl01;
+    }
+
+    public String getLgdl02() {
+        return lgdl02;
+    }
+
+    public void setLgdl02(String lgdl02) {
+        this.lgdl02 = lgdl02;
+    }
+
+    public String getLgdl03() {
+        return lgdl03;
+    }
+
+    public void setLgdl03(String lgdl03) {
+        this.lgdl03 = lgdl03;
+    }
+
+    public String getLgdl04() {
+        return lgdl04;
+    }
+
+    public void setLgdl04(String lgdl04) {
+        this.lgdl04 = lgdl04;
+    }
+
+    public String getLgdl010() {
+        return lgdl010;
+    }
+
+    public void setLgdl010(String lgdl010) {
+        this.lgdl010 = lgdl010;
+    }
+
+    public String getLgvar1() {
+        return lgvar1;
+    }
+
+    public void setLgvar1(String lgvar1) {
+        this.lgvar1 = lgvar1;
+    }
+
+    public String getLguser() {
+        return lguser;
+    }
+
+    public void setLguser(String lguser) {
+        this.lguser = lguser;
+    }
+
+    public String getLgpid() {
+        return lgpid;
+    }
+
+    public void setLgpid(String lgpid) {
+        this.lgpid = lgpid;
+    }
+
+    public String getLgjobn() {
+        return lgjobn;
+    }
+
+    public void setLgjobn(String lgjobn) {
+        this.lgjobn = lgjobn;
+    }
+
+    public BigDecimal getLgupmj() {
+        return lgupmj;
+    }
+
+    public void setLgupmj(BigDecimal lgupmj) {
+        this.lgupmj = lgupmj;
+    }
+
+    public BigDecimal getLgupmt() {
+        return lgupmt;
+    }
+
+    public void setLgupmt(BigDecimal lgupmt) {
+        this.lgupmt = lgupmt;
+    }
+
+    public Date getLgidate() {
+        return lgidate;
+    }
+
+    public void setLgidate(Date lgidate) {
+        this.lgidate = lgidate;
+    }
+
+    public String getLgdf01() {
+        return lgdf01;
+    }
+
+    public void setLgdf01(String lgdf01) {
+        this.lgdf01 = lgdf01;
+    }
+
+    public Date getLgrdate() {
+        return lgrdate;
+    }
+
+    public void setLgrdate(Date lgrdate) {
+        this.lgrdate = lgrdate;
+    }
+
+    public String getLgdf02() {
+        return lgdf02;
+    }
+
+    public void setLgdf02(String lgdf02) {
+        this.lgdf02 = lgdf02;
+    }
+
+    public String getLgstatus() {
+        return lgstatus;
+    }
+
+    public void setLgstatus(String lgstatus) {
+        this.lgstatus = lgstatus;
+    }
+
+    public String getLgflag() {
+        return lgflag;
+    }
+
+    public void setLgflag(String lgflag) {
+        this.lgflag = lgflag;
+    }
+}

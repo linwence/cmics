@@ -1,0 +1,44 @@
+package com.el.cmic.controller.goods;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.el.cmic.common.MapJson;
+import com.el.cmic.domain.goods.Bales;
+import com.el.cmic.domain.goods.BalesConvert;
+import com.el.cmic.service.goods.BalesService;
+
+
+/**
+ * 关于商品相关的接口
+ * @author zhanhao
+ *
+ */
+@Controller
+@RequestMapping("/Bales/")
+public class BalesController {
+	
+	@Autowired
+	public BalesService  balesService;
+	
+	/**
+	 * 查询货品信息 List
+	 * @return Map
+	 */
+	@RequestMapping("selectBalesList")
+	@ResponseBody
+	public Map<String,Object> selectBalesList(){
+		List<Bales> balesList = new ArrayList<Bales> ();
+		balesList = balesService.selectBalesList();
+		List<Map> list =BalesConvert.balesEntityToMap(balesList);
+		return MapJson.resultMapTw("接口数据", "list", list);
+	}
+
+}

@@ -1,0 +1,243 @@
+package com.el.cfg.domain;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+public class Ve8ck002 implements Serializable {
+    /**
+     *  null - VE8CK002.CO
+     */
+    private String co;
+
+    /**
+     *  null - VE8CK002.WMSCO
+     */
+    private String wmsco;
+
+    /**
+     *  null - VE8CK002.DOCO
+     */
+    private BigDecimal doco;
+
+    /**
+     *  null - VE8CK002.DCTO
+     */
+    private String dcto;
+
+    /**
+     *  null - VE8CK002.LNID
+     */
+    private BigDecimal lnid;
+
+    /**
+     *  null - VE8CK002.LITM
+     */
+    private String litm;
+
+    /**
+     *  null - VE8CK002.UORG
+     */
+    private BigDecimal uorg;
+
+    /**
+     *  null - VE8CK002.LOT1
+     */
+    private String lot1;
+
+    /**
+     *  null - VE8CK002.LOT2
+     */
+    private String lot2;
+
+    /**
+     *  null - VE8CK002.DSC1
+     */
+    private String dsc1;
+
+    /**
+     *  null - VE8CK002.UPRC
+     */
+    private BigDecimal uprc;
+
+    /**
+     *  null - VE8CK002.AEXP
+     */
+    private BigDecimal aexp;
+
+    /**
+     *  null - VE8CK002.FLAG
+     */
+    private String flag;
+
+    /**
+     *  null - VE8CK002.UKID
+     */
+    private BigDecimal ukid;
+
+    /**
+     *  null - VE8CK002.LTTR
+     */
+    private String lttr;
+
+    /**
+     *  null - VE8CK002.NXTR
+     */
+    private String nxtr;
+
+    private static final long serialVersionUID = 1L;
+
+    public String getCo() {
+        return co;
+    }
+
+    public void setCo(String co) {
+        this.co = co;
+    }
+
+    public String getWmsco() {
+        return wmsco;
+    }
+
+    public void setWmsco(String wmsco) {
+        this.wmsco = wmsco;
+    }
+
+    public BigDecimal getDoco() {
+        return doco;
+    }
+
+    public void setDoco(BigDecimal doco) {
+        this.doco = doco;
+    }
+
+    public String getDcto() {
+        return dcto;
+    }
+
+    public void setDcto(String dcto) {
+        this.dcto = dcto;
+    }
+
+    public BigDecimal getLnid() {
+        return lnid;
+    }
+
+    public void setLnid(BigDecimal lnid) {
+        this.lnid = lnid;
+    }
+
+    public String getLitm() {
+        return litm;
+    }
+
+    public void setLitm(String litm) {
+        this.litm = litm;
+    }
+
+    public BigDecimal getUorg() {
+        return uorg;
+    }
+
+    public void setUorg(BigDecimal uorg) {
+        this.uorg = uorg;
+    }
+
+    public String getLot1() {
+        return lot1;
+    }
+
+    public void setLot1(String lot1) {
+        this.lot1 = lot1;
+    }
+
+    public String getLot2() {
+        return lot2;
+    }
+
+    public void setLot2(String lot2) {
+        this.lot2 = lot2;
+    }
+
+    public String getDsc1() {
+        return dsc1;
+    }
+
+    public void setDsc1(String dsc1) {
+        this.dsc1 = dsc1;
+    }
+
+    public BigDecimal getUprc() {
+        return uprc;
+    }
+
+    public void setUprc(BigDecimal uprc) {
+        this.uprc = uprc;
+    }
+
+    public BigDecimal getAexp() {
+        return aexp;
+    }
+
+    public void setAexp(BigDecimal aexp) {
+        this.aexp = aexp;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public BigDecimal getUkid() {
+        return ukid;
+    }
+
+    public void setUkid(BigDecimal ukid) {
+        this.ukid = ukid;
+    }
+
+    public String getLttr() {
+        return lttr;
+    }
+
+    public void setLttr(String lttr) {
+        this.lttr = lttr;
+    }
+
+    public String getNxtr() {
+        return nxtr;
+    }
+
+    public void setNxtr(String nxtr) {
+        this.nxtr = nxtr;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", co=").append(co);
+        sb.append(", wmsco=").append(wmsco);
+        sb.append(", doco=").append(doco);
+        sb.append(", dcto=").append(dcto);
+        sb.append(", lnid=").append(lnid);
+        sb.append(", litm=").append(litm);
+        sb.append(", uorg=").append(uorg);
+        sb.append(", lot1=").append(lot1);
+        sb.append(", lot2=").append(lot2);
+        sb.append(", dsc1=").append(dsc1);
+        sb.append(", uprc=").append(uprc);
+        sb.append(", aexp=").append(aexp);
+        sb.append(", flag=").append(flag);
+        sb.append(", ukid=").append(ukid);
+        sb.append(", lttr=").append(lttr);
+        sb.append(", nxtr=").append(nxtr);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

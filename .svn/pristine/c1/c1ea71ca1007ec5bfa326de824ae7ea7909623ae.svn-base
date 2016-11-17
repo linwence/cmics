@@ -1,0 +1,39 @@
+package com.el.cmic.ws.service;
+
+import com.el.cfg.domain.Fe841001;
+import com.el.cmic.ws.mapper.FE841001UpdateByDocoMapper;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+
+/**
+ * Created by king_ on 2016/10/11.
+ */
+@Service
+public class ModE0ESToERPServiceImpl implements ModE0ESToERPService {
+    Logger logger = Logger.getLogger(ModE0ESToERPServiceImpl.class);
+    @Autowired
+    FE841001UpdateByDocoMapper fe841001UpdateByDocoMapper;
+    @Value("${schema}")
+    private String schema;
+    @Transactional
+    public String updateFE841001(BigDecimal Doco,String EorS) {
+        logger.info("商品更新成功，记录标记位");
+        try {
+            Fe841001 fe841001 = new Fe841001();
+            fe841001.setSqukidp(Doco);
+            fe841001.setSqflag(EorS);
+            //fe841001.setSqlitm(Litm);
+            fe841001UpdateByDocoMapper.updateByDoco(schema, fe841001);
+        }catch (Exception e){
+            logger.error("------------------------------------------------------------------------------------------");
+            logger.error("商品标记位失败"+e.getMessage());
+            logger.error("------------------------------------------------------------------------------------------");
+        }
+        return null;
+    }
+}

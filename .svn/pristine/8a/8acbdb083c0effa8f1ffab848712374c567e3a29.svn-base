@@ -1,0 +1,143 @@
+
+package nc.itf.mdm.ws;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the nc.itf.mdm.ws package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _ReqMfrSrvString_QNAME = new QName("", "string");
+    private final static QName _ReqMfrSrvString1_QNAME = new QName("", "string1");
+    private final static QName _ReqMfrSrvString2_QNAME = new QName("", "string2");
+    private final static QName _ReqMfrSrvResponseReturn_QNAME = new QName("", "return");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: nc.itf.mdm.ws
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ReqMfrSrv }
+     * 
+     */
+    public ReqMfrSrv createReqMfrSrv() {
+        return new ReqMfrSrv();
+    }
+
+    /**
+     * Create an instance of {@link ReqMfrSrvResponse }
+     * 
+     */
+    public ReqMfrSrvResponse createReqMfrSrvResponse() {
+        return new ReqMfrSrvResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReqModMfrSrv }
+     * 
+     */
+    public ReqModMfrSrv createReqModMfrSrv() {
+        return new ReqModMfrSrv();
+    }
+
+    /**
+     * Create an instance of {@link ReqModMfrSrvResponse }
+     * 
+     */
+    public ReqModMfrSrvResponse createReqModMfrSrvResponse() {
+        return new ReqModMfrSrvResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string", scope = ReqMfrSrv.class)
+    public JAXBElement<String> createReqMfrSrvString(String value) {
+        return new JAXBElement<String>(_ReqMfrSrvString_QNAME, String.class, ReqMfrSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string1", scope = ReqMfrSrv.class)
+    public JAXBElement<String> createReqMfrSrvString1(String value) {
+        return new JAXBElement<String>(_ReqMfrSrvString1_QNAME, String.class, ReqMfrSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string2", scope = ReqMfrSrv.class)
+    public JAXBElement<String> createReqMfrSrvString2(String value) {
+        return new JAXBElement<String>(_ReqMfrSrvString2_QNAME, String.class, ReqMfrSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "return", scope = ReqMfrSrvResponse.class)
+    public JAXBElement<String> createReqMfrSrvResponseReturn(String value) {
+        return new JAXBElement<String>(_ReqMfrSrvResponseReturn_QNAME, String.class, ReqMfrSrvResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string", scope = ReqModMfrSrv.class)
+    public JAXBElement<String> createReqModMfrSrvString(String value) {
+        return new JAXBElement<String>(_ReqMfrSrvString_QNAME, String.class, ReqModMfrSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string1", scope = ReqModMfrSrv.class)
+    public JAXBElement<String> createReqModMfrSrvString1(String value) {
+        return new JAXBElement<String>(_ReqMfrSrvString1_QNAME, String.class, ReqModMfrSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "string2", scope = ReqModMfrSrv.class)
+    public JAXBElement<String> createReqModMfrSrvString2(String value) {
+        return new JAXBElement<String>(_ReqMfrSrvString2_QNAME, String.class, ReqModMfrSrv.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "return", scope = ReqModMfrSrvResponse.class)
+    public JAXBElement<String> createReqModMfrSrvResponseReturn(String value) {
+        return new JAXBElement<String>(_ReqMfrSrvResponseReturn_QNAME, String.class, ReqModMfrSrvResponse.class, value);
+    }
+
+}

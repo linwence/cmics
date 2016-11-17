@@ -1,0 +1,171 @@
+package com.el.cmic.domain.customer;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import com.el.cmic.domain.goods.Licence;
+
+/**
+ * 客户信息推送
+ * @author zhanhao
+ *
+ */
+public class CustomPropel {
+	
+	/**
+	 * FE8WMS02  BSAN8
+	 */
+	private String bsan8;
+	 /**
+     *  货主 - FE8WMS20.LSE8HZBM
+     */
+    private String lse8hzbm;
+    /**
+     *  编号 - F0101.ABAN8
+     */
+    private BigDecimal aban8;
+    /**
+     *  客户类型 - F0101.ABAT1
+     */
+    private String abat1;
+    /**
+     *  名称 - F0101.ABALPH
+     */
+    private String abalph;
+    /**
+     *  查询码 - FE80101.KSE8BYM
+     */
+    private String kse8bym;
+    /**
+     * 地址         F0116.	ADD1-ADD4
+     */
+    private String address;
+    /**
+     *  联系人 - F0111.WWMLNM
+     */
+    private String wwmlnm;
+    /**
+     *   电话 F0115.AR1+PH1
+     */
+    private String tell;
+
+    /**
+     *  状态 - FE80101.KSCUSTS
+     */
+    private String kscusts;
+    /**
+     *  货主名称 - FE80101.KSE8WMSHZM
+     */
+    private String kse8wmshzm;
+    /**
+     *  建档日期 - FE80101.KSE8JDSJ
+     */
+    private Date kse8jdsj;
+    /**
+     *  税号 - F0101.ABTAX
+     */
+    private String abtax;
+    /**
+     * 收货地址明细
+     */
+    private List<CustomPItem> list;
+    /**
+     * 证照明细
+     */
+    private List<Licence> licenceList;
+    
+
+	public String getLse8hzbm() {
+		return lse8hzbm;
+	}
+	public void setLse8hzbm(String lse8hzbm) {
+		this.lse8hzbm = lse8hzbm;
+	}
+	public BigDecimal getAban8() {
+		return aban8;
+	}
+	public void setAban8(BigDecimal aban8) {
+		this.aban8 = aban8;
+	}
+	public String getAbat1() {
+		return abat1;
+	}
+	public void setAbat1(String abat1) {
+		this.abat1 = abat1;
+	}
+	public String getAbalph() {
+		return abalph;
+	}
+	public void setAbalph(String abalph) {
+		this.abalph = abalph;
+	}
+	public String getKse8bym() {
+		return kse8bym;
+	}
+	public void setKse8bym(String kse8bym) {
+		this.kse8bym = kse8bym;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getWwmlnm() {
+		return wwmlnm;
+	}
+	public void setWwmlnm(String wwmlnm) {
+		this.wwmlnm = wwmlnm;
+	}
+	public String getTell() {
+		return tell;
+	}
+	public void setTell(String tell) {
+		this.tell = tell;
+	}
+	public String getKscusts() {
+		return kscusts;
+	}
+	public void setKscusts(String kscusts) {
+		this.kscusts = kscusts;
+	}
+	public String getKse8wmshzm() {
+		return kse8wmshzm;
+	}
+	public void setKse8wmshzm(String kse8wmshzm) {
+		this.kse8wmshzm = kse8wmshzm;
+	}
+	public Date getKse8jdsj() {
+		return kse8jdsj;
+	}
+	public void setKse8jdsj(Date kse8jdsj) {
+		this.kse8jdsj = kse8jdsj;
+	}
+	public String getAbtax() {
+		return abtax;
+	}
+	public void setAbtax(String abtax) {
+		this.abtax = abtax;
+	}
+	public List<CustomPItem> getList() {
+		return list;
+	}
+	public void setList(List<CustomPItem> list) {
+		this.list = list;
+	}
+	public List<Licence> getLicenceList() {
+		return licenceList;
+	}
+	public void setLicenceList(List<Licence> licenceList) {
+		this.licenceList = licenceList;
+	}
+	public String getBsan8() {
+		return bsan8;
+	}
+	public void setBsan8(String bsan8) {
+		this.bsan8 = bsan8;
+	}
+    
+
+}
