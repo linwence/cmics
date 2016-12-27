@@ -1,0 +1,41 @@
+vpn.elitesland.com
+ÕÊºÅ/ÃÜÂë
+ELHUBERTFANG/TEQgR#W
+
+BBS
+vincentlin/Trdae1@1
+
+Elearning
+vincent.lin/vincent512
+
+
+http://elpdtman/owncloud/index.php/apps/files/
+ownCloud ÕËºÅ£ºguest / 4qmdysts
+
+GitLab
+http://elpdtgit/
+ÓÃ»§ÃûÃÜÂë£ºvincent.lin/zaq1@Wsx
+SSH KEY:
+SSH Key:zaq1@Wsx
+Title:sshkey
+
+
+
+
+ÂéÀ±ÓÕ»óVpnµØÖ·£º
+https://122.11.41.98:443
+
+Jay : user01/user01
+Helen : user02/user02
+Magical : user03/user03
+Vincent : user04/user04
+Sunny : user05/user05
+Hedan : user06/user06
+
+
+µ¯ÆÁ
+µÇÂ¼Ãû:8001@lifw ÃÜÂë£º123abc¡£Ğ»Ğ»£¡  010 5810 3004
+
+ÂéÀ±ÓÕ»óºÏÁ¦ip
+192.168.100.150:6061
+µÇÂ¼Ãû:8001@mlyh ÃÜÂë123456
