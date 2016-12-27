@@ -1,0 +1,54 @@
+package com.el.cmic.mapper.record;
+
+import com.el.utils.ReadPropertiesUtil;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.jdbc.SQL;
+
+import com.el.cmic.domain.record.PurchaseOutDetail;
+
+public interface PurchaseDetailMapper {
+	String schema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "schema");
+	/**
+	 * 采退出库复核记录推送  insert
+	 * @param purchaseOutDetail
+	 * @return
+	 */
+	@InsertProvider(type=PurchaseDetailMapper.SqlProvider.class,method=PurchaseDetailMapper.SqlProvider.insertPurchaseDetail)
+	public Integer  insertPurchaseDetail(PurchaseOutDetail purchaseOutDetail);
+	
+	class SqlProvider extends SQL{
+		public static final String insertPurchaseDetail="insertPurchaseDetail";
+		public String insertPurchaseDetail(PurchaseOutDetail purchaseOutDetail){
+			INSERT_INTO(schema+".FE8WMS11");
+			//VALUES("ctmcu","#{ctmcu,jdbcType=NCHAR}");
+			//VALUES("ctco","#{ctco,jdbcType=NCHAR}");
+			VALUES("ctmcu","(select LSMCU from "+schema+".FE8WMS20 where trim(LSE8WLZXID) = #{ctmcu,jdbcType=NCHAR} and trim(LSE8HZBM) = #{ctco,jdbcType=NCHAR})");
+			VALUES("ctco","(select LSCO from "+schema+".FE8WMS20 where trim(LSE8WLZXID) = #{ctmcu,jdbcType=NCHAR} and trim(LSE8HZBM) = #{ctco,jdbcType=NCHAR})");
+			VALUES("ctptut01","#{ctptut01,jdbcType=NCHAR}");
+			VALUES("ctptut02","#{ctptut02,jdbcType=NCHAR}");
+			VALUES("ctdtee","#{ctdtee,jdbcType=DATE}");
+			VALUES("ctptut03","#{ctptut03,jdbcType=NCHAR}");
+			VALUES("cte8tym","#{cte8tym,jdbcType=NCHAR}");
+			VALUES("ctfstr1","#{ctfstr1,jdbcType=NCHAR}");
+			VALUES("cte8name","#{cte8name,jdbcType=NCHAR}");
+			VALUES("ctdstx","#{ctdstx,jdbcType=NCHAR}");
+			VALUES("ctfstr2","#{ctfstr2,jdbcType=NCHAR}");
+			VALUES("ctidate","#{ctidate,jdbcType=DATE}");
+			VALUES("ctrdate","#{ctrdate,jdbcType=NCHAR}");
+			VALUES("ctuprc","#{ctuprc,jdbcType=DECIMAL}");
+			VALUES("ctfstr3","#{ctfstr3,jdbcType=NCHAR}");
+			VALUES("ctfstr4","#{ctfstr4,jdbcType=NCHAR}");
+			VALUES("ctconstr1","#{ctconstr1,jdbcType=NCHAR}");
+			VALUES("ctfstr5","#{ctfstr5,jdbcType=NCHAR}");
+			VALUES("ctfstr6","#{ctfstr6,jdbcType=NCHAR}");
+			VALUES("ctfstr61","#{ctfstr61,jdbcType=NCHAR}");
+			VALUES("ctfstr62","#{ctfstr62,jdbcType=NCHAR}");
+			VALUES("ctahl1","#{ctahl1,jdbcType=NCHAR}");
+			VALUES("ctdta1","#{ctdta1,jdbcType=NCHAR}");
+			VALUES("ctahl2","#{ctahl2,jdbcType=NCHAR}");
+			VALUES("ctconstr2","#{ctconstr2,jdbcType=NCHAR}");
+			return toString();
+		}
+	}
+
+}

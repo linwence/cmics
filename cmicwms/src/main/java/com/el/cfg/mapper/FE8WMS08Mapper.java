@@ -1,0 +1,148 @@
+package com.el.cfg.mapper;
+
+import com.el.cfg.domain.FE8WMS08;
+import java.math.BigDecimal;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.type.JdbcType;
+
+public interface FE8WMS08Mapper {
+    @Select({
+        "select",
+        "YHUKID, YHITEM, YHMCU, YHCO, YHPTUT01, YHPDDJ, YHPPDJ, YHDTEE, YHPTUT03, YHE8NAME, ",
+        "YHLOTN, YHFSTR1, YHFSTR2, YHMMEJ, YHU1DJ, YHIDATE, YHE8WGBZ, YHE8DMQK, YHRDATE, ",
+        "YHUPRC, YHFSTR3, YHDAT1, YHDAT2, YHFSTR4, YHFSTR5, YHE8YHJL, YHFSTR6, YHCONSTR1, ",
+        "YHAN8, YHFSTR61, YHEV01, YHEV02, YHFSTR62, YHFSTR63, YHAHL1, YHCONSTR2, YHAHL2, ",
+        "YHDL011, YHFIL2, YHCONSTR3, YHDL01, YHDL02, YHDL03, YHAB01, YHAB02, YHAB03, ",
+        "YHEV03, YHEV04, YHUSER, YHPID, YHUPMJ, YHTDAY, YHAOD",
+        "from FE8WMS08",
+        "where YHUKID = #{yhukid,jdbcType=DECIMAL}",
+          "and YHITEM = #{yhitem,jdbcType=NCHAR}"
+    })
+    @Results({
+        @Result(column="YHUKID", property="yhukid", jdbcType=JdbcType.DECIMAL, id=true),
+        @Result(column="YHITEM", property="yhitem", jdbcType=JdbcType.NCHAR, id=true),
+        @Result(column="YHMCU", property="yhmcu", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHCO", property="yhco", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHPTUT01", property="yhptut01", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHPDDJ", property="yhpddj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHPPDJ", property="yhppdj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHDTEE", property="yhdtee", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="YHPTUT03", property="yhptut03", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHE8NAME", property="yhe8name", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHLOTN", property="yhlotn", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR1", property="yhfstr1", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR2", property="yhfstr2", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHMMEJ", property="yhmmej", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHU1DJ", property="yhu1dj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHIDATE", property="yhidate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="YHE8WGBZ", property="yhe8wgbz", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHE8DMQK", property="yhe8dmqk", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHRDATE", property="yhrdate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="YHUPRC", property="yhuprc", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHFSTR3", property="yhfstr3", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDAT1", property="yhdat1", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDAT2", property="yhdat2", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR4", property="yhfstr4", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR5", property="yhfstr5", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHE8YHJL", property="yhe8yhjl", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR6", property="yhfstr6", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHCONSTR1", property="yhconstr1", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHAN8", property="yhan8", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHFSTR61", property="yhfstr61", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHEV01", property="yhev01", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHEV02", property="yhev02", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR62", property="yhfstr62", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR63", property="yhfstr63", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHAHL1", property="yhahl1", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHCONSTR2", property="yhconstr2", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHAHL2", property="yhahl2", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDL011", property="yhdl011", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFIL2", property="yhfil2", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHCONSTR3", property="yhconstr3", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDL01", property="yhdl01", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDL02", property="yhdl02", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDL03", property="yhdl03", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHAB01", property="yhab01", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHAB02", property="yhab02", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHAB03", property="yhab03", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHEV03", property="yhev03", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHEV04", property="yhev04", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHUSER", property="yhuser", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHPID", property="yhpid", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHUPMJ", property="yhupmj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHTDAY", property="yhtday", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHAOD", property="yhaod", jdbcType=JdbcType.TIMESTAMP)
+    })
+    FE8WMS08 selectByPrimaryKey(@Param("yhukid") BigDecimal yhukid, @Param("yhitem") String yhitem);
+
+    @Select({
+        "select",
+        "YHUKID, YHITEM, YHMCU, YHCO, YHPTUT01, YHPDDJ, YHPPDJ, YHDTEE, YHPTUT03, YHE8NAME, ",
+        "YHLOTN, YHFSTR1, YHFSTR2, YHMMEJ, YHU1DJ, YHIDATE, YHE8WGBZ, YHE8DMQK, YHRDATE, ",
+        "YHUPRC, YHFSTR3, YHDAT1, YHDAT2, YHFSTR4, YHFSTR5, YHE8YHJL, YHFSTR6, YHCONSTR1, ",
+        "YHAN8, YHFSTR61, YHEV01, YHEV02, YHFSTR62, YHFSTR63, YHAHL1, YHCONSTR2, YHAHL2, ",
+        "YHDL011, YHFIL2, YHCONSTR3, YHDL01, YHDL02, YHDL03, YHAB01, YHAB02, YHAB03, ",
+        "YHEV03, YHEV04, YHUSER, YHPID, YHUPMJ, YHTDAY, YHAOD",
+        "from FE8WMS08"
+    })
+    @Results({
+        @Result(column="YHUKID", property="yhukid", jdbcType=JdbcType.DECIMAL, id=true),
+        @Result(column="YHITEM", property="yhitem", jdbcType=JdbcType.NCHAR, id=true),
+        @Result(column="YHMCU", property="yhmcu", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHCO", property="yhco", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHPTUT01", property="yhptut01", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHPDDJ", property="yhpddj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHPPDJ", property="yhppdj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHDTEE", property="yhdtee", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="YHPTUT03", property="yhptut03", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHE8NAME", property="yhe8name", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHLOTN", property="yhlotn", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR1", property="yhfstr1", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR2", property="yhfstr2", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHMMEJ", property="yhmmej", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHU1DJ", property="yhu1dj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHIDATE", property="yhidate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="YHE8WGBZ", property="yhe8wgbz", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHE8DMQK", property="yhe8dmqk", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHRDATE", property="yhrdate", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="YHUPRC", property="yhuprc", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHFSTR3", property="yhfstr3", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDAT1", property="yhdat1", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDAT2", property="yhdat2", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR4", property="yhfstr4", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR5", property="yhfstr5", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHE8YHJL", property="yhe8yhjl", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR6", property="yhfstr6", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHCONSTR1", property="yhconstr1", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHAN8", property="yhan8", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHFSTR61", property="yhfstr61", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHEV01", property="yhev01", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHEV02", property="yhev02", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR62", property="yhfstr62", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFSTR63", property="yhfstr63", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHAHL1", property="yhahl1", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHCONSTR2", property="yhconstr2", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHAHL2", property="yhahl2", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDL011", property="yhdl011", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHFIL2", property="yhfil2", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHCONSTR3", property="yhconstr3", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDL01", property="yhdl01", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDL02", property="yhdl02", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHDL03", property="yhdl03", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHAB01", property="yhab01", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHAB02", property="yhab02", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHAB03", property="yhab03", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHEV03", property="yhev03", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHEV04", property="yhev04", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHUSER", property="yhuser", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHPID", property="yhpid", jdbcType=JdbcType.NCHAR),
+        @Result(column="YHUPMJ", property="yhupmj", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHTDAY", property="yhtday", jdbcType=JdbcType.DECIMAL),
+        @Result(column="YHAOD", property="yhaod", jdbcType=JdbcType.TIMESTAMP)
+    })
+    List<FE8WMS08> selectAll();
+}

@@ -1,0 +1,115 @@
+package com.el.cmic.service.ckback;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.el.cmic.common.domain.WmsResult;
+import com.el.cmic.domain.ckback.CkBackOrder;
+import com.el.cmic.domain.ckback.CkBackOrderDtl;
+import com.el.cmic.domain.ckback.CkBackSequence;
+import com.el.cmic.domain.inbound.F41002Cnv1;
+import com.el.cmic.mapper.ckback.CkBackMapper;
+import com.el.cmic.mapper.inbound.InAndOutCnvMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+/**
+ * Created by Vincent on 2016/10/26.
+ */
+@Service("ckBackServiceImpl")
+public class CkBackServiceImpl implements CkBackService {
+    @Autowired
+    private CkBackMapper ckBackMapper;
+    @Autowired
+    private InAndOutCnvMapper inAndOutCnvMapper;
+
+    @Override
+    @Transactional
+    public WmsResult acceptData(String data) {
+        WmsResult wmsResult = new WmsResult(true, "0000", "成功");
+
+        /*JSONObject jsonObject = JSON.parseObject(data);
+
+        CkBackOrder ckBackOrder = JSON.parseObject(data, CkBackOrder.class);
+        String ojb = jsonObject.get("接口数据").toString();*/
+
+        CkBackOrder ckBackOrder = JSON.parseObject(data, CkBackOrder.class);
+
+        String flag = ckBackOrder.getFlag();
+        if (flag.equals("SO")) {//销售出库/调拨出库、库存调整
+            ckBackMapper.insertF47131(ckBackOrder);
+            List<CkBackOrderDtl> ckBackOrderDtlList = ckBackOrder.getCkBackOrderDtlList();
+            int rownum=0;
+            for (CkBackOrderDtl ckBackOrderDtl : ckBackOrderDtlList
+                    ) {
+                rownum=rownum+1;
+
+                // WMS采购收货回传的已收数量，先判断如果F4211.UOM和F4211.UOM1不一致则进行换算（一致的话按原来逻辑）：
+                // 按F4211对应行里的f4211.UOM=F41002.UM and f4211.itm=f41002.itm and f4211.mcu=f41002.mcu and F4211.UOM1=F41002.RUM,取到转换系数 F41002.CNV1
+                //WMS回传回来的“发货数量”/F41002.CNV1 ，转换好的数量写入F47132. SOQS ， 取消数量/F41002.CNV1，转换好的数量写入F47132.SOCN
+                F41002Cnv1 f41002Cnv1 = inAndOutCnvMapper.selectCnv1ByF4211(ckBackOrder.getWmskcoo(), Integer.toString(ckBackOrder.getWmsmcu()),
+                        ckBackOrder.getDoco(), ckBackOrder.getDcto(), new BigDecimal(ckBackOrderDtl.getLnid()));
+                if (null != f41002Cnv1 && f41002Cnv1.getCnv1().doubleValue() > 0) {
+                    ckBackOrderDtl.setUprc(ckBackOrderDtl.getUprc().divide(f41002Cnv1.getCnv1()));
+                    ckBackOrderDtl.setPrrc(ckBackOrderDtl.getPrrc().divide(f41002Cnv1.getCnv1()));
+
+                }
+                //===========================================================================
+                ckBackMapper.insertF47132(ckBackOrder, ckBackOrderDtl,rownum);
+                //打包流水号
+                ckBackMapper.insertFE847132(ckBackOrder, ckBackOrderDtl,rownum);
+                //更新打包流水号记录
+                ckBackMapper.updateFE84211(ckBackOrder, ckBackOrderDtl);
+                List<CkBackSequence> CkBackSequenceList = ckBackOrderDtl.getCkBackSequenceList();
+                for (CkBackSequence ckBackSequence : CkBackSequenceList
+                        ) {
+                    ckBackMapper.updateFe8wms04(ckBackOrder, ckBackOrderDtl, ckBackSequence);
+                }
+            }
+
+        } else if (flag.equals("OP")) {//采退出库
+            ckBackMapper.insertF47071(ckBackOrder);
+            List<CkBackOrderDtl> ckBackOrderDtlList = ckBackOrder.getCkBackOrderDtlList();
+            int rownum=0;
+            for (CkBackOrderDtl ckBackOrderDtl : ckBackOrderDtlList
+                    ) {
+                rownum=rownum+1;
+
+                //WMS采购收货回传的已收数量，先判断如果F4311.UOM和F4311.UOM1不一致则进行换算（一致的话按原来逻辑）：
+               // 按F4311对应行里的f4311.UOM=F41002.UM and f4311.itm=f41002.itm and f4311.mcu=f41002.mcu and F4311.UOM1=F41002.RUM,取到转换系数 F41002.CNV1
+               // WMS回传回来的“已收数量”/F41002.CNV1 ，转换好的数量写入F47072.UREC
+
+                F41002Cnv1 f41002Cnv1 = inAndOutCnvMapper.selectCnv1ByF4311(ckBackOrder.getWmskcoo(), Integer.toString(ckBackOrder.getWmsmcu()),
+                        ckBackOrder.getDoco(), ckBackOrder.getDcto(), new BigDecimal(ckBackOrderDtl.getLnid()));
+                if (null != f41002Cnv1 && f41002Cnv1.getCnv1().doubleValue() > 0) {
+                    ckBackOrderDtl.setUprc(ckBackOrderDtl.getUprc().divide(f41002Cnv1.getCnv1()));
+                    ckBackOrderDtl.setPrrc(ckBackOrderDtl.getPrrc().divide(f41002Cnv1.getCnv1()));
+                }
+                //===========================================================================
+                ckBackMapper.insertF47072(ckBackOrder, ckBackOrderDtl,rownum);
+                List<CkBackSequence> CkBackSequenceList = ckBackOrderDtl.getCkBackSequenceList();
+                for (CkBackSequence ckBackSequence : CkBackSequenceList
+                        ) {
+                    ckBackMapper.updateFe8wms04(ckBackOrder, ckBackOrderDtl, ckBackSequence);
+                }
+            }
+        } else if (flag.equals("IA")) {
+
+            List<CkBackOrderDtl> ckBackOrderDtlList = ckBackOrder.getCkBackOrderDtlList();
+            for (CkBackOrderDtl ckBackOrderDtl : ckBackOrderDtlList
+                    ) {
+                ckBackMapper.insertFe8wms05(ckBackOrder, ckBackOrderDtl);
+                List<CkBackSequence> CkBackSequenceList = ckBackOrderDtl.getCkBackSequenceList();
+                for (CkBackSequence ckBackSequence : CkBackSequenceList
+                        ) {
+                    ckBackMapper.updateFe8wms04(ckBackOrder, ckBackOrderDtl, ckBackSequence);
+                }
+            }
+        }
+        return wmsResult;
+
+    }
+}

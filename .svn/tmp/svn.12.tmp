@@ -1,0 +1,107 @@
+package com.el.cmic.mapper.repertory;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.jdbc.SQL;
+
+import com.el.cmic.domain.repertory.InInvertoryCancel;
+import com.el.cmic.domain.repertory.InInvertoryCancelItem;
+import com.el.utils.ReadPropertiesUtil;
+import org.apache.ibatis.type.JdbcType;
+
+import static java.sql.JDBCType.NCHAR;
+
+public interface InInvertoryCancelMapper {
+    //动态 获取  db.properties  文件属性值
+
+    /**
+     * 入库单取消  list
+     *
+     * @return
+     */
+    @Select("select distinct QXDCTO,QXDOCO,QXAN8,QXE8NAME," +
+            "(to_date(trunc(QXTRDJ/1000)  +1900||'-01-01','yyyy-MM-dd')+mod( QXTRDJ, 1000)-1) as QXTRDJ,LSE8WLZXID as wmsmcu, QXMCU ,LSE8HZBM as wmskcoo,QXKCOO,QXDL02,QXDL01"
+            + " from FE8WMS12  f12"
+            + " inner join  FE8WMS21 f21 on f12.QXMCU=f21.LSMCU"
+            + " inner join  FE8WMS20  f20 on f12.Qxkcoo=f20.LSCO"
+            + " where QXEV01='N' and trim(f20.lsco)=#{co}")
+    @Results({
+            @Result(column = "QXMCU", property = "qxmcu"),
+            @Result(column = "wmsmcu", property = "wmsmcu", jdbcType = JdbcType.NCHAR),
+            @Result(column = "QXDCTO", property = "qxdcto"),
+            @Result(column = "QXKCOO", property = "qxkcoo"),
+            @Result(column = "wmskcoo", property = "wmskcoo", jdbcType = JdbcType.NCHAR),
+            @Result(column = "QXDOCO", property = "qxdoco"),
+            @Result(column = "QXAN8", property = "qxan8"),
+            @Result(column = "QXE8NAME", property = "qxe8name", jdbcType = JdbcType.NCHAR),
+            @Result(column = "QXTRDJ", property = "qxtrdj"),
+            @Result(property = "iICIList", column = "{mcu=QXMCU,dcto=QXDCTO,doco=QXDOCO,kcoo=QXKCOO}", javaType = List.class,
+                    many = @Many(select = "selectInInvertoryCancelItem")),
+    })
+    public List<InInvertoryCancel> selectInInvertoryCancel(@Param("co") String co);
+
+
+    /**
+     * 入库单取消  明细list
+     *
+     * @return
+     */
+    @Select("select  QXLNID,QXLITM,QXUORG/10000 as QXUORG ,qxca02 as invertoryType,QXDSC1,qxlot1,qxlot2 from FE8WMS12 where QXEV01='N' and trim(QXMCU)=#{mcu,jdbcType=VARCHAR} "
+            + "and  QXDCTO=#{dcto,jdbcType=VARCHAR}  and QXDOCO=#{doco,jdbcType=VARCHAR} and QXKCOO=#{kcoo ,jdbcType=VARCHAR}  ")
+    @Results({
+            @Result(column = "QXLNID", property = "qxlnid"),
+            @Result(column = "QXLITM", property = "qxlitm", jdbcType = JdbcType.NCHAR),
+            @Result(column = "QXUORG", property = "qxuorg"),
+            @Result(column = "QXDSC1", property = "qxdsc1", jdbcType = JdbcType.NCHAR)
+    })
+    public List<InInvertoryCancelItem> selectInInvertoryCancelItem();
+
+    /**
+     * 更新   入库取消返回推送
+     *
+     * @param paramMap
+     * @return
+     */
+    @UpdateProvider(type = InInvertoryCancelMapper.sqlProvider.class, method = InInvertoryCancelMapper.sqlProvider.updateInInvertoryCancel)
+    public Integer updateInInvertoryCancel(Map<String, String> paramMap);
+
+    @UpdateProvider(type = sqlProvider.class, method = "updateEv01")
+    public Integer updateEv01(@Param("dcto") String dcto, @Param("kcoo") String kcoo,
+                              @Param("doco") BigDecimal doco, @Param("lnid") BigDecimal lnid,
+                              @Param("status") String status);
+
+    class sqlProvider extends SQL {
+
+        //动态 获取  db.properties  文件属性值
+        // private static final String schema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "schema");
+
+        private static final String updateInInvertoryCancel = "updateInInvertoryCancel";
+
+        public String updateInInvertoryCancel(Map<String, String> paramMap) {
+            UPDATE("FE8WMS12");
+            SET("QXSOCN = #{qxsocn}*10000");
+            SET("QXEV01 = #{qxev01}");
+            WHERE("QXDCTO = #{qxdcto}");
+            WHERE("QXLNID = #{qxlnid}");
+            WHERE("QXDOCO = #{qxdoco}");
+            return toString();
+        }
+
+        public String updateEv01(@Param("dcto") String dcto, @Param("kcoo") String kcoo,
+                                 @Param("doco") BigDecimal doco, @Param("lnid") BigDecimal lnid,
+                                 @Param("status") String status) {
+            UPDATE("FE8WMS12");
+            SET("QXEV01=#{status}");
+            WHERE("QXDCTO=#{dcto}");
+            WHERE("QXKCOO=#{kcoo}");
+            WHERE("QXDOCO=#{doco}");
+            WHERE("QXLNID=#{lnid}");
+            return toString();
+        }
+
+    }
+
+}

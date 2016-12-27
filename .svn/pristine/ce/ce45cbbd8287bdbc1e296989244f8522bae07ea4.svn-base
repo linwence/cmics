@@ -1,0 +1,375 @@
+package com.el.cmic.domain.order;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.el.utils.DateUtil;
+
+public class SpdOrderDetail implements Serializable {
+	/**
+	 * null - FE8SPD11.PHUKID
+	 */
+	private BigDecimal phukid;
+
+    /**
+     *  null - FE8SPD11.PHRLLN
+     */
+    private BigDecimal phrlln;
+
+    /**
+	 * null - FE8SPD11.PHLNID
+	 */
+	@JSONField(name = "采购订单行号")
+	private BigDecimal phlnid;
+
+	/**
+	 * null - FE8SPD11.PHEV01
+	 */
+	private String phev01;
+
+	/**
+	 * null - FE8SPD11.PHE8YLJGD
+	 */
+	@JSONField(name = "医疗机构申请单号")
+	private String phe8yljgd;
+
+	/**
+	 * null - FE8SPD11.PHE8KSD
+	 */
+	@JSONField(name = "科室申请单号")
+	private String phe8ksd;
+
+	/**
+	 * null - FE8SPD11.PHE8ZDGYSE
+	 */
+	@JSONField(name = "指定供应商ERP编号")
+	private String phe8zdgyse;
+
+	/**
+	 * null - FE8SPD11.PHE8ZDGYSN
+	 */
+	@JSONField(name = "指定供应商ERP名称")
+	private String phe8zdgysn;
+
+	/**
+	 * null - FE8SPD11.PHTRDJ
+	 */
+	@JSONField(name = "采购订单日期", format="yyyy-MM-dd HH:mm:ss")
+	private Date phtrdj;
+
+	/**
+	 * null - FE8SPD11.PHTRDJ
+	 */
+	@JSONField(name = "采购订单日期J", serialize=false)
+	private BigDecimal phtrdjj;
+
+	/**
+	 * null - FE8SPD11.PHE8YYYCD
+	 */
+	@JSONField(name = "医药医材编号")
+	private String phe8yyycd;
+
+	/**
+	 * null - FE8SPD11.PHE8YYYCE
+	 */
+	@JSONField(name = "医药医材ERP编号")
+	private String phe8yyyce;
+
+	/**
+	 * null - FE8SPD11.PHE8YYYCN
+	 */
+	@JSONField(name = "医药医材名称")
+	private String phe8yyycn;
+
+	/**
+	 * null - FE8SPD11.PHE8SGG
+	 * FE8SPD11.PHE8SPDGG
+	 */
+	@JSONField(name = "规格")
+	private String phe8sgg;
+
+	/**
+	 * null - FE8SPD11.PHE8SCCS
+	 */
+	@JSONField(name = "生产厂商")
+	private String phe8sccs;
+
+	/**
+	 * null - FE8SPD11.PHE8SCD
+	 * 	FE8SPD11.PHE8SPDCD
+	 */
+	@JSONField(name = "产地")
+	private String phe8scd;
+
+	/**
+	 * null - FE8SPD11.PHE8SDW
+	 * FE8SPD11.PHE8SPDDW
+	 */
+	@JSONField(name = "单位")
+	private String phe8sdw;
+
+	/**
+	 * null - FE8SPD11.PHE8SBZ
+	 * FE8SPD11.PHE8SPDBZ
+	 */
+	@JSONField(name = "包装")
+	private BigDecimal phe8sbz;
+
+	/**
+	 * null - FE8SPD11.PHUPRC
+	 */
+	@JSONField(name = "单价")
+	private BigDecimal phuprc;
+
+	/**
+	 * null - FE8SPD11.PHUORG
+	 */
+	@JSONField(name = "数量")
+	private BigDecimal phuorg;
+
+	/**
+	 * null - FE8SPD11.PHE8YJDHRQ
+	 */
+	@JSONField(name = "预计到货日期", format="yyyy-MM-dd HH:mm:ss")
+	private Date phe8yjdhrq;
+
+	/**
+	 * null - FE8SPD11.PHE8YJDHRQ
+	 */
+	@JSONField(name = "预计到货日期J", serialize=false)
+	private BigDecimal phe8yjdhrqj;
+
+	private static final long serialVersionUID = 1L;
+
+	public BigDecimal getPhukid() {
+		return phukid;
+	}
+
+	public void setPhukid(BigDecimal phukid) {
+		this.phukid = phukid;
+	}
+
+	/**
+	 * @return the phrlln
+	 */
+	public BigDecimal getPhrlln() {
+		return phrlln;
+	}
+
+	/**
+	 * @param phrlln the phrlln to set
+	 */
+	public void setPhrlln(BigDecimal phrlln) {
+		this.phrlln = phrlln;
+	}
+
+	public BigDecimal getPhlnid() {
+		return phlnid;
+	}
+
+	public void setPhlnid(BigDecimal phlnid) {
+		this.phlnid = phlnid;
+	}
+
+	public String getPhev01() {
+		return phev01;
+	}
+
+	public void setPhev01(String phev01) {
+		this.phev01 = phev01;
+	}
+
+	public String getPhe8yljgd() {
+		return phe8yljgd;
+	}
+
+	public void setPhe8yljgd(String phe8yljgd) {
+		this.phe8yljgd = phe8yljgd;
+	}
+
+	public String getPhe8ksd() {
+		return phe8ksd;
+	}
+
+	public void setPhe8ksd(String phe8ksd) {
+		this.phe8ksd = phe8ksd;
+	}
+
+	public String getPhe8zdgyse() {
+		return phe8zdgyse;
+	}
+
+	public void setPhe8zdgyse(String phe8zdgyse) {
+		this.phe8zdgyse = phe8zdgyse;
+	}
+
+	public String getPhe8zdgysn() {
+		return phe8zdgysn;
+	}
+
+	public void setPhe8zdgysn(String phe8zdgysn) {
+		this.phe8zdgysn = phe8zdgysn;
+	}
+
+	public Date getPhtrdj() {
+		return phtrdj;
+	}
+
+	public void setPhtrdj(Date phtrdj) {
+		this.phtrdj = phtrdj;
+		if (phtrdj != null) {
+			this.phtrdjj = new BigDecimal(DateUtil.dateToJuLian(phtrdj));
+		}
+	}
+
+	public String getPhe8yyycd() {
+		return phe8yyycd;
+	}
+
+	public void setPhe8yyycd(String phe8yyycd) {
+		this.phe8yyycd = phe8yyycd;
+	}
+
+	public String getPhe8yyyce() {
+		return phe8yyyce;
+	}
+
+	public void setPhe8yyyce(String phe8yyyce) {
+		this.phe8yyyce = phe8yyyce;
+	}
+
+	public String getPhe8yyycn() {
+		return phe8yyycn;
+	}
+
+	public void setPhe8yyycn(String phe8yyycn) {
+		this.phe8yyycn = phe8yyycn;
+	}
+
+	public String getPhe8sgg() {
+		return phe8sgg;
+	}
+
+	public void setPhe8sgg(String phe8sgg) {
+		this.phe8sgg = phe8sgg;
+	}
+
+	public String getPhe8sccs() {
+		return phe8sccs;
+	}
+
+	public void setPhe8sccs(String phe8sccs) {
+		this.phe8sccs = phe8sccs;
+	}
+
+	public String getPhe8scd() {
+		return phe8scd;
+	}
+
+	public void setPhe8scd(String phe8scd) {
+		this.phe8scd = phe8scd;
+	}
+
+	public String getPhe8sdw() {
+		return phe8sdw;
+	}
+
+	public void setPhe8sdw(String phe8sdw) {
+		this.phe8sdw = phe8sdw;
+	}
+
+	public BigDecimal getPhe8sbz() {
+		return phe8sbz;
+	}
+
+	public void setPhe8sbz(BigDecimal phe8sbz) {
+		this.phe8sbz = phe8sbz;
+	}
+
+	public BigDecimal getPhuprc() {
+		return phuprc;
+	}
+
+	public void setPhuprc(BigDecimal phuprc) {
+		this.phuprc = phuprc;
+	}
+
+	public BigDecimal getPhuorg() {
+		return phuorg;
+	}
+
+	public void setPhuorg(BigDecimal phuorg) {
+		this.phuorg = phuorg;
+	}
+
+	public Date getPhe8yjdhrq() {
+		return phe8yjdhrq;
+	}
+
+	public void setPhe8yjdhrq(Date phe8yjdhrq) {
+		this.phe8yjdhrq = phe8yjdhrq;
+		if (phe8yjdhrq != null) {
+			this.phe8yjdhrqj = new BigDecimal(DateUtil.dateToJuLian(phe8yjdhrq));
+		}
+	}
+
+	/**
+	 * @return the phtrdjj
+	 */
+	public BigDecimal getPhtrdjj() {
+		return phtrdjj;
+	}
+
+	/**
+	 * @param phtrdjj the phtrdjj to set
+	 */
+	public void setPhtrdjj(BigDecimal phtrdjj) {
+		this.phtrdjj = phtrdjj;
+	}
+
+	/**
+	 * @return the phe8yjdhrqj
+	 */
+	public BigDecimal getPhe8yjdhrqj() {
+		return phe8yjdhrqj;
+	}
+
+	/**
+	 * @param phe8yjdhrqj the phe8yjdhrqj to set
+	 */
+	public void setPhe8yjdhrqj(BigDecimal phe8yjdhrqj) {
+		this.phe8yjdhrqj = phe8yjdhrqj;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(getClass().getSimpleName());
+		sb.append(" [");
+		sb.append("Hash = ").append(hashCode());
+		sb.append(", phukid=").append(phukid);
+		sb.append(", phlnid=").append(phlnid);
+		sb.append(", phev01=").append(phev01);
+		sb.append(", phe8yljgd=").append(phe8yljgd);
+		sb.append(", phe8ksd=").append(phe8ksd);
+		sb.append(", phe8zdgyse=").append(phe8zdgyse);
+		sb.append(", phe8zdgysn=").append(phe8zdgysn);
+		sb.append(", phtrdj=").append(phtrdj);
+		sb.append(", phe8yyycd=").append(phe8yyycd);
+		sb.append(", phe8yyyce=").append(phe8yyyce);
+		sb.append(", phe8yyycn=").append(phe8yyycn);
+		sb.append(", phe8sgg=").append(phe8sgg);
+		sb.append(", phe8sccs=").append(phe8sccs);
+		sb.append(", phe8scd=").append(phe8scd);
+		sb.append(", phe8sdw=").append(phe8sdw);
+		sb.append(", phe8sbz=").append(phe8sbz);
+		sb.append(", phuprc=").append(phuprc);
+		sb.append(", phuorg=").append(phuorg);
+		sb.append(", phe8yjdhrq=").append(phe8yjdhrq);
+		sb.append(", serialVersionUID=").append(serialVersionUID);
+		sb.append("]");
+		return sb.toString();
+	}
+}

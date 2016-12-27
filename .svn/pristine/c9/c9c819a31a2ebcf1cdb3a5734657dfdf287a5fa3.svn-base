@@ -1,0 +1,72 @@
+package com.el.cmic.mapper.inbound;
+
+import com.el.cmic.domain.inbound.F41002Cnv1;
+import com.el.cmic.domain.inbound.InboundPush;
+import com.el.cmic.domain.inbound.InboundPushDetail;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.type.JdbcType;
+
+import java.math.BigDecimal;
+
+/**
+ * Created by Vincent on 2016/12/21.
+ */
+public interface InAndOutCnvMapper {
+    @Select("select count(1) ct" +
+            "  from ${tableSchema}.f4311" +
+            " where pdUOM <> pdUOM1" +
+            "   and Pdkcoo =(SELECT LSCO FROM ${tableSchema}.FE8WMS20 WHERE TRIM(LSE8HZBM)=#{wmsco} and TRIM(LSE8WLZXID)=#{wmsmcu})" +
+            "   and Pddoco =#{doco}" +
+            "   and PDDCTO =#{dcto}" +
+            "   AND PDLNID =#{lnid}")
+    @Results({@Result(column = "ct", property = "ct", jdbcType = JdbcType.INTEGER)})
+    public F41002Cnv1 checkF4311UomAndUom1(@Param("wmsco") String wmsco, @Param("wmsmcu") String wmsmcu, @Param("doco") String doco,
+                                           @Param("dcto") String dcto, @Param("lnid") String lnid);
+
+    @Select("SELECT Umcnv1 / 10000000 CNV1" +
+            "  FROM ${tableSchema}.F41002" +
+            " INNER JOIN ${tableSchema}.f4311" +
+            "    ON Pduom = UMUM" +
+            "   and Pditm = Umitm" +
+            //"   and Pdmcu = Ummcu" +
+            "   and PDUOM1 = UMRUM" +
+            " WHERE Pdkcoo =(SELECT LSCO FROM ${tableSchema}.FE8WMS20 WHERE TRIM(LSE8HZBM)=#{wmsco} and TRIM(LSE8WLZXID)=#{wmsmcu})" +
+            "   and Pddoco =#{doco}" +
+            "   and PDDCTO =#{dcto}" +
+            "   AND PDLNID =#{lnid,jdbcType = DECIMAL}" +
+            "   and pdUOM <> pdUOM1")
+    @Results({@Result(column = "CNV1", property = "cnv1", jdbcType = JdbcType.DECIMAL)})
+    F41002Cnv1 selectCnv1ByF4311(@Param("wmsco") String wmsco, @Param("wmsmcu") String wmsmcu, @Param("doco") String doco,
+                                 @Param("dcto") String dcto, @Param("lnid") BigDecimal lnid);
+
+    @Select("select count(1) CT" +
+            "  from ${tableSchema}.F4211" +
+            " where sdUOM <> sdUOM1" +
+            "   and sdkcoo =(SELECT LSCO FROM ${tableSchema}.FE8WMS20 WHERE TRIM(LSE8HZBM)=#{wmsco} and TRIM(LSE8WLZXID)=#{wmsmcu})" +
+            "   and sddoco =#{doco}" +
+            "   and sDDCTO =#{dcto}" +
+            "   AND sDLNID =#{lnid,jdbcType = DECIMAL}")
+    @Results({@Result(column = "ct", property = "ct", jdbcType = JdbcType.INTEGER)})
+    F41002Cnv1 checkF4211UomAndUom1(@Param("wmsco") String wmsco, @Param("wmsmcu") String wmsmcu, @Param("doco") String doco,
+                                    @Param("dcto") String dcto, @Param("lnid") BigDecimal lnid);
+
+
+    @Select("SELECT Umcnv1 / 10000000 CNV1" +
+            "  FROM ${tableSchema}.F41002" +
+            " INNER JOIN ${tableSchema}.f4211" +
+            "    ON sduom = UMUM" +
+            "   and sditm = Umitm" +
+           // "   and sdmcu = Ummcu" +
+            "   and sDUOM1 = UMRUM" +
+            " WHERE sdkcoo =(SELECT LSCO FROM ${tableSchema}.FE8WMS20 WHERE TRIM(LSE8HZBM)=#{wmsco} and TRIM(LSE8WLZXID)=#{wmsmcu})" +
+            "   and sddoco =#{doco}" +
+            "   and sDDCTO =#{dcto}" +
+            "   AND sDLNID =#{lnid,jdbcType = DECIMAL}" +
+            " and sdUOM <> sdUOM1")
+    @Results({@Result(column = "CNV1", property = "cnv1", jdbcType = JdbcType.DECIMAL)})
+    F41002Cnv1 selectCnv1ByF4211(@Param("wmsco") String wmsco, @Param("wmsmcu") String wmsmcu, @Param("doco") String doco,
+                                 @Param("dcto") String dcto, @Param("lnid") BigDecimal lnid);
+}

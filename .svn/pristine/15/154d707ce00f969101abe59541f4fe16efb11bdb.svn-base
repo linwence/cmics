@@ -1,0 +1,42 @@
+package com.el.cmic.mapper.account;
+
+import com.el.utils.ReadPropertiesUtil;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.jdbc.SQL;
+import org.apache.ibatis.type.JdbcType;
+
+import com.el.cmic.domain.account.AccountItem;
+
+public interface AccountItemMapper {
+    //动态 获取  db.properties  文件属性值
+    final String schema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "schema");
+    final String ctlSchema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "ctlSchema");
+
+    /**
+     * 对账推送  insert
+     *
+     * @return
+     */
+    @InsertProvider(type = AccountItemMapper.sqlProvider.class, method = AccountItemMapper.sqlProvider.ACCONT)
+    public Integer insertAccount(AccountItem accountItem);
+
+
+    class sqlProvider extends SQL {
+        public static final String ACCONT = "insertAccount";
+
+        public String insertAccount() {
+            INSERT_INTO(schema+".FE8WMS14");
+
+            // VALUES("dzmcu","#{dzmcu,jdbcType=NCHAR}");
+            //VALUES("dzco","#{dzco,jdbcType=NCHAR}");
+            VALUES("dzmcu", "(select LSMCU from "+schema+ ".FE8WMS20 where trim(LSE8WLZXID) = #{dzmcu,jdbcType=NCHAR} and trim(LSE8HZBM) = #{dzco,jdbcType=NCHAR})");
+            VALUES("dzco", "(select LSCO from "+schema+ ".FE8WMS20 where trim(LSE8WLZXID) = #{dzmcu,jdbcType=NCHAR} and trim(LSE8HZBM) = #{dzco,jdbcType=NCHAR})");
+            VALUES("dzlitm", "#{dzlitm,jdbcType=NCHAR}");
+            VALUES("dze8name", "#{dze8name,jdbcType=NCHAR}");
+            VALUES("dzlot1", "#{dzlot1,jdbcType=NCHAR}");
+            VALUES("dzuorg", "#{dzuorg,jdbcType=NCHAR}");
+            return toString();
+        }
+    }
+
+}

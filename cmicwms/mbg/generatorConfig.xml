@@ -118,7 +118,13 @@ ORDER BY table_name;
            enableUpdateByPrimaryKey="false"/>
     <table tableName="FE8WMS13" domainObjectName="Fe8wms13" enableInsert="false" enableDeleteByPrimaryKey="false"
            enableUpdateByPrimaryKey="false"/>
-    <table tableName="Fe8wmslg" domainObjectName="Fe8wmslg" enableInsert="false" enableDeleteByPrimaryKey="false"
+    <!--<table tableName="Fe8wmslg" domainObjectName="Fe8wmslg" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>-->
+    <table tableName="FE8WMS05" domainObjectName="Fe8wms05" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE8WMS20" domainObjectName="FE8WMS20" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="Ve8wms20" domainObjectName="Ve8wms20" enableInsert="false" enableDeleteByPrimaryKey="false"
            enableUpdateByPrimaryKey="false"/>
 
 

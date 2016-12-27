@@ -1,0 +1,45 @@
+package com.el.cmic.service.stock.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.alibaba.fastjson.JSON;
+import com.el.cmic.common.domain.WmsResult;
+import com.el.cmic.domain.stock.Stock;
+import com.el.cmic.domain.stock.StockDetail;
+import com.el.cmic.mapper.stock.StockDetailMapper;
+import com.el.cmic.service.stock.StockService;
+
+/**
+ * 销退入库验收推送
+ * @author zhanhao
+ *
+ */
+
+@Service
+public class StockServiceImpl implements  StockService{
+
+	@Autowired
+	private  StockDetailMapper stockDetailMapper;
+	
+	
+	@Override
+	@Transactional
+	public Integer insertStockDetail(StockDetail stockDetail) {
+		return stockDetailMapper.insertStockDetail(stockDetail);
+	}
+
+	@Override
+	@Transactional
+	public WmsResult callInsertConserveDatail(String data) {
+		 WmsResult wmsResult = new WmsResult(true, "0000", "成功");
+		 Stock stock = JSON.parseObject(data, Stock.class);
+		 if(stock != null){
+			 for(StockDetail stockDetail:stock.getStockDetail()){
+				 this.insertStockDetail(stockDetail);
+			 }
+		 }
+		return wmsResult;
+	}
+}

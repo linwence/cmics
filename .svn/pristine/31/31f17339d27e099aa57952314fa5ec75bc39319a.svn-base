@@ -1,0 +1,49 @@
+package com.el.cmic.ws.service;
+
+import com.el.cfg.domain.Fe8log02;
+import com.el.cmic.ws.domain.PhE001OutHeader;
+import com.el.cmic.ws.mapper.FE8LOG02MapperC;
+import com.el.utils.JdeDateUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+/**
+ * Created by king_ on 2016/10/20.
+ */
+@Service
+public class Log02ServiceImpl implements Log02Service{
+    @Autowired
+    FE8LOG02MapperC fe8LOG02MapperC;
+    @Override
+    @Transactional
+    public String writelog02(PhE001OutHeader phE001OutHeader, String no,String info,String ES,String reqno) {
+        Fe8log02 fe8log02 = new Fe8log02();
+        fe8log02.setLgdl01(phE001OutHeader.getErrcode());
+        fe8log02.setLglitm(no);
+        fe8log02.setLgdl02(reqno);
+        fe8log02.setLgdl03(phE001OutHeader.getDatatype());
+        if(phE001OutHeader.getErrcode()==null){
+            phE001OutHeader.setErrcode("ERROR");
+        }
+        if(!phE001OutHeader.getErrcode().equals("SUCCESS")) {
+            fe8log02.setLgdl04(phE001OutHeader.getMsg());
+        }
+        if((!phE001OutHeader.getErrcode().equals("SUCCESS")) && ES !=null){
+            fe8log02.setLgdl04(phE001OutHeader.getMsg()+ES);
+        }
+        if(phE001OutHeader.getErrcode().equals("SUCCESS") && ES !=null){
+            fe8log02.setLgdl04(ES);
+        }
+        fe8log02.setLgupmj(JdeDateUtil.toJdeDate(new Date()));
+        fe8log02.setLgupmt(new BigDecimal(JdeDateUtil.toJdeTime(new Date())));
+        fe8log02.setLgidate(new Date());
+
+        fe8log02.setLgvar1(info);
+        fe8LOG02MapperC.insert(fe8log02);
+        return null;
+    }
+}

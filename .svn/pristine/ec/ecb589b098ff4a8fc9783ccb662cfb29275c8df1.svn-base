@@ -1,0 +1,10 @@
+#spd.Url = http://58.221.248.222:168/JKSPDWebService/JKSPDWebService.asmx?wsdl
+#spd.Url=http://58.221.248.222:168/JKSPDWebService/JKSPDWebService.asmx/UpLoadData
+#spd.Url=http://58.221.248.222:168/JKSPDWebService/JKSPDWebService.asmx
+#spd.NameSpace=http://localhost/JKSPDWebService/
+#appKey,appPassword    from    fe8spd00  
+#spd.AppKey=2D5FD939-3648-4951-808E-5BF3EF86451F
+#spd.AppPassword=6c03968b17c917bb
+#spd.Ver=1
+#spd.ID=JKSPD
+spd.timer=10

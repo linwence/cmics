@@ -1,0 +1,419 @@
+/**
+ *
+ */
+package com.el.cmic.service.inbound;
+
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import com.el.cfg.domain.*;
+import com.el.cfg.mapper.Fe8wms04Mapper;
+import com.el.cmic.common.service.Ve8wms20Service;
+import com.el.cmic.domain.log.Fe8wmslg;
+import com.el.cmic.mapper.inbound.*;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.alibaba.fastjson.JSON;
+import com.el.cmic.common.BillType;
+import com.el.cmic.common.WmsInterfaceType;
+import com.el.cmic.common.domain.WmsData;
+import com.el.cmic.common.domain.WmsRequest;
+import com.el.cmic.common.domain.WmsResult;
+import com.el.cmic.domain.inbound.InboundPush;
+import com.el.cmic.domain.inbound.InboundPushDetail;
+import com.el.cmic.domain.inbound.InboundPushSerial;
+import com.el.utils.Base64Util;
+import com.el.utils.HttpRequest;
+
+/**
+ * @author ELSIAN
+ */
+@Service
+public class InboundServiceImpl implements InboundService {
+
+    Logger logger = Logger.getLogger(InboundServiceImpl.class);
+
+    @Autowired
+    protected InboundPushMapper inboundPushMapper;
+
+    @Autowired
+    private InboundBackMapper inboundBackMapper;
+
+    @Autowired
+    protected InboundPushDetailMapper inboundPushDetailMapper;
+
+    @Autowired
+    protected InboundF4211Mapper inboundF4211Mapper;
+
+    @Autowired
+    protected InboundF4311Mapper inboundF4311Mapper;
+    @Autowired
+    private Fe8wms04Mapper fe8wms04Mapper;
+    @Autowired
+    private InboundCommonMapper inboundCommonMapper;
+
+    @Value("${wms.ID}")
+    private String wmsId;
+    @Value("${wms.Ver}")
+    private String ver;
+    @Resource(name = "httpRequest")
+    private HttpRequest httpRequest;
+
+    // @Resource(name = "wmsRequest")
+    // private WmsRequest wmsRequest;
+    @Autowired
+    private Ve8wms20Service ve8wms20ServiceImpl;
+
+    public void callWmsInboundPushInterface() {
+
+        try {
+            List<Ve8wms20> ve8wms20List = ve8wms20ServiceImpl.selectAllVe8wms20();
+            for (Ve8wms20 ve8wms20 : ve8wms20List
+                    ) {
+                List<InboundPush> list = inboundPushMapper.selectAllWithDetails(ve8wms20.getLsco());
+                for (InboundPush item : list) {
+                    WmsData wms = new WmsData(WmsInterfaceType.RK_TYPE, wmsId, item);
+                    String data = wms.toJson();
+                    WmsRequest wmsRequest = new WmsRequest(ve8wms20.getLse8appk(), ve8wms20.getLsepapsd(), data, ver);
+                    //wmsRequest.setData(data);
+                    Fe8wmslg fe8wmslg = new Fe8wmslg();
+                    fe8wmslg.setLsdoco(item.getDoco());
+                    fe8wmslg.setLsdcto(item.getDcto());
+                    fe8wmslg.setLskcoo(item.getKcoo());
+                    fe8wmslg.setLsvar1(data);
+                    //fe8wmslg.setLsdl03("Request");
+                    fe8wmslg.setLsdl03(WmsInterfaceType.RK_TYPE);
+                    String result = httpRequest.sendPost(wmsRequest.toMap(), fe8wmslg);
+
+                    this.afterResponse(result, item);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("调用WMS入库推送接口失败," + e.getMessage());
+        }
+    }
+
+    private boolean afterResponse(String result, InboundPush item) {
+        result = Base64Util.decodeBase64(result);
+        WmsResult retWms = JSON.parseObject(result, WmsResult.class);
+        Boolean success = retWms.isSuccess();
+        if (success) {
+            // update
+            String flag = (item != null) ? item.getFlag() : "";
+            if (BillType.FLAG_SO.equals(flag)) {
+
+                // update F4211
+                if (item.getDetails() != null && item.getDetails().size() > 0) {
+                    this.updateF4211StatusList(item.getDetails());
+                }
+            } else if (BillType.FLAG_OP.equals(flag)) {
+
+                // update F4311
+                if (item.getDetails() != null && item.getDetails().size() > 0) {
+                    this.updateF4311StatusList(item.getDetails());
+                }
+            } else if (BillType.FLAG_IA.equals(flag)) {
+
+                // update FE8WMS03
+                if (item.getDetails() != null && item.getDetails().size() > 0) {
+                    this.updateFE8WMS03StatusList(item.getDetails());
+                }
+            }
+        } else {
+            // failed
+        }
+        return true;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.el.cmic.service.inbound.InboundService#getInboundPushList()
+     */
+    public List<InboundPush> getInboundPushList() {
+        List<InboundPush> list = inboundPushMapper.selectAll();
+        if (list != null && !list.isEmpty()) {
+            for (InboundPush row : list) {
+                List<InboundPushDetail> details = inboundPushDetailMapper.selectAll();
+                row.setDetails(details);
+            }
+        }
+        return list;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.el.cmic.service.inbound.InboundService#getInboundPushListWithDetails(
+     * )
+     */
+   /* public List<InboundPush> getInboundPushListWithDetails() {
+        List<InboundPush> list = inboundPushMapper.selectAllWithDetails();
+        return list;
+    }*/
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.el.cmic.service.inbound.InboundService#getPushData()
+     */
+    /*public String getPushData() {
+        List<InboundPush> list = inboundPushMapper.selectAllWithDetails();
+        return JSON.toJSONString(list, SerializerFeature.WriteMapNullValue, SerializerFeature.WriteNullStringAsEmpty,
+                SerializerFeature.WriteNullListAsEmpty, SerializerFeature.SortField);
+    }*/
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.el.cmic.service.inbound.InboundService#updateF4211Status(InboundPushDetail)
+     */
+    @Override
+    @Transactional
+    public int updateF4211Status(InboundPushDetail row) {
+        return inboundPushMapper.updateF4211Status(row);
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.el.cmic.service.inbound.InboundService#updateF4211Status(java.util.
+     * List)
+     */
+    @Override
+    @Transactional
+    public int updateF4211StatusList(List<InboundPushDetail> updList) {
+        // return f4211Mapper.updateStatusBatch(updList);
+        int cnt = 0;
+        if (updList != null && updList.size() > 0) {
+            for (InboundPushDetail row : updList) {
+                cnt += inboundPushMapper.updateF4211Status(row);
+            }
+        }
+        return cnt;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.el.cmic.service.inbound.InboundService#updateF4311Status(InboundPushDetail)
+     */
+    @Override
+    @Transactional
+    public int updateF4311Status(InboundPushDetail row) {
+        return inboundPushMapper.updateF4311Status(row);
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.el.cmic.service.inbound.InboundService#updateF4311StatusList(java.util.
+     * List)
+     */
+    @Override
+    @Transactional
+    public int updateF4311StatusList(List<InboundPushDetail> updList) {
+        // return f4311Mapper.updateStatusBatch(updList);
+        int cnt = 0;
+        if (updList != null && updList.size() > 0) {
+            for (InboundPushDetail row : updList) {
+                cnt += inboundPushMapper.updateF4311Status(row);
+            }
+        }
+        return cnt;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.el.cmic.service.inbound.InboundService#updateFE8WMS03Status(InboundPushDetail)
+     */
+    @Override
+    @Transactional
+    public int updateFE8WMS03Status(InboundPushDetail row) {
+        return inboundPushMapper.updateFE8WMS03Status(row);
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.el.cmic.service.inbound.InboundService#updateFE8WMS03StatusList(java.util.
+     * List)
+     */
+    @Override
+    @Transactional
+    public int updateFE8WMS03StatusList(List<InboundPushDetail> updList) {
+        // return f4311Mapper.updateStatusBatch(updList);
+        int cnt = 0;
+        if (updList != null && updList.size() > 0) {
+            for (InboundPushDetail row : updList) {
+                cnt += inboundPushMapper.updateFE8WMS03Status(row);
+            }
+        }
+        return cnt;
+    }
+
+    @Override
+    @Transactional
+    public WmsResult acceptData(String data) {
+        WmsResult wmsResult = new WmsResult(true, "0000", "成功");
+
+        InboundPush inboundPush = JSON.parseObject(data, InboundPush.class);
+        if (checkDuplicate(inboundPush.getFlag(), inboundPush.getWmsdoco(),
+                inboundPush.getDoco(), inboundPush.getKcoo(), inboundPush.getDcto())) {
+            wmsResult.setMessage("通知单已经收货");
+            return wmsResult;
+        }
+        Map<String, String> serialMap = new HashMap<String, String>();
+        if (BillType.FLAG_OP.equals(inboundPush.getFlag())) {
+            // 1采购入库、10调拨入库
+            inboundBackMapper.insertF47071(inboundPush);
+            int rownum = 0;
+            for (InboundPushDetail detail : inboundPush.getDetails()) {
+                rownum = rownum + 1;
+                detail.setEdsp("N");
+                if (detail.getUrec().intValue() ==0) {
+                    //拒收数量>0的话，设置为C
+                    //detail.setEdsp("C");
+                    continue;//收货数量=0就不生成
+                }
+                inboundBackMapper.insertF47072(inboundPush, detail, rownum);
+                inboundBackMapper.insertFe84108(inboundPush,detail);
+                //inboundBackMapper.insertFe8wms17(inboundPush, detail);
+
+                for (InboundPushSerial serial : detail.getSerials()) {
+                    //判断本次发的序列号是不是重复了
+                    String key = serial.getSerial() + ";" + detail.getLitm();
+                    if (serialMap.containsKey(key)) {
+                        continue;//已经有序列号了
+                    } else {
+                        serialMap.put(key, "1");
+                    }
+                    //判断数据库中是不是存在
+                    //Fe8wms04 fe8wms04=fe8wms04Mapper.selectByPrimaryKey(serial.getSerial());
+                    Fe8wms04 fe8wms04 = inboundCommonMapper.selectByPrimaryKey(serial.getSerial(), detail.getLitm(), detail.getLot1());
+                    if (fe8wms04 != null && fe8wms04.getXlptut01() != null) {
+                        continue;//已经有序列号了
+                    }
+                    inboundBackMapper.insertFe8wms04(inboundPush, detail, serial);
+                }
+            }
+        } else if (BillType.FLAG_SO.equals(inboundPush.getFlag())) {
+            // 2 销退入库// 库存调整
+            inboundBackMapper.insertF47131(inboundPush);
+            int rownum = 0;
+            for (InboundPushDetail detail : inboundPush.getDetails()) {
+                rownum = rownum + 1;
+                inboundBackMapper.insertF47132(inboundPush, detail, rownum);
+                //inboundBackMapper.insertFe8wms17(inboundPush, detail);
+                inboundBackMapper.insertFe84108(inboundPush,detail);
+                for (InboundPushSerial serial : detail.getSerials()) {
+                    //判断本次发的序列号是不是重复了
+                    String key = serial.getSerial() + ";" + detail.getLitm();
+                    if (serialMap.containsKey(key)) {
+                        continue;//已经有序列号了
+                    } else {
+                        serialMap.put(key, "1");
+                    }
+                    //判断数据库中是不是存在
+                    //Fe8wms04 fe8wms04=fe8wms04Mapper.selectByPrimaryKey(serial.getSerial());
+                    Fe8wms04 fe8wms04 = inboundCommonMapper.selectByPrimaryKey(serial.getSerial(), detail.getLitm(), detail.getLot1());
+                    if (fe8wms04 != null && fe8wms04.getXlptut01() != null) {
+                        continue;//已经有序列号了
+                    }
+                    inboundBackMapper.insertFe8wms04(inboundPush, detail, serial);
+                }
+            }
+//			// 库存调整
+//			inboundBackMapper.insertF47121(inboundPush);
+//			for (InboundPushDetail detail : inboundPush.getDetails()) {
+//				inboundBackMapper.insertF47122(inboundPush, detail);
+////				for (InboundPushSerial serial : detail.getSerials()) {
+////					inboundBackMapper.insertFe8wms04(inboundPush, detail, serial);
+////				}
+//			}
+        } else if (BillType.FLAG_IA.equals(inboundPush.getFlag())) {
+
+            // 组装拆配入库
+            for (InboundPushDetail detail : inboundPush.getDetails()) {
+                inboundBackMapper.insertFe8wms05(inboundPush, detail);
+                //inboundBackMapper.insertFe8wms17(inboundPush, detail);
+                inboundBackMapper.insertFe84108(inboundPush,detail);
+                for (InboundPushSerial serial : detail.getSerials()) {
+                    //判断本次发的序列号是不是重复了
+                    String key = serial.getSerial() + ";" + detail.getLitm();
+                    if (serialMap.containsKey(key)) {
+                        continue;//已经有序列号了
+                    } else {
+                        serialMap.put(key, "1");
+                    }
+                    //判断数据库中是不是存在
+                    //Fe8wms04 fe8wms04=fe8wms04Mapper.selectByPrimaryKey(serial.getSerial());
+                    Fe8wms04 fe8wms04 = inboundCommonMapper.selectByPrimaryKey(serial.getSerial(), detail.getLitm(), detail.getLot1());
+                    if (fe8wms04 != null && fe8wms04.getXlptut01() != null) {
+                        continue;//已经有序列号了
+                    }
+                    inboundBackMapper.insertFe8wms04(inboundPush, detail, serial);
+                }
+            }
+        }
+
+        return wmsResult;
+
+    }
+
+    /**
+     * 检查是不是重复收货
+     *
+     * @param type    业务类型
+     * @param wmsdoco wms收货单号，只有采购入库有
+     * @param doco
+     * @param kcoo
+     * @param dcto
+     * @return
+     */
+    private boolean checkDuplicate(String type, String wmsdoco, BigDecimal doco, String kcoo, String dcto) {
+        if (type.equals(BillType.FLAG_OP)) {
+            F47071 f47071 = inboundCommonMapper.selectByWmsNo(wmsdoco);
+            if (f47071 != null && f47071.getSyedoc().intValue() > 0) {
+                return true;
+            }
+            return false;
+        }
+
+        if (type.equals(BillType.FLAG_SO)) {
+            F47131 f47131 = inboundCommonMapper.selectF47131ByDoco(doco, kcoo, dcto);
+            if (f47131 != null && f47131.getSyedoc().intValue() > 0) {
+                return true;
+            }
+            return false;
+        }
+
+        if ((type.equals(BillType.FLAG_IA))) {
+            Fe8wms05 fe8wms05 = inboundCommonMapper.selectFe8wms05ByDoco(doco, kcoo, dcto);
+            if (fe8wms05 != null) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
+
+}

@@ -80,6 +80,22 @@ ORDER BY table_name;
 
     <table tableName="F4101" domainObjectName="F4101" enableInsert="false" enableDeleteByPrimaryKey="false"
            enableUpdateByPrimaryKey="false"/>
+   <!-- <table tableName="VE8SPD0099" domainObjectName="Ve8spd0099" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>-->
+    <!--<table tableName="Fe8spdlg" domainObjectName="Fe8spdlg" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>-->
+    <table tableName="FE8SPD10" domainObjectName="FE8SPD10" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE8SPD11" domainObjectName="FE8SPD11" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE8SPD12" domainObjectName="FE8SPD12" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE8SPD13" domainObjectName="FE8SPD13" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE8SPD14" domainObjectName="FE8SPD14" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE8SPD15" domainObjectName="FE8SPD15" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
 
 
 

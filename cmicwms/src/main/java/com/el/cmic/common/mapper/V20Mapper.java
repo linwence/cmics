@@ -1,0 +1,19 @@
+package com.el.cmic.common.mapper;
+
+import com.el.cfg.domain.Ve8wms20;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
+
+public interface V20Mapper {
+
+    @Select("select * from ${tableSchema}.Ve8wms20 where trim(LSCO) = #{kcoo}")
+    public List<Ve8wms20> selectVe8wms20ByKcoo(@Param("kcoo") String kcoo);
+
+    @Select("select * from ${tableSchema}.Ve8wms20")
+    public List<Ve8wms20> selectAllVe8wms20();
+
+    @Select("select * from ${tableSchema}.Ve8wms20 where trim(LSE8HZBM) = #{wmsCo} and  trim(lse8wlzxid)=#{logiticsCenterID}")
+    public List<Ve8wms20> selectVe8wms20ByWmsCo(@Param("wmsCo") String wmsCo, @Param("logiticsCenterID") String logiticsCenterID);
+}

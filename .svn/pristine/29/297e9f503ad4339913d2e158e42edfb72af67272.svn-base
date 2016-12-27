@@ -1,0 +1,55 @@
+package com.el.cmic.mapper.account;
+
+import com.el.cfg.domain.FE8WMS14;
+import com.el.utils.ReadPropertiesUtil;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.jdbc.SQL;
+import org.apache.ibatis.type.JdbcType;
+
+import com.el.cmic.domain.account.AccountItem;
+
+public interface AccountItemMapper {
+    //动态 获取  db.properties  文件属性值
+    final String schema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "schema");
+    final String ctlSchema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "ctlSchema");
+
+    /**
+     * 对账推送  insert
+     *
+     * @return
+     */
+    @InsertProvider(type = AccountItemMapper.sqlProvider.class, method = AccountItemMapper.sqlProvider.ACCONT)
+    public Integer insertAccount(AccountItem accountItem);
+
+
+    class sqlProvider extends SQL {
+        public static final String ACCONT = "insertAccount";
+
+        public String insertAccount() {
+            INSERT_INTO(schema + ".FE8WMS14");
+
+            // VALUES("dzmcu","#{dzmcu,jdbcType=NCHAR}");
+            //VALUES("dzco","#{dzco,jdbcType=NCHAR}");
+            VALUES("dzmcu", "(select LSMCU from " + schema + ".FE8WMS20 where trim(LSE8WLZXID) = #{dzmcu,jdbcType=NCHAR} and trim(LSE8HZBM) = #{dzco,jdbcType=NCHAR})");
+            VALUES("dzco", "(select LSCO from " + schema + ".FE8WMS20 where trim(LSE8WLZXID) = #{dzmcu,jdbcType=NCHAR} and trim(LSE8HZBM) = #{dzco,jdbcType=NCHAR})");
+            VALUES("dzlitm", "#{dzlitm,jdbcType=NCHAR}");
+            VALUES("dze8name", "#{dze8name,jdbcType=NCHAR}");
+            VALUES("dzlot1", "#{dzlot1,jdbcType=NCHAR}");
+            VALUES("dzuorg", "#{dzuorg,jdbcType=DECIMAL}*10000");
+            return toString();
+        }
+    }
+
+    @Select({"select dzmcu,dzco,dzlitm,dze8name,dzlot1,dzuorg",
+    " FROM ${tableSchema}.FE8WMS14 F14" +
+            " INNER JOIN ${tableSchema}.FE8WMS20 F20 ON F14.dzmcu=F20.Lsmcu and F14.dzco=F20.Lsco",
+    " WHERE TRIM(F20.LSE8WLZXID)=#{mcu,jdbcType=NCHAR} AND TRIM(F20.LSE8HZBM)=#{co,jdbcType=NCHAR}" +
+            " AND TRIM(F14.dzlitm)=#{litm,jdbcType=NCHAR} AND TRIM(F14.dzlot1)=#{lot1,jdbcType=NCHAR}"})
+   public FE8WMS14 selectFe8wms14ByPrimary(@Param("mcu") String mcu, @Param("co") String co, @Param("litm") String litm,@Param("lot1")String lot1);
+
+    @Delete({"DELETE FROM ${tableSchema}.FE8WMS14 F14 WHERE  (F14.dzmcu)=(select LSMCU from ${tableSchema}.FE8WMS20 where trim(LSE8WLZXID) = #{mcu,jdbcType=NCHAR} and trim(LSE8HZBM) = #{co,jdbcType=NCHAR}) AND (F14.dzco)=(select LSCO from ${tableSchema}.FE8WMS20 where trim(LSE8WLZXID) = #{mcu,jdbcType=NCHAR} and trim(LSE8HZBM) = #{co,jdbcType=NCHAR}) AND  TRIM(F14.dzlitm)=#{litm,jdbcType=NCHAR} AND TRIM(F14.dzlot1)=#{lot1,jdbcType=NCHAR} "})
+    public int deleteFe8wms14ByPrimary(@Param("mcu") String mcu, @Param("co") String co, @Param("litm") String litm,@Param("lot1")String lot1);
+}

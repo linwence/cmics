@@ -1,0 +1,135 @@
+package com.el.cmic.service.orderback;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import com.el.cmic.common.domain.Fe8spdlg;
+import com.el.cmic.common.domain.Ve8spd0099;
+import com.el.cmic.common.service.Ve8spd0099Service;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import com.el.cmic.common.SpdInterfaceType;
+import com.el.cmic.common.domain.SpdData;
+import com.el.cmic.common.domain.SpdResult;
+import com.el.cmic.domain.orderback.SpdOrderBack;
+import com.el.cmic.domain.orderback.SpdOrderBackDetail;
+import com.el.cmic.mapper.orderback.SpdOrderBackMapper;
+import com.el.cmic.service.department.impl.DepartmentDataServiceImpl;
+import com.el.cmic.service.validate.FE8SPD00Service;
+import com.el.utils.SpdClientService;
+
+/**
+ * Created by king_ on 2016/11/9.
+ */
+@Service
+public class SpdOrderBackServiceImpl implements SpdOrderBackService {
+    Logger logger = Logger.getLogger(DepartmentDataServiceImpl.class);
+
+    @Autowired
+    SpdOrderBackMapper spdOrderBackMapper;
+
+    @Value("${schema}")
+    private String schema;
+
+
+    @Resource(name = "spdClientService")
+    private SpdClientService spdClientService;
+    @Autowired
+    private Ve8spd0099Service ve8spd0099ServiceImpl;
+
+    @Autowired
+    private FE8SPD00Service fE8SPD00Service;
+
+    @Override
+    public void CallSpdOrderBackInterface() {
+        List<SpdOrderBack> spdOrderBackList = new ArrayList<SpdOrderBack>();
+        try {
+            spdOrderBackList = this.selectSpdOrderBackData();
+
+            for (SpdOrderBack tmp : spdOrderBackList) {
+                Ve8spd0099 ve8spd0099 = null;
+                try {
+                    String spdid = tmp.getE8spdid();
+                    String co = tmp.getKcoo();
+                    ve8spd0099 = ve8spd0099ServiceImpl.selectByCoAndSpdId(co, spdid);
+                    if (ve8spd0099 == null) {
+                        continue;
+                    }
+                    SpdData spdData = new SpdData(SpdInterfaceType.ORDERBACK_TYPE, spdid, tmp);
+                    String data = spdData.toJson();
+                    System.out.println(data);
+                    Fe8spdlg fe8spdlg = new Fe8spdlg();
+                    fe8spdlg.setLge8cgdd(tmp.getE8cgdd());//订单号
+                    fe8spdlg.setLge8qglx(tmp.getE8qglx());//订单类型
+                    fe8spdlg.setLge8erpid(tmp.getE8yhyye());//要货医院
+                    fe8spdlg.setLge8rzlx("INFO");//日志类型
+                    fe8spdlg.setLge8rzfx("TOSPD");//日志方向
+                    fe8spdlg.setLge8jkmc(SpdInterfaceType.ORDERBACK_TYPE);//接口名称
+                    fe8spdlg.setLge8rznr(data);//日志内容
+                    fe8spdlg.setLge8spdid(spdid);//SPD系统标识
+                    fe8spdlg.setLge8spdurl(ve8spd0099.getSpdurl());//SPD URL
+
+                    SpdResult spdResult = spdClientService.callSpdWebService(data, ve8spd0099.getAppkey(), ve8spd0099.getApppassword(),
+                            ve8spd0099.getSpdurl(), ve8spd0099.getSpdnamespace(), ve8spd0099.getSpdver(), fe8spdlg);
+
+                    System.out.println(spdResult);
+
+                    //spdRequest.setData(data);
+             /*
+                String encodeResult = callWebServiceImp.CallWSI(spdRequest.toMap());
+
+                byte[] bytes = Base64Utils.decodeFromString(encodeResult);
+                String decodeResult = new String(bytes, "utf-8");
+
+                System.out.println(encodeResult);*/
+                    // afterafterResponse(null,spdResult,tmp);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    logger.error("调用SPD订单返回接口表失败,订单号:" + tmp.getDoco());
+                }
+
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            logger.error("调用SPD订单返回接口表失败,错误信息" + ex.getMessage());
+        }
+
+
+    }
+
+    public List<SpdOrderBack> selectSpdOrderBackData() {
+        return spdOrderBackMapper.selectAllVe8dd001(schema);
+    }
+
+    public void afterafterResponse(SpdOrderBack spdOrderBack, SpdResult spdResult, SpdOrderBack tmp) {
+        // SpdResult spdResult =JSON.parseObject(jsonString,SpdResult.class);
+        String status = "Y";
+        //接口调用不成功  更新状态
+        if (!spdResult.isSuccess()) {
+            status = "E";
+        }
+        //---------------------------------------暂时没有字段进行更新 updateNxtrF4211(status,tmp);
+    }
+
+    public int updateNxtrF4211(String status, SpdOrderBack tmp) {
+        String kcoo = new String();
+        String dcto = new String();
+        BigDecimal doco = new BigDecimal(0);
+        BigDecimal lnid = new BigDecimal(0);
+        for (SpdOrderBackDetail tmp1 : tmp.getSpdOrderBackDetailList()) {
+            kcoo = tmp1.getKcoo();
+            doco = tmp1.getDoco();
+            dcto = tmp1.getDcto();
+            lnid = tmp1.getLnid();
+            spdOrderBackMapper.updateF4211(schema, status, kcoo, dcto, doco, lnid);
+        }
+        return 0;
+    }
+
+}

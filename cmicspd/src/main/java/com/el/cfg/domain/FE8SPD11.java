@@ -10,14 +10,19 @@ public class FE8SPD11 implements Serializable {
     private BigDecimal phukid;
 
     /**
-     *  null - FE8SPD11.PHLNID
+     *  null - FE8SPD11.PHRLLN
      */
-    private BigDecimal phlnid;
+    private BigDecimal phrlln;
 
     /**
      *  null - FE8SPD11.PHEV01
      */
     private String phev01;
+
+    /**
+     *  null - FE8SPD11.PHLNID
+     */
+    private BigDecimal phlnid;
 
     /**
      *  null - FE8SPD11.PHE8YLJGD
@@ -60,9 +65,9 @@ public class FE8SPD11 implements Serializable {
     private String phe8yyycn;
 
     /**
-     *  null - FE8SPD11.PHE8SGG
+     *  null - FE8SPD11.PHE8SPDGG
      */
-    private String phe8sgg;
+    private String phe8spdgg;
 
     /**
      *  null - FE8SPD11.PHE8SCCS
@@ -70,19 +75,19 @@ public class FE8SPD11 implements Serializable {
     private String phe8sccs;
 
     /**
-     *  null - FE8SPD11.PHE8SCD
+     *  null - FE8SPD11.PHE8SPDCD
      */
-    private String phe8scd;
+    private String phe8spdcd;
 
     /**
-     *  null - FE8SPD11.PHE8SDW
+     *  null - FE8SPD11.PHE8SPDDW
      */
-    private String phe8sdw;
+    private String phe8spddw;
 
     /**
-     *  null - FE8SPD11.PHE8SBZ
+     *  null - FE8SPD11.PHE8SPDBZ
      */
-    private BigDecimal phe8sbz;
+    private BigDecimal phe8spdbz;
 
     /**
      *  null - FE8SPD11.PHUPRC
@@ -109,12 +114,12 @@ public class FE8SPD11 implements Serializable {
         this.phukid = phukid;
     }
 
-    public BigDecimal getPhlnid() {
-        return phlnid;
+    public BigDecimal getPhrlln() {
+        return phrlln;
     }
 
-    public void setPhlnid(BigDecimal phlnid) {
-        this.phlnid = phlnid;
+    public void setPhrlln(BigDecimal phrlln) {
+        this.phrlln = phrlln;
     }
 
     public String getPhev01() {
@@ -123,6 +128,14 @@ public class FE8SPD11 implements Serializable {
 
     public void setPhev01(String phev01) {
         this.phev01 = phev01;
+    }
+
+    public BigDecimal getPhlnid() {
+        return phlnid;
+    }
+
+    public void setPhlnid(BigDecimal phlnid) {
+        this.phlnid = phlnid;
     }
 
     public String getPhe8yljgd() {
@@ -189,12 +202,12 @@ public class FE8SPD11 implements Serializable {
         this.phe8yyycn = phe8yyycn;
     }
 
-    public String getPhe8sgg() {
-        return phe8sgg;
+    public String getPhe8spdgg() {
+        return phe8spdgg;
     }
 
-    public void setPhe8sgg(String phe8sgg) {
-        this.phe8sgg = phe8sgg;
+    public void setPhe8spdgg(String phe8spdgg) {
+        this.phe8spdgg = phe8spdgg;
     }
 
     public String getPhe8sccs() {
@@ -205,28 +218,28 @@ public class FE8SPD11 implements Serializable {
         this.phe8sccs = phe8sccs;
     }
 
-    public String getPhe8scd() {
-        return phe8scd;
+    public String getPhe8spdcd() {
+        return phe8spdcd;
     }
 
-    public void setPhe8scd(String phe8scd) {
-        this.phe8scd = phe8scd;
+    public void setPhe8spdcd(String phe8spdcd) {
+        this.phe8spdcd = phe8spdcd;
     }
 
-    public String getPhe8sdw() {
-        return phe8sdw;
+    public String getPhe8spddw() {
+        return phe8spddw;
     }
 
-    public void setPhe8sdw(String phe8sdw) {
-        this.phe8sdw = phe8sdw;
+    public void setPhe8spddw(String phe8spddw) {
+        this.phe8spddw = phe8spddw;
     }
 
-    public BigDecimal getPhe8sbz() {
-        return phe8sbz;
+    public BigDecimal getPhe8spdbz() {
+        return phe8spdbz;
     }
 
-    public void setPhe8sbz(BigDecimal phe8sbz) {
-        this.phe8sbz = phe8sbz;
+    public void setPhe8spdbz(BigDecimal phe8spdbz) {
+        this.phe8spdbz = phe8spdbz;
     }
 
     public BigDecimal getPhuprc() {
@@ -260,8 +273,9 @@ public class FE8SPD11 implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", phukid=").append(phukid);
-        sb.append(", phlnid=").append(phlnid);
+        sb.append(", phrlln=").append(phrlln);
         sb.append(", phev01=").append(phev01);
+        sb.append(", phlnid=").append(phlnid);
         sb.append(", phe8yljgd=").append(phe8yljgd);
         sb.append(", phe8ksd=").append(phe8ksd);
         sb.append(", phe8zdgyse=").append(phe8zdgyse);
@@ -270,11 +284,11 @@ public class FE8SPD11 implements Serializable {
         sb.append(", phe8yyycd=").append(phe8yyycd);
         sb.append(", phe8yyyce=").append(phe8yyyce);
         sb.append(", phe8yyycn=").append(phe8yyycn);
-        sb.append(", phe8sgg=").append(phe8sgg);
+        sb.append(", phe8spdgg=").append(phe8spdgg);
         sb.append(", phe8sccs=").append(phe8sccs);
-        sb.append(", phe8scd=").append(phe8scd);
-        sb.append(", phe8sdw=").append(phe8sdw);
-        sb.append(", phe8sbz=").append(phe8sbz);
+        sb.append(", phe8spdcd=").append(phe8spdcd);
+        sb.append(", phe8spddw=").append(phe8spddw);
+        sb.append(", phe8spdbz=").append(phe8spdbz);
         sb.append(", phuprc=").append(phuprc);
         sb.append(", phuorg=").append(phuorg);
         sb.append(", phe8yjdhrq=").append(phe8yjdhrq);

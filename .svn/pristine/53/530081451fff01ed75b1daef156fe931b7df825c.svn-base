@@ -1,0 +1,228 @@
+package com.el.cmic.callmdm.service;
+
+import com.el.cfg.domain.F0101;
+import com.el.cfg.domain.Fe80101;
+import com.el.cfg.domain.Fe841003;
+import com.el.cfg.domain.Fe841005;
+import com.el.cmic.callmdm.domain.RqC001InputCustomC01;
+import com.el.cmic.callmdm.domain.RqE001InputProductE01;
+import com.el.cmic.callmdm.domain.RqInputHeader;
+import com.el.cmic.callmdm.domain.RqM001InputMfr;
+import com.el.cmic.callmdm.mapper.MftMapper;
+import com.el.cmic.common.domain.MdmDataType;
+import com.el.cmic.common.domain.MdmDirection;
+import com.el.cmic.common.domain.MdmFuncType;
+import com.el.utils.JAXBListUtil;
+import nc.itf.mdm.ws.mfr.QxmdmMfrService;
+import nc.itf.mdm.ws.mfr.QxmdmMfrServicePortType;
+import org.apache.log4j.Logger;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
+import java.math.BigDecimal;
+import java.net.URL;
+import java.util.List;
+
+/**
+ * Created by Vincent on 2016/10/13.
+ */
+@Component("rqMCallMdmServiceImpl")
+public class RqMCallMdmServiceImpl implements CallMdmService {
+    Logger logger = Logger.getLogger(RqMCallMdmServiceImpl.class);
+
+    private String ukid = "0";//申请单号
+
+    @Value("${schema}")
+    private String schema;
+    @Value("${ctlSchema}")
+    private String ctlSchema;
+    @Value("${mdm.username}")
+    private String mdmUserName;
+
+    @Value("${mdm.password}")
+    private String mdmPassword;
+    @Value("${QxmdmMfrService_Url}")
+    private String QxmdmMfrService_Url;
+
+    @Autowired
+    private MftMapper mftMapper;
+    @Autowired
+    Fe8Log01Service fe8Log01ServiceImpl;
+    @Autowired
+    private RqC001Service rqC001ServiceImpl;
+
+    @Override
+    public void addCallWS() {
+        try {
+            callWs(MdmFuncType.FUNC_TYPE_ADD);
+        } catch (Exception e) {
+            logger.error("----------------------------------------------------------------------------------------------");
+            logger.error("调用新增厂家接口失败："+e.getMessage());
+            logger.error("----------------------------------------------------------------------------------------------");
+        }
+    }
+
+    @Override
+    public void updateCallWS() {
+        try{
+            callWs(MdmFuncType.FUNC_TYPE_MOD);
+        }catch (Exception e){
+            logger.error("调用生产厂家修改申请接口失败:" + e.getMessage());
+        }
+
+    }
+
+    private void callWs(String funcType) {
+        List<RqM001InputMfr> rqM001InputMfrList = mftMapper.mfrQry(schema, ctlSchema, funcType);
+        for (RqM001InputMfr rqM001InputMfr : rqM001InputMfrList
+                ) {
+            try {
+                String an8 = rqM001InputMfr.getAn8();
+                String ev01 = rqM001InputMfr.getEv01();
+                String data = genDataXml(rqM001InputMfr, funcType);
+                logger.info("----------------------------------------------------------------------------------------------");
+                logger.info("准备调用厂家接口，发送xml字符串：");
+                logger.info(data);
+                logger.info("----------------------------------------------------------------------------------------------");
+
+                fe8Log01ServiceImpl.saveFe8Log01(fe8Log01ServiceImpl.INTER_ACTIVE_REQUEST, an8,
+                        MdmDataType.DATA_TYPE_C01, data, "INFO", funcType, "");
+
+                String responseXml = callQxmdmCusService(data, ev01, funcType);
+
+                afterResponse(responseXml, an8, funcType);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.error("----------------------------------------------------------------------------------------------");
+                logger.error("调用新增厂家接口失败："+e.getMessage());
+                logger.error("----------------------------------------------------------------------------------------------");
+            }
+        }
+    }
+
+    private String genDataXml(RqM001InputMfr rqM001InputMfr, String funcType) {
+        JAXBListUtil jaxbListUtil = null;
+        String xml = "";
+        ukid = rqM001InputMfr.getUkid();
+
+        logger.info("BillInfo信息：An8："+rqM001InputMfr.getAn8());
+        String billInfo = getBillInfo(rqM001InputMfr.getAn8(), ukid,null);
+
+        RqInputHeader rqInputHeader = this.getRqE001InputHeader(MdmDataType.DATA_TYPE_M01, billInfo, MdmDirection.TO_MDM, funcType);
+
+        jaxbListUtil = new JAXBListUtil(RqInputHeader.class);
+        String header = jaxbListUtil.toXml(rqInputHeader, "utf-8");
+        System.out.println(header);
+
+        jaxbListUtil = new JAXBListUtil(RqM001InputMfr.class);
+        // rqE001InputProductE01.setPk_mfcountry("CN");
+        // rqE001InputProductE01.setPk_mfname("0");
+        //rqE001InputProductE01.setProducttype("1111");
+
+        rqM001InputMfr.setUkid(null); //设置UKID为null由于ukid不需要导出到xml中
+        rqM001InputMfr.setEv01(null);
+        rqM001InputMfr.setAn8(null);
+        String rqMfrXml = jaxbListUtil.toXml(rqM001InputMfr, "utf-8");
+        System.out.println(rqMfrXml);
+
+        String detail = "<detail>" + rqMfrXml + "</detail>";
+        System.out.println(detail);
+
+        String content = "<content><count>1</count>" + detail + "</content>";
+        xml = "<?xml version='1.0' encoding='utf-8'?><xml>" + header + content + "</xml>";
+        System.out.println("===========================================");
+        System.out.println(xml);
+
+
+        return xml;
+    }
+
+    private String callQxmdmCusService(String data, String ev01Flag, String funcType) throws Exception {
+
+        QxmdmMfrService qxmdmMfrService = new QxmdmMfrService(new URL(QxmdmMfrService_Url));
+        QxmdmMfrServicePortType qxmdmMfrServicePortType = qxmdmMfrService.getQxmdmMfrServiceSOAP11PortHttp();
+        String responseXml = "";
+        if (StringUtils.isEmpty(ev01Flag)) {
+            ev01Flag = "";
+        }
+        if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD) || (funcType.equals(MdmFuncType.FUNC_TYPE_MOD) && !ev01Flag.equals("Y"))) {
+            //调用新增接口
+            logger.info("正在调用新增接口");
+            responseXml = qxmdmMfrServicePortType.reqMfrSrv(data, mdmUserName, mdmPassword);
+        } else {
+            //调用商品变更接口
+            responseXml = qxmdmMfrServicePortType.reqModMfrSrv(data, mdmUserName, mdmPassword);
+        }
+        return responseXml;
+    }
+
+    private void afterResponse(String responseXml, String an8, String funcType) throws DocumentException {
+        logger.info("正在接收返回信息");
+        BigDecimal an8Num = new BigDecimal(an8);
+        Document document = DocumentHelper.parseText(responseXml);
+        Element root = document.getRootElement();
+        Element headerElement = root.element("header");
+        Element errCode = headerElement.element("errcode");
+        Element dataType = headerElement.element("datatype");
+        Element msg = headerElement.element("msg");
+
+        String logType = "";
+        String flag = "";
+        String ev01 = null;
+        String codeValue = "";
+        String msgerr = "";
+        if (!errCode.getText().equals("SUCCESS")) {
+            logType = "ERROR";
+            flag = "E";
+            Element msgerre = headerElement.element("msg");
+            msgerr=msgerre.getText();
+            logger.error("----------------------------------------------------------------------------------------------");
+            logger.error("MDM接口接收错误"+msgerr);
+            logger.error("----------------------------------------------------------------------------------------------");
+        } else {
+            logType = "INFO";
+            Element codeinfo = headerElement.element("codeinfo");
+            Element code = codeinfo.element("code");
+            Element codeValueElement = code.element("codevalue");
+            flag = "Y";
+            ev01 = "N";
+            codeValue = codeValueElement.getText();
+        }
+
+        if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
+            Fe80101 fe80101 = new Fe80101();
+            fe80101.setKsan8(an8Num);
+            fe80101.setKsflag(flag);
+            fe80101.setKsev01(ev01);
+            if (flag.equals("Y")){
+                fe80101.setKse8kstym(codeValue);
+            }
+            rqC001ServiceImpl.updateFE80101(fe80101);//目的是为了更新传输状态Flag以及临时码标志
+
+            if (flag.equals("Y")) {//只有是返回成功了，才更新临时码
+                F0101 f0101 = new F0101();
+                f0101.setAban8(an8Num);
+                f0101.setAbalky(codeValue);
+                rqC001ServiceImpl.updateF0101(f0101);//记录临时码
+                logger.info("成功");
+            }
+        } else {
+            Fe841005 fe841005 = new Fe841005();
+            fe841005.setScflag(flag);
+            fe841005.setScukid(new BigDecimal(this.ukid));
+            rqC001ServiceImpl.updateFe841005(fe841005);//修改申请单状态
+            logger.info("成功");
+
+        }
+        //记录日志
+        fe8Log01ServiceImpl.saveFe8Log01(fe8Log01ServiceImpl.INTER_ACTIVE_RESPONSE, an8, dataType.getText(), responseXml, logType, funcType, msg.getText());
+
+    }
+}

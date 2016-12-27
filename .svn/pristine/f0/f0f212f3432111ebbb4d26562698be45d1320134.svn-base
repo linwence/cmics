@@ -1,0 +1,170 @@
+package com.el.cmic.service.repertory.impl;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.el.cfg.domain.Ve8wms20;
+import com.el.cmic.common.WmsInterfaceType;
+import com.el.cmic.common.domain.WmsData;
+import com.el.cmic.common.domain.WmsRequest;
+import com.el.cmic.common.domain.WmsResult;
+import com.el.cmic.common.service.Ve8wms20Service;
+import com.el.cmic.domain.ck.CkOrderDtl;
+import com.el.cmic.domain.log.Fe8wmslg;
+import com.el.utils.Base64Util;
+import com.el.utils.HttpRequest;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.alibaba.fastjson.JSONObject;
+import com.el.cmic.domain.repertory.InInvertoryCancel;
+import com.el.cmic.domain.repertory.InInvertoryCancelItem;
+import com.el.cmic.mapper.repertory.InInvertoryCancelMapper;
+import com.el.cmic.service.repertory.InInvertoryCancelService;
+import org.springframework.util.Base64Utils;
+
+import javax.annotation.Resource;
+
+@Service
+public class InInvertoryCancelServiceImpl implements InInvertoryCancelService {
+    Logger logger = Logger.getLogger(InInvertoryCancelServiceImpl.class);
+    @Autowired
+    private InInvertoryCancelMapper inInvertoryCancelMapper;
+    @Value("${wms.ID}")
+    private String wmsId;
+    @Value("${wms.Ver}")
+    private String ver;
+
+    @Resource(name = "httpRequest")
+    private HttpRequest httpRequest;
+    //@Resource(name = "wmsRequest")
+    //private WmsRequest wmsRequest;
+    @Autowired
+    private Ve8wms20Service ve8wms20ServiceImpl;
+
+    /**
+     * 入库取消返回推送  使用
+     */
+    @Transactional
+    public WmsResult updateOperation(String data) {
+        WmsResult wmsResult = new WmsResult(true, "0000", "成功");
+        try {
+            InInvertoryCancel inInvertoryCancel = JSONObject.toJavaObject(JSONObject.parseObject(data), InInvertoryCancel.class);
+            for (InInvertoryCancelItem inInvertoryCancelItem : inInvertoryCancel.getiICIList()) {
+                Map<String, String> mapParam = new HashMap<String, String>();
+                mapParam.put("qxdcto", inInvertoryCancel.getQxdcto());
+                mapParam.put("qxlnid", inInvertoryCancelItem.getQxlnid().toString());
+                mapParam.put("qxdoco", inInvertoryCancel.getQxdoco().toString());
+                mapParam.put("qxsocn", inInvertoryCancelItem.getSocn().toString());
+                //申请取消数量与“实际取消数量”是否相等，相等更新EV01=S（成功取消）,不相等更新EV01=D(取消失败)
+                if (inInvertoryCancelItem.getApplyQuant().compareTo(inInvertoryCancelItem.getSocn()) == 0) {
+                    mapParam.put("qxev01", "S");
+                } else {
+                   // mapParam.put("qxev01", "D");
+                    mapParam.put("qxev01", "S");
+                }
+                this.updateInInvertoryCancel(mapParam);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            wmsResult.setCode("1004");
+            wmsResult.setSuccess(false);
+            wmsResult.setMessage(e.getMessage());
+        }
+        return wmsResult;
+
+
+    }
+
+    /**
+     * 入库取消返回推送  使用
+     */
+    @Override
+    @Transactional
+    public Integer updateInInvertoryCancel(Map<String, String> paramMap) {
+        return inInvertoryCancelMapper.updateInInvertoryCancel(paramMap);
+    }
+
+    /**
+     * 入库单取消使用  wms提供服务
+     */
+    @Override
+    public List<InInvertoryCancel> selectInInvertoryCancel(String co,String mcu) {
+        return inInvertoryCancelMapper.selectInInvertoryCancel(co,mcu);
+    }
+
+    @Override
+    public void callWmsInCancelInterface() {
+        List<Ve8wms20> ve8wms20List = ve8wms20ServiceImpl.selectAllVe8wms20();
+        for (Ve8wms20 ve8wms20 : ve8wms20List
+                ) {
+            List<InInvertoryCancel> inInvertoryCancelList = new ArrayList<InInvertoryCancel>();
+            inInvertoryCancelList = selectInInvertoryCancel(ve8wms20.getLsco(),ve8wms20.getLsmcu());
+            for (InInvertoryCancel inInvertoryCancel : inInvertoryCancelList
+                    ) {
+                try {
+                    WmsData wmsData = new WmsData(WmsInterfaceType.RK_CANCEL_TYPE, wmsId, inInvertoryCancel);
+                    //生成data数据
+                    String data = JSON.toJSONString(wmsData, SerializerFeature.WriteMapNullValue);
+                    WmsRequest wmsRequest = new WmsRequest(ve8wms20.getLse8appk(), ve8wms20.getLsepapsd(), data, ver);
+                    //wmsRequest.setData(data);
+                    Fe8wmslg fe8wmslg = new Fe8wmslg();
+                    fe8wmslg.setLsdoco(inInvertoryCancel.getQxdoco());
+                    fe8wmslg.setLsdcto(inInvertoryCancel.getQxdcto());
+                    fe8wmslg.setLskcoo(inInvertoryCancel.getQxkcoo());
+                    fe8wmslg.setLsvar1(data);
+                    //fe8wmslg.setLsdl03("Request");
+                    fe8wmslg.setLsdl03(WmsInterfaceType.RK_CANCEL_TYPE);
+                    //调用请求
+                    String encodeResult = httpRequest.sendPost(wmsRequest.toMap(), fe8wmslg);
+
+                    byte[] bytes = Base64Utils.decodeFromString(encodeResult);
+                    String decodeResult = new String(bytes, "utf-8");
+                    afterResponse(decodeResult, inInvertoryCancel);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    logger.error("调用WMS入库取消接口失败," + e.getMessage());
+                }
+            }
+        }
+
+
+    }
+
+
+    public void afterResponse(String jsonString, InInvertoryCancel inInvertoryCancel) {
+        WmsResult wmsResult = JSON.parseObject(jsonString, WmsResult.class);
+        String status = "Y";
+        if (!wmsResult.isSuccess()) {
+            //更新状态
+            //status = "E";
+            status = "N";
+        }
+        String dcto = inInvertoryCancel.getQxdcto();
+        String kcoo = inInvertoryCancel.getQxkcoo();
+        BigDecimal doco = inInvertoryCancel.getQxdoco();
+        for (InInvertoryCancelItem inInvertoryCancelItem : inInvertoryCancel.getiICIList()
+                ) {
+            BigDecimal lnid = inInvertoryCancelItem.getQxlnid();
+            //更新传输标志
+            updateEv01(dcto, kcoo, doco, lnid, status);
+        }
+
+    }
+
+    @Transactional
+    public void updateEv01(String dcto, String kcoo, BigDecimal doco, BigDecimal lnid, String status) {
+        inInvertoryCancelMapper.updateEv01(dcto, kcoo, doco, lnid, status);
+    }
+
+
+}

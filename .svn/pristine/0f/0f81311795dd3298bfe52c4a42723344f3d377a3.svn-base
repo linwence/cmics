@@ -1,0 +1,31 @@
+package com.el.cmic.common.service;
+
+import com.el.cmic.common.domain.Ve8spd0099;
+import com.el.cmic.common.mapper.Ve8spd0099Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * Created by Vincent on 2016/11/22.
+ */
+@Service
+public class Ve8spd0099ServiceImpl implements Ve8spd0099Service {
+    @Autowired
+    private Ve8spd0099Mapper ve8spd0099Mapper;
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Ve8spd0099> selectByCo(String co) {
+        return ve8spd0099Mapper.selectByCo(co);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Ve8spd0099 selectBySpdId(String spdid) {
+        return ve8spd0099Mapper.selectBySpdId(spdid);
+    }
+}

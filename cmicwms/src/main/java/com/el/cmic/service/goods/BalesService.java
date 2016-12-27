@@ -7,7 +7,7 @@ import com.el.cmic.domain.goods.Licence;
 
 public interface BalesService {
 
-	public List<Bales> selectBalesList(String co);
+	public List<Bales> selectBalesList();
 	
 	public List<Licence> selectLicenceList(String litm);
 	

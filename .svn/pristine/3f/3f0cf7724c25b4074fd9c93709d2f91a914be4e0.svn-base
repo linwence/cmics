@@ -1,0 +1,147 @@
+package com.el.cmic.service.supplier.impl;
+
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.xml.rpc.ServiceException;
+
+import com.el.cmic.common.domain.Fe8spdlg;
+import com.el.cmic.common.domain.Ve8spd0099;
+import com.el.cmic.common.service.Ve8spd0099Service;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.el.cfg.domain.FE8SPD00;
+import com.el.cmic.common.SpdInterfaceType;
+import com.el.cmic.common.domain.SpdData;
+import com.el.cmic.common.domain.SpdResult;
+import com.el.cmic.domain.supplier.Supplier;
+import com.el.cmic.mapper.supplier.SupplierMapper;
+import com.el.cmic.service.supplier.SupplierService;
+import com.el.cmic.service.validate.FE8SPD00Service;
+import com.el.utils.AddSpaceUtil;
+import com.el.utils.CallWebServiceImp;
+import com.el.utils.SpdClientService;
+
+@Service
+public class SupplierServiceImpl implements SupplierService {
+    Logger logger=Logger.getLogger(SupplierServiceImpl.class);
+
+    @Autowired
+    private SupplierMapper supplierMapper;
+
+    //@Value("${spd.ID}")
+    //private String spdId;
+
+
+    @Resource(name = "callWebServiceImp")
+    private CallWebServiceImp callWebServiceImp;
+
+    @Resource(name = "spdClientService")
+    private SpdClientService spdClientService;
+
+    @Autowired
+    private FE8SPD00Service fE8SPD00Service;
+
+    @Autowired
+    private Ve8spd0099Service ve8spd0099ServiceImpl;
+
+    /**
+     * 供应商数据推送  查询list
+     *
+     * @return
+     */
+    @Override
+    public List<Supplier> selectSupplier() {
+        return supplierMapper.selectSupplier();
+    }
+
+    /**
+     * FE8SPD03 EV01  更新状态
+     *
+     * @return
+     */
+    @Override
+    @Transactional
+    public Integer updateEv01(String status, String span8, String spco) {
+        return supplierMapper.updateEv01(status, span8, spco);
+    }
+
+    /**
+     * 供应商数据推送    接口调用 入口
+     */
+    @Override
+    public void callSupplierInterface() {
+        List<Supplier> supplierList = new ArrayList<Supplier>();
+        supplierList = this.selectSupplier();
+        for (Supplier supplier : supplierList) {
+            //List<Ve8spd0099> ve8spd0099List = ve8spd0099ServiceImpl.selectByCo(supplier.getCo());
+            Ve8spd0099 ve8spd0099=null;
+            try{
+                ve8spd0099=ve8spd0099ServiceImpl.selectBySpdId(supplier.getSpdbs());
+                SpdData spdData = new SpdData(SpdInterfaceType.BUPPLIER_TYPE, ve8spd0099.getSpdid(), supplier, "明细");
+
+                //生成data数据
+                String data = spdData.toJson();
+                Fe8spdlg fe8spdlg = new Fe8spdlg();
+                fe8spdlg.setLge8cgdd(supplier.getAn8());//订单号
+                fe8spdlg.setLge8qglx("");//订单类型
+                fe8spdlg.setLge8erpid(supplier.getCo());//配送机构编码
+                fe8spdlg.setLge8rzlx("INFO");//日志类型
+                fe8spdlg.setLge8rzfx("TOSPD");//日志方向
+                fe8spdlg.setLge8jkmc(SpdInterfaceType.BUPPLIER_TYPE);//接口名称
+                fe8spdlg.setLge8rznr(data);//日志内容
+                fe8spdlg.setLge8spdid(supplier.getSpdbs());//SPD系统标识
+                fe8spdlg.setLge8spdurl(ve8spd0099.getSpdurl());//SPD URL
+
+                //调用spd接口
+                SpdResult spdResult = spdClientService.callSpdWebService(data, ve8spd0099.getAppkey(), ve8spd0099.getApppassword(),
+                        ve8spd0099.getSpdurl(), ve8spd0099.getSpdnamespace(), ve8spd0099.getSpdver(),fe8spdlg);
+                //System.out.print("数据测试结果:");
+                //System.out.println(spdResult);
+                afterResponse(supplier, spdResult);
+            }catch (RemoteException ex) {
+                ex.printStackTrace();
+                logger.error("调用[" + SpdInterfaceType.BUPPLIER_TYPE + "]失败,无法访问webservice;[url]"
+                        + ve8spd0099.getSpdurl() + ";供应商编码[" + supplier.getAn8() + "];[错误信息]:" + ex.getMessage());
+            } catch (UnsupportedEncodingException ex) {
+                ex.printStackTrace();
+                logger.error("调用[" + SpdInterfaceType.BUPPLIER_TYPE + "]失败,不支持的编码;供应商编码[" + supplier.getAn8() + "];[错误信息]:" + ex.getMessage());
+            } catch (ServiceException ex) {
+                ex.printStackTrace();
+                logger.error("调用[" + SpdInterfaceType.BUPPLIER_TYPE + "]失败,webservice服务异常;[url]"
+                        + ve8spd0099.getSpdurl() + ";供应商编码[" + supplier.getAn8() + "];[错误信息]:" + ex.getMessage());
+
+            } catch (MalformedURLException ex) {
+                ex.printStackTrace();
+                logger.error("调用[" + SpdInterfaceType.BUPPLIER_TYPE + "]失败,Url地址异常;[url]"
+                        + ve8spd0099.getSpdurl() + ";供应商编码[" + supplier.getAn8() + "];[错误信息]:" + ex.getMessage());
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                logger.error("调用[" + SpdInterfaceType.BUPPLIER_TYPE + "]失败，" +
+                        "供应商编码[" + supplier.getAn8() + "],[错误信息]:" + ex.getMessage());
+
+            }
+
+        }
+    }
+
+    public void afterResponse(Supplier supplier, SpdResult spdResult) {
+        String status = "Y";
+        //接口调用不成功  更新状态
+        if (!spdResult.isSuccess()) {
+            status = "E";
+        }
+        updateEv01(status, supplier.getAn8(), AddSpaceUtil.addSpanceRight(supplier.getCo(), 5));
+    }
+
+
+}

@@ -1,0 +1,457 @@
+package com.el.cmic.domain.record;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+import org.springframework.stereotype.Component;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.annotation.JSONType;
+/**
+ * 出库复核记录推送   实体
+ * @author zhanhao
+ *
+ */
+@JSONType(ignores={"ckuser","ckpid","ckupmj","cktday"})
+@Component
+public class OutCheckDetial {
+	 /**
+     *  物流中心 - FE8WMS07.CKMCU
+     */
+	@JSONField(name="物流中心")
+    private String ckmcu;
+    
+    /**
+     *  货主 - FE8WMS07.CKCO
+     */
+	@JSONField(name="货主")
+    private String ckco;
+    
+    /**
+     *  通知单号 - FE8WMS07.CKDOCO
+     */
+	@JSONField(name="通知单号")
+	private String orderNo;
+	@JSONField(name = "订单号")
+    private BigDecimal ckdoco;
+	@JSONField(name = "订单类型")
+	private String ckdcto;
+    
+    /**
+     *  复核单号 - FE8WMS07.CKPTUT01
+     */
+	@JSONField(name="复核单号")
+    private String ckptut01;
+    
+    /**
+     *  复核日期 - FE8WMS07.CKDTEE
+     */
+	@JSONField(name="复核日期",format="yyyy-MM-dd")
+    private Date ckdtee;
+    
+    /**
+     *  客户编号 - FE8WMS07.CKPTUT02
+     */
+	@JSONField(name="客户编号")
+    private String ckptut02;
+    
+    /**
+     *  客户名称 - FE8WMS07.CKE8TYM
+     */
+	@JSONField(name="客户名称")
+    private String cke8tym;
+    
+    /**
+     *  货品编号 - FE8WMS07.CKPTUT03
+     */
+	@JSONField(name="货品编号")
+    private String ckptut03;
+    
+    /**
+     *  货品名称 - FE8WMS07.CKE8NAME
+     */
+	@JSONField(name="货品名称")
+    private String cke8name;
+    
+    /**
+     *  批号 - FE8WMS07.CKFSTR1
+     */
+	@JSONField(name="批号")
+    private String ckfstr1;
+    
+    /**
+     *  灭菌批号 - FE8WMS07.CKFSTR2
+     */
+	@JSONField(name="灭菌批号")
+    private String ckfstr2;
+    
+    /**
+     *  有效期至 - FE8WMS07.CKIDATE
+     */
+	@JSONField(name="有效期至",format="yyyy-MM-dd")
+    private Date ckidate;
+
+    /**
+     *  生产日期 - FE8WMS07.CKRDATE
+     */
+	@JSONField(name="生产日期",format="yyyy-MM-dd")
+    private Date ckrdate;
+    
+    /**
+     *  复核数量 - FE8WMS07.CKUPRC
+     */
+	@JSONField(name="复核数量")
+    private BigDecimal ckuprc;
+    
+    /**
+     *  单位 - FE8WMS07.CKFSTR3
+     */
+	@JSONField(name="单位")
+    private String ckfstr3;
+    
+    /**
+     *  复核结论 - FE8WMS07.CKFSTR4
+     */
+	@JSONField(name="复核结论")
+    private String ckfstr4;
+    
+
+    /**
+     *  地址 - FE8WMS07.CKCONSTR1
+     */
+	@JSONField(name="地址")
+    private String ckconstr1;
+
+    /**
+     *  电话 - FE8WMS07.CKFSTR5
+     */
+	@JSONField(name="电话")
+    private String ckfstr5;
+    
+    /**
+     *  复核员 - FE8WMS07.CKFSTR6
+     */
+	@JSONField(name="复核员")
+    private String ckfstr6;
+    
+
+    /**
+     *  业务员 - FE8WMS07.CKFSTR61
+     */
+	@JSONField(name="业务员")
+    private String ckfstr61;
+    
+    /**
+     *  剂型 - FE8WMS07.CKFSTR62
+     */
+	@JSONField(name="剂型")
+    private String ckfstr62;
+    
+    /**
+     *  规格 - FE8WMS07.CKAHL1
+     */
+     @JSONField(name="规格")
+    private String ckahl1;
+    
+    /**
+     *  产地 - FE8WMS07.CKCONSTR2
+     */
+     @JSONField(name="产地")
+    private String ckconstr2;
+
+    /**
+     *  批准文号 - FE8WMS07.CKAHL2
+     */
+     @JSONField(name="批准文号")
+    private String ckahl2;
+    
+    /**
+     *  生产厂商 - FE8WMS07.CKCONSTR3
+     */
+     @JSONField(name="生产厂商")
+    private String ckconstr3;
+    
+    /**
+     *  null - FE8WMS07.CKUSER
+     */
+    private String ckuser;
+    /**
+     *  null - FE8WMS07.CKPID
+     */
+    private String ckpid;
+    /**
+     *  null - FE8WMS07.CKUPMJ
+     */
+    private Integer ckupmj;
+    
+    /**
+     *  null - FE8WMS07.CKTDAY
+     */
+    private BigDecimal cktday;
+
+	public String getCkmcu() {
+		return ckmcu;
+	}
+
+	public void setCkmcu(String ckmcu) {
+		this.ckmcu = ckmcu;
+	}
+
+	public String getCkco() {
+		return ckco;
+	}
+
+	public void setCkco(String ckco) {
+		this.ckco = ckco;
+	}
+
+	public BigDecimal getCkdoco() {
+		return ckdoco;
+	}
+
+	public void setCkdoco(BigDecimal ckdoco) {
+		this.ckdoco = ckdoco;
+	}
+
+	public String getCkptut01() {
+		return ckptut01;
+	}
+
+	public void setCkptut01(String ckptut01) {
+		this.ckptut01 = ckptut01;
+	}
+
+	public Date getCkdtee() {
+		return ckdtee;
+	}
+
+	public void setCkdtee(Date ckdtee) {
+		this.ckdtee = ckdtee;
+	}
+
+	public String getCkptut02() {
+		return ckptut02;
+	}
+
+	public void setCkptut02(String ckptut02) {
+		this.ckptut02 = ckptut02;
+	}
+
+	public String getCke8tym() {
+		return cke8tym;
+	}
+
+	public void setCke8tym(String cke8tym) {
+		this.cke8tym = cke8tym;
+	}
+
+	public String getCkptut03() {
+		return ckptut03;
+	}
+
+	public void setCkptut03(String ckptut03) {
+		this.ckptut03 = ckptut03;
+	}
+
+	public String getCke8name() {
+		return cke8name;
+	}
+
+	public void setCke8name(String cke8name) {
+		this.cke8name = cke8name;
+	}
+
+	public String getCkfstr1() {
+		return ckfstr1;
+	}
+
+	public void setCkfstr1(String ckfstr1) {
+		this.ckfstr1 = ckfstr1;
+	}
+
+	public String getCkfstr2() {
+		return ckfstr2;
+	}
+
+	public void setCkfstr2(String ckfstr2) {
+		this.ckfstr2 = ckfstr2;
+	}
+
+	public Date getCkidate() {
+		return ckidate;
+	}
+
+	public void setCkidate(Date ckidate) {
+		this.ckidate = ckidate;
+	}
+
+	public Date getCkrdate() {
+		return ckrdate;
+	}
+
+	public void setCkrdate(Date ckrdate) {
+		this.ckrdate = ckrdate;
+	}
+
+	public BigDecimal getCkuprc() {
+		return ckuprc;
+	}
+
+	public void setCkuprc(BigDecimal ckuprc) {
+		this.ckuprc = ckuprc;
+	}
+
+	public String getCkfstr3() {
+		return ckfstr3;
+	}
+
+	public void setCkfstr3(String ckfstr3) {
+		this.ckfstr3 = ckfstr3;
+	}
+
+	public String getCkfstr4() {
+		return ckfstr4;
+	}
+
+	public void setCkfstr4(String ckfstr4) {
+		this.ckfstr4 = ckfstr4;
+	}
+
+	public String getCkconstr1() {
+		return ckconstr1;
+	}
+
+	public void setCkconstr1(String ckconstr1) {
+		this.ckconstr1 = ckconstr1;
+	}
+
+	public String getCkfstr5() {
+		return ckfstr5;
+	}
+
+	public void setCkfstr5(String ckfstr5) {
+		this.ckfstr5 = ckfstr5;
+	}
+
+	public String getCkfstr6() {
+		return ckfstr6;
+	}
+
+	public void setCkfstr6(String ckfstr6) {
+		this.ckfstr6 = ckfstr6;
+	}
+
+	public String getCkfstr61() {
+		return ckfstr61;
+	}
+
+	public void setCkfstr61(String ckfstr61) {
+		this.ckfstr61 = ckfstr61;
+	}
+
+	public String getCkfstr62() {
+		return ckfstr62;
+	}
+
+	public void setCkfstr62(String ckfstr62) {
+		this.ckfstr62 = ckfstr62;
+	}
+
+	public String getCkahl1() {
+		return ckahl1;
+	}
+
+	public void setCkahl1(String ckahl1) {
+		this.ckahl1 = ckahl1;
+	}
+
+	public String getCkconstr2() {
+		return ckconstr2;
+	}
+
+	public void setCkconstr2(String ckconstr2) {
+		this.ckconstr2 = ckconstr2;
+	}
+
+	public String getCkahl2() {
+		return ckahl2;
+	}
+
+	public void setCkahl2(String ckahl2) {
+		this.ckahl2 = ckahl2;
+	}
+
+	public String getCkconstr3() {
+		return ckconstr3;
+	}
+
+	public void setCkconstr3(String ckconstr3) {
+		this.ckconstr3 = ckconstr3;
+	}
+
+	public String getCkuser() {
+		return ckuser;
+	}
+
+	public void setCkuser(String ckuser) {
+		this.ckuser = ckuser;
+	}
+
+	public String getCkpid() {
+		return ckpid;
+	}
+
+	public void setCkpid(String ckpid) {
+		this.ckpid = ckpid;
+	}
+
+	public Integer getCkupmj() {
+		return ckupmj;
+	}
+
+	public void setCkupmj(Integer ckupmj) {
+		this.ckupmj = ckupmj;
+	}
+
+	public BigDecimal getCktday() {
+		return cktday;
+	}
+
+	public void setCktday(BigDecimal cktday) {
+		this.cktday = cktday;
+	}
+
+	public String getOrderNo() {
+		return orderNo;
+	}
+
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
+	}
+
+	public String getCkdcto() {
+		return ckdcto;
+	}
+
+	public void setCkdcto(String ckdcto) {
+		this.ckdcto = ckdcto;
+	}
+
+	@Override
+	public String toString() {
+		return "OutCheckDetial [ckmcu=" + ckmcu + ", ckco=" + ckco
+				+ ", ckdoco=" + ckdoco + ", ckptut01=" + ckptut01 + ", ckdtee="
+				+ ckdtee + ", ckptut02=" + ckptut02 + ", cke8tym=" + cke8tym
+				+ ", ckptut03=" + ckptut03 + ", cke8name=" + cke8name
+				+ ", ckfstr1=" + ckfstr1 + ", ckfstr2=" + ckfstr2
+				+ ", ckidate=" + ckidate + ", ckrdate=" + ckrdate + ", ckuprc="
+				+ ckuprc + ", ckfstr3=" + ckfstr3 + ", ckfstr4=" + ckfstr4
+				+ ", ckconstr1=" + ckconstr1 + ", ckfstr5=" + ckfstr5
+				+ ", ckfstr6=" + ckfstr6 + ", ckfstr61=" + ckfstr61
+				+ ", ckfstr62=" + ckfstr62 + ", ckahl1=" + ckahl1
+				+ ", ckconstr2=" + ckconstr2 + ", ckahl2=" + ckahl2
+				+ ", ckconstr3=" + ckconstr3 + ", ckuser=" + ckuser
+				+ ", ckpid=" + ckpid + ", ckupmj=" + ckupmj + ", cktday="
+				+ cktday + "]";
+	}
+}

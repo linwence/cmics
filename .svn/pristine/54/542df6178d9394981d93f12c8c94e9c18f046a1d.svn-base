@@ -1,0 +1,51 @@
+package com.el.cmic.mapper.record;
+
+import com.el.utils.ReadPropertiesUtil;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.jdbc.SQL;
+
+import com.el.cmic.domain.record.OutCheckDetial;
+
+public interface OutCheckDetailMapper {
+	String schema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "schema");
+	
+	@InsertProvider(type=OutCheckDetailMapper.sqlProvider.class,method=OutCheckDetailMapper.sqlProvider.insertOutCheck)
+	public Integer  insertOutCheck(OutCheckDetial  outCheckDetial);
+	
+	class sqlProvider extends SQL{
+		public static final  String insertOutCheck="insertOutCheck";
+		public String insertOutCheck(OutCheckDetial  outCheckDetial){
+			INSERT_INTO(schema+".FE8WMS07");
+			VALUES("Ckukid", schema+".FE8WMS07_SEQ.NEXTVAL");
+			//VALUES("ckmcu","#{ckmcu,jdbcType=NCHAR}");
+			//VALUES("ckco","#{ckco,jdbcType=NCHAR}");
+			VALUES("ckmcu","(select LSMCU from "+schema+".FE8WMS20 where trim(LSE8WLZXID) = #{ckmcu,jdbcType=NCHAR} and trim(LSE8HZBM) = #{ckco,jdbcType=NCHAR})");
+			VALUES("ckco","(select LSCO from "+schema+".FE8WMS20 where trim(LSE8WLZXID) = #{ckmcu,jdbcType=NCHAR} and trim(LSE8HZBM) = #{ckco,jdbcType=NCHAR})");
+			VALUES("ckdoco","#{ckdoco,jdbcType=DECIMAL}");
+			VALUES("ckptut01","#{ckptut01,jdbcType=NCHAR}");
+			VALUES("ckdtee","#{ckdtee,jdbcType=DATE}");
+			VALUES("ckptut02","#{ckptut02,jdbcType=NCHAR}");
+			VALUES("cke8tym","#{cke8tym,jdbcType=NCHAR}");
+			VALUES("ckptut03","#{ckptut03,jdbcType=NCHAR}");
+			VALUES("cke8name","#{cke8name,jdbcType=NCHAR}");
+			VALUES("ckfstr1","#{ckfstr1,jdbcType=NCHAR}");
+			VALUES("ckfstr2","#{ckfstr2,jdbcType=NCHAR}");
+			VALUES("ckidate","#{ckidate,jdbcType=DATE}");
+			VALUES("ckrdate","#{ckrdate,jdbcType=DATE}");
+			VALUES("ckuprc","#{ckuprc,jdbcType=DECIMAL}");
+			VALUES("ckfstr3","#{ckfstr3,jdbcType=NCHAR}");
+			VALUES("ckfstr4","#{ckfstr4,jdbcType=NCHAR}");
+			VALUES("ckconstr1","#{ckconstr1,jdbcType=NCHAR}");
+			VALUES("ckfstr5","#{ckfstr5,jdbcType=NCHAR}");
+			VALUES("ckfstr6","#{ckfstr6,jdbcType=NCHAR}");
+			VALUES("ckfstr61","#{ckfstr61,jdbcType=NCHAR}");
+			VALUES("ckfstr62","#{ckfstr62,jdbcType=NCHAR}");
+			VALUES("ckahl1","#{ckahl1,jdbcType=NCHAR}");
+			VALUES("ckconstr2","#{ckconstr2,jdbcType=NCHAR}");
+			VALUES("ckahl2","#{ckahl2,jdbcType=NCHAR}");
+			VALUES("ckconstr3","#{ckconstr3,jdbcType=NCHAR}");
+			return toString();
+		}
+	}
+
+}

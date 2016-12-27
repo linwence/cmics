@@ -1,0 +1,534 @@
+package com.el.cmic.domain.stock;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
+/**
+ * 销退入库验收推送
+ * @author zhanhao
+ *
+ */
+public class StockDetail {
+	
+	/**
+     *  物流中心 - FE8WMS10.XTMCU
+     */
+	@JSONField(name="物流中心")
+    private String xtmcu;
+    
+    /**
+     *  货主 - FE8WMS10.XTCO
+     */
+	@JSONField(name="货主")
+    private String xtco;
+    
+    /**
+     *  通知单号 - FE8WMS10.XTDOCO
+     */
+	@JSONField(name="通知单号")
+    private BigDecimal xtdoco;
+    
+    /**
+     *  验收单号 - FE8WMS10.XTPTUT01
+     */
+	@JSONField(name="验收单号")
+    private String xtptut01;
+    
+    /**
+     *  客户编号 - FE8WMS10.XTPTUT02
+     */
+	@JSONField(name="客户编号")
+    private String xtptut02;
+    
+    /**
+     *  客户名称 - FE8WMS10.XTE8TYM
+     */
+	@JSONField(name="客户名称")
+    private String xte8tym;
+    
+    /**
+     *  货品编号 - FE8WMS10.XTPTUT03
+     */
+	@JSONField(name="货品编号")
+    private String xtptut03;
+    
+    /**
+     *  货品名称 - FE8WMS10.XTE8NAME
+     */
+	@JSONField(name="货品名称")
+    private String xte8name;
+    
+    /**
+     *  批号 - FE8WMS10.XTFSTR1
+     */
+	@JSONField(name="批号")
+    private String xtfstr1;
+    
+    /**
+     *  灭菌批号 - FE8WMS10.XTFSTR2
+     */
+	@JSONField(name="灭菌批号")
+    private String xtfstr2;
+    
+    /**
+     *  有效期至 - FE8WMS10.XTIDATE
+     */
+	@JSONField(name="有效期至",format="yyyy-MM-dd")
+    private Date xtidate;
+    
+    /**
+     *  生产日期 - FE8WMS10.XTRDATE
+     */
+	@JSONField(name="生产日期",format="yyyy-MM-dd")
+    private Date xtrdate;
+    
+    /**
+     *  到货数量 - FE8WMS10.XTUPRC
+     */
+	@JSONField(name="到货数量")
+    private BigDecimal xtuprc;
+    
+    /**
+     *  验收合格数量 - FE8WMS10.XTPRRC
+     */
+	@JSONField(name="验收合格数量")
+    private BigDecimal xtprrc;
+    
+    /**
+     *  拒收数量 - FE8WMS10.XTFRRC
+     */
+	@JSONField(name="拒收数量")
+    private BigDecimal xtfrrc;
+    
+    /**
+     *  质量状况 - FE8WMS10.XTFSTR2
+     */
+	@JSONField(name="质量状况")
+    private String xtdstl;
+    
+    /**
+     *  验收结论 - FE8WMS10.XTFSTR3
+     */
+	@JSONField(name="验收结论")
+    private String xtfstr3;
+    
+    /**
+     *  验收员 - FE8WMS10.XTFSTR4
+     */
+	@JSONField(name="验收员")
+    private String xtfstr4;
+    
+    /**
+     *  验收员2 - FE8WMS10.XTFSTR5
+     */
+	@JSONField(name="验收员2")
+    private String xtfstr5;
+    /**
+     *  验收日期 - FE8WMS10.XTDTEE
+     */
+	@JSONField(name="验收日期",format="yyyy-MM-dd")
+    private Date xtdtee;
+    
+    /**
+     *  到货日期 - FE8WMS10.XTDTETP
+     */
+	@JSONField(name="到货日期 ",format="yyyy-MM-dd")
+    private Date xtdtetp;
+    
+    /**
+     *  检验报告书 - FE8WMS10.XTDL01
+     */
+	@JSONField(name="检验报告书")
+    private String xtdl01;
+    
+    /**
+     *  不合格事项及处理措施 - FE8WMS10.XTADS1
+     */
+	@JSONField(name="不合格事项及处理措施 ")
+    private String xtads1;
+    
+    /**
+     *  通用名 - FE8WMS10.XTFSTR6
+     */
+	@JSONField(name="通用名")
+    private String xtfstr6;
+    
+    /**
+     *  剂型 - FE8WMS10.XTFSTR61
+     */
+	@JSONField(name="剂型")
+    private String xtfstr61;
+    
+    /**
+     *  规格 - FE8WMS10.XTDL011
+     */
+	@JSONField(name="规格")
+    private String xtdl011;
+    
+    /**
+     *  产地 - FE8WMS10.XTCONSTR1
+     */
+	@JSONField(name="产地")
+    private String xtconstr1;
+    
+    /**
+     *  注册证号 - FE8WMS10.XTAHL1
+     */
+	@JSONField(name="注册证号")
+    private String xtahl1;
+    
+    /**
+     *  批准文号 - FE8WMS10.XTAHL2
+     */
+	@JSONField(name="批准文号")
+    private String xtahl2;
+    
+    /**
+     *  生产厂商 - FE8WMS10.XTCONSTR2
+     */
+	@JSONField(name="生产厂商")
+    private String xtconstr2;
+    
+    /**
+     *  验收类别 - FE8WMS10.XTFSTR62
+     */
+	@JSONField(name="验收类别")
+    private String xtfstr62;
+    
+    /**
+     *  储存条件 - FE8WMS10.XTFSTR63
+     */
+	@JSONField(name="储存条件")
+    private String xtfstr63;
+    
+    /**
+     *  null - FE8WMS10.XTUSER
+     */
+    private String xtuser;
+    
+    /**
+     *  null - FE8WMS10.XTPID
+     */
+    private String xtpid;
+    
+    /**
+     *  null - FE8WMS10.XTUPMJ
+     */
+    private Integer xtupmj;
+    
+    /**
+     *  null - FE8WMS10.XTTDAY
+     */
+    private BigDecimal xttday;
+
+	public String getXtmcu() {
+		return xtmcu;
+	}
+
+	public void setXtmcu(String xtmcu) {
+		this.xtmcu = xtmcu;
+	}
+
+	public String getXtco() {
+		return xtco;
+	}
+
+	public void setXtco(String xtco) {
+		this.xtco = xtco;
+	}
+
+	public BigDecimal getXtdoco() {
+		return xtdoco;
+	}
+
+	public void setXtdoco(BigDecimal xtdoco) {
+		this.xtdoco = xtdoco;
+	}
+
+	public String getXtptut01() {
+		return xtptut01;
+	}
+
+	public void setXtptut01(String xtptut01) {
+		this.xtptut01 = xtptut01;
+	}
+
+	public String getXtptut02() {
+		return xtptut02;
+	}
+
+	public void setXtptut02(String xtptut02) {
+		this.xtptut02 = xtptut02;
+	}
+
+	public String getXte8tym() {
+		return xte8tym;
+	}
+
+	public void setXte8tym(String xte8tym) {
+		this.xte8tym = xte8tym;
+	}
+
+	public String getXtptut03() {
+		return xtptut03;
+	}
+
+	public void setXtptut03(String xtptut03) {
+		this.xtptut03 = xtptut03;
+	}
+
+	public String getXte8name() {
+		return xte8name;
+	}
+
+	public void setXte8name(String xte8name) {
+		this.xte8name = xte8name;
+	}
+
+	public String getXtfstr1() {
+		return xtfstr1;
+	}
+
+	public void setXtfstr1(String xtfstr1) {
+		this.xtfstr1 = xtfstr1;
+	}
+
+	public String getXtfstr2() {
+		return xtfstr2;
+	}
+
+	public void setXtfstr2(String xtfstr2) {
+		this.xtfstr2 = xtfstr2;
+	}
+
+	public Date getXtidate() {
+		return xtidate;
+	}
+
+	public void setXtidate(Date xtidate) {
+		this.xtidate = xtidate;
+	}
+
+	public Date getXtrdate() {
+		return xtrdate;
+	}
+
+	public void setXtrdate(Date xtrdate) {
+		this.xtrdate = xtrdate;
+	}
+
+	public BigDecimal getXtuprc() {
+		return xtuprc;
+	}
+
+	public void setXtuprc(BigDecimal xtuprc) {
+		this.xtuprc = xtuprc;
+	}
+
+	public BigDecimal getXtprrc() {
+		return xtprrc;
+	}
+
+	public void setXtprrc(BigDecimal xtprrc) {
+		this.xtprrc = xtprrc;
+	}
+
+	public BigDecimal getXtfrrc() {
+		return xtfrrc;
+	}
+
+	public void setXtfrrc(BigDecimal xtfrrc) {
+		this.xtfrrc = xtfrrc;
+	}
+
+	public String getXtdstl() {
+		return xtdstl;
+	}
+
+	public void setXtdstl(String xtdstl) {
+		this.xtdstl = xtdstl;
+	}
+
+	public String getXtfstr3() {
+		return xtfstr3;
+	}
+
+	public void setXtfstr3(String xtfstr3) {
+		this.xtfstr3 = xtfstr3;
+	}
+
+	public String getXtfstr4() {
+		return xtfstr4;
+	}
+
+	public void setXtfstr4(String xtfstr4) {
+		this.xtfstr4 = xtfstr4;
+	}
+
+	public String getXtfstr5() {
+		return xtfstr5;
+	}
+
+	public void setXtfstr5(String xtfstr5) {
+		this.xtfstr5 = xtfstr5;
+	}
+
+	public Date getXtdtee() {
+		return xtdtee;
+	}
+
+	public void setXtdtee(Date xtdtee) {
+		this.xtdtee = xtdtee;
+	}
+
+	public Date getXtdtetp() {
+		return xtdtetp;
+	}
+
+	public void setXtdtetp(Date xtdtetp) {
+		this.xtdtetp = xtdtetp;
+	}
+
+	public String getXtdl01() {
+		return xtdl01;
+	}
+
+	public void setXtdl01(String xtdl01) {
+		this.xtdl01 = xtdl01;
+	}
+
+	public String getXtads1() {
+		return xtads1;
+	}
+
+	public void setXtads1(String xtads1) {
+		this.xtads1 = xtads1;
+	}
+
+	public String getXtfstr6() {
+		return xtfstr6;
+	}
+
+	public void setXtfstr6(String xtfstr6) {
+		this.xtfstr6 = xtfstr6;
+	}
+
+	public String getXtfstr61() {
+		return xtfstr61;
+	}
+
+	public void setXtfstr61(String xtfstr61) {
+		this.xtfstr61 = xtfstr61;
+	}
+
+	public String getXtdl011() {
+		return xtdl011;
+	}
+
+	public void setXtdl011(String xtdl011) {
+		this.xtdl011 = xtdl011;
+	}
+
+	public String getXtconstr1() {
+		return xtconstr1;
+	}
+
+	public void setXtconstr1(String xtconstr1) {
+		this.xtconstr1 = xtconstr1;
+	}
+
+	public String getXtahl1() {
+		return xtahl1;
+	}
+
+	public void setXtahl1(String xtahl1) {
+		this.xtahl1 = xtahl1;
+	}
+
+	public String getXtahl2() {
+		return xtahl2;
+	}
+
+	public void setXtahl2(String xtahl2) {
+		this.xtahl2 = xtahl2;
+	}
+
+	public String getXtconstr2() {
+		return xtconstr2;
+	}
+
+	public void setXtconstr2(String xtconstr2) {
+		this.xtconstr2 = xtconstr2;
+	}
+
+	public String getXtfstr62() {
+		return xtfstr62;
+	}
+
+	public void setXtfstr62(String xtfstr62) {
+		this.xtfstr62 = xtfstr62;
+	}
+
+	public String getXtfstr63() {
+		return xtfstr63;
+	}
+
+	public void setXtfstr63(String xtfstr63) {
+		this.xtfstr63 = xtfstr63;
+	}
+
+	public String getXtuser() {
+		return xtuser;
+	}
+
+	public void setXtuser(String xtuser) {
+		this.xtuser = xtuser;
+	}
+
+	public String getXtpid() {
+		return xtpid;
+	}
+
+	public void setXtpid(String xtpid) {
+		this.xtpid = xtpid;
+	}
+
+	public Integer getXtupmj() {
+		return xtupmj;
+	}
+
+	public void setXtupmj(Integer xtupmj) {
+		this.xtupmj = xtupmj;
+	}
+
+	public BigDecimal getXttday() {
+		return xttday;
+	}
+
+	public void setXttday(BigDecimal xttday) {
+		this.xttday = xttday;
+	}
+
+	@Override
+	public String toString() {
+		return "StockDetail [xtmcu=" + xtmcu + ", xtco=" + xtco + ", xtdoco="
+				+ xtdoco + ", xtptut01=" + xtptut01 + ", xtptut02=" + xtptut02
+				+ ", xte8tym=" + xte8tym + ", xtptut03=" + xtptut03
+				+ ", xte8name=" + xte8name + ", xtfstr1=" + xtfstr1
+				+ ", xtfstr2=" + xtfstr2 + ", xtidate=" + xtidate
+				+ ", xtrdate=" + xtrdate + ", xtuprc=" + xtuprc + ", xtprrc="
+				+ xtprrc + ", xtfrrc=" + xtfrrc + ", xtdstl=" + xtdstl
+				+ ", xtfstr3=" + xtfstr3 + ", xtfstr4=" + xtfstr4
+				+ ", xtfstr5=" + xtfstr5 + ", xtdtee=" + xtdtee + ", xtdtetp="
+				+ xtdtetp + ", xtdl01=" + xtdl01 + ", xtads1=" + xtads1
+				+ ", xtfstr6=" + xtfstr6 + ", xtfstr61=" + xtfstr61
+				+ ", xtdl011=" + xtdl011 + ", xtconstr1=" + xtconstr1
+				+ ", xtahl1=" + xtahl1 + ", xtahl2=" + xtahl2 + ", xtconstr2="
+				+ xtconstr2 + ", xtfstr62=" + xtfstr62 + ", xtfstr63="
+				+ xtfstr63 + ", xtuser=" + xtuser + ", xtpid=" + xtpid
+				+ ", xtupmj=" + xtupmj + ", xttday=" + xttday + "]";
+	}
+
+}

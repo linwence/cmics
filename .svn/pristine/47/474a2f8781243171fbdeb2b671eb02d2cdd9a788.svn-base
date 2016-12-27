@@ -1,0 +1,87 @@
+/**
+ *
+ */
+package com.el.cmic.service.settlement;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.alibaba.fastjson.JSON;
+import com.el.cmic.common.domain.SpdResult;
+import com.el.cmic.domain.settlement.Settlement;
+import com.el.cmic.domain.settlement.SettlementDetail;
+import com.el.cmic.mapper.settlement.SettlementDetailMapper;
+import com.el.cmic.mapper.settlement.SettlementMapper;
+
+/**
+ * @author ELSIAN
+ */
+@Service
+public class SettlementServiceImpl implements SettlementService {
+
+	Logger logger = Logger.getLogger(SettlementServiceImpl.class);
+
+	@Autowired
+	protected SettlementMapper settlementMapper;
+
+	@Autowired
+	protected SettlementDetailMapper settlementDetailMapper;
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.el.cmic.service.order.SettlementService#getSettlementList()
+	 */
+	/*public List<Settlement> getSettlementList() {
+		List<Settlement> list = settlementMapper.selectAll();
+		if (list != null && !list.isEmpty()) {
+			for (Settlement row : list) {
+				List<SettlementDetail> details = settlementDetailMapper.selectAll();
+				row.setDetails(details);
+			}
+		}
+		return list;
+	}*/
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * com.el.cmic.service.order.SettlementService#getSettlementListWithDetails(
+	 * )
+	 */
+	/*public List<Settlement> getSettlementListWithDetails() {
+		List<Settlement> list = new ArrayList<Settlement>();// =
+		// SettlementMapper.selectAllWithDetails();
+		return list;
+	}*/
+
+	@Override
+	@Transactional
+	public SpdResult acceptData(String data) {
+		SpdResult SpdResult = new SpdResult(true, "0000", "成功");
+
+		Settlement settlement = JSON.parseObject(data, Settlement.class);
+
+		// SPD订单
+		if (settlement != null) {
+			settlementMapper.insertFE8SPD12(settlement);
+			int i = 0;
+			for (SettlementDetail detail : settlement.getDetails()) {
+				i += 1;
+				detail.setJmrlln(new BigDecimal(i));
+				detail.setJmev01(settlement.getJsev01());;
+				settlementDetailMapper.insertFE8SPD13(settlement, detail);
+			}
+		}
+		return SpdResult;
+
+	}
+
+}

@@ -1,0 +1,105 @@
+package com.el.cmic.service;
+
+import javax.jws.WebService;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.el.cmic.common.SpdInterfaceType;
+import com.el.cmic.common.domain.SpdResult;
+import com.el.cmic.common.service.ValidParamService;
+import com.el.cmic.service.revert.RevertDataService;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.el.cmic.service.order.SpdOrderService;
+import com.el.cmic.service.settlement.SettlementService;
+import org.springframework.util.Base64Utils;
+
+/**
+ * Created by Vincent on 2016/11/1.
+ */
+@WebService(endpointInterface = "com.el.cmic.service.SpdWsService")
+public class SpdWsServiceImpl implements SpdWsService {
+    Logger logger = Logger.getLogger(SpdWsServiceImpl.class);
+    @Autowired
+    private SpdOrderService spdOrderService;
+
+    @Autowired
+    private SettlementService settlementService;
+    @Autowired
+    private ValidParamService validParamServiceImpl;
+    @Autowired
+    private RevertDataService revertDataService;
+
+    public String UpLoadData(String appkey, String timestamp, String data, String sign, String ver) {
+        // TODO: 2016/11/1 所有jde提供的接口入口
+        SpdResult spdResult = null;
+        try {
+            JSONObject jsonObject = null;
+            //验证数据及签名是否正确，不正确的话直接返回
+            logger.info("接收到的数据:[appkey]=" + appkey +
+                    ";[timestamp]=" + timestamp +
+                    ";[data]=" + data + ";[sign]=" + sign + ";[ver]=" + ver);
+            spdResult = validParamServiceImpl.validData(timestamp, data, sign);
+            //fe8wmslg=validParamServiceImpl.getLogInfo();
+            // TODO: 2016/10/28 测试时可以先注释
+            //签名有问题，直接返回
+            if (!spdResult.isSuccess()) {
+                logger.error("返回的数据:" + spdResult.toString());
+                return spdResult.toJson();
+            }
+            //解码 TODO: 2016/10/28 测试时可以先注释
+            byte[] decodeBytes = Base64Utils.decodeFromString(data);
+            String decodeData = new String(decodeBytes, "utf-8");
+            logger.info("[data]解码:" + decodeData);
+            //jsonObject = JSON.parseObject(data);
+            //==========================================================
+            //数据转成Json对象
+            jsonObject = JSON.parseObject(decodeData);
+
+            //获取接口类型
+            String interfaceTypeName = jsonObject.get("接口类型").toString();
+
+            //获取接口数据
+            String interfaceData = jsonObject.get("接口数据").toString();
+            if (interfaceTypeName.equals(SpdInterfaceType.SPD_ORDER_TYPE)) {
+                // SPD订单数据接收
+                logger.info("........接收SPD订单接口表开始........");
+                spdResult=spdOrderService.acceptData(interfaceData);
+                logger.info("........接收SPD订单接口表结束........");
+            }
+            if (interfaceTypeName.equals(SpdInterfaceType.SPD_SETTLE_TYPE)) {
+                // SPD结算数据接收
+                logger.info("........接收SPD结算接口表开始........");
+                spdResult=settlementService.acceptData(interfaceData);
+                logger.info("........接收SPD结算接口表结束........");
+            }
+            if (interfaceTypeName.equals(SpdInterfaceType.SPD_REVERT_TYPE)) {
+<<<<<<< .mine
+                logger.info("........接收SPD请退接口表开始........");
+                spdResult=revertDataService.callInsertRevertData(interfaceData);
+                logger.info("........接收SPD请退接口表结束........");
+=======
+            	//SPD请退数据接收
+                revertDataService.callInsertRevertData(interfaceData);
+>>>>>>> .r372
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            spdResult = new SpdResult();
+            spdResult.setSuccess(false);
+            spdResult.setCode("1004");
+            spdResult.setMessage("数据接收失败,error:" + e.getMessage());
+            logger.error("返回的数据:" + spdResult.toString());
+
+        }
+        if (spdResult.isSuccess()) {
+            logger.info("返回的数据:" + spdResult.toString());
+        } else {
+            logger.error("返回的数据:" + spdResult.toString());
+        }
+
+
+        return spdResult.toJson();
+    }
+}

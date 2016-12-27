@@ -1,0 +1,107 @@
+package com.el.cmic.mapper.goods;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.jdbc.SQL;
+
+import com.el.cmic.domain.goods.Bales;
+import com.el.cmic.domain.goods.Licence;
+import com.el.utils.ReadPropertiesUtil;
+
+public interface BalesMapper {
+
+    /**
+     * 货品信息
+     *
+     * @return
+     */
+    @SelectProvider(type = BalesMapper.sqlProvider.class, method = BalesMapper.sqlProvider.selectBalesList)
+    public List<Bales> selectBalesList();
+
+
+    /**
+     * 证照 明细
+     *
+     * @param litm
+     * @return
+     */
+    @SelectProvider(type = BalesMapper.sqlProvider.class, method = BalesMapper.sqlProvider.selectLicenceList)
+    public List<Licence> selectLicenceList(String litm);
+
+    /**
+     * 更新  FE8WMS01 BSEV01 状态
+     *
+     * @param flag
+     * @param litm
+     * @return
+     */
+    @UpdateProvider(type = BalesMapper.sqlProvider.class, method = BalesMapper.sqlProvider.updataJdeStatus)
+    public Integer updataJdeStatus(String flag, String litm);
+
+
+    class sqlProvider extends SQL {
+        //动态 获取  db.properties  文件属性值
+        private static final String schema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "schema");
+        private static final String ctlSchema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "ctlSchema");
+
+        private static final String selectBalesList = "selectBalesList";
+
+        public String selectBalesList() {
+            String sql = "SELECT DISTINCT  trim(Spe8fxdj)||trim(Spe8cpfl) as goodsProperty,bslitm,lsco,LSE8HZBM,imlitm,spe8name,imsrtx,nvl(spe8jdsj,sysdate) spe8jdsj,imdsc2," +
+                    "(SELECT DRDL01 FROM " + ctlSchema + ".f0005  WHERE drsy='E8' AND DRRT='17' AND trim(DRKY)=trim(sporig)) as sporig," +
+                    "(SELECT DRDL01 FROM " + ctlSchema + ".f0005D WHERE drsy='00' AND DRRT='UM' AND trim(DRKY)=trim(IMUOM1)) as imuom1,round(Imsld/30) as imsld,case  when imstkt='P' THEN '开启'else '禁用'end imstkt,ccname,spe8name AS spe8tym,(case when spe8xlhgl='Y' THEN '是' else '否'end) as spe8xlhgl,nvl(spe8yhzq,0) as spe8yhzq,imsrp3,imsrp5,(case when spe8zdyh='Y' THEN '是' else '否' end ) as spe8zdyh,abalph," +
+                    "spe8jx," +
+                    //"(SELECT DRDL01 FROM " + ctlSchema + ".f0005  WHERE drsy='E8' AND DRRT='19' AND trim(DRKY)=trim(spe8cctj)) as spe8cctj " +
+                    " '' as spe8cctj"+//存储条件改成空字符串
+                    ",1 as packsize,1 as midPackSize,0 length,0 width,0 as height,0 as smallPackLength,0 as smallPackWidth,0 as smallPackHeight,0 as weight,0 as warnQty,'否' as electronFlag," +
+                    " '否' as logisticsFlag,'否' as clarityFlag,'否' as otcFlag,'否' as chineseFlag,'否' as interventionFlag,''" +
+                    " FROM   " + schema + ".FE8WMS01 "
+                    + " left  join   " + schema + ".F4101  ON  " + schema + ".FE8WMS01.BSLITM =  " + schema + ".F4101.IMLITM"
+                    + " left JOIN  " + schema + ".F4102 ON  " + schema + ".FE8WMS01.BSLITM =  " + schema + ".F4102.IBLITM "
+                    + " left JOIN  " + schema + ".FE84101 ON  " + schema + ".FE8WMS01.BSLITM =  " + schema + ".FE84101.SPLITM"
+                    + " left JOIN  " + schema + ".F0006 ON  " + schema + ".F4102.IBMCU =  " + schema + ".F0006.MCMCU"
+                    + " inner JOIN  " + schema + ".FE8WMS20 ON  " + schema + ".FE8WMS20.lsco =  " + schema + ".F0006.Mcco"
+                    + " left JOIN  " + schema + ".F0010 ON  " + schema + ".F0010.CCCO  =  " + schema + ".F0006.MCCO "
+                    + " left JOIN  " + schema + ".F0101 ON  " + schema + ".FE84101.SPAN8  =  " + schema + ".F0101.ABAN8 "
+                    + " where  " + schema + ".FE8WMS01.BSEV01 ='N'";// and trim(FE8WMS20.lsco)='"+co+"'" ;
+            return sql;
+        }
+
+        private static final String selectLicenceList = "selectLicenceList";
+
+        public String selectLicenceList(String litm) {
+            String sql = "select B.DRDL01 ZZE8ZZLXA," +
+                    "ZZE8ZZBM," +
+                    "CASE WHEN ZZEFTJ is null then" +
+                    " sysdate" +
+                    " else " +
+                    " (to_date(trunc(ZZEFTJ / 1000) + 1900 || '-01-01', 'yyyy-MM-dd') +" +
+                    " mod(ZZEFTJ, 1000) - 1)  " +
+                    " END as ZZEFTJ," +
+                    " CASE WHEN ZZEXDJ is null then" +
+                    " sysdate" +
+                    " else " +
+                    " (to_date(trunc(ZZEXDJ / 1000) + 1900 || '-01-01', 'yyyy-MM-dd') +" +
+                    " mod(ZZEXDJ, 1000) - 1)  " +
+                    " END as ZZEXDJ" +
+                    " from " + schema + ".FE84101Z " +
+                    " left JOIN "+ctlSchema+".f0005 B ON TRIM(FE84101Z.ZZE8ZZLXA)=TRIM(B.DRKY) AND B.drsy='E8' and B.drrt='28'" +
+                    " where  " + schema + ".FE84101Z.zzlitm='" + litm + "'";
+            return sql;
+        }
+
+        private static final String updataJdeStatus = "updataJdeStatus";
+
+        public String updataJdeStatus(String flag, String litm) {
+            String sql = "update " + schema + ".FE8WMS01 set BSEV01='" + flag + "' where trim(bslitm)='" + litm + "'";
+            return sql;
+        }
+
+    }
+
+
+}

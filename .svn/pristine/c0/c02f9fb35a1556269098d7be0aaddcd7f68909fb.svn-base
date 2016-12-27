@@ -1,0 +1,246 @@
+package com.el.cmic.mapper.ckback;
+
+import com.el.cfg.domain.F47131;
+import com.el.cfg.domain.F47132;
+import com.el.cfg.domain.Fe8wms04;
+import com.el.cmic.domain.ckback.CkBackOrder;
+import com.el.cmic.domain.ckback.CkBackOrderDtl;
+import com.el.cmic.domain.ckback.CkBackSequence;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.jdbc.SQL;
+import org.springframework.util.StringUtils;
+
+import java.math.BigDecimal;
+
+/**
+ * Created by Vincent on 2016/10/26.
+ */
+public interface CkBackMapper {
+    final String UPMJ = "(SELECT TO_CHAR(sysdate, 'yyyy') * 1000 + TO_CHAR(sysdate, 'ddd ') - 1900000 JULIAN  FROM DUAL)";
+    final String TDAY = "(select to_char(sysdate, 'HH24')*10000+to_char(sysdate, 'mi')*100+to_char(sysdate, 'ss') from dual)";
+
+    final class SqlProvider extends SQL {
+        public String insertF47131(@Param("ckBackOrder") CkBackOrder ckBackOrder) {
+            INSERT_INTO("F47131");
+            VALUES("SYEDOC", "#{ckBackOrder.syedoc}");
+            VALUES("SYEDST", "'860'");
+            VALUES("SYEDDT", "(SELECT TO_CHAR(sysdate, 'yyyy') * 1000 + TO_CHAR(sysdate, 'ddd ') - 1900000 JULIAN  FROM DUAL) ");
+            VALUES("SYEDER", "'R'");
+            VALUES("SYEDSP", "'N'");
+            VALUES("SYTPUR", "'4'");
+            VALUES("SYSFXO", "'000'");
+            VALUES("SYAN8", "(SELECT shan8 from F4201 where sHdoco=#{ckBackOrder.doco} and sHdcto=#{ckBackOrder.dcto})");
+            VALUES("SYSHAN", "(SELECT shshan from F4201 where sHdoco=#{ckBackOrder.doco} and sHdcto=#{ckBackOrder.dcto})");
+            VALUES("SYDRQJ", "(SELECT shtrdj  from F4201 where sHdoco=#{ckBackOrder.doco} and sHdcto=#{ckBackOrder.dcto})");
+            VALUES("SYUSER", "'WMS'");
+            VALUES("SYPID", "'Interface'");
+            VALUES("SYJOBN", "'Server'");
+            VALUES("SYUPMJ", UPMJ);
+            VALUES("SYTDAY", TDAY);
+            VALUES("SYMCU", " (select LSMCU from FE8WMS21 where trim(FE8WMS21.LSE8WLZXID) = #{ckBackOrder.wmsmcu})");
+            VALUES("SYDCTO", "#{ckBackOrder.dcto}");
+            VALUES("SYKCOO", "(select LSCO from FE8WMS20 where trim(LSE8HZBM) = #{ckBackOrder.wmskcoo})");
+            VALUES("SYEKCO", "(select LSCO from FE8WMS20 where trim(LSE8HZBM) = #{ckBackOrder.wmskcoo})");
+            VALUES("SYEDCT", "#{ckBackOrder.dcto}");
+
+            VALUES("SYDOCO", "#{ckBackOrder.doco}");
+            return toString();
+        }
+
+        public String insertF47132(@Param("ckBackOrder") CkBackOrder ckBackOrder, @Param("ckBackOrderDtl") CkBackOrderDtl ckBackOrderDtl,@Param("rowLineNo") int rowLineNo) {
+            INSERT_INTO("F47132");
+            VALUES("szekco", "(select LSCO from FE8WMS20 where trim(LSE8HZBM) = #{ckBackOrder.wmskcoo})");
+            VALUES("szedoc", "#{ckBackOrder.syedoc}");
+            VALUES("SZEDCT", "#{ckBackOrder.dcto}");
+            VALUES("SZEDST", "'860'");
+            VALUES("SZEDER", "'R'");
+            VALUES("SZEDSP", "'N'");
+            VALUES("SZKCOO", "(select LSCO from FE8WMS20 where trim(LSE8HZBM) = #{ckBackOrder.wmskcoo})");
+            VALUES("SZDOCO", "#{ckBackOrder.doco}");
+            VALUES("SZDCTO", "#{ckBackOrder.dcto}");
+            VALUES("SZSFXO", "'000'");
+            VALUES("SZMCU", "(select LSMCU from FE8WMS21 where trim(FE8WMS21.LSE8WLZXID) = #{ckBackOrder.wmsmcu})");
+            VALUES("SZAN8", "(SELECT sdan8 from F4211 where sddoco=#{ckBackOrder.doco} and sddcto=#{ckBackOrder.dcto} and sdlnid=#{ckBackOrderDtl.lnid})");
+            VALUES("SZSHAN", "(SELECT sdSHAN from F4211 where sddoco=#{ckBackOrder.doco} and sddcto=#{ckBackOrder.dcto} and sdlnid=#{ckBackOrderDtl.lnid})");
+            VALUES("SZUORG", "(SELECT sdUORG from F4211 where sddoco=#{ckBackOrder.doco} and sddcto=#{ckBackOrder.dcto} and sdlnid=#{ckBackOrderDtl.lnid})");
+            VALUES("SZUSER", "'WMS'");
+            VALUES("SZPID", "'Interface'");
+            VALUES("SZJOBN", "'Server'");
+            VALUES("SZUPMJ", UPMJ);
+            VALUES("SZTDAY", TDAY);
+            VALUES("SZEDLN", "#{rowLineNo}");
+            VALUES("SZLNID", "#{ckBackOrderDtl.lnid}");
+            VALUES("SZLITM", "#{ckBackOrderDtl.litm}");
+            VALUES("SZSOQS", "#{ckBackOrderDtl.uprc}*10000");
+            VALUES("SZSOCN", "#{ckBackOrderDtl.prrc}*10000");
+            VALUES("SZADDJ", "(SELECT TO_CHAR(nvl(#{ckBackOrderDtl.trdj},sysdate), 'yyyy') * 1000 +TO_CHAR(nvl(#{ckBackOrderDtl.trdj},sysdate), 'ddd ') - 1900000 JULIAN FROM DUAL)");
+            VALUES("szlocn", "(SELECT sdlocn from F4211 where sddoco=#{ckBackOrder.doco} and sddcto=#{ckBackOrder.dcto} and sdlnid=#{ckBackOrderDtl.lnid})");
+            VALUES("szlotn", "(SELECT sdlotn from F4211 where sddoco=#{ckBackOrder.doco} and sddcto=#{ckBackOrder.dcto} and sdlnid=#{ckBackOrderDtl.lnid})");
+            VALUES("SZLNTY","'S'");
+            VALUES("SZNXTR","'580'");
+            VALUES("SZLTTR","'560'");
+            VALUES("SZSONE","0");
+            VALUES("SZSWMS","' '");
+            return toString();
+        }
+
+        public String updateFe8wms04(@Param("ckBackOrder") CkBackOrder ckBackOrder, @Param("ckBackOrderDtl") CkBackOrderDtl ckBackOrderDtl, @Param("ckBackSequence") CkBackSequence ckBackSequence) {
+            UPDATE("Fe8wms04");
+            SET("XLAA05=#{ckBackSequence.aa05}");
+            SET("XLCA01=0");
+            SET("XLUPRC=#{ckBackSequence.uprc}*10000");
+            SET("XLUORG=#{ckBackSequence.uorg}");
+            //SET("XLLITM=#{ckBackOrderDtl.litm}");
+            //SET("XLPTUT02=#{f47132.szlitm}");
+            SET("XLKCOO=(select LSCO from FE8WMS20 where trim(LSE8HZBM) = #{ckBackOrder.wmskcoo})");
+            SET("XLDOCO=#{ckBackOrder.doco}");
+            SET("XLDCTO=#{ckBackOrder.dcto}");
+            SET("XLLNID=#{ckBackOrderDtl.lnid}");
+            SET("XLUSER='WMS'");
+            SET("XLPID='Interface'");
+            //SET("XLJOBN='Server'");
+            SET("XLUPMJ=" + UPMJ);
+            SET("XLTDAY=" + TDAY);
+            WHERE("TRIM(XLPTUT01)=#{ckBackSequence.seqNo}");
+            WHERE("TRIM(XLLITM)=#{ckBackOrderDtl.litm}");
+            WHERE("TRIM(Xllot1)=#{ckBackOrderDtl.ptut01}");
+            return toString();
+        }
+
+
+        public String insertF47071(@Param("ckBackOrder") CkBackOrder ckBackOrder) {
+            INSERT_INTO("F47071");
+            VALUES("SYEDOC", "#{ckBackOrder.syedoc}");
+            VALUES("SYEDST", "'861'");
+            VALUES("SYEDDT", "(SELECT TO_CHAR(sysdate, 'yyyy') * 1000 + TO_CHAR(sysdate, 'ddd ') - 1900000 JULIAN  FROM DUAL) ");
+            VALUES("SYEDER", "'R'");
+            VALUES("SYEDSP", "'N'");
+            VALUES("SYTPUR", "'02'");
+            VALUES("SYRATY", "'2'");
+            VALUES("SYSFXO", "'000'");
+            VALUES("SYAN8", "(SELECT PHAN8 from F4301 where PHdoco=#{ckBackOrder.doco} and PHdcto=#{ckBackOrder.dcto})");
+            VALUES("SYSHAN", "(SELECT PHshan from F4301 where PHdoco=#{ckBackOrder.doco} and PHdcto=#{ckBackOrder.dcto})");
+            // VALUES("SYDRQJ", "(SELECT shtrdj  from F4201 where PHdoco=#{ckBackOrder.doco} and PHdcto=#{ckBackOrder.dcto})");
+            VALUES("SYUSER", "'WMS'");
+            VALUES("SYPID", "'Interface'");
+            VALUES("SYJOBN", "'Server'");
+            VALUES("SYUPMJ", UPMJ);
+            VALUES("SYTDAY", TDAY);
+            VALUES("SYMCU", "(select LSMCU from FE8WMS21 where trim(FE8WMS21.LSE8WLZXID) = #{ckBackOrder.wmsmcu})");
+            VALUES("SYDCTO", "#{ckBackOrder.dcto}");
+            VALUES("SYKCOO", "(select LSCO from FE8WMS20 where trim(LSE8HZBM) = #{ckBackOrder.wmskcoo})");
+            VALUES("SYEKCO", "(select LSCO from FE8WMS20 where trim(LSE8HZBM) = #{ckBackOrder.wmskcoo})");
+            VALUES("SYEDCT", "#{ckBackOrder.dcto}");
+            VALUES("SYDOCO", "#{ckBackOrder.doco}");
+            return toString();
+        }
+
+        public String insertF47072(@Param("ckBackOrder") CkBackOrder ckBackOrder, @Param("ckBackOrderDtl") CkBackOrderDtl ckBackOrderDtl,@Param("rowLineNo") int rowLineNo) {
+            INSERT_INTO("F47072");
+            VALUES("szekco", "(select LSCO from FE8WMS20 where trim(LSE8HZBM) = #{ckBackOrder.wmskcoo})");
+            VALUES("szedoc", "#{ckBackOrder.syedoc}");
+            VALUES("SZEDCT", "#{ckBackOrder.dcto}");
+            VALUES("SZEDST", "'861'");
+            VALUES("SZEDER", "'R'");
+            VALUES("SZEDSP", "'N'");
+            VALUES("SZLSTS", "'7'");
+            VALUES("SZKCOO", "(select LSCO from FE8WMS20 where trim(LSE8HZBM) = #{ckBackOrder.wmskcoo})");
+            VALUES("SZDOCO", "#{ckBackOrder.doco}");
+            VALUES("SZDCTO", "#{ckBackOrder.dcto}");
+            VALUES("SZSFXO", "'000'");
+            VALUES("SZMCU", "(select LSMCU from FE8WMS21 where trim(FE8WMS21.LSE8WLZXID) = #{ckBackOrder.wmsmcu})");
+            VALUES("SZAN8", "(SELECT pdan8 from F4311 where pddoco=#{ckBackOrder.doco} and pddcto=#{ckBackOrder.dcto} and pdlnid=#{ckBackOrderDtl.lnid})");
+            VALUES("SZSHAN", "(SELECT pdSHAN from F4311 where pddoco=#{ckBackOrder.doco} and pddcto=#{ckBackOrder.dcto} and pdlnid=#{ckBackOrderDtl.lnid})");
+            VALUES("SZUORG", "(SELECT pdUORG from F4311 where pddoco=#{ckBackOrder.doco} and pddcto=#{ckBackOrder.dcto} and pdlnid=#{ckBackOrderDtl.lnid})");
+            VALUES("SZUSER", "'WMS'");
+            VALUES("SZPID", "'Interface'");
+            VALUES("SZJOBN", "'Server'");
+            VALUES("SZUPMJ", UPMJ);
+            VALUES("SZTDAY", TDAY);
+            VALUES("SZEDLN", "#{rowLineNo}");
+            VALUES("SZLNID", "#{ckBackOrderDtl.lnid}");
+            VALUES("SZLITM", "#{ckBackOrderDtl.litm}");
+            VALUES("SZUREC", "#{ckBackOrderDtl.uprc}*-10000");
+            VALUES("SZOTQY", "#{ckBackOrderDtl.prrc}*-10000");
+            VALUES("SZADDJ", "(SELECT TO_CHAR(nvl(#{ckBackOrderDtl.trdj},sysdate), 'yyyy') * 1000 +TO_CHAR(nvl(#{ckBackOrderDtl.trdj},sysdate), 'ddd ') - 1900000 JULIAN FROM DUAL)");
+            VALUES("SZBCRC","'CNY'");
+            VALUES("SZCRR","0");
+            VALUES("SZTRDJ","(SELECT TO_CHAR(nvl(#{ckBackOrderDtl.trdj},sysdate), 'yyyy') * 1000 +TO_CHAR(nvl(#{ckBackOrderDtl.trdj},sysdate), 'ddd ') - 1900000 JULIAN FROM DUAL)");
+            VALUES("SZMMEJ","(SELECT TO_CHAR(nvl(#{ckBackOrderDtl.trdj},sysdate), 'yyyy') * 1000 +TO_CHAR(nvl(#{ckBackOrderDtl.trdj},sysdate), 'ddd ') - 1900000 JULIAN FROM DUAL)");
+            VALUES("SZUOM","(SELECT Pduom from F4311 where pddoco=#{ckBackOrder.doco} and pddcto=#{ckBackOrder.dcto} and pdlnid=#{ckBackOrderDtl.lnid})");
+            VALUES("szlocn", "(SELECT pdlocn from F4311 where pddoco=#{ckBackOrder.doco} and pddcto=#{ckBackOrder.dcto} and pdlnid=#{ckBackOrderDtl.lnid})");
+            VALUES("szlotn", "(SELECT pdlotn from F4311 where pddoco=#{ckBackOrder.doco} and pddcto=#{ckBackOrder.dcto} and pdlnid=#{ckBackOrderDtl.lnid})");
+
+            return toString();
+        }
+
+        public String insertFe8wms05(@Param("ckBackOrder") CkBackOrder ckBackOrder, @Param("ckBackOrderDtl") CkBackOrderDtl ckBackOrderDtl) {
+            INSERT_INTO("FE8WMS05");
+            VALUES("XLCA01","1");
+            VALUES("XLDL03","#{ckBackOrder.ca01}");
+            VALUES("XLKCOO", "(select LSCO from FE8WMS20 where trim(LSE8HZBM) = #{ckBackOrder.wmskcoo})");
+            //VALUES("SZDOCO", "#{ckBackOrder.doco}");
+            VALUES("XLDCTO", "#{ckBackOrder.dcto}");
+            VALUES("XLCF01", "#{ckBackOrderDtl.remark}");
+            // VALUES("SZSFXO", "'000'");
+            VALUES("xlMCU", "(select LSMCU from FE8WMS21 where trim(FE8WMS21.LSE8WLZXID) = #{ckBackOrder.wmsmcu})");
+            //VALUES("SZAN8", "(SELECT pdan8 from F4311 where pddoco=#{ckBackOrder.doco} and pddcto=#{ckBackOrder.dcto} and pdlnid=#{ckBackOrderDtl.lnid})");
+            //VALUES("SZSHAN", "(SELECT pdSHAN from F4311 where pddoco=#{ckBackOrder.doco} and pddcto=#{ckBackOrder.dcto} and pdlnid=#{ckBackOrderDtl.lnid})");
+            //VALUES("SZUORG", "(SELECT pdUORG from F4311 where pddoco=#{ckBackOrder.doco} and pddcto=#{ckBackOrder.dcto} and pdlnid=#{ckBackOrderDtl.lnid})");
+            VALUES("XLUSER", "'WMS'");
+            VALUES("XLPID", "'Interface'");
+            //VALUES("XLJOBN", "'Server'");
+            VALUES("XLUPMJ", UPMJ);
+            VALUES("XLTDAY", TDAY);
+            VALUES("XLLNID", "#{ckBackOrderDtl.lnid}");
+            VALUES("XLLITM", "#{ckBackOrderDtl.litm}");
+            if (!StringUtils.isEmpty(ckBackOrderDtl.getPtut01())) {
+                VALUES("XLPTUT01", "#{ckBackOrderDtl.ptut01}");
+            }
+            if (!StringUtils.isEmpty(ckBackOrderDtl.getPtut02())) {
+                VALUES("XLPTUT02", "#{ckBackOrderDtl.ptut02}");
+            }
+            VALUES("XLCA02", "#{ckBackOrderDtl.ca02}");
+            VALUES("XLUPRC", "#{ckBackOrderDtl.uprc}*10000");
+            VALUES("XLPRRC", "#{ckBackOrderDtl.prrc}*10000");
+            VALUES("XLAMC3", "#{ckBackOrderDtl.amc3}*10000");
+            VALUES("XLTRDJ", "(SELECT TO_CHAR(nvl(#{ckBackOrderDtl.trdj},sysdate), 'yyyy') * 1000 +TO_CHAR(nvl(#{ckBackOrderDtl.trdj},sysdate), 'ddd ') - 1900000 JULIAN FROM DUAL)");
+            if (!StringUtils.isEmpty(ckBackOrderDtl.getE8name())) {
+                VALUES("XLE8NAME", "#{ckBackOrderDtl.e8name}");
+            }
+            VALUES("XLPEFJ", "(SELECT TO_CHAR(nvl(#{ckBackOrderDtl.pefj},sysdate), 'yyyy') * 1000 +TO_CHAR(nvl(#{ckBackOrderDtl.pefj},sysdate), 'ddd ') - 1900000 JULIAN FROM DUAL)");
+            VALUES("XLPSDJ", "(SELECT TO_CHAR(nvl(#{ckBackOrderDtl.psdj},sysdate), 'yyyy') * 1000 +TO_CHAR(nvl(#{ckBackOrderDtl.psdj},sysdate), 'ddd ') - 1900000 JULIAN FROM DUAL)");
+            if (!StringUtils.isEmpty(ckBackOrderDtl.getGrwt())) {
+                VALUES("XLGRWT", "#{ckBackOrderDtl.grwt}*10000");
+            }
+            return toString();
+        }
+
+    }
+
+    @InsertProvider(type = SqlProvider.class, method = "insertF47131")
+    @SelectKey(statement = "SELECT F47131_SEQ.NEXTVAL FROM DUAL", keyProperty = "ckBackOrder.syedoc", resultType = BigDecimal.class, before = true)
+    int insertF47131(@Param("ckBackOrder") CkBackOrder ckBackOrder);
+
+    @InsertProvider(type = SqlProvider.class, method = "insertF47132")
+        // @SelectKey(statement = "SELECT F47132_SEQ.NEXTVAL FROM DUAL", keyProperty = "szedoc", resultType = BigDecimal.class, before = true)
+        //int insertF47132(@Param("f47131") F47131 f47131, @Param("f47132") F47132 f47132);
+    int insertF47132(@Param("ckBackOrder") CkBackOrder ckBackOrder, @Param("ckBackOrderDtl") CkBackOrderDtl ckBackOrderDtl,@Param("rowLineNo") int rowLineNo);
+
+    @UpdateProvider(type = SqlProvider.class, method = "updateFe8wms04")
+    int updateFe8wms04(@Param("ckBackOrder") CkBackOrder ckBackOrder, @Param("ckBackOrderDtl") CkBackOrderDtl ckBackOrderDtl, @Param("ckBackSequence") CkBackSequence ckBackSequence);
+
+    @InsertProvider(type = SqlProvider.class, method = "insertF47071")
+    @SelectKey(statement = "SELECT F47071_SEQ.NEXTVAL FROM DUAL", keyProperty = "ckBackOrder.syedoc", resultType = BigDecimal.class, before = true)
+    int insertF47071(@Param("ckBackOrder") CkBackOrder ckBackOrder);
+
+    @InsertProvider(type = SqlProvider.class, method = "insertF47072")
+        //@SelectKey(statement = "SELECT F47072_SEQ.NEXTVAL FROM DUAL", keyProperty = "szedoc", resultType = BigDecimal.class, before = true)
+    int insertF47072(@Param("ckBackOrder") CkBackOrder ckBackOrder, @Param("ckBackOrderDtl") CkBackOrderDtl ckBackOrderDtl,@Param("rowLineNo") int rowLineNo);
+
+    @InsertProvider(type = SqlProvider.class, method = "insertFe8wms05")
+    int insertFe8wms05(@Param("ckBackOrder") CkBackOrder ckBackOrder, @Param("ckBackOrderDtl") CkBackOrderDtl ckBackOrderDtl);
+}

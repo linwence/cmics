@@ -1,0 +1,65 @@
+package com.el.cmic.common.mapper;
+
+import com.el.cmic.common.domain.Ve8spd0099;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.type.JdbcType;
+
+public interface Ve8spd0099Mapper {
+    @Select({
+            "select",
+            "CO, APPKEY, APPPASSWORD, LSDL01, SPDID, SPDURL,SPDNAMESPACE,SPDVER",
+            "from VE8SPD0099"
+    })
+    @Results({
+            @Result(column = "CO", property = "co", jdbcType = JdbcType.NCHAR),
+            @Result(column = "APPKEY", property = "appkey", jdbcType = JdbcType.NCHAR),
+            @Result(column = "APPPASSWORD", property = "apppassword", jdbcType = JdbcType.NCHAR),
+            @Result(column = "LSDL01", property = "lsdl01", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDID", property = "spdid", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDURL", property = "spdurl", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDNAMESPACE", property = "spdnamespace", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDVER", property = "spdver", jdbcType = JdbcType.NCHAR)
+    })
+    List<Ve8spd0099> selectAll();
+
+    @Select({
+            "select",
+            "CO, APPKEY, APPPASSWORD, LSDL01, SPDID, SPDURL,SPDNAMESPACE,SPDVER",
+            "from VE8SPD0099",
+            "where trim(co)=#{co}"
+    })
+    @Results({
+            @Result(column = "CO", property = "co", jdbcType = JdbcType.NCHAR),
+            @Result(column = "APPKEY", property = "appkey", jdbcType = JdbcType.NCHAR),
+            @Result(column = "APPPASSWORD", property = "apppassword", jdbcType = JdbcType.NCHAR),
+            @Result(column = "LSDL01", property = "lsdl01", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDID", property = "spdid", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDURL", property = "spdurl", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDNAMESPACE", property = "spdnamespace", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDVER", property = "spdver", jdbcType = JdbcType.NCHAR)
+    })
+    List<Ve8spd0099> selectByCo(String co);
+
+    @Select({
+            "select",
+            "CO, APPKEY, APPPASSWORD, LSDL01, SPDID, SPDURL,SPDNAMESPACE,SPDVER",
+            "from VE8SPD0099",
+            "where trim(SPDID)=#{spdid}"
+    })
+    @Results({
+            @Result(column = "CO", property = "co", jdbcType = JdbcType.NCHAR),
+            @Result(column = "APPKEY", property = "appkey", jdbcType = JdbcType.NCHAR),
+            @Result(column = "APPPASSWORD", property = "apppassword", jdbcType = JdbcType.NCHAR),
+            @Result(column = "LSDL01", property = "lsdl01", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDID", property = "spdid", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDURL", property = "spdurl", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDNAMESPACE", property = "spdnamespace", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPDVER", property = "spdver", jdbcType = JdbcType.NCHAR)
+    })
+    Ve8spd0099 selectBySpdId(String spdid);
+}

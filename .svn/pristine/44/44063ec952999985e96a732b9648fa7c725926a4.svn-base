@@ -1,0 +1,140 @@
+package com.el.cmic.service.goods.impl;
+
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.xml.rpc.ServiceException;
+
+import com.el.cmic.common.domain.Fe8spdlg;
+import com.el.cmic.common.domain.Ve8spd0099;
+import com.el.cmic.common.service.Ve8spd0099Service;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.el.cfg.domain.FE8SPD00;
+import com.el.cmic.common.SpdInterfaceType;
+import com.el.cmic.common.domain.SpdData;
+import com.el.cmic.common.domain.SpdResult;
+import com.el.cmic.domain.goods.BalePrice;
+import com.el.cmic.mapper.goods.BalePriceMapper;
+import com.el.cmic.service.goods.BalePriceService;
+import com.el.cmic.service.validate.FE8SPD00Service;
+import com.el.utils.AddSpaceUtil;
+import com.el.utils.SpdClientService;
+
+@Service
+public class BalePriceServiceImpl implements BalePriceService {
+    Logger logger = Logger.getLogger(BalePriceServiceImpl.class);
+
+    @Autowired
+    private BalePriceMapper balePriceMapper;
+
+    // @Value("${spd.ID}")
+    // private String spdId;
+
+
+    @Resource(name = "spdClientService")
+    private SpdClientService spdClientService;
+
+    @Autowired
+    private FE8SPD00Service fE8SPD00Service;
+    @Autowired
+    private Ve8spd0099Service ve8spd0099ServiceImpl;
+
+    @Override
+    public List<BalePrice> selectBalePrice() {
+        return balePriceMapper.selectBalePrice();
+    }
+
+    @Override
+    @Transactional
+    public Integer updateEV01(String status, String co, String limt) {
+        return balePriceMapper.updateEV01(status, co, limt);
+    }
+
+
+    /**
+     * 更新  FE8SPD04  更新   EV01   接口入口
+     */
+    @Override
+    public void callBalePriceImplement() {
+        List<BalePrice> arrayList = new ArrayList<BalePrice>();
+        try{
+            arrayList = this.selectBalePrice();
+            for (BalePrice balePrice : arrayList) {
+                // List<Ve8spd0099> ve8spd0099List = ve8spd0099ServiceImpl.selectByCo(balePrice.getCo());
+                Ve8spd0099 ve8spd0099 = null;
+                try {
+                    ve8spd0099 = ve8spd0099ServiceImpl.selectByCoAndSpdId(balePrice.getCo(),balePrice.getSpdbs());
+                    if(null==ve8spd0099){
+                        continue;
+                    }
+                    //balePrice.setSpdbs(ve8spd0099.getSpdid());//设置spd标识
+
+                    SpdData spdData = new SpdData(SpdInterfaceType.BALEPRICE_TYPE, ve8spd0099.getSpdid(), balePrice, "明细");
+                    //生成data数据
+                    String data = spdData.toJson();
+
+                    Fe8spdlg fe8spdlg = new Fe8spdlg();
+                    fe8spdlg.setLge8cgdd(balePrice.getLitm());//订单号
+                    fe8spdlg.setLge8qglx("");//订单类型
+                    fe8spdlg.setLge8erpid(balePrice.getCo());//配送机构编码
+                    fe8spdlg.setLge8rzlx("INFO");//日志类型
+                    fe8spdlg.setLge8rzfx("TOSPD");//日志方向
+                    fe8spdlg.setLge8jkmc(SpdInterfaceType.BALEPRICE_TYPE);//接口名称
+                    fe8spdlg.setLge8rznr(data);//日志内容
+                    fe8spdlg.setLge8spdid(balePrice.getSpdbs());//SPD系统标识
+                    fe8spdlg.setLge8spdurl(ve8spd0099.getSpdurl());//SPD URL
+
+                    //调用接口
+                    SpdResult spdResult = spdClientService.callSpdWebService(data, ve8spd0099.getAppkey(), ve8spd0099.getApppassword(),
+                            ve8spd0099.getSpdurl(), ve8spd0099.getSpdnamespace(), ve8spd0099.getSpdver(), fe8spdlg);
+
+                    afterResponse(balePrice, spdResult);
+                } catch (RemoteException ex) {
+                    ex.printStackTrace();
+                    logger.error("调用[" + SpdInterfaceType.BALEPRICE_TYPE + "]失败,无法访问webservice;[url]"
+                            + ve8spd0099.getSpdurl() + ";ERP商品编号[" + balePrice.getLitm() + "];[错误信息]:" + ex.getMessage());
+                } catch (UnsupportedEncodingException ex) {
+                    ex.printStackTrace();
+                    logger.error("调用[" + SpdInterfaceType.BALEPRICE_TYPE + "]失败,不支持的编码;ERP商品编号[" + balePrice.getLitm() + "];[错误信息]:" + ex.getMessage());
+                } catch (ServiceException ex) {
+                    ex.printStackTrace();
+                    logger.error("调用[" + SpdInterfaceType.BALEPRICE_TYPE + "]失败,webservice服务异常;[url]"
+                            + ve8spd0099.getSpdurl() + ";ERP商品编号[" + balePrice.getLitm() + "];[错误信息]:" + ex.getMessage());
+
+                } catch (MalformedURLException ex) {
+                    ex.printStackTrace();
+                    logger.error("调用[" + SpdInterfaceType.BALEPRICE_TYPE + "]失败,Url地址异常;[url]"
+                            + ve8spd0099.getSpdurl() + ";ERP商品编号[" + balePrice.getLitm() + "];[错误信息]:" + ex.getMessage());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    logger.error("调用[" + SpdInterfaceType.BALEPRICE_TYPE + "]失败，" +
+                            "ERP商品编号[" + balePrice.getLitm() + "],[错误信息]:" + ex.getMessage());
+                }
+
+
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+            logger.error("调用[" + SpdInterfaceType.BALEPRICE_TYPE + "]失败，[错误信息]:" + ex.getMessage());
+        }
+
+    }
+
+    public void afterResponse(BalePrice balePrice, SpdResult spdResult) {
+        String status = "Y";
+        //接口调用不成功  更新状态
+        if (!spdResult.isSuccess()) {
+            status = "E";
+        }
+        updateEV01(status, AddSpaceUtil.addSpanceRight(balePrice.getCo(), 5), AddSpaceUtil.addSpanceRight(balePrice.getLitm(), 25));
+    }
+}

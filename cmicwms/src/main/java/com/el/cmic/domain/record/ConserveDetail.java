@@ -1,0 +1,416 @@
+package com.el.cmic.domain.record;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
+/**
+ * 养护记录推送   实体
+ * @author zhanhao
+ *
+ */
+public class ConserveDetail {
+	 /**
+     *  物流中心 - FE8WMS08.YHMCU
+     */
+	@JSONField(name="物流中心")
+    private String yhmcu;
+    
+    /**
+     *  货主 - FE8WMS08.YHCO
+     */
+	@JSONField(name="货主")
+    private String yhco;
+    
+    /**
+     *  养护类型 - FE8WMS08.YHPTUT01
+     */
+	@JSONField(name="养护类型")
+    private String yhptut01;
+    /**
+     *  养护日期 - FE8WMS08.YHDTEE
+     */
+	@JSONField(name="养护日期",format="yyyy-MM-dd")
+    private Date yhdtee;
+    
+    /**
+     *  货品编号 - FE8WMS08.YHPTUT03
+     */
+	@JSONField(name="货品编号")
+    private String yhptut03;
+    
+    /**
+     *  货品名称 - FE8WMS08.YHE8NAME
+     */
+	@JSONField(name="货品名称")
+    private String yhe8name;
+    
+    /**
+     *  批号 - FE8WMS08.YHFSTR1
+     */
+	@JSONField(name="批号")
+    private String yhfstr1;
+    
+    /**
+     *  灭菌批号 - FE8WMS08.YHFSTR2
+     */
+	@JSONField(name="灭菌批号")
+    private String yhfstr2;
+    
+    /**
+     *  有效期至 - FE8WMS08.YHIDATE
+     */
+	@JSONField(name="有效期至",format="yyyy-MM-dd")
+    private Date yhidate;
+    
+    /**
+     *  生产日期 - FE8WMS08.YHRDATE
+     */
+	@JSONField(name="生产日期",format="yyyy-MM-dd")
+    private Date yhrdate;
+    
+    /**
+     *  数量 - FE8WMS08.YHUPRC
+     */
+	@JSONField(name="数量")
+    private BigDecimal yhuprc;
+    
+    /**
+     *  单位 - FE8WMS08.YHFSTR3
+     */
+	@JSONField(name="单位")
+    private String yhfstr3;
+    
+    /**
+     *  库区 - FE8WMS08.YHDAT1
+     */
+	@JSONField(name="库区")
+    private String yhdat1;
+    
+    /**
+     *  货位 - FE8WMS08.YHDAT2
+     */
+	@JSONField(name="货位")
+    private String yhdat2;
+    /**
+     *  质量状况 - FE8WMS08.YHFSTR4
+     */
+	@JSONField(name="质量状况")
+    private String yhfstr4;
+    
+    /**
+     *  处理意见 - FE8WMS08.YHFSTR5
+     */
+	@JSONField(name="处理意见")
+    private String yhfstr5;
+    
+    /**
+     *  养护结论 - FE8WMS08.YHFSTR6
+     */
+	@JSONField(name="养护结论")
+    private String yhfstr6;
+    
+    /**
+     *  疑问说明 - FE8WMS08.YHCONSTR1
+     */
+	@JSONField(name="疑问说明")
+    private String yhconstr1;
+    
+    /**
+     *  养护员 - FE8WMS08.YHFSTR61
+     */
+	@JSONField(name="养护员")
+    private String yhfstr61;
+    
+    /**
+     *  通用名 - FE8WMS08.YHFSTR62
+     */
+	@JSONField(name="通用名")
+    private String yhfstr62;
+    
+    /**
+     *  剂型 - FE8WMS08.YHFSTR63
+     */
+	@JSONField(name="剂型")
+    private String yhfstr63;
+    
+    /**
+     *  规格 - FE8WMS08.YHAHL1
+     */
+	@JSONField(name="规格")
+    private String yhahl1;
+    
+    /**
+     *  产地 - FE8WMS08.YHCONSTR2
+     */
+	@JSONField(name="产地")
+    private String yhconstr2;
+    
+    /**
+     *  注册证号 - FE8WMS08.YHAHL2
+     */
+	@JSONField(name="注册证号")
+    private String yhahl2;
+    
+    /**
+     *  批准文号 - FE8WMS08.YHDL011
+     */
+	@JSONField(name="批准文号")
+    private String yhdl011;
+    
+   // private String df;
+    
+    /**
+     *  生产厂商 - FE8WMS08.YHCONSTR3
+     */
+    @JSONField(name="生产厂商")
+    private String yhconstr3;
+    
+    /**
+     *  null - FE8WMS08.YHUSER
+     *//*
+    private String yhuser;
+    *//**
+     *  null - FE8WMS08.YHPID
+     *//*
+    private String yhpid;
+    
+    *//**
+     *  null - FE8WMS08.YHUPMJ
+     *//*
+    private Integer yhupmj;
+    
+    *//**
+     *  null - FE8WMS08.YHTDAY
+     *//*
+    private BigDecimal yhtday;*/
+
+	public String getYhmcu() {
+		return yhmcu;
+	}
+
+	public void setYhmcu(String yhmcu) {
+		this.yhmcu = yhmcu;
+	}
+
+	public String getYhco() {
+		return yhco;
+	}
+
+	public void setYhco(String yhco) {
+		this.yhco = yhco;
+	}
+
+	public String getYhptut01() {
+		return yhptut01;
+	}
+
+	public void setYhptut01(String yhptut01) {
+		this.yhptut01 = yhptut01;
+	}
+
+	public Date getYhdtee() {
+		return yhdtee;
+	}
+
+	public void setYhdtee(Date yhdtee) {
+		this.yhdtee = yhdtee;
+	}
+
+	public String getYhptut03() {
+		return yhptut03;
+	}
+
+	public void setYhptut03(String yhptut03) {
+		this.yhptut03 = yhptut03;
+	}
+
+	public String getYhe8name() {
+		return yhe8name;
+	}
+
+	public void setYhe8name(String yhe8name) {
+		this.yhe8name = yhe8name;
+	}
+
+	public String getYhfstr1() {
+		return yhfstr1;
+	}
+
+	public void setYhfstr1(String yhfstr1) {
+		this.yhfstr1 = yhfstr1;
+	}
+
+	public String getYhfstr2() {
+		return yhfstr2;
+	}
+
+	public void setYhfstr2(String yhfstr2) {
+		this.yhfstr2 = yhfstr2;
+	}
+
+	public Date getYhidate() {
+		return yhidate;
+	}
+
+	public void setYhidate(Date yhidate) {
+		this.yhidate = yhidate;
+	}
+
+	public Date getYhrdate() {
+		return yhrdate;
+	}
+
+	public void setYhrdate(Date yhrdate) {
+		this.yhrdate = yhrdate;
+	}
+
+	public BigDecimal getYhuprc() {
+		return yhuprc;
+	}
+
+	public void setYhuprc(BigDecimal yhuprc) {
+		this.yhuprc = yhuprc;
+	}
+
+	public String getYhfstr3() {
+		return yhfstr3;
+	}
+
+	public void setYhfstr3(String yhfstr3) {
+		this.yhfstr3 = yhfstr3;
+	}
+
+	public String getYhdat1() {
+		return yhdat1;
+	}
+
+	public void setYhdat1(String yhdat1) {
+		this.yhdat1 = yhdat1;
+	}
+
+	public String getYhdat2() {
+		return yhdat2;
+	}
+
+	public void setYhdat2(String yhdat2) {
+		this.yhdat2 = yhdat2;
+	}
+
+	public String getYhfstr4() {
+		return yhfstr4;
+	}
+
+	public void setYhfstr4(String yhfstr4) {
+		this.yhfstr4 = yhfstr4;
+	}
+
+	public String getYhfstr5() {
+		return yhfstr5;
+	}
+
+	public void setYhfstr5(String yhfstr5) {
+		this.yhfstr5 = yhfstr5;
+	}
+
+	public String getYhfstr6() {
+		return yhfstr6;
+	}
+
+	public void setYhfstr6(String yhfstr6) {
+		this.yhfstr6 = yhfstr6;
+	}
+
+	public String getYhconstr1() {
+		return yhconstr1;
+	}
+
+	public void setYhconstr1(String yhconstr1) {
+		this.yhconstr1 = yhconstr1;
+	}
+
+	public String getYhfstr61() {
+		return yhfstr61;
+	}
+
+	public void setYhfstr61(String yhfstr61) {
+		this.yhfstr61 = yhfstr61;
+	}
+
+	public String getYhfstr62() {
+		return yhfstr62;
+	}
+
+	public void setYhfstr62(String yhfstr62) {
+		this.yhfstr62 = yhfstr62;
+	}
+
+	public String getYhfstr63() {
+		return yhfstr63;
+	}
+
+	public void setYhfstr63(String yhfstr63) {
+		this.yhfstr63 = yhfstr63;
+	}
+
+	public String getYhahl1() {
+		return yhahl1;
+	}
+
+	public void setYhahl1(String yhahl1) {
+		this.yhahl1 = yhahl1;
+	}
+
+	public String getYhconstr2() {
+		return yhconstr2;
+	}
+
+	public void setYhconstr2(String yhconstr2) {
+		this.yhconstr2 = yhconstr2;
+	}
+
+	public String getYhahl2() {
+		return yhahl2;
+	}
+
+	public void setYhahl2(String yhahl2) {
+		this.yhahl2 = yhahl2;
+	}
+
+	public String getYhdl011() {
+		return yhdl011;
+	}
+
+	public void setYhdl011(String yhdl011) {
+		this.yhdl011 = yhdl011;
+	}
+
+	
+	public String getYhconstr3() {
+		return yhconstr3;
+	}
+
+	public void setYhconstr3(String yhconstr3) {
+		this.yhconstr3 = yhconstr3;
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "ConserveDetail [yhmcu=" + yhmcu + ", yhco=" + yhco
+				+ ", yhptut01=" + yhptut01 + ", yhdtee=" + yhdtee
+				+ ", yhptut03=" + yhptut03 + ", yhe8name=" + yhe8name
+				+ ", yhfstr1=" + yhfstr1 + ", yhfstr2=" + yhfstr2
+				+ ", yhidate=" + yhidate + ", yhrdate=" + yhrdate + ", yhuprc="
+				+ yhuprc + ", yhfstr3=" + yhfstr3 + ", yhdat1=" + yhdat1
+				+ ", yhdat2=" + yhdat2 + ", yhfstr4=" + yhfstr4 + ", yhfstr5="
+				+ yhfstr5 + ", yhfstr6=" + yhfstr6 + ", yhconstr1=" + yhconstr1
+				+ ", yhfstr61=" + yhfstr61 + ", yhfstr62=" + yhfstr62
+				+ ", yhfstr63=" + yhfstr63 + ", yhahl1=" + yhahl1
+				+ ", yhconstr2=" + yhconstr2 + ", yhahl2=" + yhahl2
+				+ ", yhdl011=" + yhdl011 + ",  yhconstr3=";
+	}
+
+}

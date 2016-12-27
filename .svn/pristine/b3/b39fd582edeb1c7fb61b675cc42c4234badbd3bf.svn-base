@@ -1,0 +1,124 @@
+package com.el.cmic.mapper.repertory;
+
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.jdbc.SQL;
+
+import com.el.cmic.domain.repertory.StroTransferPush;
+import com.el.cmic.domain.repertory.StroTransferPushItem;
+import com.el.utils.ReadPropertiesUtil;
+
+public interface StoTransferPushMapper {
+
+    /**
+     * 库存转移  主表新增
+     *
+     * @param stroTransferPushItem
+     * @return
+     */
+    @InsertProvider(type = StoTransferPushMapper.sqlProvider.class, method = StoTransferPushMapper.sqlProvider.insertSTPushItem)
+    public Integer insertSTPushItem(StroTransferPushItem stroTransferPushItem);
+
+    /**
+     * 库存转移  明细表新增
+     *
+     * //@param stroTransferPushItem
+     * @return
+     *//*
+    @InsertProvider(type=StoTransferPushMapper.sqlProvider.class,method=StoTransferPushMapper.sqlProvider.insertSTPusItem)
+	public Integer insertSTPushItem(StroTransferPushItem stroTransferPushItem);
+	*/
+
+    class sqlProvider extends SQL {
+        //动态 获取  db.properties  文件属性值
+        private static final String schema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "schema");
+
+
+        private static final String insertSTPushItem = "insertSTPushItem";
+
+        public String insertSTPushItem(StroTransferPushItem stroTransferPushItem) {
+            INSERT_INTO(schema + ".FE8WMS18");
+            if (stroTransferPushItem.getTwmcu() != null) {
+                VALUES("TWMCU", "#{twmcu}");
+            }//物流中心
+            // if (stroTransferPushItem.getTwkcoo() != null){VALUES("TWKCOO", "#{twkcoo}");} //货主
+            if (stroTransferPushItem.getTwvr01() != null) {
+                VALUES("TWVR01", "#{twvr01}");
+            } //通知单号
+            // if (stroTransferPushItem.getTwtrdj() != null){VALUES("TWTRDJ", "#{twtrdj}");} //通知单日期
+            if (stroTransferPushItem.getTwfil2() != null) {
+                VALUES("TWFIL2", "#{twfil2}");
+            } //说明
+
+
+            if (stroTransferPushItem.getTwkcoo() != null) {
+                VALUES("TWKCOO", "#{twkcoo}");
+            } //货主
+            if (stroTransferPushItem.getTwlnid() != null) {
+                VALUES("TWLNID", "#{twlnid}*1000");
+            }//通知单行号
+            if (stroTransferPushItem.getTwlitm() != null) {
+                VALUES("TWLITM", "#{twlitm}");
+            } //货品编号
+            if (stroTransferPushItem.getTwuorg() != null) {
+                VALUES("TWUORG", "#{twuorg}*10000");
+            } //数量
+            if (stroTransferPushItem.getTwlot2() != null) {
+                VALUES("TWLOT2", "#{twlot2}");
+            } //批号
+            if (stroTransferPushItem.getTwlot1() != null) {
+                VALUES("TWLOT1", "#{twlot1}");
+            } //灭菌批号
+            if (stroTransferPushItem.getTwev01() != null) {
+                VALUES("TWEV01", "#{twev01}");
+            } //移出库类型
+            if (stroTransferPushItem.getTwev02() != null) {
+                VALUES("TWEV02", "#{twev02}");
+            } //移入库类型
+            if (stroTransferPushItem.getTwtrdj() != null) {
+                VALUES("TWTRDJ", "#{twtrdj}");
+            } //通知单日期
+            if (stroTransferPushItem.getTwdsc1() != null) {
+                VALUES("TWDSC1", "#{twdsc1}");
+            } //货品名称
+            if (stroTransferPushItem.getTwefta() != null) {
+                VALUES("TWEFTA", "#{twefta}");
+            } //有效期至
+            if (stroTransferPushItem.getTweffa() != null) {
+                VALUES("TWEFFA", "#{tweffa}");
+            } //生产日期
+            if (stroTransferPushItem.getTwdl011() != null) {
+                VALUES("TWDL011", "#{twdl011}");
+            } //移库原因
+            if (stroTransferPushItem.getTwd200() != null) {
+                VALUES("TWD200", "#{twd200}");
+            } //不合格审批单号
+            VALUES("Twev03", "'N'");
+            return toString();
+        }
+
+        ;
+			
+		/*private static final String insertSTPusItem="insertSTPusItem";
+		public String insertSTPusItem(StroTransferPushItem stroTransferPushItem){
+			   INSERT_INTO(schema+".FE8WMS18");  
+			   if (stroTransferPushItem.getTwkcoo() != null){VALUES("TWKCOO", "#{twkcoo}");} //货主
+               if (stroTransferPushItem.getTwlnid() != null){VALUES("TWLNID", "#{twlnid}");}//通知单行号
+               if (stroTransferPushItem.getTwlitm()!= null){VALUES("TWLITM", "#{twlitm}");} //货品编号
+               if (stroTransferPushItem.getTwuorg() != null){VALUES("TWUORG", "#{twuorg}");} //数量
+               if (stroTransferPushItem.getTwlot2() != null){VALUES("TWLOT2", "#{twlot2}");} //批号
+               if (stroTransferPushItem.getTwlot1() != null){VALUES("TWLOT1", "#{twlot1}");} //灭菌批号
+               if (stroTransferPushItem.getTwev01() != null){VALUES("TWEV01", "#{twev01}");} //移出库类型
+               if (stroTransferPushItem.getTwev02() != null){VALUES("TWEV02", "#{twev02}");} //移入库类型 
+               if (stroTransferPushItem.getTwtrdj() != null){VALUES("TWTRDJ", "#{twtrdj}");} //通知单日期 
+               if (stroTransferPushItem.getTwdsc1() != null){VALUES("TWDSC1", "#{twdsc1}");} //货品名称  
+               if (stroTransferPushItem.getTwefta() != null){VALUES("TWEFTA", "#{twefta}");} //有效期至
+               if (stroTransferPushItem.getTweffa() != null){VALUES("TWEFFA", "#{tweffa}");} //生产日期 
+               if (stroTransferPushItem.getTwdl011() != null){VALUES("TWDL011", "#{twdl011}");} //移库原因 
+               if (stroTransferPushItem.getTwd200()!= null){VALUES("TWD200", "#{twd200}");} //不合格审批单号
+               return toString();
+		}*/
+
+    }
+
+
+}

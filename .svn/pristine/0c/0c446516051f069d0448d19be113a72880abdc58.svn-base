@@ -1,0 +1,411 @@
+package com.el.cmic.domain.inbound;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.annotation.JSONType;
+
+@JSONType(orders={"物流中心","入库类型","货主","通知单号","客户编号","预到货日期","客户名称","业务员","通知单日期","说明","客户类型","业务部门","温控方式","温控状况","到货时间","到货温度","订单类型","业务类型","WMS收货单号","通知单明细"})
+public class InboundPush implements Serializable {
+
+	/**
+     *  null - VE8RK001.WMSMCU
+     */
+	@JSONField(name = "物流中心")
+	private String wmsmcu;
+
+	/**
+     *  null - VE8RK001.MCU
+     */
+	@JSONField(name = "成本中心", serialize=false)
+	private String mcu;
+
+	/**
+     *  null - VE8RK001.RKTYPE
+     */
+	@JSONField(name = "入库类型")
+    private String rktype;
+
+    /**
+     *  null - VE8RK001.WMSCO
+     */
+	@JSONField(name = "货主")
+    private String wmsco;
+
+    /**
+     *  null - VE8RK001.KCOO
+     */
+	@JSONField(name = "订单公司", serialize=false)
+    private String kcoo;
+
+	/**
+     *  null - VE8RK001.DOCO
+     */
+	@JSONField(name = "通知单号")
+    private BigDecimal doco;
+
+    /**
+     *  null - VE8RK001.DCTO
+     */
+    @JSONField (name="订单类型")
+    private String dcto;
+
+    /**
+     *  null - VE8RK001.AN8
+     */
+	@JSONField(name="客户编号")
+    private BigDecimal an8;
+
+    /**
+     *  null
+     */
+	@JSONField(name="送至", serialize=false)
+    private BigDecimal shan;
+
+	/**
+     *  null - VE8RK001.YDDJ
+     */
+    @JSONField (name="预到货日期", format="yyyy-MM-dd")
+    private Date yddj;
+
+    /**
+     *  null - VE8RK001.ALPH
+     */
+	@JSONField(name = "客户名称")
+    private String alph;
+
+    /**
+     *  null - VE8RK001.VR01
+     */
+	@JSONField(name = "业务员")
+    private String vr01;
+
+    /**
+     *  null - VE8RK001.TRDJ
+     */
+    @JSONField (name="通知单日期", format="yyyy-MM-dd")
+    private Date trdj;
+
+    /**
+     *  null - VE8RK001.REMARK
+     */
+	@JSONField(name = "说明")
+    private String remark;
+
+    /**
+     *  null - VE8RK001.AT1
+     */
+	@JSONField(name = "客户类型")
+    private String at1;
+
+    /**
+     *  null - VE8RK001.DEPTNAME
+     */
+	@JSONField(name = "业务部门")
+    private String deptname;
+
+	/**
+     *  null
+     */
+	@JSONField(name = "温控方式")
+    private String tempmode;
+
+    /**
+     *  null
+     */
+	@JSONField(name = "温控状况")
+    private String tempsts;
+
+    /**
+     *  null
+     */
+    @JSONField (name="到货时间", format="yyyy-MM-dd")
+    private Date arrvdj;
+
+    /**
+     *  null
+     */
+	@JSONField(name = "到货温度")
+    private String arrvtemp;
+
+    /**
+     *  null - VE8RK001.FLAG
+     */
+	@JSONField(name = "业务类型")
+    private String flag;
+
+	/**
+     *  null - VE8RK001.DOCO
+     */
+	@JSONField(name = "Edi单号", serialize=false)
+    private BigDecimal edoc;	
+
+    @JSONField(name = "WMS收货单号")
+    private String wmsdoco;
+	/**
+	 * 
+	 */
+	@JSONField(name = "通知单明细")
+	private List<InboundPushDetail> details;
+	
+	private static final long serialVersionUID = 1L;
+
+    public String getMcu() {
+        return mcu;
+    }
+
+    public void setMcu(String mcu) {
+        this.mcu = mcu;
+    }
+
+    public String getRktype() {
+        return rktype;
+    }
+
+    public void setRktype(String rktype) {
+        this.rktype = rktype;
+    }
+
+    public BigDecimal getDoco() {
+        return doco;
+    }
+
+    public void setDoco(BigDecimal doco) {
+        this.doco = doco;
+    }
+
+    public String getDcto() {
+        return dcto;
+    }
+
+    public void setDcto(String dcto) {
+        this.dcto = dcto;
+    }
+
+    public BigDecimal getAn8() {
+        return an8;
+    }
+
+    public void setAn8(BigDecimal an8) {
+        this.an8 = an8;
+    }
+
+    public Date getYddj() {
+        return yddj;
+    }
+
+    public void setYddj(Date yddj) {
+        this.yddj = yddj;
+    }
+
+    public String getAlph() {
+        return alph;
+    }
+
+    public void setAlph(String alph) {
+        this.alph = alph;
+    }
+
+    public String getVr01() {
+        return vr01;
+    }
+
+    public void setVr01(String vr01) {
+        this.vr01 = vr01;
+    }
+
+    public Date getTrdj() {
+        return trdj;
+    }
+
+    public void setTrdj(Date trdj) {
+        this.trdj = trdj;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getAt1() {
+        return at1;
+    }
+
+    public void setAt1(String at1) {
+        this.at1 = at1;
+    }
+
+    public String getDeptname() {
+        return deptname;
+    }
+
+    public void setDeptname(String deptname) {
+        this.deptname = deptname;
+    }
+
+	public String getTempmode() {
+		return tempmode;
+	}
+
+	public void setTempmode(String tempmode) {
+		this.tempmode = tempmode;
+	}
+
+	public String getTempsts() {
+		return tempsts;
+	}
+
+	public void setTempsts(String tempsts) {
+		this.tempsts = tempsts;
+	}
+
+	public Date getArrvdj() {
+		return arrvdj;
+	}
+
+	public void setArrvdj(Date arrvdj) {
+		this.arrvdj = arrvdj;
+	}
+
+	public String getArrvtemp() {
+		return arrvtemp;
+	}
+
+	public void setArrvtemp(String arrvtemp) {
+		this.arrvtemp = arrvtemp;
+	}
+
+	/**
+	 * @return the flag
+	 */
+	public String getFlag() {
+		return flag;
+	}
+
+	/**
+	 * @param flag the flag to set
+	 */
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	/**
+	 * @return the shan
+	 */
+	public BigDecimal getShan() {
+		return shan;
+	}
+
+	/**
+	 * @param shan the shan to set
+	 */
+	public void setShan(BigDecimal shan) {
+		this.shan = shan;
+	}
+
+	/**
+	 * @return the edoc
+	 */
+	public BigDecimal getEdoc() {
+		return edoc;
+	}
+
+	/**
+	 * @param edoc the edoc to set
+	 */
+	public void setEdoc(BigDecimal edoc) {
+		this.edoc = edoc;
+	}
+
+	/**
+	 * @return the wmsmcu
+	 */
+	public String getWmsmcu() {
+		return wmsmcu;
+	}
+
+	/**
+	 * @param wmsmcu the wmsmcu to set
+	 */
+	public void setWmsmcu(String wmsmcu) {
+		this.wmsmcu = wmsmcu;
+	}
+
+	/**
+	 * @return the wmsco
+	 */
+	public String getWmsco() {
+		return wmsco;
+	}
+
+	/**
+	 * @param wmsco the wmsco to set
+	 */
+	public void setWmsco(String wmsco) {
+		this.wmsco = wmsco;
+	}
+
+	/**
+	 * @return the kcoo
+	 */
+	public String getKcoo() {
+		return kcoo;
+	}
+
+	/**
+	 * @param kcoo the kcoo to set
+	 */
+	public void setKcoo(String kcoo) {
+		this.kcoo = kcoo;
+	}
+
+	public List<InboundPushDetail> getDetails() {
+		return details;
+	}
+
+	public void setDetails(List<InboundPushDetail> details) {
+		this.details = details;
+	}
+
+    public String getWmsdoco() {
+        return wmsdoco;
+    }
+
+    public void setWmsdoco(String wmsdoco) {
+        this.wmsdoco = wmsdoco;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", mcu=").append(mcu);
+        sb.append(", rktype=").append(rktype);
+        sb.append(", co=").append(wmsco);
+        sb.append(", doco=").append(doco);
+        sb.append(", an8=").append(an8);
+        sb.append(", yddj=").append(yddj);
+        sb.append(", alph=").append(alph);
+        sb.append(", vr01=").append(vr01);
+        sb.append(", trdj=").append(trdj);
+        sb.append(", remark=").append(remark);
+        sb.append(", at1=").append(at1);
+        sb.append(", deptname=").append(deptname);
+        sb.append(", tempmode=").append(tempmode);
+        sb.append(", tempsts=").append(tempsts);
+        sb.append(", arrvdj=").append(arrvdj);
+        sb.append(", arrvtemp=").append(arrvtemp);
+        sb.append(", flag=").append(flag);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
+}

@@ -1,0 +1,460 @@
+package com.el.cmic.callmdm.mapper;
+
+import com.el.cmic.callmdm.domain.*;
+import com.el.cmic.common.domain.MdmFuncType;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.jdbc.SQL;
+
+import java.util.List;
+
+/**
+ * Created by Vincent on 2016/10/11.
+ */
+public interface CustomerMapper {
+    final class SqlProvider extends SQL {
+        final String issczcz001 = "case (select count(1) from FE80101Z a where a.zze8zzlxa in ('001', '001-1', '001-2')and a.zzan8 = #{an8}) when 0 then 'N'else 'Y' end as Issczcz";
+        final String isbapz002 = "case (select count(1) from FE80101Z a where a.zze8zzlxa in ('002')  and a.zzan8 = #{an8})  when 0 then    'N'   else    'Y'  end as isbapz";
+        final String isylqxjyxkz003 = "case (select count(1) from FE80101Z a where a.zze8zzlxa in ('003', '003-1', '003-2') and a.zzan8 = #{an8}) when 0 then 'N' else 'Y'end as isylqxjyxkz";
+        final String isbapz004 = "case (select count(1) from FE80101Z a where a.zze8zzlxa in ('004') and a.zzan8 = #{an8}) when 0 then 'N' else 'Y' end as isbapz";
+        final String isbgz005 = " case (select count(1) from FE80101Z a where a.zze8zzlxa in ('005') and a.zzan8 = #{an8}) when 0 then 'N' else 'Y' end as isbgz";
+        final String isqyba006 = "case (select count(1)  from FE80101Z a where a.zze8zzlxa in ('006') and a.zzan8 =  #{an8}) when 0 then  'N' else 'Y' end as isqyba";
+        final String isyljgz007 = "case (select count(1) from FE80101Z a where a.zze8zzlxa in ('007') and a.zzan8 = #{an8}) when 0 then 'N' else 'Y'end as isyljgz";
+        final String ISYYZZ008 = "case (select count(1) from FE80101Z a where a.zze8zzlxa in ('008') and a.zzan8 = #{an8}) when 0 then 'N' else 'Y'end as isyyzz";
+        final String ISZZJGDM009 = "case (select count(1) from FE80101Z a where a.zze8zzlxa in ('009')and a.zzan8 = #{an8}) when 0 then 'N'else 'Y' end as iszzjgdm";
+        final String ISSWDJZ010 = "case (select count(1) from FE80101Z a where a.zze8zzlxa in ('010')and a.zzan8 = #{an8}) when 0 then 'N' else 'Y' end as isswdjz";
+        final String ISXBYYZZ011 = "case (select count(1) from FE80101Z a where a.zze8zzlxa in ('011') and a.zzan8 = #{an8}) when 0 then  'N' else 'Y'end as Isxbyyzz";
+
+        final static String CUSTOM_QRY = "customQry";
+
+        public String customQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("funcType") String funcType) {
+            if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
+                return customAddQry(schema, ctlSchema);
+            } else {
+                return customModQry(schema, ctlSchema);
+            }
+        }
+
+        private String customAddQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema) {
+            schema = schema + ".";
+            ctlSchema = ctlSchema + ".";
+            SELECT("a.ksan8 as an8");
+            SELECT("'' as custcode");
+            SELECT("a.kse8name as custname");
+            SELECT("b.alctr as pk_country");
+            //SELECT("b.Aladds as pk_szq");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='00' AND   A.DRRT='S' and TRIM(a.drky)=TRIM(b.Aladds)) as pk_szq");
+            SELECT("b.alcty1 as pk_counties");
+           // SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='DS' and TRIM(a.drky)=TRIM(b.alcty1)) as pk_cities");
+            SELECT("b.alcoun as pk_cities");
+            //SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='DS' and TRIM(a.drky)=TRIM(b.alcoun)) as pk_counties");
+            SELECT("b.aladd1 || b.aladd2 || b.aladd3 || b.aladd4 as address");
+            SELECT("'' as gycode");
+            SELECT("a.kse8scs as isscs");
+            SELECT("a.kse8jxs as isjxs");
+            SELECT("a.kse8jks as isjks");
+            SELECT("a.kse8yy as isyy");
+            SELECT("a.kse8yljg as isjcyljg");
+            SELECT("a.kse8gr as isgr");
+            SELECT("a.kse8qt as isqt");
+            FROM(schema + "FE80101 a");
+            LEFT_OUTER_JOIN(schema + "f0116 b ON a.ksan8 = b.alan8");
+            LEFT_OUTER_JOIN(schema+"f0101 c ON a.ksan8 = c.aban8");
+         //   WHERE("a.ksflag = 'P'");
+            WHERE("a.ksflag = 'P' and (trim(c.abat1)='C' or trim(c.abat1)='V')");
+            return toString();
+        }
+
+        private String customModQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema) {
+            schema = schema + ".";
+            ctlSchema = ctlSchema + ".";
+            SELECT("a.squkid as ukid");
+            SELECT("a.sqev01 as ev01");
+            SELECT("a.sqan8 as an8");
+
+            //--------------------------------------统一码alky----------------------------------------------------------
+            SELECT(" a.SQALKY as custcode");
+            //SELECT("a.SQE8KSTYM as custcode");
+            //----------------------------------------------------------------------------------------------------------
+
+            SELECT("a.sqe8name as custname");
+            SELECT("a.sqctr as pk_country");
+            //SELECT("a.sqadds as pk_szq");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='00' AND   A.DRRT='S' and TRIM(a.drky)=TRIM(a.sqadds)) as pk_szq");
+            SELECT("a.sqcty1 as pk_counties");
+           // SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='DS' and TRIM(a.drky)=TRIM(A.sqcty1 as pk_cities");
+            SELECT("a.sqcoun as pk_cities");
+            //SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='DS' and TRIM(a.drky)=TRIM(A.sqcoun)) as pk_counties");
+            SELECT("a.SQFML as address");
+            SELECT("'' as gycode");
+            SELECT("a.sqe8scs as isscs");
+            SELECT("a.sqe8jxs as isjxs");
+            SELECT("a.sqe8jks as isjks");
+            SELECT("a.sqe8yy as isyy");
+            SELECT("a.sqe8yljg as isjcyljg");
+            SELECT("a.sqe8gr as isgr");
+            SELECT("a.sqe8qt as isqt");
+           // SELECT("a.sqe8yygl as isgl");
+
+            SELECT("a.sqdf01 as modcause");
+
+            FROM(schema + "FE841003 a");
+            WHERE("a.sqflag = 'P'");
+          //  WHERE(" a.sqev02='Y'");
+            return toString();
+        }
+
+        final static String CUSTOM_B_QRY = "customBQry";
+
+        public String customBQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8, @Param("funcType") String funcType) {
+            if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
+                return customAddBQry(schema, ctlSchema, an8);
+            } else {
+                return customModBQry(schema, ctlSchema, an8);
+            }
+        }
+
+        public String customAddBQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8) {
+            schema = schema + ".";
+            ctlSchema = ctlSchema + ".";
+            //SELECT("a.zze8zzlxa as pk_lictype");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005  where drsy='E8' AND   DRRT='10' and TRIM(drky)=TRIM(zze8zzlxa)) as pk_lictype");
+            SELECT("a.zze8zzbm as licno");
+            SELECT("a.zze8jyfw as licfw");
+            //SELECT("a.zzexdj as lictodate");
+            SELECT("TO_CHAR(to_date(trunc(zzexdj/1000)  +1900||'-01-01','yyyy-MM-dd')+mod( zzexdj, 1000)-1,'yyyy-MM-dd') AS lictodate");
+            SELECT("'N' as islong");
+            SELECT("Zzfil2 as def3");
+            SELECT("a.zze8jyfw2 as licfwt");
+            SELECT("a.zze8jyfw3 as licfws");
+            FROM(schema + "FE80101Z a");
+            WHERE("a.zzan8=#{an8}");
+            return toString();
+        }
+
+        public String customModBQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8) {
+            schema = schema + ".";
+            ctlSchema = ctlSchema + ".";
+            //SELECT("a.zze8zzlxa as pk_lictype");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='10' and TRIM(a.drky)=TRIM(a.zze8zzlxa)) as pk_lictype");
+            SELECT("a.zze8zzbm as licno");
+            SELECT("a.zze8jyfw as licfw");
+            //SELECT("a.zzexdj as lictodate");
+            SELECT("TO_CHAR(to_date(trunc(zzexdj/1000)  +1900||'-01-01','yyyy-MM-dd')+mod( zzexdj, 1000)-1,'yyyy-MM-dd') AS lictodate");
+            SELECT("'N' as islong");
+            SELECT("a.zzfil2 as def3");
+            SELECT("a.zze8jyfw2 as licfwt");
+            SELECT("a.zze8jyfw3 as licfws");
+            FROM(schema + "FE841004 a");
+            WHERE("a.zzan8=#{an8}");
+            WHERE(" a.zzev02='Y'");
+            return toString();
+        }
+
+        final static String CUSTOM_CSC_QRY = "customCscQry";
+
+        public String customCscQry(@Param("an8") String an8,@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("funcType") String funcType) {
+            if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
+                return customAddCscQry(an8,schema, ctlSchema);
+            } else {
+                return customModCscQry(an8,schema, ctlSchema);
+            }
+        }
+
+        public String customAddCscQry(@Param("an8") String an8,@Param("schema") String schema, @Param("ctlSchema") String ctlSchema) {
+            SELECT(issczcz001);
+            SELECT(isbapz002);
+            SELECT(ISZZJGDM009);
+            SELECT(ISSWDJZ010);
+            SELECT(ISXBYYZZ011);
+            ctlSchema = ctlSchema + ".";
+            schema = schema + ".";
+            // SELECT("Kse8dwxz AS pk_dwxz");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   a.DRRT='24' and TRIM(a.drky)=TRIM(a.Kse8dwxz)) as pk_dwxz");
+            FROM(schema + "FE80101 a");
+            WHERE(" a.ksan8=#{an8}");
+
+            // FROM("DUAL");
+            return toString();
+        }
+
+        public String customModCscQry(@Param("an8") String an8,@Param("schema") String schema, @Param("ctlSchema") String ctlSchema) {
+            SELECT(issczcz001);
+            SELECT(isbapz002);
+            SELECT(ISZZJGDM009);
+            SELECT(ISSWDJZ010);
+            SELECT(ISXBYYZZ011);
+            ctlSchema = ctlSchema + ".";
+            schema = schema + ".";
+            // SELECT("Kse8dwxz AS pk_dwxz");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   a.DRRT='24' and TRIM(a.drky)=TRIM(a.sqe8dwxz)) as pk_dwxz");
+            FROM(schema + "FE841003 a");
+            WHERE(" a.sqan8=#{an8}");
+            WHERE("a.sqflag = 'P'");
+
+            // FROM("DUAL");
+            return toString();
+        }
+
+        final static String CUSTOM_JXS_QRY = "customJxsQry";
+
+        public String customJxsQry(@Param("an8") String an8,@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("funcType") String funcType) {
+            if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
+                return customAddJxsQry(an8,schema, ctlSchema);
+            } else {
+                return customModJxsQry(an8,schema, ctlSchema);
+            }
+        }
+
+        public String customAddJxsQry(@Param("an8") String an8,@Param("schema") String schema, @Param("ctlSchema") String ctlSchema) {
+            SELECT(isylqxjyxkz003);
+            SELECT(isbapz004);
+            SELECT(ISYYZZ008);
+            SELECT(ISZZJGDM009);
+            SELECT(ISSWDJZ010);
+            SELECT(ISXBYYZZ011);
+
+            ctlSchema = ctlSchema + ".";
+            schema = schema + ".";
+            //SELECT("Kse8dwxz AS pk_dwxz");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   a.DRRT='24' and TRIM(a.drky)=TRIM(a.Kse8dwxz)) as pk_dwxz");
+            FROM(schema + "FE80101 a");
+            WHERE(" a.ksan8=#{an8}");
+
+            //FROM("DUAL");
+            return toString();
+        }
+
+        public String customModJxsQry(@Param("an8") String an8,@Param("schema") String schema, @Param("ctlSchema") String ctlSchema) {
+            SELECT(isylqxjyxkz003);
+            SELECT(isbapz004);
+            SELECT(ISYYZZ008);
+            SELECT(ISZZJGDM009);
+            SELECT(ISSWDJZ010);
+            SELECT(ISXBYYZZ011);
+
+            ctlSchema = ctlSchema + ".";
+            schema = schema + ".";
+            //SELECT("Kse8dwxz AS pk_dwxz");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   a.DRRT='24' and TRIM(a.drky)=TRIM(a.sqe8dwxz)) as pk_dwxz");
+            FROM(schema + "FE841003 a");
+            WHERE(" a.sqan8=#{an8}");
+            WHERE("a.sqflag = 'P'");
+
+            //FROM("DUAL");
+            return toString();
+        }
+
+        final static String CUSTOM_JKS_QRY = "customJksQry";
+
+        public String customJksQry(@Param("an8") String an8,@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("funcType") String funcType) {
+            if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
+                return customAddJksQry(an8,schema, ctlSchema);
+            } else {
+                return customModJksQry(an8,schema, ctlSchema);
+            }
+        }
+
+        public String customAddJksQry(@Param("an8") String an8,@Param("schema") String schema, @Param("ctlSchema") String ctlSchema) {
+            SELECT(isbgz005);
+            SELECT(isqyba006);
+            SELECT(ISYYZZ008);
+            SELECT(ISZZJGDM009);
+            SELECT(ISSWDJZ010);
+            SELECT(ISXBYYZZ011);
+
+            ctlSchema = ctlSchema + ".";
+            schema = schema + ".";
+            //SELECT("Kse8dwxz AS pk_dwxz");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   a.DRRT='24' and TRIM(a.drky)=TRIM(a.Kse8dwxz)) as pk_dwxz");
+            FROM(schema + "FE80101 a");
+            WHERE(" a.ksan8=#{an8}");
+
+           // FROM("DUAL");
+            return toString();
+        }
+
+        public String customModJksQry(@Param("an8") String an8,@Param("schema") String schema, @Param("ctlSchema") String ctlSchema) {
+            SELECT(isbgz005);
+            SELECT(isqyba006);
+            SELECT(ISYYZZ008);
+            SELECT(ISZZJGDM009);
+            SELECT(ISSWDJZ010);
+            SELECT(ISXBYYZZ011);
+
+            ctlSchema = ctlSchema + ".";
+            schema = schema + ".";
+            //SELECT("Kse8dwxz AS pk_dwxz");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   a.DRRT='24' and TRIM(a.drky)=TRIM(a.sqe8dwxz)) as pk_dwxz");
+            FROM(schema + "FE841003 a");
+            WHERE(" a.sqan8=#{an8}");
+            WHERE("a.sqflag = 'P'");
+
+            // FROM("DUAL");
+            return toString();
+        }
+
+        final static String CUSTOM_YyOrJcyljg_QRY = "customYyOrJcyljgQry";
+
+        public String customYyOrJcyljgQry(@Param("an8") String an8,@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("funcType") String funcType) {
+            if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
+                return customAddYyOrJcyljgQry(schema,ctlSchema,an8);
+            } else {
+                return customModYyOrJcyljgQry(schema,ctlSchema,an8);
+            }
+        }
+
+        public String customAddYyOrJcyljgQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8) {
+            schema = schema + ".";
+            ctlSchema = ctlSchema + ".";
+            SELECT("a.kse8yyyl as isyl");
+            SELECT("a.Kse8yygl as isgl");
+            SELECT("a.Kse8yysb as Issbdd");
+            //SELECT("a.Kse8yygs as pk_yygs");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='25' and TRIM(a.drky)=TRIM(a.Kse8yygs)) as pk_yygs");
+            //SELECT("a.Kse8yljb as pk_yljb");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='26' and TRIM(a.drky)=TRIM(a.Kse8yljb)) as pk_yljb");
+            SELECT("a.Kse8tgyf as Istgyf");
+            //SELECT("a.Kse8dl as pk_yydl");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='11' and TRIM(a.drky)=TRIM(a.Kse8dl)) as pk_yydl");
+            //SELECT("a.Kse8xl as pk_yyxl");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='12' and TRIM(a.drky)=TRIM(a.Kse8xl)) as pk_yyxl");
+            SELECT("a.Kse8yynsr as yynsr");
+            SELECT(isyljgz007);
+            SELECT(ISYYZZ008);
+            SELECT(ISZZJGDM009);
+            SELECT(ISSWDJZ010);
+            SELECT(ISXBYYZZ011);
+            FROM(schema + "FE80101 a");
+            WHERE(" a.ksan8=#{an8}");
+            return toString();
+        }
+
+        public String customModYyOrJcyljgQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8) {
+            schema = schema + ".";
+            ctlSchema = ctlSchema + ".";
+            SELECT("a.sqe8yyyl as isyl");
+            SELECT("a.sqe8yygl as isgl");
+            SELECT("a.sqe8yysb as Issbdd");
+            //SELECT("a.Kse8yygs as pk_yygs");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='25' and TRIM(a.drky)=TRIM(a.sqe8yygs)) as pk_yygs");
+            //SELECT("a.Kse8yljb as pk_yljb");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='26' and TRIM(a.drky)=TRIM(a.sqe8yljb)) as pk_yljb");
+            SELECT("a.sqe8tgyf as Istgyf");
+            //SELECT("a.Kse8dl as pk_yydl");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='11' and TRIM(a.drky)=TRIM(a.sqe8dl)) as pk_yydl");
+            //SELECT("a.Kse8xl as pk_yyxl");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   A.DRRT='12' and TRIM(a.drky)=TRIM(a.sqe8xl)) as pk_yyxl");
+            SELECT("a.sqe8yynsr as yynsr");
+            SELECT(isyljgz007);
+            SELECT(ISYYZZ008);
+            SELECT(ISZZJGDM009);
+            SELECT(ISSWDJZ010);
+            SELECT(ISXBYYZZ011);
+            FROM(schema + "FE841003 a");
+            WHERE("a.sqan8=#{an8}");
+            WHERE("a.sqflag = 'P'");
+            return toString();
+        }
+
+        final static String CUSTOM_GR_QRY = "customGrQry";
+
+        public String customGrQry(@Param("an8") String an8,@Param("schema") String schema,@Param("funcType") String funcType) {
+            if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
+                return customAddGrQry(an8,schema);
+            } else {
+                return customModGrQry(an8,schema);
+            }
+        }
+        public String customAddGrQry(@Param("an8") String an8,@Param("schema") String schema) {
+            schema = schema + ".";
+            SELECT("Kse8sfz as Idcard");
+            FROM(schema + "FE80101 a");
+            WHERE(" a.ksan8=#{an8}");
+            return toString();
+        }
+        public String customModGrQry(@Param("an8") String an8,@Param("schema") String schema) {
+            schema = schema + ".";
+            SELECT("sqe8sfz as Idcard");
+            FROM(schema + "FE841003 a");
+            WHERE(" a.sqan8=#{an8}");
+            WHERE("a.sqflag = 'P'");
+            return toString();
+        }
+
+        final static String CUSTOM_QT_QRY = "customQtQry";
+
+        public String customQtQry(@Param("schema") String schema, @Param("an8") String an8,@Param("ctlSchema") String ctlSchema,@Param("funcType") String funcType) {
+            if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
+                return customAddQtQry(schema,an8,ctlSchema);
+            } else {
+                return customModQtQry(schema,an8,ctlSchema);
+            }
+        }
+
+        public String customAddQtQry(@Param("schema") String schema, @Param("an8") String an8,@Param("ctlSchema") String ctlSchema) {
+            schema = schema + ".";
+            ctlSchema = ctlSchema + ".";
+            //SELECT("Kse8dwxz AS pk_dwxz");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   a.DRRT='24' and TRIM(a.drky)=TRIM(a.Kse8dwxz)) as pk_dwxz");
+            FROM(schema + "FE80101 a");
+            WHERE(" a.ksan8=#{an8}");
+            return toString();
+        }
+
+        public String customModQtQry(@Param("schema") String schema, @Param("an8") String an8,@Param("ctlSchema") String ctlSchema) {
+            schema = schema + ".";
+            ctlSchema = ctlSchema + ".";
+            //SELECT("Kse8dwxz AS pk_dwxz");
+            SELECT("(select drdl01 from " + ctlSchema + "f0005 a where a.drsy='E8' AND   a.DRRT='24' and TRIM(a.drky)=TRIM(a.sqe8dwxz)) as pk_dwxz");
+            FROM(schema + "FE841003 a");
+            WHERE(" a.sqan8=#{an8}");
+            WHERE("a.sqflag = 'P'");
+            return toString();
+        }
+        public String customAddQryAInfo(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema,@Param("gdtxky")String gdtxky){
+            SELECT("GDGTITNM as filename2");
+            SELECT("GDGTFILENM as filepath");
+            FROM(schema+".F00165");
+            WHERE("Trim(GDGTMOTYPE) = 5");
+            WHERE("Trim(GDOBNM) = 'GTE842005'");
+            WHERE("Trim(GDTXKY) = #{gdtxky}");
+            return toString();
+        }
+    }
+
+    @SelectProvider(type = SqlProvider.class,method = "customAddQryAInfo")
+    List<RqE001InputAttachment> customAddQryAInfo(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema,@Param("gdtxky")String gdtxky);
+
+
+
+
+
+    @SelectProvider(type = SqlProvider.class, method = SqlProvider.CUSTOM_QRY)
+    public List<RqC001InputCustomC01> customQry(@Param("schema") String schema,@Param("ctlSchema") String ctlSchema, @Param("funcType") String funcType);
+
+    @SelectProvider(type = SqlProvider.class, method = SqlProvider.CUSTOM_B_QRY)
+    public List<RqC001InputBC01> customBQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8, @Param("funcType") String funcType);
+
+
+
+
+
+    @SelectProvider(type = SqlProvider.class, method = SqlProvider.CUSTOM_CSC_QRY)
+    public RqC001InputCsc customCscQry(@Param("an8") String an8,@Param("schema") String schema,@Param("ctlSchema") String ctlSchema,@Param("funcType") String funcType);
+
+    @SelectProvider(type = SqlProvider.class, method = SqlProvider.CUSTOM_JXS_QRY)
+    public RqC001InputJXS customJXSQry(@Param("an8") String an8,@Param("schema") String schema,@Param("ctlSchema") String ctlSchema,@Param("funcType") String funcType);
+
+    @SelectProvider(type = SqlProvider.class, method = SqlProvider.CUSTOM_JKS_QRY)
+    public RqC001InputJks customJksQry(@Param("an8") String an8,@Param("schema") String schema,@Param("ctlSchema") String ctlSchema,@Param("funcType") String funcType);
+
+    @SelectProvider(type = SqlProvider.class, method = SqlProvider.CUSTOM_YyOrJcyljg_QRY)
+    public RqC001InputYYOrJcyljg customYyOrJcyljgQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8,@Param("funcType") String funcType);
+
+    @SelectProvider(type = SqlProvider.class, method = SqlProvider.CUSTOM_GR_QRY)
+    public RqC001InputGR customGr(@Param("an8") String an8,@Param("schema") String schema,@Param("funcType") String funcType);
+
+    @SelectProvider(type = SqlProvider.class, method = SqlProvider.CUSTOM_QT_QRY)
+    public RqC001InputQT customQt(@Param("schema") String schema, @Param("an8") String an8,@Param("ctlSchema") String ctlSchema,@Param("funcType") String funcType);
+}

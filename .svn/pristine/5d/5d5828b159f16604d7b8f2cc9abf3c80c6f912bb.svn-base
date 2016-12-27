@@ -1,0 +1,149 @@
+package com.el.cmic.service.customer.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.el.cfg.domain.Ve8wms20;
+import com.el.cmic.common.WmsInterfaceType;
+import com.el.cmic.common.domain.WmsData;
+import com.el.cmic.common.domain.WmsRequest;
+import com.el.cmic.common.domain.WmsResult;
+import com.el.cmic.common.service.Ve8wms20Service;
+import com.el.cmic.domain.customer.CustomData;
+import com.el.cmic.domain.customer.CustomLicence;
+import com.el.cmic.domain.goods.Bales;
+import com.el.cmic.domain.goods.BalesData;
+import com.el.cmic.domain.log.Fe8wmslg;
+import com.el.utils.HttpRequest;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.el.cmic.domain.customer.CustomPItem;
+import com.el.cmic.domain.customer.CustomPropel;
+import com.el.cmic.domain.goods.Licence;
+import com.el.cmic.mapper.customer.CustomPropelMapper;
+import com.el.cmic.service.customer.CustomPropelService;
+import org.springframework.util.Base64Utils;
+
+import javax.annotation.Resource;
+
+/**
+ * 客商接口
+ */
+@Service
+public class CustomPropelServiceImpl implements CustomPropelService {
+    Logger logger = Logger.getLogger(CustomPropelServiceImpl.class);
+    @Resource(name = "httpRequest")
+    private HttpRequest httpRequest;
+    // @Resource(name = "wmsRequest")
+    // private WmsRequest wmsRequest;
+    @Value("${wms.ID}")
+    private String wmsId;
+    @Value("${wms.Ver}")
+    private String ver;
+    @Autowired
+    private CustomPropelMapper customPropelMapper;
+    @Autowired
+    private Ve8wms20Service ve8wms20ServiceImpl;
+
+    @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+    public List<CustomPropel> selectCustomPropelList(String co) {
+        List<CustomPropel> cusProList = customPropelMapper.selectCustomPropelList(co);
+        //取明细地址  和证照明细
+        for (CustomPropel customPropel : cusProList) {
+            List<CustomPItem> cusProItemList = new ArrayList<CustomPItem>();
+            List<CustomLicence> licenceList = new ArrayList<CustomLicence>();
+            if (customPropel.getAban8() != null) {
+                cusProItemList = this.selectCustomPItemList(customPropel.getAban8().toString());
+                licenceList = this.selectLicenceList(customPropel.getAban8().toString());
+                customPropel.setList(cusProItemList);
+                customPropel.setCustomLicenceList(licenceList);
+            }
+        }
+
+        return cusProList;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+    public List<CustomPItem> selectCustomPItemList(String an8) {
+        return customPropelMapper.selectCustomPItemList(an8);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+    public List<CustomLicence> selectLicenceList(String an8) {
+        return customPropelMapper.selectLicenceList(an8);
+    }
+
+    @Override
+    @Transactional
+    public Integer updateJdeStatus(String flag, String BSAN8) {
+        return customPropelMapper.updataJdeStatus(flag, BSAN8);
+    }
+
+    @Override
+    public void callWmsCustomInterface() {
+        try {
+            String status = "Y";
+            List<Ve8wms20> ve8wms20List = ve8wms20ServiceImpl.selectAllVe8wms20();
+            for (Ve8wms20 ve8wms20 : ve8wms20List
+                    ) {
+                List<CustomPropel> customPropelList = selectCustomPropelList(ve8wms20.getLsco());
+                if (customPropelList == null || customPropelList.size() == 0) {
+                    continue;
+                }
+                WmsData wmsData = new WmsData(WmsInterfaceType.CUSTOM_TYPE, wmsId);
+                CustomData customData = new CustomData();
+                customData.setCustomPropelList(customPropelList);
+                wmsData.setInterfaceData(customData);
+                //生成data数据
+                String data = JSON.toJSONString(wmsData, SerializerFeature.WriteMapNullValue);
+                WmsRequest wmsRequest = new WmsRequest(ve8wms20.getLse8appk(), ve8wms20.getLsepapsd(), data, ver);
+                //wmsRequest.setData(data);
+                Fe8wmslg fe8wmslg = new Fe8wmslg();
+                // fe8wmslg.setLsdoco(inInvertoryCancel.getQxdoco());
+                // fe8wmslg.setLsdcto(inInvertoryCancel.getQxdcto());
+                // fe8wmslg.setLskcoo(inInvertoryCancel.getQxkcoo());
+                fe8wmslg.setLsvar1(data);
+                //fe8wmslg.setLsdl03("Request");
+                fe8wmslg.setLsdl03(WmsInterfaceType.CUSTOM_TYPE);
+                //发送post请求
+                String result = httpRequest.sendPost(wmsRequest.toMap(), fe8wmslg);
+                byte[] bytes = Base64Utils.decodeFromString(result);
+                String decodeResult = new String(bytes, "utf-8");
+                WmsResult wmsResult = JSON.parseObject(decodeResult, WmsResult.class);
+
+                if (!wmsResult.isSuccess()) {
+                    status = "E";
+                }
+
+            }
+
+            for (Ve8wms20 ve8wms20 : ve8wms20List
+                    ) {
+                List<CustomPropel> customPropelList = selectCustomPropelList(ve8wms20.getLsco());
+                if (customPropelList == null || customPropelList.size() == 0) {
+                    continue;
+                }
+                //更新状态
+                for (CustomPropel customPropel : customPropelList
+                        ) {
+                    updateJdeStatus(status, customPropel.getBsan8());
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("调用客商推送接口失败,error:" + e.getMessage());
+
+        }
+
+    }
+}
