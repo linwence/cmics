@@ -126,6 +126,8 @@ ORDER BY table_name;
            enableUpdateByPrimaryKey="false"/>
     <table tableName="Ve8wms20" domainObjectName="Ve8wms20" enableInsert="false" enableDeleteByPrimaryKey="false"
            enableUpdateByPrimaryKey="false"/>
+    <table tableName="FE8XLH99" domainObjectName="Fe8xlh99" enableInsert="false" enableDeleteByPrimaryKey="false"
+           enableUpdateByPrimaryKey="false"/>
 
 
 

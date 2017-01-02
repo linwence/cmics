@@ -39,10 +39,10 @@ import com.el.utils.HttpRequest;
  */
 @Service
 public class InboundServiceImpl implements InboundService {
-    private final String LOCN0 = "合格品";
-    private final String LOCN1 = "待处理品";
-    private final String LOCN2 = "不合格品";
-    private final String LOCN4 = "代管品";
+    private final String LOCN0 = "合格区";
+    private final String LOCN1 = "待处理区";
+    private final String LOCN2 = "不合格区";
+    private final String LOCN4 = "代管区";
     Logger logger = Logger.getLogger(InboundServiceImpl.class);
 
     @Autowired
