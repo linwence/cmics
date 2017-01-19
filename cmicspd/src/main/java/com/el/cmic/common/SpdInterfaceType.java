@@ -12,4 +12,7 @@ public class SpdInterfaceType {
     public static final String SPD_SETTLE_TYPE = "SPD结算接口表";//SPD结算接口表
     public static final String SPD_REVERT_TYPE = "SPD请退接口表";//SPD请退接口表
     public static final String ORDERBACK_TYPE = "SPD订单返回接口表";
+    public static final String LEDGER_QUERY_TYPE="应急库分类账查询";
+    public static final String STOCK_QUERY_TYPE="应急库库存查询";
+    public static final String SPD_SALES_QUERY_TYPE="商品销售明细查询";
 }

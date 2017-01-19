@@ -37,7 +37,8 @@ public class ValidParamServiceImpl implements ValidParamService {
         //需要对数据进行处理
         SpdResult spdResult = new SpdResult(true, "0000", "成功");
         String[] interfaceTypes = new String[]{SpdInterfaceType.SPD_ORDER_TYPE, SpdInterfaceType.SPD_SETTLE_TYPE,
-                SpdInterfaceType.SPD_REVERT_TYPE};
+                SpdInterfaceType.SPD_REVERT_TYPE, SpdInterfaceType.LEDGER_QUERY_TYPE, SpdInterfaceType.STOCK_QUERY_TYPE,
+        SpdInterfaceType.SPD_SALES_QUERY_TYPE};
         try {
             if (!spdResult.isSuccess()) {
                 return spdResult;
@@ -124,6 +125,12 @@ public class ValidParamServiceImpl implements ValidParamService {
 
                     fe8spdlg.setLge8cgdd(cgdd);//订单号
 
+                }
+                if (interfaceType.equals(SpdInterfaceType.LEDGER_QUERY_TYPE) || interfaceType.equals(SpdInterfaceType.STOCK_QUERY_TYPE)
+                ||interfaceType.equals(SpdInterfaceType.SPD_SALES_QUERY_TYPE)) {
+                    objco = jsonObjectInterfaceData.get("配送机构ERP编号");
+                    //Object objerp = jsonObject.get("配送单位系统标识”");
+                    objSpdid = jsonObjectInterfaceData.get("SPD系统标识");
                 }
 
                 Ve8spd0099 ve8spd0099 = ve8spd0099ServiceImpl.selectByCoAndSpdId(objco.toString(), objSpdid.toString());

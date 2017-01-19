@@ -1,0 +1,161 @@
+package com.el.cmic.mapper.query;
+
+import java.util.List;
+
+import com.el.cmic.domain.query.StockQryCondition;
+import com.el.cmic.domain.query.Ve8spdF41021;
+import com.el.utils.ReadPropertiesUtil;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.jdbc.SQL;
+import org.apache.ibatis.type.JdbcType;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PathVariable;
+
+public interface Ve8spdF41021Mapper {
+    final String schema = ReadPropertiesUtil.getPropertyValue("/config/db.properties", "schema");
+
+    @Select({
+            "select",
+            "LIITM, IMLITM, IMDSC1, SPE8DSC2, LIMCU, MCDL01, MCCO, CCNAME, LILOCN, LILOTN, ",
+            "IOLOT1, IOLOT2, FCD01, PRODDATE, LOTINVALIDDATE, LOT2INVALIDDATE, PQOH, HCOMPCOM, ",
+            "QAVAL, IMUOM1, UOM, SPE8CPDL, CPDL, SPE8TSFL, TSFL, SPE8CPFL, CPFL, MJRQ, IMSTKT, ",
+            "STKT, ABALPH, FCE8ZZBM, SPE8JHG, JHG",
+            "from CRPDTA.VE8SPDF41021"
+    })
+    @Results({
+            @Result(column = "LIITM", property = "liitm", jdbcType = JdbcType.DECIMAL),
+            @Result(column = "IMLITM", property = "imlitm", jdbcType = JdbcType.NCHAR),
+            @Result(column = "IMDSC1", property = "imdsc1", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPE8DSC2", property = "spe8dsc2", jdbcType = JdbcType.NCHAR),
+            @Result(column = "LIMCU", property = "limcu", jdbcType = JdbcType.NCHAR),
+            @Result(column = "MCDL01", property = "mcdl01", jdbcType = JdbcType.NCHAR),
+            @Result(column = "MCCO", property = "mcco", jdbcType = JdbcType.NCHAR),
+            @Result(column = "CCNAME", property = "ccname", jdbcType = JdbcType.NCHAR),
+            @Result(column = "LILOCN", property = "lilocn", jdbcType = JdbcType.NCHAR),
+            @Result(column = "LILOTN", property = "lilotn", jdbcType = JdbcType.NCHAR),
+            @Result(column = "IOLOT1", property = "iolot1", jdbcType = JdbcType.NCHAR),
+            @Result(column = "IOLOT2", property = "iolot2", jdbcType = JdbcType.NCHAR),
+            @Result(column = "FCD01", property = "fcd01", jdbcType = JdbcType.DECIMAL),
+            @Result(column = "PRODDATE", property = "proddate", jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "LOTINVALIDDATE", property = "lotinvaliddate", jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "LOT2INVALIDDATE", property = "lot2invaliddate", jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "PQOH", property = "pqoh", jdbcType = JdbcType.DECIMAL),
+            @Result(column = "HCOMPCOM", property = "hcompcom", jdbcType = JdbcType.DECIMAL),
+            @Result(column = "QAVAL", property = "qaval", jdbcType = JdbcType.DECIMAL),
+            @Result(column = "IMUOM1", property = "imuom1", jdbcType = JdbcType.NCHAR),
+            @Result(column = "UOM", property = "uom", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPE8CPDL", property = "spe8cpdl", jdbcType = JdbcType.NCHAR),
+            @Result(column = "CPDL", property = "cpdl", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPE8TSFL", property = "spe8tsfl", jdbcType = JdbcType.NCHAR),
+            @Result(column = "TSFL", property = "tsfl", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPE8CPFL", property = "spe8cpfl", jdbcType = JdbcType.NCHAR),
+            @Result(column = "CPFL", property = "cpfl", jdbcType = JdbcType.NCHAR),
+            @Result(column = "MJRQ", property = "mjrq", jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "IMSTKT", property = "imstkt", jdbcType = JdbcType.NCHAR),
+            @Result(column = "STKT", property = "stkt", jdbcType = JdbcType.NCHAR),
+            @Result(column = "ABALPH", property = "abalph", jdbcType = JdbcType.NCHAR),
+            @Result(column = "FCE8ZZBM", property = "fce8zzbm", jdbcType = JdbcType.NCHAR),
+            @Result(column = "SPE8JHG", property = "spe8jhg", jdbcType = JdbcType.NCHAR),
+            @Result(column = "JHG", property = "jhg", jdbcType = JdbcType.NCHAR)
+    })
+    List<Ve8spdF41021> selectAll();
+
+    final class SqlProvider extends SQL {
+        public String selectByCondition(@Param("stockQryCondition") StockQryCondition stockQryCondition) {
+            SELECT("liitm");
+            SELECT("imlitm");
+            SELECT("imdsc1");
+            SELECT("Spe8dsc2");
+            SELECT("limcu");
+            SELECT("mcdl01");
+            SELECT("mcco");
+            SELECT("ccname");
+            SELECT("lilocn");
+            SELECT("lilotn");
+            SELECT("iolot1");
+            SELECT("iolot2");
+            SELECT("prodDate");
+            SELECT("lotInvalidDate");
+            SELECT("lot2InvalidDate");
+            SELECT("pqoh");
+            SELECT("hcompcom");
+            SELECT("qaval");
+            //SELECT("imuom1");
+            SELECT("uom");
+            SELECT("cpdl");
+            SELECT("tsfl");
+            SELECT("cpfl");
+            SELECT("mjrq");
+            SELECT("STKT");
+            SELECT("abalph");
+            SELECT("fce8zzbm");
+            SELECT("JHG");
+            FROM(schema + ".ve8spdf41021");
+            WHERE("mcco=#{stockQryCondition.erpco}");
+            if (!StringUtils.isEmpty(stockQryCondition.getLitm())) {
+                WHERE("imlitm=#{stockQryCondition.litm}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getDsc1())) {
+                WHERE("imdsc1=#{stockQryCondition.dsc1}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getE8dsc2())) {
+                WHERE("Spe8dsc2=#{stockQryCondition.e8dsc2}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getMcu())) {
+                WHERE("limcu=#{stockQryCondition.mcu}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getMcdl01())) {
+                WHERE("mcdl01=#{stockQryCondition.mcdl01}");
+            }
+            /*if(!StringUtils.isEmpty(stockQryCondition.getMcco())){
+                WHERE("mcco=#{stockQryCondition.mcco}");
+            }*/
+            if (!StringUtils.isEmpty(stockQryCondition.getCcname())) {
+                WHERE("ccname=#{stockQryCondition.ccname}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getLocn())) {
+                WHERE("lilocn=#{stockQryCondition.locn}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getLotn())) {
+                WHERE("lilotn=#{stockQryCondition.lotn}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getLot1())) {
+                WHERE("iolot1=#{stockQryCondition.lot1}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getLot2())) {
+                WHERE("iolot2=#{stockQryCondition.lot2}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getCpdl())) {
+                WHERE("TRIM(cpdl)=#{stockQryCondition.cpdl}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getTsfl())) {
+                WHERE("TRIM(tsfl)=#{stockQryCondition.tsfl}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getCpfl())) {
+                WHERE("TRIM(cpfl)=#{stockQryCondition.cpfl}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getStkt())) {
+                if (stockQryCondition.getStkt().equals("Y")) {
+                    WHERE("IMSTKT='O'");
+                }
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getAbalph())) {
+                WHERE("TRIM(abalph)=#{stockQryCondition.abalph}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getE8zzbm())) {
+                WHERE("TRIM(fce8zzbm)=#{stockQryCondition.e8zzbm}");
+            }
+            if (!StringUtils.isEmpty(stockQryCondition.getE8zzbm())) {
+                WHERE("TRIM(fce8zzbm)=#{stockQryCondition.e8zzbm}");
+            }
+            if (stockQryCondition.getStartRowNum() > 0 && stockQryCondition.getEndRowNum() > 0) {
+                WHERE("ROWNUM between #{stockQryCondition.startRowNum} and #{stockQryCondition.endRowNum}");
+            }
+
+            return toString();
+        }
+    }
+
+    @SelectProvider(type = SqlProvider.class, method = "selectByCondition")
+    List<Ve8spdF41021> selectByCondition(@Param("stockQryCondition") StockQryCondition stockQryCondition);
+}
