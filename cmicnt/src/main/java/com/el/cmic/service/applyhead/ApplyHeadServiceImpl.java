@@ -109,7 +109,7 @@ public class ApplyHeadServiceImpl implements ApplyHeadService {
         Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(NtInterfaceType.APPLYHEAD_BY_KEY);
         url = fe8NtCfg.getUrl();
 
-        HashMap<String, Object> hashMap = new HashMap<>();
+        HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("userCode", ntRequestParam.getUserCode());
         hashMap.put("pwd", ntRequestParam.getPwd());
         hashMap.put("code", code);

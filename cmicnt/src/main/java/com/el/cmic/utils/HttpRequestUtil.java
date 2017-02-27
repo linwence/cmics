@@ -26,7 +26,7 @@ public class HttpRequestUtil {
      *
      * @return 所代表远程资源的响应结果
      */
-    public String sendPost(String url,Map<String, Object> param) throws Exception {
+    public String sendPost(String url,Map<String, String> param) throws Exception {
 
         HttpURLConnection connection = null;
         PrintWriter out = null;
@@ -57,7 +57,7 @@ public class HttpRequestUtil {
 
 
             //拼接参数
-            for (Map.Entry<String, Object> entity : param.entrySet()) {
+            for (Map.Entry<String, String> entity : param.entrySet()) {
                 sendStr += entity.getKey() + "=" + entity.getValue() + "&";
             }
 

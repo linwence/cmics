@@ -134,9 +134,9 @@ public class Fe8nt001 implements Serializable {
 
     @JSONField(name = "ckdt")
     private Integer spckdt;
-    @JSONField(name = "redate", format = "yyyy-MM-dd hh:mm:ss")
+    @JSONField(name = "redate", format = "yyyy/MM/dd HH:mm:ss")
     private Date sprdate;
-    @JSONField(name = "indate", format = "yyyy-MM-dd hh:mm:ss")
+    @JSONField(name = "indate", format = "yyyy/MM/dd HH:mm:ss")
     private Date spidate;
     @JSONField(name = "status")
     private String status;

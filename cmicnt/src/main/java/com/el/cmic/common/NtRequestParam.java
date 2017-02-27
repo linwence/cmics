@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,12 +55,22 @@ public class NtRequestParam {
         this.timeEnd = timeEnd;
     }
 
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> hashMap = new HashMap<>();
+    public Map<String, String> toMap() {
+        HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("userCode", this.getUserCode());
         hashMap.put("pwd", this.getPwd());
-        hashMap.put("timeBegin", this.getTimeBegin());
-        hashMap.put("timeEnd", this.getTimeEnd());
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        if(this.getTimeBegin()!=null){
+            hashMap.put("timeBegin", simpleDateFormat.format(this.getTimeBegin()));
+        }else {
+            hashMap.put("timeBegin", "");
+        }
+       if(this.getTimeEnd()!=null){
+           hashMap.put("timeEnd", simpleDateFormat.format(this.getTimeEnd()));
+       }else {
+           hashMap.put("timeEnd", "");
+       }
+
         return hashMap;
     }
 }

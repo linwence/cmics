@@ -15,7 +15,7 @@ public interface ProductMapper {
 
     @Select({"select spaitm,sprdate,spidate " +
             " from ${tableSchema}.FE8NT001 " +
-            " where spaitm=#{litm}"})
+            " where TRIM(spaitm)=#{litm,jdbcType=NCHAR}"})
     @Results({
             @Result(column = "spaitm", property = "spaitm",jdbcType = JdbcType.NCHAR),
             @Result(column = "sprdate",property = "sprdate",jdbcType = JdbcType.DATE),
@@ -25,7 +25,7 @@ public interface ProductMapper {
 
     final class SqlProvider extends SQL {
         public String insertFe8nt001(@Param("tableSchema") String tableSchema, @Param("fe8nt001") Fe8nt001 fe8nt001) {
-            INSERT_INTO("fe8nt001");
+            INSERT_INTO(tableSchema+".fe8nt001");
             VALUES("spaitm", "#{fe8nt001.spaitm}");
             VALUES("splitm", "' '");
             VALUES("spitm", "0");
@@ -47,7 +47,7 @@ public interface ProductMapper {
             VALUES("spe8qtcc", "#{fe8nt001.spe8qtcc}");
             VALUES("spe8xlhgl", "#{fe8nt001.spe8xlhgl}");
             VALUES("spe8zdyh", "#{fe8nt001.spe8zdyh}");
-            VALUES("spe8yhzq", "#{fe8nt001.spe8yhzq}");
+            VALUES("spe8yhzq", "#{fe8nt001.spe8yhzq,jdbcType=NUMERIC}");
             VALUES("spe8cpfl", "#{fe8nt001.spe8cpfl}");
             VALUES("spe8zzlxa", "#{fe8nt001.spe8zzlxa}");
             VALUES("spe8zzbm", "#{fe8nt001.spe8zzbm}");
@@ -64,13 +64,13 @@ public interface ProductMapper {
             VALUES("spipay", "#{fe8nt001.spipay}");
             VALUES("sptdsc", "#{fe8nt001.sptdsc}");
             VALUES("spefhr", "#{fe8nt001.spefhr}");
-            VALUES("spcrtj", "#{fe8nt001.spcrtj}");
-            VALUES("spdivj", "#{fe8nt001.spdivj}");
-            VALUES("spafdj", "#{fe8nt001.spafdj}");
-            VALUES("spckdt", "#{fe8nt001.spckdt}");
+            VALUES("spcrtj", "#{fe8nt001.spcrtj,jdbcType=NUMERIC}");
+            VALUES("spdivj", "#{fe8nt001.spdivj,jdbcType=NUMERIC}");
+            VALUES("spafdj", "#{fe8nt001.spafdj,jdbcType=NUMERIC}");
+            VALUES("spckdt", "#{fe8nt001.spckdt,jdbcType=NUMERIC}");
             VALUES("spflag", "#{fe8nt001.status}");
-            VALUES("SPIDATE", "#{fe8nt001.spidate}");
-            VALUES("SPRDATE", "#{fe8nt001.sprdate}");
+            VALUES("SPIDATE", "#{fe8nt001.spidate,jdbcType=TIMESTAMP}");
+            VALUES("SPRDATE", "#{fe8nt001.sprdate,jdbcType=TIMESTAMP}");
 
             VALUES("spuser", "'NT'");
             VALUES("spupmj", UPMJ);
@@ -87,6 +87,7 @@ public interface ProductMapper {
             VALUES("spev01", "' '");
             VALUES("spev02", "' '");
             VALUES("spev03", "' '");
+            VALUES("spAOD", "SYSDATE");
 
             return toString();
         }
@@ -100,7 +101,7 @@ public interface ProductMapper {
             SET("spdl01=#{fe8nt001.spdl01}");
             SET("spglpt=#{fe8nt001.spglpt}");
             SET("spdl02=#{fe8nt001.spdl02}");
-            SET("spe8name={fe8nt001.spe8name}");
+            SET("spe8name=#{fe8nt001.spe8name}");
             SET("sporig=#{fe8nt001.sporig}");
             SET("spe8fxdj=#{fe8nt001.spe8fxdj}");
             SET("spdl03=#{fe8nt001.spdl03}");
@@ -109,7 +110,7 @@ public interface ProductMapper {
             SET("spe8qtcc=#{fe8nt001.spe8qtcc}");
             SET("spe8xlhgl=#{fe8nt001.spe8xlhgl}");
             SET("spe8zdyh=#{fe8nt001.spe8zdyh}");
-            SET("spe8yhzq=#{fe8nt001.spe8yhzq}");
+            SET("spe8yhzq=#{fe8nt001.spe8yhzq,jdbcType=NUMERIC}");
             SET("spe8cpfl=#{fe8nt001.spe8cpfl}");
             SET("spe8zzlxa=#{fe8nt001.spe8zzlxa}");
             SET("spe8zzbm=#{fe8nt001.spe8zzbm}");
@@ -126,18 +127,19 @@ public interface ProductMapper {
             SET("spipay=#{fe8nt001.spipay}");
             SET("sptdsc=#{fe8nt001.sptdsc}");
             SET("spefhr=#{fe8nt001.spefhr}");
-            SET("spcrtj=#{fe8nt001.spcrtj}");
-            SET("spdivj=#{fe8nt001.spdivj}");
-            SET("spafdj=#{fe8nt001.spafdj}");
-            SET("spckdt=#{fe8nt001.spckdt}");
+            SET("spcrtj=#{fe8nt001.spcrtj,jdbcType=NUMERIC}");
+            SET("spdivj=#{fe8nt001.spdivj,jdbcType=NUMERIC}");
+            SET("spafdj=#{fe8nt001.spafdj,jdbcType=NUMERIC}");
+            SET("spckdt=#{fe8nt001.spckdt,jdbcType=NUMERIC}");
             SET("spflag=#{fe8nt001.status}");
-            SET("SPIDATE=#{fe8nt001.spidate}");
-            SET("SPRDATE=#{fe8nt001.sprdate}");
+            SET("SPIDATE=#{fe8nt001.spidate,jdbcType=TIMESTAMP}");
+            SET("SPRDATE=#{fe8nt001.sprdate,jdbcType=TIMESTAMP}");
             SET("spupmj=" + UPMJ);
             SET("sptday=" + TDAY);
+            SET("spaod=sysdate");
             // SET("spmmcu=' '");
             //  SET("span8=0");
-            WHERE("spaitm=#{fe8nt001.spaitm}");
+            WHERE("trim(spaitm)=#{fe8nt001.spaitm}");
 
             //VALUES("splitm", "' '");
             //VALUES("spitm", "0");

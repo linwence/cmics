@@ -109,7 +109,7 @@ public class ApplyDetailServiceImpl implements ApplyDetailService {
         Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(NtInterfaceType.APPLYDETAIL_BY_KEY);
         url = fe8NtCfg.getUrl();
 
-        HashMap<String, Object> hashMap = new HashMap<>();
+        HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("userCode", ntRequestParam.getUserCode());
         hashMap.put("pwd", ntRequestParam.getPwd());
         hashMap.put("code", code);

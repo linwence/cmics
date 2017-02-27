@@ -1,3 +1,8 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
 package com.el.cmic.callmdm.domain;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -5,27 +10,66 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-/**
- * Created by Vincent on 2016/10/13.
- */
-@XmlRootElement(name = "main")
+@XmlRootElement(
+        name = "main"
+)
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"ukid","ev01","an8","mfcd","mfname","mfbrand","mflicense","creator","creationtime","kcoo"})
+@XmlType(
+        propOrder = {"ukid", "ev01", "an8", "mfcd", "mfname", "mfbrand", "mflicense", "creator", "creationtime", "kcoo", "SZEDUS", "SZEDBT", "SZEDTN", "SZEDLN"}
+)
 public class RqM001InputMfr {
     private String ukid;
-    private String ev01;//是否有统一码 Y是，N否
+    private String ev01;
     private String an8;
-    private String mfcd;//<mfcd>生产厂家编码</mfcd>
-    private String mfname;// <mfname>生产厂家名称</mfname>
-    private String mfbrand;// <mfbrand>厂牌</mfbrand> --输入产品名称
-    private String mflicense;// <mflicense>生产许可证号</mflicense>
-
-    private String creator="";
-    private String creationtime="";
+    private String mfcd;
+    private String mfname;
+    private String mfbrand;
+    private String mflicense;
+    private String creator = "";
+    private String creationtime = "";
     private String kcoo = "";
+    private String SZEDUS;
+    private String SZEDBT;
+    private String SZEDTN;
+    private String SZEDLN;
+
+    public RqM001InputMfr() {
+    }
+
+    public String getSZEDUS() {
+        return this.SZEDUS;
+    }
+
+    public void setSZEDUS(String SZEDUS) {
+        this.SZEDUS = SZEDUS;
+    }
+
+    public String getSZEDBT() {
+        return this.SZEDBT;
+    }
+
+    public void setSZEDBT(String SZEDBT) {
+        this.SZEDBT = SZEDBT;
+    }
+
+    public String getSZEDTN() {
+        return this.SZEDTN;
+    }
+
+    public void setSZEDTN(String SZEDTN) {
+        this.SZEDTN = SZEDTN;
+    }
+
+    public String getSZEDLN() {
+        return this.SZEDLN;
+    }
+
+    public void setSZEDLN(String SZEDLN) {
+        this.SZEDLN = SZEDLN;
+    }
 
     public String getKcoo() {
-        return kcoo;
+        return this.kcoo;
     }
 
     public void setKcoo(String kcoo) {
@@ -33,7 +77,7 @@ public class RqM001InputMfr {
     }
 
     public String getCreator() {
-        return creator;
+        return this.creator;
     }
 
     public void setCreator(String creator) {
@@ -41,7 +85,7 @@ public class RqM001InputMfr {
     }
 
     public String getCreationtime() {
-        return creationtime;
+        return this.creationtime;
     }
 
     public void setCreationtime(String creationtime) {
@@ -49,7 +93,7 @@ public class RqM001InputMfr {
     }
 
     public String getAn8() {
-        return an8;
+        return this.an8;
     }
 
     public void setAn8(String an8) {
@@ -57,7 +101,7 @@ public class RqM001InputMfr {
     }
 
     public String getUkid() {
-        return ukid;
+        return this.ukid;
     }
 
     public void setUkid(String ukid) {
@@ -65,7 +109,7 @@ public class RqM001InputMfr {
     }
 
     public String getEv01() {
-        return ev01;
+        return this.ev01;
     }
 
     public void setEv01(String ev01) {
@@ -73,7 +117,7 @@ public class RqM001InputMfr {
     }
 
     public String getMfcd() {
-        return mfcd;
+        return this.mfcd;
     }
 
     public void setMfcd(String mfcd) {
@@ -81,7 +125,7 @@ public class RqM001InputMfr {
     }
 
     public String getMfname() {
-        return mfname;
+        return this.mfname;
     }
 
     public void setMfname(String mfname) {
@@ -89,7 +133,7 @@ public class RqM001InputMfr {
     }
 
     public String getMfbrand() {
-        return mfbrand;
+        return this.mfbrand;
     }
 
     public void setMfbrand(String mfbrand) {
@@ -97,7 +141,7 @@ public class RqM001InputMfr {
     }
 
     public String getMflicense() {
-        return mflicense;
+        return this.mflicense;
     }
 
     public void setMflicense(String mflicense) {

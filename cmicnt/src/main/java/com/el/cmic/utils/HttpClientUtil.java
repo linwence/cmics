@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class HttpClientUtil {
-    public String doPost(String url,Map<String,Object> map,String charset){
+    public String doPost(String url,Map<String,String> map,String charset){
         HttpClient httpClient = null;
         HttpPost httpPost = null;
         String result = null;

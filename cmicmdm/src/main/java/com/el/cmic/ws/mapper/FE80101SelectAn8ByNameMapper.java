@@ -1,3 +1,8 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
 package com.el.cmic.ws.mapper;
 
 import org.apache.ibatis.annotations.Param;
@@ -5,21 +10,23 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.stereotype.Repository;
 
-/**
- * Created by king_ on 2016/10/19.
- */
-@Repository(value = "fe80101SelectAn8ByNameMapper")
+@Repository("fe80101SelectAn8ByNameMapper")
 public interface FE80101SelectAn8ByNameMapper {
-    final class SqlProvider extends SQL{
-        public String FE80101Select(@Param("schema")String schema,@Param("e8kstym")String e8kstym){
-            SELECT("ksan8");
-            FROM(schema+ ".FE80101");
-            WHERE("Trim(kse8kstym)=#{e8kstym}");
+    @SelectProvider(
+            type = FE80101SelectAn8ByNameMapper.SqlProvider.class,
+            method = "FE80101Select"
+    )
+    String FE80101Select(@Param("schema") String var1, @Param("e8kstym") String var2);
 
-            return toString();
+    public static final class SqlProvider extends SQL {
+        public SqlProvider() {
+        }
+
+        public String FE80101Select(@Param("schema") String schema, @Param("e8kstym") String e8kstym) {
+            this.SELECT("ksan8");
+            this.FROM(schema + ".FE80101");
+            this.WHERE("Trim(kse8kstym)=#{e8kstym}");
+            return this.toString();
         }
     }
-    @SelectProvider(type = SqlProvider.class,method = "FE80101Select")
-    String FE80101Select(@Param("schema")String schema,@Param("e8kstym")String e8kstym);
-
 }

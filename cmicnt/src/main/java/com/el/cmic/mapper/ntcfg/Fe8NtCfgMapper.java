@@ -30,7 +30,7 @@ public interface Fe8NtCfgMapper {
     @Update({" UPDATE  ${tableSchema}.Fe8NtCfg ",
             "SET calldate=#{fe8NtCfg.calldate},",
             "successflag=#{fe8NtCfg.successflag},",
-            "successdate=#{fe8NtCfg.successdate}",
+            "successdate=#{fe8NtCfg.successdate,jdbcType=TIMESTAMP}",
             "where trim(interfacename)=#{fe8NtCfg.interfacename}"})
     public int updateFe8nttime(@Param("fe8NtCfg") Fe8NtCfg fe8NtCfg);
 }

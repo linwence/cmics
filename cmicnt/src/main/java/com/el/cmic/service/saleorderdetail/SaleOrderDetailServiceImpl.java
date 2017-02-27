@@ -108,7 +108,7 @@ public class SaleOrderDetailServiceImpl implements SaleOrderDetailService {
         Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(NtInterfaceType.SALEDETAIL_BY_KEY);
         url = fe8NtCfg.getUrl();
 
-        HashMap<String, Object> hashMap = new HashMap<>();
+        HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("userCode", ntRequestParam.getUserCode());
         hashMap.put("pwd", ntRequestParam.getPwd());
         hashMap.put("code", code);

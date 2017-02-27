@@ -1,26 +1,46 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
 package com.el.cmic.ws.service;
 
-import com.el.cfg.domain.*;
-
-import com.el.cmic.ws.domain.*;
-import com.el.cmic.ws.mapper.*;
+import com.el.cfg.domain.F4101;
+import com.el.cfg.domain.F4101z1;
+import com.el.cfg.domain.Fe841001;
+import com.el.cfg.domain.Fe84101;
+import com.el.cfg.domain.Fe84202B;
+import com.el.cmic.ws.domain.PhE001OutBE01;
+import com.el.cmic.ws.domain.PhE001OutHeader;
+import com.el.cmic.ws.domain.PhE001OutHeaderCode;
+import com.el.cmic.ws.domain.PhE001OutsublineB;
+import com.el.cmic.ws.domain.PhE002OutMain;
+import com.el.cmic.ws.mapper.F00022MapperC;
+import com.el.cmic.ws.mapper.F0005DMapper;
+import com.el.cmic.ws.mapper.F0005Mapper;
+import com.el.cmic.ws.mapper.F00165MapperCustom;
+import com.el.cmic.ws.mapper.F4101UpdateByLitmMapper;
+import com.el.cmic.ws.mapper.FE80101SelectAn8ByNameMapper;
+import com.el.cmic.ws.mapper.FE841001UpdateByDocoMapper;
+import com.el.cmic.ws.mapper.FE84101SelectAitm;
+import com.el.cmic.ws.mapper.FE84101UpdateByLitmMapper;
+import com.el.cmic.ws.mapper.FE84101ZSelectByE8ZZBM;
+import com.el.cmic.ws.mapper.FE84101ZUpdateByPKMapper;
+import com.el.cmic.ws.mapper.FE84202BMapperC2;
+import com.el.cmic.ws.service.AddE02ToERPService;
 import com.el.utils.JdeDateUtil;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-/**
- * Created by king_ on 2016/10/8.
- */
 @Service
 public class AddE02ToERPServiceImpl implements AddE02ToERPService {
     Logger logger = Logger.getLogger(AddE02ToERPServiceImpl.class);
@@ -42,269 +62,192 @@ public class AddE02ToERPServiceImpl implements AddE02ToERPService {
     F00165MapperCustom f00165MapperCustom;
     @Autowired
     FE841001UpdateByDocoMapper fe841001UpdateByDocoMapper;
-
     @Autowired
     FE84101SelectAitm fe84101SelectAitm;
     @Autowired
     FE84202BMapperC2 fe84202BMapperC2;
     @Autowired
     F00022MapperC f00022MapperC;
-
-
     @Value("${ctlSchema}")
     private String dbtype;
     @Value("${schema}")
     private String schema;
-    @Transactional
-    public String addE02ToERP(PhE001OutHeader phE001OutHeader, PhE002OutMain phE002OutMain,PhE001OutsublineB phE001OutsublineB,String no,String co) {
-      //  try {
-            updateF4101(phE001OutHeader, phE002OutMain, no);
-            updateFE84101(phE001OutHeader, phE002OutMain, phE001OutsublineB, no);
 
-     //       updateFE84101Z(phE002OutMain, phE001OutsublineB, no, co);
-            //updateF00165(phE001OutsublineA,phE002OutMain,phE001OutsublineB);
-            if(phE001OutHeader.getFunctype().equals("ADD")){
-                updateFE84101YON(no);
-                updateFe841001flag(no);
-            }
-      //  if(phE001OutHeader.getFunctype().equals("MOD")){
-            updateFE84101bgbs(no);
-    //    }
-      /*  }catch (Exception e){
-            logger.error("----------------------------------------------------------------------------------------------------");
-            logger.error("E02更新失败"+e.getMessage());
-            logger.error("----------------------------------------------------------------------------------------------------");
-        }*/
-        return null;
+    public AddE02ToERPServiceImpl() {
     }
 
     @Transactional
-    public String updateFE84101Z(PhE002OutMain phE002OutMain, PhE001OutsublineB phE001OutsublineB, String no,String co) {
-       /* logger.info("E02开始更新表FE84101Z");
-        Fe84101z fe84101Z = new Fe84101z();
-        if(phE001OutsublineB.getPhE001OutBE01List()!=null) {
-            for (PhE001OutBE01 tmp : phE001OutsublineB.getPhE001OutBE01List()) {
-                //     fe84101Z.setZze8zzlxa(tmp.getPk_licensetype());
-                fe84101Z.setZze8zzlxa(f0005Mapper.selectF0005(dbtype, "E8", "28", tmp.getPk_licensetype()));
-                fe84101Z.setZze8zzbm(tmp.getLicenseno());
-                fe84101Z.setZzlitm(no);
-                fe84101Z.setZzco(co);
-
-                String dj = tmp.getTodate();
-
-                if (fe84101ZSelectByE8ZZBM.Fe84101zselect(schema,no,tmp.getLicenseno(),co)  >= 1) {
-                    fe84101ZUpdateByPKMapper.updateByPrimaryKeySelective(schema, fe84101Z, "E01", dj);
-                }
-                if (fe84101ZSelectByE8ZZBM.Fe84101zselect(schema,no,tmp.getLicenseno(),co) == 0) {
-                    fe84101ZUpdateByPKMapper.insertSelective(schema, fe84101Z, dj);
-                }
-            }
+    public String addE02ToERP(PhE001OutHeader phE001OutHeader, PhE002OutMain phE002OutMain, PhE001OutsublineB phE001OutsublineB, String no, String co) {
+        this.updateF4101(phE001OutHeader, phE002OutMain, no);
+        this.updateFE84101(phE001OutHeader, phE002OutMain, phE001OutsublineB, no);
+        if(phE001OutHeader.getFunctype().equals("ADD")) {
+            this.updateFE84101YON(no);
+            this.updateFe841001flag(no);
         }
 
-        logger.info("成功");*/
+        this.updateFE84101bgbs(no);
         return null;
     }
 
     @Transactional
-    public String updateFE84101(PhE001OutHeader phE001OutHeader, PhE002OutMain phE002OutMain,PhE001OutsublineB phE001OutsublineB,String no) {
-        logger.info("E02开始更新表FE84101");
+    public String updateFE84101Z(PhE002OutMain phE002OutMain, PhE001OutsublineB phE001OutsublineB, String no, String co) {
+        return null;
+    }
+
+    @Transactional
+    public String updateFE84101(PhE001OutHeader phE001OutHeader, PhE002OutMain phE002OutMain, PhE001OutsublineB phE001OutsublineB, String no) {
+        this.logger.info("E02开始更新表FE84101");
         Fe84101 fe84101 = new Fe84101();
         String TemporaryCode = "";
         String FormalCode = "";
-        List<PhE001OutHeaderCode> phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
-        for(PhE001OutHeaderCode tmp :phE001OutHeaderCodes){
+        List phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
+        Iterator e8jx = phE001OutHeaderCodes.iterator();
 
-            if(tmp.getCodetype().equals("1")){
+        PhE001OutHeaderCode f4101z1litm;
+        while(e8jx.hasNext()) {
+            f4101z1litm = (PhE001OutHeaderCode)e8jx.next();
+            if(f4101z1litm.getCodetype().equals("1")) {
                 fe84101.setSpev01("Y");
             }
-
         }
-        if(fe84101.getSpev01().equals(null)){
+
+        if(fe84101.getSpev01().equals((Object)null)) {
             fe84101.setSpev01("N");
         }
-        for(PhE001OutHeaderCode tmp :phE001OutHeaderCodes){
-            if(tmp.getCodetype().equals("0")){
-                TemporaryCode = tmp.getCodevalue();
+
+        e8jx = phE001OutHeaderCodes.iterator();
+
+        while(e8jx.hasNext()) {
+            f4101z1litm = (PhE001OutHeaderCode)e8jx.next();
+            if(f4101z1litm.getCodetype().equals("0")) {
+                TemporaryCode = f4101z1litm.getCodevalue();
             }
-            if(tmp.getCodetype().equals("1")){
-                FormalCode = tmp.getCodevalue();
+
+            if(f4101z1litm.getCodetype().equals("1")) {
+                FormalCode = f4101z1litm.getCodevalue();
             }
         }
+
         fe84101.setSpe8sptym(FormalCode);
         fe84101.setSplitm(no);
         fe84101.setSpe8name(phE002OutMain.getProductname());
-      //  BigDecimal bigDecimal = new BigDecimal(fe80101SelectAn8ByNameMapper.FE80101Select(schema,phE002OutMain.getMfname()));
-
-     //   fe84101.setSpan8(bigDecimal);
         fe84101.setSpe8pzwh(phE002OutMain.getFileno());
-  //      fe84101.setSpe8zdyl(phE002OutMain.getPk_zdypdl());
-        fe84101.setSpe8zdyl(f0005Mapper.selectF0005(dbtype,"E8","29",phE002OutMain.getPk_zdypdl()));
-   //     fe84101.setSpe8jhg(phE002OutMain.getPk_jhg());
-        fe84101.setSpe8jhg(f0005Mapper.selectF0005(dbtype,"E8","21",phE002OutMain.getPk_jhg()));
-   //     fe84101.setSpe8ztw(phE002OutMain.getPk_ztw());
-        fe84101.setSpe8ztw(f0005Mapper.selectF0005(dbtype,"E8","32",phE002OutMain.getPk_ztw()));
-  //      fe84101.setSpe8gfg(phE002OutMain.getPk_fgjyw());
-        fe84101.setSpe8gfg(f0005Mapper.selectF0005(dbtype,"E8","33",phE002OutMain.getPk_fgjyw()));
-  //      fe84101.setSpe8ptyp(phE002OutMain.getPk_ptyp());
-        fe84101.setSpe8ptyp(f0005Mapper.selectF0005(dbtype,"E8","34",phE002OutMain.getPk_ptyp()));
-   //     fe84101.setSpe8atcdl(phE002OutMain.getPk_atcdl());
-        fe84101.setSpe8atcdl(f0005Mapper.selectF0005(dbtype,"E8","30",phE002OutMain.getPk_atcdl()));
-  //      fe84101.setSpe8atcxl(phE002OutMain.getPk_atcxl());
-        fe84101.setSpe8atcxl(f0005Mapper.selectF0005(dbtype,"E8","31",phE002OutMain.getPk_atcxl()));
-      //  fe84101.setSporig(phE002OutMain.getPk_mfcountry());
+        fe84101.setSpe8zdyl(this.f0005Mapper.selectF0005(this.dbtype, "E8", "29", phE002OutMain.getPk_zdypdl()));
+        fe84101.setSpe8jhg(this.f0005Mapper.selectF0005(this.dbtype, "E8", "21", phE002OutMain.getPk_jhg()));
+        fe84101.setSpe8ztw(this.f0005Mapper.selectF0005(this.dbtype, "E8", "32", phE002OutMain.getPk_ztw()));
+        fe84101.setSpe8gfg(this.f0005Mapper.selectF0005(this.dbtype, "E8", "33", phE002OutMain.getPk_fgjyw()));
+        fe84101.setSpe8ptyp(this.f0005Mapper.selectF0005(this.dbtype, "E8", "34", phE002OutMain.getPk_ptyp()));
+        fe84101.setSpe8atcdl(this.f0005Mapper.selectF0005(this.dbtype, "E8", "30", phE002OutMain.getPk_atcdl()));
+        fe84101.setSpe8atcxl(this.f0005Mapper.selectF0005(this.dbtype, "E8", "31", phE002OutMain.getPk_atcxl()));
         fe84101.setSporig(phE002OutMain.getPk_mfcountry());
         fe84101.setSpe8dsc2(phE002OutMain.getProducttype());
-        String e8jx = f0005Mapper.selectF0005(dbtype,"E8","JX",phE002OutMain.getForm());
-        if(e8jx == null) {
+        String e8jx1 = this.f0005Mapper.selectF0005(this.dbtype, "E8", "JX", phE002OutMain.getForm());
+        if(e8jx1 == null) {
             fe84101.setSpe8jx(" ");
-        }
-        else {
-            fe84101.setSpe8jx(e8jx);
+        } else {
+            fe84101.setSpe8jx(e8jx1);
         }
 
+        if(phE001OutsublineB.getPhE001OutBE01List() != null) {
+            Iterator f4101z1litm1 = phE001OutsublineB.getPhE001OutBE01List().iterator();
 
-        if (phE001OutsublineB.getPhE001OutBE01List()!=null){
-            for (PhE001OutBE01 tmp : phE001OutsublineB.getPhE001OutBE01List()) {
-                //fe84101.setSpe8fxdj(tmp.getFxdj());
-                //  String a = f0005Mapper.selectF0005(dbtype,"E8","19",tmp.getFxdj());
-                fe84101.setSpe8fxdj(f0005Mapper.selectF0005(dbtype, "E8", "18", tmp.getFxdj()));
-                //  fe84101.setSpe8cctj(tmp.getCctj());
-                fe84101.setSpe8cctj(f0005Mapper.selectF0005(dbtype, "E8", "19", tmp.getCctj()));
+            while(f4101z1litm1.hasNext()) {
+                PhE001OutBE01 tmp = (PhE001OutBE01)f4101z1litm1.next();
+                fe84101.setSpe8fxdj(this.f0005Mapper.selectF0005(this.dbtype, "E8", "18", tmp.getFxdj()));
+                fe84101.setSpe8cctj(this.f0005Mapper.selectF0005(this.dbtype, "E8", "19", tmp.getCctj()));
                 fe84101.setSpe8qtcc(tmp.getQtcctj());
-
                 fe84101.setSpe8cpfl(tmp.getPk_productclass());
-                //  fe84101.setSpe8jgg(tmp.getPk_jgg());
-                fe84101.setSpe8jgg(f0005Mapper.selectF0005(dbtype, "E8", "35", tmp.getPk_jgg()));
-
+                fe84101.setSpe8jgg(this.f0005Mapper.selectF0005(this.dbtype, "E8", "35", tmp.getPk_jgg()));
             }
         }
-        List<String> f4101z1litm =fe84101SelectAitm.getlitm(schema,TemporaryCode);
-        fe84101UpdateByLitmMapper.updateByLitmSelective(schema,fe84101,"E02");
-        fe84101UpdateByLitmMapper.updatesametym(schema,TemporaryCode,FormalCode);
 
+        List f4101z1litm2 = this.fe84101SelectAitm.getlitm(this.schema, TemporaryCode);
+        this.fe84101UpdateByLitmMapper.updateByLitmSelective(this.schema, fe84101, "E02");
+        this.fe84101UpdateByLitmMapper.updatesametym(this.schema, TemporaryCode, FormalCode);
+        Iterator tmp1 = f4101z1litm2.iterator();
 
-
-        for(String a :f4101z1litm){
-            F4101z1 f4101z1 = fe84101SelectAitm.selectF4101z1PK(schema,a);
-            String reg=".*唯一性错误.*";
+        while(tmp1.hasNext()) {
+            String a = (String)tmp1.next();
+            F4101z1 f4101z1 = this.fe84101SelectAitm.selectF4101z1PK(this.schema, a);
+            String reg = ".*唯一性错误.*";
             if(phE001OutHeader.getApprovenote().matches(reg)) {
-                f4101z1.setSzurcd("Q");
-            }else{
-                f4101z1.setSzurcd("S");
+                f4101z1.setSzifla("Q");
+            } else {
+                f4101z1.setSzifla("S");
             }
-            fe84101SelectAitm.updatef4101z1(schema,f4101z1);
 
-
+            this.fe84101SelectAitm.updatef4101z1(this.schema, f4101z1);
             Date date = new Date();
-            DateFormat format2= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
-            try{
+            try {
                 date = format2.parse(phE001OutHeader.getApprovedate());
-            } catch (ParseException e) {
-                e.printStackTrace();
+            } catch (ParseException var19) {
+                var19.printStackTrace();
             }
-
 
             Fe84202B fe84202B = new Fe84202B();
             fe84202B.setAlukid(new BigDecimal(f4101z1.getSzedbt()));
-            fe84202B.setAlkcoo("00"+f4101z1.getSzmmcu());
+            fe84202B.setAlkcoo("00" + f4101z1.getSzmmcu());
             fe84202B.setAle8splx(f4101z1.getSzedct());
             fe84202B.setAlan8(new BigDecimal(1));
             fe84202B.setAle8spyj(phE001OutHeader.getApprovenote());
             fe84202B.setAlaa02("Y");
             fe84202B.setAld1(JdeDateUtil.toJdeDate(date));
-            fe84202B.setAlupmt(new BigDecimal(JdeDateUtil.toJdeTime(date)));
+            fe84202B.setAlupmt(new BigDecimal(JdeDateUtil.toJdeTime(date).intValue()));
             fe84202B.setAluser("MDM");
             fe84202B.setAlpid("Interface");
             fe84202B.setAlupmj(JdeDateUtil.toJdeDate(new Date()));
-            fe84202B.setAltday(new BigDecimal(JdeDateUtil.toJdeTime(new Date())));
-
-
-
-
-
+            fe84202B.setAltday(new BigDecimal(JdeDateUtil.toJdeTime(new Date()).intValue()));
             if(phE001OutHeader.getFunctype().equals("ADD")) {
-                fe84202BMapperC2.insertSelective(schema, fe84202B);
-                f00022MapperC.updateByKey(schema);
+                String ukidp = this.f00022MapperC.selectF00022(this.schema);
+                this.f00022MapperC.updateByKey(this.schema);
+                fe84202B.setAlukidp(new BigDecimal(ukidp));
+                this.fe84202BMapperC2.insertSelective(this.schema, fe84202B);
             }
-
-
-
-
         }
 
-        logger.info("成功");
+        this.logger.info("成功");
         return null;
     }
+
     @Transactional
-    public String updateF4101(PhE001OutHeader phE001OutHeader, PhE002OutMain phE002OutMain,String no) {
-        logger.info("E02开始更新表F4101");
-       /* String TemporaryCode = "";
-        String FormalCode = "";*/
-        F4101 f4101 =new F4101();
-        List<PhE001OutHeaderCode> phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
-        /*for(PhE001OutHeaderCode tmp :phE001OutHeaderCodes){
-            if(tmp.getCodetype().equals("0")){
-                TemporaryCode = tmp.getCodevalue();
-            }
-            if(tmp.getCodetype().equals("1")){
-                FormalCode = tmp.getCodevalue();
-            }
-        }*/
-        //f4101.setImaitm(FormalCode);
+    public String updateF4101(PhE001OutHeader phE001OutHeader, PhE002OutMain phE002OutMain, String no) {
+        this.logger.info("E02开始更新表F4101");
+        F4101 f4101 = new F4101();
+        List phE001OutHeaderCodes = phE001OutHeader.getCodeinfo().getPhE001OutHeaderCodeList();
         f4101.setImlitm(no);
-        //------------------------------------------------f4101.setImdsc2(phE002OutMain.getProducttype());
-        //f4101.setImorig();
         f4101.setImdsc1(phE002OutMain.getSync());
-        //f4101.setImuom1(phE002OutMain.getPk_weight());
-        f4101.setImuom1(f0005DMapper.selectF0005D(dbtype,"00","UM",phE002OutMain.getPk_weight()));
-
-        f4101UpdateByLitmMapper.updateByLitmSelective(schema,f4101,"E02");
-        logger.info("成功");
+        f4101.setImuom1(this.f0005DMapper.selectF0005D(this.dbtype, "00", "UM", phE002OutMain.getPk_weight()));
+        this.f4101UpdateByLitmMapper.updateByLitmSelective(this.schema, f4101, "E02");
+        this.logger.info("成功");
         return null;
     }
 
     @Transactional
-    public String updateFE84101YON(String no){
+    public String updateFE84101YON(String no) {
         Fe84101 fe84101 = new Fe84101();
         fe84101.setSplitm(no);
         fe84101.setSpflag("S");
-        fe84101UpdateByLitmMapper.updateByLitmSelective(schema,fe84101,"S");
+        this.fe84101UpdateByLitmMapper.updateByLitmSelective(this.schema, fe84101, "S");
         return null;
     }
-   /* public String updateF00165(PhE001OutsublineA phE001OutsublineA,PhE002OutMain phE002OutMain,PhE001OutsublineB phE001OutsublineB) {
-        if (phE001OutsublineA.getPhE001OutAE01List()!=null) {
-
-            for (PhE001OutAE01 tmp : phE001OutsublineA.getPhE001OutAE01List()) {
-                for (PhE001OutBE01 tmp1 : phE001OutsublineB.getPhE001OutBE01List()) {
-                    String filename2 = tmp.getFilename2();
-                    String filepath = "\\\\JDE-WEBTEST01\\JDEdwards\\" + tmp.getFilename();
-                    String filename = tmp.getFilename();
-                    String gdtxky = (fe80101SelectAn8ByNameMapper.FE80101Select(schema, phE002OutMain.getPk_mfname())) + "|" +
-                            tmp1.getPk_licensetype() + "|" + tmp1.getLicenseno();
-                    f00165MapperCustom.updateByPrimaryKeySelective(schema, filename, filename2, filepath, gdtxky);
-                }
-            }
-        }
-        return null;
-    }*/
-   @Transactional
-   public String updateFE84101bgbs(String no){
-       Fe84101 fe84101 = new Fe84101();
-       fe84101.setSplitm(no);
-      // fe84101.setSpev02("N");
-       fe84101.setSpe8bgbs("N");
-       fe84101UpdateByLitmMapper.updateByLitmSelective(schema,fe84101,"N");
-       return null;
-   }
 
     @Transactional
-    public String updateFe841001flag(String no){
+    public String updateFE84101bgbs(String no) {
+        Fe84101 fe84101 = new Fe84101();
+        fe84101.setSplitm(no);
+        fe84101.setSpe8bgbs("N");
+        this.fe84101UpdateByLitmMapper.updateByLitmSelective(this.schema, fe84101, "N");
+        return null;
+    }
+
+    @Transactional
+    public String updateFe841001flag(String no) {
         Fe841001 fe841001 = new Fe841001();
         fe841001.setSqlitm(no);
         fe841001.setSqflag("S");
-        fe841001UpdateByDocoMapper.updatebylitm(schema,fe841001);
+        this.fe841001UpdateByDocoMapper.updatebylitm(this.schema, fe841001);
         return null;
     }
 }
-
