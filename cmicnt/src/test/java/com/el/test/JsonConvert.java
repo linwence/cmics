@@ -104,7 +104,7 @@ public class JsonConvert {
                 "            \"status\":\"0\"\n" +
                 "        }\n" +
                 "    ]\n" +
-                "}";
+                "} ";
 
         JSONObject jsonObject = JSON.parseObject(str);
         String resultCode = jsonObject.get("resultCode").toString();
