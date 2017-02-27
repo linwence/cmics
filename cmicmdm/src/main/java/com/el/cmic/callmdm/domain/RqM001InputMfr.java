@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement(name = "main")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"ukid","ev01","an8","mfcd","mfname","mfbrand","mflicense"})
+@XmlType(propOrder = {"ukid","ev01","an8","mfcd","mfname","mfbrand","mflicense","creator","creationtime","kcoo"})
 public class RqM001InputMfr {
     private String ukid;
     private String ev01;//是否有统一码 Y是，N否
@@ -19,6 +19,34 @@ public class RqM001InputMfr {
     private String mfname;// <mfname>生产厂家名称</mfname>
     private String mfbrand;// <mfbrand>厂牌</mfbrand> --输入产品名称
     private String mflicense;// <mflicense>生产许可证号</mflicense>
+
+    private String creator="";
+    private String creationtime="";
+    private String kcoo = "";
+
+    public String getKcoo() {
+        return kcoo;
+    }
+
+    public void setKcoo(String kcoo) {
+        this.kcoo = kcoo;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public String getCreationtime() {
+        return creationtime;
+    }
+
+    public void setCreationtime(String creationtime) {
+        this.creationtime = creationtime;
+    }
 
     public String getAn8() {
         return an8;

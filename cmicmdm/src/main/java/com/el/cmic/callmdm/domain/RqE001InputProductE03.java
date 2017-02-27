@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "main")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = {"doco","ev01","litm","kcoo","productcode", "productname", "producttype", "mfname", "pk_mfcountry",
-        "sync", "pk_jhg", "pk_ztw", "interbarcode", "pk_productclass", "pk_yltsfl","modcause"})
+        "sync", "pk_jhg", "pk_ztw", "interbarcode", "pk_productclass", "pk_yltsfl","modcause","creator","creationtime","creatcause","SZEDUS","SZEDBT","SZEDTN","SZEDLN"})
 public class RqE001InputProductE03 {
     private String doco;
     private String ev01;
@@ -32,6 +32,71 @@ public class RqE001InputProductE03 {
     private String pk_yltsfl = "";//<pk_yltsfl>特殊分类</pk_yltsfl>
 
     private  String modcause = ""; //变更原因
+
+    private String creator="";
+    private String creationtime="";
+    private String creatcause="";
+
+    private String SZEDUS;
+    private String SZEDBT;
+    private String SZEDTN;
+    private String SZEDLN;
+
+    public String getSZEDUS() {
+        return SZEDUS;
+    }
+
+    public void setSZEDUS(String SZEDUS) {
+        this.SZEDUS = SZEDUS;
+    }
+
+    public String getSZEDBT() {
+        return SZEDBT;
+    }
+
+    public void setSZEDBT(String SZEDBT) {
+        this.SZEDBT = SZEDBT;
+    }
+
+    public String getSZEDTN() {
+        return SZEDTN;
+    }
+
+    public void setSZEDTN(String SZEDTN) {
+        this.SZEDTN = SZEDTN;
+    }
+
+    public String getSZEDLN() {
+        return SZEDLN;
+    }
+
+    public void setSZEDLN(String SZEDLN) {
+        this.SZEDLN = SZEDLN;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public String getCreationtime() {
+        return creationtime;
+    }
+
+    public void setCreationtime(String creationtime) {
+        this.creationtime = creationtime;
+    }
+
+    public String getCreatcause() {
+        return creatcause;
+    }
+
+    public void setCreatcause(String creatcause) {
+        this.creatcause = creatcause;
+    }
 
     public String getKcoo() {
         return kcoo;
@@ -180,6 +245,13 @@ public class RqE001InputProductE03 {
                 ", pk_productclass='" + pk_productclass + '\'' +
                 ", pk_yltsfl='" + pk_yltsfl + '\'' +
                 ", modcause='" + modcause + '\'' +
+                ", creator='" + creator + '\'' +
+                ", creationtime='" + creationtime + '\'' +
+                ", creatcause='" + creatcause + '\'' +
+                ", SZEDUS='" + SZEDUS + '\'' +
+                ", SZEDBT='" + SZEDBT + '\'' +
+                ", SZEDTN='" + SZEDTN + '\'' +
+                ", SZEDLN='" + SZEDLN + '\'' +
                 '}';
     }
 }

@@ -1,10 +1,12 @@
 package com.el.cmic.callmdm.mapper;
 
+import com.el.cfg.domain.F4101z1;
 import com.el.cmic.callmdm.domain.*;
 import com.el.cmic.common.domain.MdmDataType;
 import com.el.cmic.common.domain.MdmFuncType;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.jdbc.SQL;
 import org.exolab.castor.mapping.xml.Sql;
 import org.springframework.beans.factory.annotation.Value;
@@ -64,6 +66,16 @@ public interface ProductMapper {
             // SELECT("b.Imsrp4 as pk_yltsfl");
             SELECT(" (select drdl01 from " + ctlSchema + "f0005  where drsy='E8' AND DRRT='15' and trim(drky)=trim(a.SPE8TSFL)) as pk_yltsfl");
             SELECT("a.Spe8yyks AS pk_department");
+
+            //加入制单人，制单时间，公司
+            SELECT("(select abalph from "+schema+"f0101 where trim(aban8) =trim(m.sztorg)) as creator");
+            SELECT("TO_CHAR(to_date(trunc(m.szurdt/1000)  +1900||'-01-01','yyyy-MM-dd')+mod(m.szurdt, 1000)-1,'yyyy-MM-dd') as creationtime");
+            SELECT("(select abmcu from "+schema+"f0101 where trim(aban8) =trim(m.sztorg)) as kcoo");
+            SELECT("M.SZEDUS");
+            SELECT("M.SZEDBT");
+            SELECT("M.SZEDTN");
+            SELECT("M.SZEDLN");
+            //
             FROM(schema + "FE84101 a");
             INNER_JOIN(schema + "F4101 b on A.SPLITM = B.IMLITM");
             LEFT_OUTER_JOIN(schema + "F0101 D ON A.SPAN8 = d.aban8");
@@ -71,6 +83,9 @@ public interface ProductMapper {
             LEFT_OUTER_JOIN(schema + "F4104 F ON A.SPLITM=F.IVLITM AND F.Ivxrt='HB'");
             LEFT_OUTER_JOIN(schema + "F4104 g ON A.SPLITM=g.IVLITM AND g.Ivxrt='GD'");
             LEFT_OUTER_JOIN(schema + "F4104 H ON A.SPLITM=H.IVLITM AND H.Ivxrt='GS'");
+            //加入制单人，制单时间，公司
+            LEFT_OUTER_JOIN("(select l.sztorg,l.szlitm,l.szedbt,l.szurdt,l.SZEDUS,  l.SZEDTN, l.SZEDLN  from (select max(szedbt) as szedbt,szlitm from "+schema+"f4101z1 i where trim(i.szedct)='GS' and trim(i.szedsp)='Y' and trim(i.sztnac) = 'A' and trim(i.szitbr) = 1  group by szlitm) j left join (select distinct sztorg,szlitm,szedbt,szurdt,SZEDUS,  SZEDTN, SZEDLN  from "+schema+"f4101z1 k  where trim(szedct)='GS' and trim(szedsp)='Y' and trim(sztnac) = 'A' and trim(szitbr) = 1) l on trim(j.szlitm) = trim(l.szlitm) and trim(j.szedbt) = trim(l.szedbt) ) m on trim(a.splitm)=trim(m.szlitm)");
+            //
             WHERE("A.spflag='P'");
             WHERE("Trim(A.SPE8SPXZ)=#{dataType}");
             return toString();
@@ -83,6 +98,10 @@ public interface ProductMapper {
             SELECT("a.sqlitm as litm");
             SELECT("a.sqkcoo as kcoo");
 
+            //增加制单人制单时间
+            SELECT("(select abalph from "+schema+ "f0101 where trim(aban8) = trim(a.sqpa8) ) as creator");
+            SELECT("TO_CHAR(to_date(trunc(a.squrdt/1000)  +1900||'-01-01','yyyy-MM-dd')+mod( a.squrdt, 1000)-1,'yyyy-MM-dd') as creationtime");
+            //
             SELECT("a.Sqaitm as productcode");
 
             //---------------------------------AITM---------------------------------------------------------------------
@@ -188,10 +207,26 @@ public interface ProductMapper {
             // SELECT(" A.SPE8ATCXL AS pk_atcxl");
             SELECT("(SELECT DRDL01 FROM " + ctlSchema + "f0005 WHERE drsy='E8' AND DRRT='31' AND trim(DRKY)=trim(A.SPE8ATCXL)) as pk_atcxl");
 
+            //加入制单人，制单时间，公司
+            SELECT("(select abalph from "+schema+"f0101 where trim(aban8) =trim(m.sztorg)) as creator");
+            SELECT("(case when m.szurdt>0 then TRIM(TO_CHAR(to_date(trunc(m.szurdt/1000)  +1900||'-01-01','yyyy-MM-dd')+mod(m.szurdt, 1000)-1,'yyyy-MM-dd')) else ' ' end) as creationtime");
+            SELECT("(select abmcu from "+schema+"f0101 where trim(aban8) =trim(m.sztorg))as kcoo");
+            //
+
+            SELECT("M.SZEDUS");
+            SELECT("M.SZEDBT");
+            SELECT("M.SZEDTN");
+            SELECT("M.SZEDLN");
+
             FROM(schema + "FE84101 a");
             INNER_JOIN(schema + "F4101 b on A.SPLITM = B.IMLITM");
             LEFT_OUTER_JOIN(schema + "F0101 D ON A.SPAN8 = d.aban8");
             LEFT_OUTER_JOIN(schema + "FE80101 E ON A.SPAN8=E.KSAN8");
+            //加入制单人，制单时间，公司
+            LEFT_OUTER_JOIN("(select l.sztorg,l.szlitm,l.szedbt,l.szurdt,l.SZEDUS,  l.SZEDTN, l.SZEDLN  from" +
+                    "(select max(szedbt) as szedbt,szlitm from "+schema+"f4101z1 i where trim(i.szedct)='GS' and trim(i.szedsp)='Y' and trim(i.sztnac) = 'A' and trim(i.szitbr) = 1  group by szlitm) j " +
+                    "left join (select distinct sztorg,szlitm,szedbt,szurdt,SZEDUS,  SZEDTN, SZEDLN  from "+schema+"f4101z1 k  where trim(szedct)='GS' and trim(szedsp)='Y' and trim(sztnac) = 'A' and trim(szitbr) = 1) l on trim(j.szlitm) = trim(l.szlitm) and trim(j.szedbt) = trim(l.szedbt) ) m on trim(a.splitm)=trim(m.szlitm)");
+            //
             WHERE("A.spflag='P'");
             WHERE("Trim(A.SPE8SPXZ)=#{dataType}");
             return toString();
@@ -210,6 +245,10 @@ public interface ProductMapper {
             //SELECT("B.E8SPTYM as productcode");
             //-----------------------------------------------------------------------------------------------------------
 
+            //增加制单人制单时间
+            SELECT("(select abalph from "+schema+ "f0101 where trim(aban8) = trim(a.sqpa8) ) as creator ");
+            SELECT("TO_CHAR(to_date(trunc(a.squrdt/1000)  +1900||'-01-01','yyyy-MM-dd')+mod( a.squrdt, 1000)-1,'yyyy-MM-dd') as creationtime");
+            //
 
             SELECT("a.sqe8name as productname");
             SELECT("a.sqdsc2 as producttype");
@@ -296,11 +335,26 @@ public interface ProductMapper {
             SELECT(" (select drdl01 from " + strCtlSchema + "f0005  where drsy='E8' AND DRRT='14' and trim(drky)=trim(A.SPE8CPDL)) as pk_productclass");
             //SELECT(" B.IMSRP4 AS pk_yltsfl");
             SELECT(" (select drdl01 from " + strCtlSchema + "f0005  where drsy='E8' AND DRRT='15' and trim(drky)=trim(A.SPE8TSFL )) as pk_yltsfl");
+            //加入制单人，制单时间，公司
+            SELECT("(select abalph from "+schema+"f0101 where trim(aban8) =trim(m.sztorg)) as creator");
+            SELECT("TO_CHAR(to_date(trunc(m.szurdt/1000)  +1900||'-01-01','yyyy-MM-dd')+mod(m.szurdt, 1000)-1,'yyyy-MM-dd') as creationtime");
+            SELECT("(select abmcu from "+schema+"f0101 where trim(aban8) =trim(m.sztorg)) as kcoo");
+            //
+            SELECT("M.SZEDUS");
+            SELECT("M.SZEDBT");
+            SELECT("M.SZEDTN");
+            SELECT("M.SZEDLN");
+
             FROM(schema + "FE84101 a");
             INNER_JOIN(schema + "F4101 b on A.SPLITM = B.IMLITM");
             LEFT_OUTER_JOIN(schema + "F0101 D ON A.SPAN8 = d.aban8");
             LEFT_OUTER_JOIN(schema + "F4104 E ON E.IVLITM=B.IMLITM AND TRIM(IVXRT)='IC'");
             LEFT_OUTER_JOIN(schema + "FE80101 F ON A.SPAN8=F.KSAN8");
+            //加入制单人，制单时间，公司
+            LEFT_OUTER_JOIN("(select l.sztorg,l.szlitm,l.szedbt,l.szurdt,l.SZEDUS,  l.SZEDTN, l.SZEDLN  from" +
+                    "(select max(szedbt) as szedbt,szlitm from "+schema+"f4101z1 i where trim(i.szedct)='GS' and trim(i.szedsp)='Y' and trim(i.sztnac) = 'A' and trim(i.szitbr) = 1  group by szlitm) j " +
+                    "left join (select distinct sztorg,szlitm,szedbt,szurdt,SZEDUS,  SZEDTN, SZEDLN  from "+schema+"f4101z1 k  where trim(szedct)='GS' and trim(szedsp)='Y' and trim(sztnac) = 'A' and trim(szitbr) = 1) l on trim(j.szlitm) = trim(l.szlitm) and trim(j.szedbt) = trim(l.szedbt) ) m on trim(a.splitm)=trim(m.szlitm)");
+            //
             WHERE("A.spflag='P'");
             WHERE("Trim(A.SPE8SPXZ)=#{dataType}");
             return toString();
@@ -316,6 +370,12 @@ public interface ProductMapper {
             //---------------------------------AITM---------------------------------------------------------------------
             //SELECT("B.E8SPTYM as productcode");
             //-----------------------------------------------------------------------------------------------------------
+            //增加制单人制单时间
+            SELECT("(select abalph from "+schema+ "f0101 where trim(aban8) = trim(a.sqpa8) ) as creator ");
+            SELECT("TO_CHAR(to_date(trunc(a.squrdt/1000)  +1900||'-01-01','yyyy-MM-dd')+mod( a.squrdt, 1000)-1,'yyyy-MM-dd') as creationtime");
+            //
+
+
             SELECT("a.sqaitm as productcode");
 
             SELECT("a.sqe8name as productname");
@@ -343,6 +403,8 @@ public interface ProductMapper {
             LEFT_OUTER_JOIN(schema + "F0101 D ON b.SPAN8 = d.aban8");
             LEFT_OUTER_JOIN(schema + "F4104 E ON E.IVLITM=B.SPLITM AND TRIM(IVXRT)='IC'");
             LEFT_OUTER_JOIN(schema + "FE80101 F ON A.SqAN8=F.KSAN8");
+
+
             WHERE("A.sqflag='P'");
             WHERE("Trim(A.SqE8SPXZ)=#{dataType}");
             return toString();
@@ -371,9 +433,25 @@ public interface ProductMapper {
 
 
             SELECT("a.spe8name as servicename");
+            //加入制单人，制单时间，公司
+            SELECT("(select abalph from "+schema+"f0101 where trim(aban8) =trim(m.sztorg)) as creator");
+            SELECT("TO_CHAR(to_date(trunc(m.szurdt/1000)  +1900||'-01-01','yyyy-MM-dd')+mod(m.szurdt, 1000)-1,'yyyy-MM-dd') as creationtime");
+            SELECT("(select abmcu from "+schema+"f0101 where trim(aban8) =trim(m.sztorg)) as kcoo");
+            //
+
+            SELECT("M.SZEDUS");
+            SELECT("M.SZEDBT");
+            SELECT("M.SZEDTN");
+            SELECT("M.SZEDLN");
+
             FROM(schema + "FE84101 a");
             INNER_JOIN(schema + "F4101 b on A.SPLITM = B.IMLITM");
             LEFT_OUTER_JOIN(schema + "F0101 D ON A.SPAN8 = d.aban8");
+            //加入制单人，制单时间，公司
+            LEFT_OUTER_JOIN("(select l.sztorg,l.szlitm,l.szedbt,l.szurdt,l.SZEDUS,  l.SZEDTN, l.SZEDLN  from" +
+                    "(select max(szedbt) as szedbt,szlitm from "+schema+"f4101z1 i where trim(i.szedct)='GS' and trim(i.szedsp)='Y' and trim(i.sztnac) = 'A' and trim(i.szitbr) = 1  group by szlitm) j " +
+                    "left join (select distinct sztorg,szlitm,szedbt,szurdt,SZEDUS,  SZEDTN, SZEDLN  from "+schema+"f4101z1 k  where trim(szedct)='GS' and trim(szedsp)='Y' and trim(sztnac) = 'A' and trim(szitbr) = 1) l on trim(j.szlitm) = trim(l.szlitm) and trim(j.szedbt) = trim(l.szedbt) ) m on trim(a.splitm)=trim(m.szlitm)");
+            //
             WHERE("A.spflag='P'");
             WHERE("Trim(A.SPE8SPXZ)=#{dataType}");
             return toString();
@@ -383,12 +461,17 @@ public interface ProductMapper {
             SELECT("a.SQUKIDP as doco");
             SELECT("a.sqev01 as ev01");
             SELECT("a.sqLITM as litm");
-
+            SELECT("a.sqkcoo as kcoo");
 
             SELECT("a.sqaitm as productcode");
             //---------------------------------AITM---------------------------------------------------------------------
             //SELECT("B.E8SPTYM as productcode");
             //-----------------------------------------------------------------------------------------------------------
+
+            //增加制单人制单时间
+            SELECT("(select abalph from "+schema+ "f0101 where trim(aban8) = trim(a.sqpa8) ) as creator");
+            SELECT("TO_CHAR(to_date(trunc(a.squrdt/1000)  +1900||'-01-01','yyyy-MM-dd')+mod( a.squrdt, 1000)-1,'yyyy-MM-dd') as creationtime");
+            //
 
             SELECT("a.sqe8name as servicename");
 
@@ -469,13 +552,25 @@ public interface ProductMapper {
             SELECT("GDGTFILENM as filepath");
             FROM(schema+".F00165");
             WHERE("Trim(GDGTMOTYPE) = 5");
-            WHERE("Trim(GDOBNM) = 'GTE842001'");
+            WHERE("Trim(GDOBNM) = 'GTE842016'");
             WHERE("Trim(GDTXKY) = #{gdtxky}");
+            return toString();
+        }
+
+        public String updatef4101z1(@Param("schema") String schema, @Param("record")F4101z1 record){
+            UPDATE(schema+".F4101z1");
+            SET("SZURCD = #{record.szurcd}");
+            WHERE("trim(SZEDUS) = #{record.szedus}");
+            WHERE("trim(SZEDBT) = #{record.szedbt}");
+            WHERE("trim(SZEDTN) = #{record.szedtn}");
+            WHERE("trim(SZEDLN) = #{record.szedln}");
             return toString();
         }
 
     }
 
+    @UpdateProvider(type = SqlProvider.class, method = "updatef4101z1")
+    int updatef4101z1(@Param("schema") String schema, @Param("record")F4101z1 record);
 
     @SelectProvider(type = SqlProvider.class, method = SqlProvider.PRODUCT_E01_QRY)
     List<RqE001InputProductE01> productE01QryInfo(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("dataType") String dataType, @Param("funcType") String funcType);

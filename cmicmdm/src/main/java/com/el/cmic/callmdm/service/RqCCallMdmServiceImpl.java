@@ -47,6 +47,8 @@ public class RqCCallMdmServiceImpl implements CallMdmService {
 
     private String doco = "0";
 
+    private F0101z2 f0101z2 = new F0101z2();
+
     @Autowired
     private F0005Mapper f0005Mapper;
     @Autowired
@@ -110,6 +112,7 @@ public class RqCCallMdmServiceImpl implements CallMdmService {
         JAXBListUtil jaxbListUtil = null;
         String xml = "";
         doco = rqC001InputCustomC01.getUkid();
+        String kcoo = rqC001InputCustomC01.getKcoo();
         String an8 = rqC001InputCustomC01.getAn8();
         if (StringUtils.isEmpty(an8)) {
             an8 = "0";
@@ -118,6 +121,18 @@ public class RqCCallMdmServiceImpl implements CallMdmService {
         String billInfo = getBillInfo(an8, doco,null);
 
         RqInputHeader rqInputHeader = this.getRqE001InputHeader(MdmDataType.DATA_TYPE_C01, billInfo, MdmDirection.TO_MDM, funcType);
+        if(funcType.equals("MOD")) {
+            rqInputHeader.setCorp(kcoo.substring(2,5));
+        }else {
+            if(kcoo.length()>3) {
+                rqInputHeader.setCorp(kcoo.substring(0, 3));
+            }
+            else {
+                rqInputHeader.setCorp(kcoo);
+            }
+        }
+
+
 
         jaxbListUtil = new JAXBListUtil(RqInputHeader.class);
         String header = jaxbListUtil.toXml(rqInputHeader, "utf-8");
@@ -137,10 +152,20 @@ public class RqCCallMdmServiceImpl implements CallMdmService {
         rqC001InputCustomC01.setUkid(null); //设置UKID为null由于ukid不需要导出到xml中
         rqC001InputCustomC01.setEv01(null);
         rqC001InputCustomC01.setAn8(null);
+        rqC001InputCustomC01.setKcoo(null);
         if(funcType.equals("ADD")){
             rqC001InputCustomC01.setModcause(null);
-
+            f0101z2.setSzedus(rqC001InputCustomC01.getSZEDUS());
+            f0101z2.setSzedbt(rqC001InputCustomC01.getSZEDBT());
+            f0101z2.setSzedtn(rqC001InputCustomC01.getSZEDTN());
+            f0101z2.setSzedln(new BigDecimal(rqC001InputCustomC01.getSZEDLN()));
         }
+
+        rqC001InputCustomC01.setSZEDUS(null);
+        rqC001InputCustomC01.setSZEDTN(null);
+        rqC001InputCustomC01.setSZEDLN(null);
+        rqC001InputCustomC01.setSZEDBT(null);
+
         logger.info("生成客商MainXML");
         String rqCumstomXml = jaxbListUtil.toXml(rqC001InputCustomC01, "utf-8");
         System.out.println(rqCumstomXml);
@@ -148,7 +173,7 @@ public class RqCCallMdmServiceImpl implements CallMdmService {
         //获取客户证照
 
         logger.info("获取证照信息");
-        String subLineBXml = getSubLineB(an8, funcType);
+        String subLineBXml = getSubLineB(an8, funcType,doco);
         String subA = getSubLineA(an8,funcType);
 
         String subLineCscXml = "";
@@ -197,12 +222,12 @@ public class RqCCallMdmServiceImpl implements CallMdmService {
         return xml;
     }
 
-    private String getSubLineB(String customCode, String funcType) {
+    private String getSubLineB(String customCode, String funcType , String doco) {
         RqC001InputSubLineB rqC001InputSubLineB = new RqC001InputSubLineB();
         JAXBListUtil jaxbListUtil;//获取客商证照
         String subLineB = "";
         logger.info("查询客商证照");
-        List<RqC001InputBC01> rqC001InputBC01List = customerMapper.customBQry(schema, ctlSchema, customCode, funcType);
+        List<RqC001InputBC01> rqC001InputBC01List = customerMapper.customBQry(schema, ctlSchema, customCode, funcType,doco);
         if (rqC001InputBC01List != null && rqC001InputBC01List.size() > 0) {
             rqC001InputSubLineB.setSubname("b");
             rqC001InputSubLineB.setRqC001InputBC01List(rqC001InputBC01List);
@@ -220,11 +245,11 @@ public class RqCCallMdmServiceImpl implements CallMdmService {
         List<RqC001InputBC01> rqC001InputBC01List;
         List<RqE001InputAttachment> rqE001InputAttachmentList = new ArrayList<RqE001InputAttachment>();
         if(funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
-            rqC001InputBC01List = customerMapper.customBQry(schema, ctlSchema, customCode, funcType);
+            rqC001InputBC01List = customerMapper.customBQry(schema, ctlSchema, customCode, funcType,doco);
         }else{
             //----------------------------------------------------------------------------------------------------------
             //2016-11-9修改大括号位置，增加变更上传附件
-            rqC001InputBC01List =customerMapper.customBQry(schema,ctlSchema,customCode,funcType);
+            rqC001InputBC01List =customerMapper.customBQry(schema,ctlSchema,customCode,funcType,doco);
         }
             for(RqC001InputBC01 tmp :rqC001InputBC01List){
                 String gdtxky =customCode+"|"+f0005Mapper.selectF0005(ctlSchema, "E8", "10", tmp.getPk_lictype())+"|"+tmp.getLicno();
@@ -258,7 +283,8 @@ public class RqCCallMdmServiceImpl implements CallMdmService {
             }
 
 
-        return !StringUtils.isEmpty(SublineA) ? SublineA : "";
+        //return !StringUtils.isEmpty(SublineA) ? SublineA : "";
+        return "";
     }
 
     private String getSubLineCsc(String customCode,String funcType) {
@@ -442,6 +468,10 @@ public class RqCCallMdmServiceImpl implements CallMdmService {
             fe80101.setKsan8(an8Num);
             fe80101.setKsflag(flag);
             fe80101.setKsev01(ev01);
+
+            f0101z2.setSzurcd(flag);
+            customerMapper.updatef0101z2(schema,f0101z2);
+
             if(flag.equals("Y")){
                 fe80101.setKse8kstym(codeValue);
                 if(codetype.equals("1")){

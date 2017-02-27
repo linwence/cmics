@@ -38,7 +38,7 @@ public interface FE84101ZUpdateByPKMapper {
 
             return toString();
         }
-        public String insertSelective(@Param("schema")String schema,@Param("record") Fe84101z record,@Param("dj")String dj) {
+        public String insertSelective(@Param("schema")String schema,@Param("record") Fe84101z record,@Param("dj")String dj,@Param("reqno") String reqno) {
 
             INSERT_INTO(schema+".FE84101Z");
             if(record.getZzco()!=null){
@@ -57,6 +57,12 @@ public interface FE84101ZUpdateByPKMapper {
             if (record.getZze8zzbm() != null) {
                 VALUES("ZZE8ZZBM", "#{record.zze8zzbm}");
             }
+            if(reqno != null && (!reqno.equals(""))){
+                VALUES("ZZEFTJ","(select zzeftj from "+schema+".FE841002 where trim(zzukidp)=#{reqno} and trim(zzlitm) = #{record.zzlitm} and trim(zze8zzlxa)=#{record.zze8zzlxa} and trim(zze8zzbm)=#{record.zze8zzbm} and trim(zzev02)='Y')");
+                VALUES("ZZDSC1","(select spdsc1 from "+schema+".FE84101 where trim(splitm) = #{record.zzlitm})");
+                VALUES("ZZDSC2","(select spdsc2 from "+schema+".FE84101 where trim(splitm) = #{record.zzlitm})");
+                VALUES("ZZE8NAME","(select spe8name from "+schema+".FE84101 where trim(splitm) = #{record.zzlitm})");
+            }
 
 
                 VALUES("ZZEXDJ", "(SELECT TO_CHAR(TO_DATE(#{dj}, 'yyyy- mm-dd'), 'yyyy') * 1000 +TO_CHAR(TO_DATE(#{dj}, 'yyyy-mm- dd'), 'ddd ') - 1900000 FROM DUAL)");
@@ -72,5 +78,5 @@ public interface FE84101ZUpdateByPKMapper {
     int updateByPrimaryKeySelective(@Param("schema")String schema,@Param("record") Fe84101z record, @Param("datatype") String datatype,@Param("dj")String dj);
 
     @InsertProvider(type=SqlProvider.class, method="insertSelective")
-    int insertSelective(@Param("schema")String schema,@Param("record") Fe84101z record,@Param("dj")String dj);
+    int insertSelective(@Param("schema")String schema,@Param("record") Fe84101z record,@Param("dj")String dj,@Param("reqno") String reqno);
 }

@@ -1,9 +1,6 @@
 package com.el.cmic.callmdm.service;
 
-import com.el.cfg.domain.F4101;
-import com.el.cfg.domain.Fe841001;
-import com.el.cfg.domain.Fe84101;
-import com.el.cfg.domain.Fe84101z;
+import com.el.cfg.domain.*;
 import com.el.cmic.callmdm.domain.*;
 import com.el.cmic.callmdm.mapper.ProductMapper;
 import com.el.cmic.common.domain.MdmDataType;
@@ -70,6 +67,7 @@ public class RqECallMdmServiceImpl implements CallMdmService {
 
     @Resource(name = "rqE001ServiceImpl")
     private RqE001Service rqE001Service;
+    private F4101z1 f4101z1 = new F4101z1();
 
     public void addCallWS() {
         try {
@@ -366,16 +364,20 @@ public class RqECallMdmServiceImpl implements CallMdmService {
             fe84101z.setZzlitm(litm);
             fe84101z.setZzflag(flag);
 
+            f4101z1.setSzurcd(flag);
+            productMapper.updatef4101z1(schema,f4101z1);
+
             if(flag.equals("Y")){
                 fe84101.setSpe8sptym(codeValue);
 
             }
             //rqE001Service.updateFe84101Z(fe84101z);
-            if(rqE001Service.selectP(litm,schema)>=1 && flag.equals("Y")){
+            /*if(rqE001Service.selectP(litm,schema)>=1 && flag.equals("Y")){
                 fe84101.setSpflag("P");
             }else{
                 fe84101.setSpflag(flag);//更新传输状态为Y success
-            }
+            }*/
+            fe84101.setSpflag(flag);//更新传输状态为Y success
             rqE001Service.updateFe84101(fe84101);//更新传输状态
             logger.info("结束");
 
@@ -418,10 +420,12 @@ public class RqECallMdmServiceImpl implements CallMdmService {
     }
 
     private String genDataXml(RqE001InputProductE01 rqE001InputProductE01, String funcType) {
+        String kcoo = "";
         JAXBListUtil jaxbListUtil = null;
         String xml = "";
         doco = rqE001InputProductE01.getDoco();
         String litm = rqE001InputProductE01.getLitm();
+        kcoo = rqE001InputProductE01.getKcoo();
         //---------------------------------------------------------------------
 
         //-----------------------------------------------------------------------
@@ -434,11 +438,25 @@ public class RqECallMdmServiceImpl implements CallMdmService {
         rqE001InputProductE01.setEv01(null);
         rqE001InputProductE01.setLitm(null);
         rqE001InputProductE01.setKcoo(null);
+
+
+
         if(funcType.equals("ADD")){
+
+            f4101z1.setSzedus(rqE001InputProductE01.getSZEDUS());
+            f4101z1.setSzedbt(rqE001InputProductE01.getSZEDBT());
+            f4101z1.setSzedtn(rqE001InputProductE01.getSZEDTN());
+            f4101z1.setSzedln(new BigDecimal(rqE001InputProductE01.getSZEDLN()));
+
+
             rqE001InputProductE01.setModcause(null);
-
-
         }
+
+        rqE001InputProductE01.setSZEDBT(null);
+        rqE001InputProductE01.setSZEDLN(null);
+        rqE001InputProductE01.setSZEDTN(null);
+        rqE001InputProductE01.setSZEDUS(null);
+
         //rqE001InputProductE01.setPk_mfname("M0000000006");
         logger.info("生成E01MainXml");
         String productE01 = jaxbListUtil.toXml(rqE001InputProductE01, "utf-8");
@@ -454,6 +472,16 @@ public class RqECallMdmServiceImpl implements CallMdmService {
 
         RqInputHeader rqInputHeader = this.getRqE001InputHeader(MdmDataType.DATA_TYPE_E01, billInfo, MdmDirection.TO_MDM, funcType);
 
+        if(funcType.equals("MOD")) {
+            rqInputHeader.setCorp(kcoo.substring(2,5));
+        }else{
+            if(kcoo.length()>3) {
+                rqInputHeader.setCorp(kcoo.substring(0, 3));
+            }
+            else{
+                rqInputHeader.setCorp(kcoo);
+            }
+        }
         jaxbListUtil = new JAXBListUtil(RqInputHeader.class);
         String header = jaxbListUtil.toXml(rqInputHeader, "utf-8");
         System.out.println(header);
@@ -490,6 +518,7 @@ public class RqECallMdmServiceImpl implements CallMdmService {
         String xml = "";
         doco = rqE001InputProductE02.getDoco();
         String litm = rqE001InputProductE02.getLitm();
+        String kcoo = rqE001InputProductE02.getKcoo();
         //-------------------------------------------------------------------------
 
 
@@ -498,6 +527,18 @@ public class RqECallMdmServiceImpl implements CallMdmService {
         rqE001InputProductE02.setEv01(null);
         rqE001InputProductE02.setLitm(null);
         rqE001InputProductE02.setKcoo(null);
+
+        if(funcType.equals("ADD")){
+            f4101z1.setSzedus(rqE001InputProductE02.getSZEDUS());
+            f4101z1.setSzedbt(rqE001InputProductE02.getSZEDBT());
+            f4101z1.setSzedtn(rqE001InputProductE02.getSZEDTN());
+            f4101z1.setSzedln(new BigDecimal(rqE001InputProductE02.getSZEDLN()));
+            rqE001InputProductE02.setModcause(null);
+        }
+        rqE001InputProductE02.setSZEDBT(null);
+        rqE001InputProductE02.setSZEDLN(null);
+        rqE001InputProductE02.setSZEDTN(null);
+        rqE001InputProductE02.setSZEDUS(null);
         //rqE001InputProductE02.setPk_mfname("M0000000006");//测试用
         //rqE001InputProductE02.setMfname("M0000000006");//测试用
         logger.info("生成E02MainXml");
@@ -510,6 +551,16 @@ public class RqECallMdmServiceImpl implements CallMdmService {
         logger.info("BillInfo信息：商品号："+litm+"变更单号："+doco+"公司号"+co);
         String billInfo = this.getBillInfo(litm, doco,co);
         RqInputHeader rqInputHeader = this.getRqE001InputHeader(MdmDataType.DATA_TYPE_E02, billInfo, MdmDirection.TO_MDM, funcType);
+        if(funcType.equals("MOD")) {
+            rqInputHeader.setCorp(kcoo.substring(2,5));
+        }else{
+            if(kcoo.length()>3) {
+                rqInputHeader.setCorp(kcoo.substring(0, 3));
+            }
+            else{
+                rqInputHeader.setCorp(kcoo);
+            }
+        }
 
 
         jaxbListUtil = new JAXBListUtil(RqInputHeader.class);
@@ -537,6 +588,7 @@ public class RqECallMdmServiceImpl implements CallMdmService {
         String xml = "";
         doco = rqE001InputProductE03.getDoco();
         String litm = rqE001InputProductE03.getLitm();
+        String kcoo = "";
         //-------------------------------------------------------------------------------
 
 
@@ -545,6 +597,23 @@ public class RqECallMdmServiceImpl implements CallMdmService {
         rqE001InputProductE03.setEv01(null);//设置ev01为null，由于null不需要导出xml中
         rqE001InputProductE03.setLitm(null);
         rqE001InputProductE03.setKcoo(null);
+
+        if(funcType.equals("ADD")){
+
+            f4101z1.setSzedus(rqE001InputProductE03.getSZEDUS());
+            f4101z1.setSzedbt(rqE001InputProductE03.getSZEDBT());
+            f4101z1.setSzedtn(rqE001InputProductE03.getSZEDTN());
+            f4101z1.setSzedln(new BigDecimal(rqE001InputProductE03.getSZEDLN()));
+
+
+            rqE001InputProductE03.setModcause(null);
+        }
+
+        rqE001InputProductE03.setSZEDBT(null);
+        rqE001InputProductE03.setSZEDLN(null);
+        rqE001InputProductE03.setSZEDTN(null);
+        rqE001InputProductE03.setSZEDUS(null);
+
       //  rqE001InputProductE03.setMfname("M0000000006");
         logger.info("生成E03MainXml");
         String productE03 = jaxbListUtil.toXml(rqE001InputProductE03, "utf-8");
@@ -553,6 +622,16 @@ public class RqECallMdmServiceImpl implements CallMdmService {
         logger.info("BillInfo信息：商品号："+litm+"变更单号："+doco+"公司号"+co);
         String billInfo = this.getBillInfo(litm, doco,co);
         RqInputHeader rqInputHeader = this.getRqE001InputHeader(MdmDataType.DATA_TYPE_E03, billInfo, MdmDirection.TO_MDM, funcType);
+        if(funcType.equals("MOD")) {
+            rqInputHeader.setCorp(kcoo.substring(2,5));
+        }else{
+            if(kcoo.length()>3) {
+                rqInputHeader.setCorp(kcoo.substring(0, 3));
+            }
+            else{
+                rqInputHeader.setCorp(kcoo);
+            }
+        }
 
         jaxbListUtil = new JAXBListUtil(RqInputHeader.class);
         String header = jaxbListUtil.toXml(rqInputHeader, "utf-8");
@@ -653,7 +732,8 @@ public class RqECallMdmServiceImpl implements CallMdmService {
             }
 
 
-        return !StringUtils.isEmpty(SublineA) ? SublineA : "";
+       //return !StringUtils.isEmpty(SublineA) ? SublineA : "";
+        return "";
     }
 
 
@@ -661,11 +741,22 @@ public class RqECallMdmServiceImpl implements CallMdmService {
         JAXBListUtil jaxbListUtil = null;
 
         String xml = "";
+        String kcoo = "";
         String litm = rqE001InputProductE04.getLitm();
         logger.info("BillInfo信息：商品号："+litm+"变更单号："+doco);
         String billInfo = this.getBillInfo(litm, rqE001InputProductE04.getDoco(),null);
         doco = rqE001InputProductE04.getDoco();
         RqInputHeader rqInputHeader = this.getRqE001InputHeader(MdmDataType.DATA_TYPE_E04, billInfo, MdmDirection.TO_MDM, funcType);
+        if(funcType.equals("MOD")) {
+            rqInputHeader.setCorp(kcoo.substring(2,5));
+        }else{
+            if(kcoo.length()>3) {
+                rqInputHeader.setCorp(kcoo.substring(0, 3));
+            }
+            else{
+                rqInputHeader.setCorp(kcoo);
+            }
+        }
 
         jaxbListUtil = new JAXBListUtil(RqInputHeader.class);
         String header = jaxbListUtil.toXml(rqInputHeader, "utf-8");
@@ -675,6 +766,23 @@ public class RqECallMdmServiceImpl implements CallMdmService {
         rqE001InputProductE04.setDoco(null);//设置doco为null由于doco不需要导出到xml中
         rqE001InputProductE04.setEv01(null);//
         rqE001InputProductE04.setLitm(null);
+
+        if(funcType.equals("ADD")){
+
+            f4101z1.setSzedus(rqE001InputProductE04.getSZEDUS());
+            f4101z1.setSzedbt(rqE001InputProductE04.getSZEDBT());
+            f4101z1.setSzedtn(rqE001InputProductE04.getSZEDTN());
+            f4101z1.setSzedln(new BigDecimal(rqE001InputProductE04.getSZEDLN()));
+
+
+            rqE001InputProductE04.setModcause(null);
+        }
+
+        rqE001InputProductE04.setSZEDBT(null);
+        rqE001InputProductE04.setSZEDLN(null);
+        rqE001InputProductE04.setSZEDTN(null);
+        rqE001InputProductE04.setSZEDUS(null);
+
         String productE04 = jaxbListUtil.toXml(rqE001InputProductE04, "utf-8");
         System.out.println(productE04);
 

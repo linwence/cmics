@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlType;
  * 用户产品的header
  */
 @XmlRootElement(name = "header")
-@XmlType(propOrder = {"dataType","funcType","direction","msg","submitbillinfo"})
+@XmlType(propOrder = {"dataType","funcType","direction","msg","submitbillinfo","corp"})
 public class RqInputHeader {
 
     private String dataType="";
@@ -21,6 +21,17 @@ public class RqInputHeader {
     private String msg="";
 
     private  String submitbillinfo="";
+
+    private String corp="";
+
+    @XmlElement(name="corp")
+    public String getCorp() {
+        return corp;
+    }
+
+    public void setCorp(String corp) {
+        this.corp = corp;
+    }
 
     @XmlElement(name="datatype")
     public String getDataType() {
@@ -71,6 +82,7 @@ public class RqInputHeader {
                 ", direction='" + direction + '\'' +
                 ", msg='" + msg + '\'' +
                 ", submitbillinfo='" + submitbillinfo + '\'' +
+                ", corp='" + corp + '\'' +
                 '}';
     }
 }

@@ -3,9 +3,10 @@ package com.el.cmic.ws.service;
 
 import com.el.cfg.domain.Fe80101;
 import com.el.cfg.domain.Fe841003;
-import com.el.cmic.ws.mapper.FE80101UpdateByPKMapper;
-import com.el.cmic.ws.mapper.FE841003SelectByAn8Mapper;
-import com.el.cmic.ws.mapper.FE841003UpdateByPKMapper;
+import com.el.cfg.domain.Fe84202B;
+import com.el.cmic.ws.domain.PhE001OutHeader;
+import com.el.cmic.ws.mapper.*;
+import com.el.utils.JdeDateUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by king_ on 2016/10/13.
@@ -26,8 +31,21 @@ public class ModC0ESToERPServiceImpl implements ModC0ESToERPService {
     FE841003SelectByAn8Mapper fe841003SelectByAn8Mapper;
     @Autowired
     FE80101UpdateByPKMapper fe80101UpdateByPKMapper;
+    @Autowired
+    FE84202BMapperC3 fe84202BMapperC3;
+    @Autowired
+    F00022MapperC f00022MapperC;
     @Value("${schema}")
     private String schema;
+    @Transactional
+    public String updateModC(BigDecimal Doco, String EorS, BigDecimal an8, PhE001OutHeader phE001OutHeader){
+        if(EorS == "S"){
+            updateFE80101(Doco,an8);
+        }
+        updateFE841003(Doco,EorS);
+        insertFE84202B(Doco,EorS,phE001OutHeader);
+        return toString();
+    }
     @Transactional
     public String updateFE841003(BigDecimal Doco, String EorS) {
         logger.info("客商更新成功，记录标记位");
@@ -88,6 +106,46 @@ public class ModC0ESToERPServiceImpl implements ModC0ESToERPService {
             logger.error("------------------------------------------------------------------------------------------");
         }*/
 
+
+        return null;
+    }
+    @Transactional
+    public String insertFE84202B(BigDecimal Doco, String EorS, PhE001OutHeader phE001OutHeader){
+        logger.info("记录FE84202B");
+
+        Date date = new Date();
+        DateFormat format2= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+        try{
+            date = format2.parse(phE001OutHeader.getApprovedate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Fe84202B fe84202B = new Fe84202B();
+        fe84202B.setAlukid(Doco);
+        fe84202B.setAlan8(new BigDecimal(1));
+        fe84202B.setAle8spyj(phE001OutHeader.getApprovenote());
+        fe84202B.setAld1(JdeDateUtil.toJdeDate(date));
+        fe84202B.setAlupmt(new BigDecimal(JdeDateUtil.toJdeTime(date)));
+        fe84202B.setAluser("MDM");
+        fe84202B.setAlpid("Interface");
+        fe84202B.setAlupmj(JdeDateUtil.toJdeDate(new Date()));
+        fe84202B.setAltday(new BigDecimal(JdeDateUtil.toJdeTime(new Date())));
+
+        if(EorS.equals("S")) {
+
+            fe84202B.setAlaa02("Y");
+
+            fe84202BMapperC3.insertSelective(schema,fe84202B);
+            f00022MapperC.updateByKey(schema);
+        }
+
+        if(EorS.equals("R")) {
+            fe84202B.setAlaa02("N");
+            fe84202BMapperC3.insertSelective(schema,fe84202B);
+            f00022MapperC.updateByKey(schema);
+        }
 
         return null;
     }

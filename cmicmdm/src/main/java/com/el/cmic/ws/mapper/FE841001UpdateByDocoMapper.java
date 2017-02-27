@@ -23,6 +23,13 @@ public interface FE841001UpdateByDocoMapper {
                 SET("SQFLAG = #{record.sqflag}");
             }
 
+            if(record.getSqflag() == "R"){
+                SET("SQBFNU = (select ACDL01 FROM "+schema+".FE84202A where ACA204='Y' and ACE8SPLX = (select SQE8SPLX From "+schema+".FE841001 where squkidp = #{record.squkidp}) and ACCO = (select SQKCOO From "+schema+".FE841001 where squkidp = #{record.squkidp}))");
+                SET("SQA202 = (select ACA202 FROM "+schema+".FE84202A where ACA204='Y' and ACE8SPLX = (select SQE8SPLX From "+schema+".FE841001 where squkidp = #{record.squkidp}) and ACCO = (select SQKCOO From "+schema+".FE841001 where squkidp = #{record.squkidp}))");
+                SET("SQPP01 = (select ACPP01 FROM "+schema+".FE84202A where ACA204='Y' and ACE8SPLX = (select SQE8SPLX From "+schema+".FE841001 where squkidp = #{record.squkidp}) and ACCO = (select SQKCOO From "+schema+".FE841001 where squkidp = #{record.squkidp}))");
+
+            }
+
             WHERE("Trim(SQUKIDP) = #{record.squkidp}");
 
             return toString();

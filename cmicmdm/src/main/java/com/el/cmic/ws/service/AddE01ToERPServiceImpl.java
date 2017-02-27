@@ -4,6 +4,7 @@ package com.el.cmic.ws.service;
 import com.el.cfg.domain.*;
 import com.el.cmic.ws.domain.*;
 import com.el.cmic.ws.mapper.*;
+import com.el.utils.JdeDateUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +40,12 @@ public class AddE01ToERPServiceImpl implements AddE01ToERPService {
     FE80101SelectAn8ByNameMapper fe80101SelectAn8ByNameMapper;
     @Autowired
     FE841001UpdateByDocoMapper fe841001UpdateByDocoMapper;
+    @Autowired
+    FE84101SelectAitm fe84101SelectAitm;
+    @Autowired
+    FE84202BMapperC2 fe84202BMapperC2;
+    @Autowired
+    F00022MapperC f00022MapperC;
 
     @Autowired
     F0005DMapper f0005DMapper;
@@ -51,13 +62,13 @@ public class AddE01ToERPServiceImpl implements AddE01ToERPService {
 
 
     @Transactional
-    public String AddE01ToERP(PhE001OutHeader phE001OutHeader, PhE001OutMain phE001OutMain, PhE001OutsublineB phE001OutsublineB,String no,String co) {
+    public String AddE01ToERP(PhE001OutHeader phE001OutHeader, PhE001OutMain phE001OutMain, PhE001OutsublineB phE001OutsublineB,String no,String co,String reqno) {
        // try {
             updateF4101(phE001OutHeader, phE001OutMain, no);
             //out       updateF0101(phE001OutMain);
             updateFE84101(phE001OutHeader, phE001OutMain, phE001OutsublineB, no);
-            updateFE84101Z(phE001OutMain, phE001OutsublineB, no, co);
-            updateFE80101(phE001OutMain);
+            updateFE84101Z(phE001OutMain, phE001OutsublineB, no, co,reqno);
+            //updateFE80101(phE001OutMain);
             if(phE001OutHeader.getFunctype().equals("ADD")){
                 updateFE84101YON(no);
                 updateFe841001flag(no);
@@ -139,8 +150,8 @@ public class AddE01ToERPServiceImpl implements AddE01ToERPService {
         fe84101.setSpe8name(phE001OutMain.getProductname());
 
 
-        BigDecimal bigDecimal = new BigDecimal(fe80101SelectAn8ByNameMapper.FE80101Select(schema,phE001OutMain.getPk_mfname()));
-        fe84101.setSpan8(bigDecimal);
+      //  BigDecimal bigDecimal = new BigDecimal(fe80101SelectAn8ByNameMapper.FE80101Select(schema,phE001OutMain.getPk_mfname()));
+      //  fe84101.setSpan8(bigDecimal);
         //fe84101.setSpan8(fe80101SelectAn8Mapper.FE84101selectAn8(phE001OutMain.getPk_mfname(),schema));
         fe84101.setSpe8pzwh(phE001OutMain.getFileno());
         fe84101.setSpe8yyks(phE001OutMain.getPk_department());
@@ -174,14 +185,69 @@ public class AddE01ToERPServiceImpl implements AddE01ToERPService {
             }
         }
         //证件类型维护主表附表问题--------------------------------------------------------------------------------------
+        List<String> f4101z1litm =fe84101SelectAitm.getlitm(schema,TemporaryCode);
 
         fe84101UpdateByLitmMapper.updateByLitmSelective(schema,fe84101,phE001OutHeader.getDatatype());
+        fe84101UpdateByLitmMapper.updatesametym(schema,TemporaryCode,FormalCode);
+
+
+        for(String a :f4101z1litm){
+            F4101z1 f4101z1 = fe84101SelectAitm.selectF4101z1PK(schema,a);
+
+            String reg=".*唯一性错误.*";
+            if(phE001OutHeader.getApprovenote().matches(reg)) {
+                f4101z1.setSzurcd("Q");
+            }else{
+                f4101z1.setSzurcd("S");
+            }
+
+            fe84101SelectAitm.updatef4101z1(schema,f4101z1);
+
+
+            Date date = new Date();
+            DateFormat format2= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+            try{
+                date = format2.parse(phE001OutHeader.getApprovedate());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+            Fe84202B fe84202B = new Fe84202B();
+            fe84202B.setAlukid(new BigDecimal(f4101z1.getSzedbt()));
+            fe84202B.setAlkcoo("00"+f4101z1.getSzmmcu());
+            fe84202B.setAle8splx(f4101z1.getSzedct());
+            fe84202B.setAlan8(new BigDecimal(1));
+            fe84202B.setAle8spyj(phE001OutHeader.getApprovenote());
+            fe84202B.setAlaa02("Y");
+            fe84202B.setAld1(JdeDateUtil.toJdeDate(date));
+            fe84202B.setAlupmt(new BigDecimal(JdeDateUtil.toJdeTime(date)));
+            fe84202B.setAluser("MDM");
+            fe84202B.setAlpid("Interface");
+            fe84202B.setAlupmj(JdeDateUtil.toJdeDate(new Date()));
+            fe84202B.setAltday(new BigDecimal(JdeDateUtil.toJdeTime(new Date())));
+
+
+
+
+
+            if(phE001OutHeader.getFunctype().equals("ADD")) {
+                fe84202BMapperC2.insertSelective(schema, fe84202B);
+                f00022MapperC.updateByKey(schema);
+            }
+
+
+
+
+        }
+
         logger.info("成功");
         return null;
     }
 
     @Transactional
-    public String updateFE84101Z(PhE001OutMain phE001OutMain,PhE001OutsublineB phE001OutsublineB,String no,String co){
+    public String updateFE84101Z(PhE001OutMain phE001OutMain,PhE001OutsublineB phE001OutsublineB,String no,String co,String reqno){
         logger.info("E01开始更新表FE84101Z");
         Fe84101z fe84101Z = new Fe84101z();
         if(phE001OutsublineB.getPhE001OutBE01List()!=null) {
@@ -201,7 +267,7 @@ public class AddE01ToERPServiceImpl implements AddE01ToERPService {
                   //  fe84101ZUpdateByPKMapper.updateByPrimaryKeySelective(schema, fe84101Z, "E01", dj);
                 }
                 if (fe84101ZSelectByE8ZZBM.Fe84101zselect(schema,fe84101Z) == 0) {
-                    fe84101ZUpdateByPKMapper.insertSelective(schema, fe84101Z, dj);
+                    fe84101ZUpdateByPKMapper.insertSelective(schema, fe84101Z, dj,reqno);
                 }
 
           /*  String zznum =fe84101ZSelectByE8ZZBM.selectByPrimaryKey(tmp.getLicenseno());

@@ -111,11 +111,22 @@ public class RqMCallMdmServiceImpl implements CallMdmService {
         JAXBListUtil jaxbListUtil = null;
         String xml = "";
         ukid = rqM001InputMfr.getUkid();
+        String kcoo = rqM001InputMfr.getKcoo();
 
         logger.info("BillInfo信息：An8："+rqM001InputMfr.getAn8());
         String billInfo = getBillInfo(rqM001InputMfr.getAn8(), ukid,null);
 
         RqInputHeader rqInputHeader = this.getRqE001InputHeader(MdmDataType.DATA_TYPE_M01, billInfo, MdmDirection.TO_MDM, funcType);
+
+        //
+        if(kcoo.length()>3) {
+            rqInputHeader.setCorp(kcoo.substring(0, 3));
+        }
+        else {
+            rqInputHeader.setCorp(kcoo);
+        }
+        //
+
 
         jaxbListUtil = new JAXBListUtil(RqInputHeader.class);
         String header = jaxbListUtil.toXml(rqInputHeader, "utf-8");
@@ -130,6 +141,7 @@ public class RqMCallMdmServiceImpl implements CallMdmService {
         rqM001InputMfr.setUkid(null); //设置UKID为null由于ukid不需要导出到xml中
         rqM001InputMfr.setEv01(null);
         rqM001InputMfr.setAn8(null);
+        rqM001InputMfr.setKcoo(null);
         String rqMfrXml = jaxbListUtil.toXml(rqM001InputMfr, "utf-8");
         System.out.println(rqMfrXml);
 

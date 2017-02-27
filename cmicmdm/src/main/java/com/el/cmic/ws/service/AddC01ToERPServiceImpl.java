@@ -4,6 +4,7 @@ import com.el.cfg.domain.*;
 
 import com.el.cmic.ws.domain.*;
 import com.el.cmic.ws.mapper.*;
+import com.el.utils.JdeDateUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by king_ on 2016/10/10.
@@ -30,6 +36,12 @@ public class AddC01ToERPServiceImpl implements AddC01ToERPService{
     F0005Mapper f0005Mapper;
     @Autowired
     FE841003UpdateByPKMapper fe841003UpdateByPKMapper;
+    @Autowired
+    FE80101SelectAlky fe80101SelectAlky;
+    @Autowired
+    FE84202BMapperC2 fe84202BMapperC2;
+    @Autowired
+    F00022MapperC f00022MapperC;
 
     @Value("${ctlSchema}")
     private String dbtype;
@@ -39,14 +51,14 @@ public class AddC01ToERPServiceImpl implements AddC01ToERPService{
     public String addC01ToERP(PhE001OutHeader phE001OutHeader, PhC001OutMain phC001OutMain,
                               PhC001OutSublineYY phC001OutSublineYY, PhC001OutSublineJCYLJG phC001OutSublineJCYLJG,
                               PhC001OutSublineGR phC001OutSublineGR,PhC001OutSublineQT phC001OutSublineQT,PhC001OutSublineB phC001OutSublineB,
-                              PhC001OutSublineJXS phC001OutSublineJXS,PhC001OutSublineJKS phC001OutSublineJKS,PhC001OutSublineCSC phC001OutSublineCSC,String no) {
+                              PhC001OutSublineJXS phC001OutSublineJXS,PhC001OutSublineJKS phC001OutSublineJKS,PhC001OutSublineCSC phC001OutSublineCSC,String no,String reqno) {
      //  updateF0101(phE001OutHeader,phC001OutMain,no);
      /*   try {*/
             updateF0116(phC001OutMain, no);
             updateFE80101(phE001OutHeader, phC001OutMain, phC001OutSublineYY,
                     phC001OutSublineJCYLJG, phC001OutSublineGR, phC001OutSublineQT,
                     phC001OutSublineJXS, phC001OutSublineJKS, phC001OutSublineCSC, no);
-            updateFE80101Z(phC001OutSublineB, no);
+            updateFE80101Z(phC001OutSublineB, no,reqno);
 
             if(phE001OutHeader.getFunctype().equals("ADD")) {
                 updateFe80101SON(no);
@@ -83,7 +95,7 @@ public class AddC01ToERPServiceImpl implements AddC01ToERPService{
         }*/
         f0101.setAban8(bd);
         //f0101.setAbalky(FormalCode);
-        f0101UpdateByPKMapper.updateByPrimaryKeySelective(schema,f0101,"C01");
+        //f0101UpdateByPKMapper.updateByPrimaryKeySelective(schema,f0101,"C01");
 
         logger.info("成功");
         return null;
@@ -245,16 +257,66 @@ public class AddC01ToERPServiceImpl implements AddC01ToERPService{
         }*/
 
 
-
+        List<String> f0101z2an8 = fe80101SelectAlky.selectan8(schema,TemporaryCode);
 
         fe80101UpdateByPKMapper.updateByPrimaryKeySelective(schema,fe80101,"C01");
+        fe80101UpdateByPKMapper.updatesametym(schema,TemporaryCode,FormalCode);
+
+
+        for(String a : f0101z2an8){
+            F0101z2 f0101z2 = fe80101SelectAlky.selectf0101z2PK(schema,a);
+
+
+            String reg=".*唯一性错误.*";
+            if(phE001OutHeader.getApprovenote().matches(reg)){
+                fe80101SelectAlky.updateF0101z2PK(schema,a,"Q");
+            }else{
+                fe80101SelectAlky.updateF0101z2PK(schema,a,"S");
+            }
+
+            Date date = new Date();
+            DateFormat format2= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+            try{
+                date = format2.parse(phE001OutHeader.getApprovedate());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            Fe84202B fe84202B = new Fe84202B();
+            fe84202B.setAlukid(new BigDecimal(f0101z2.getSzedbt()));
+            fe84202B.setAlkcoo("00"+f0101z2.getSzmcu());
+            fe84202B.setAle8splx(f0101z2.getSzedct());
+            fe84202B.setAlan8(new BigDecimal(1));
+            fe84202B.setAle8spyj(phE001OutHeader.getApprovenote());
+            fe84202B.setAlaa02("Y");
+            fe84202B.setAld1(JdeDateUtil.toJdeDate(date));
+            fe84202B.setAlupmt(new BigDecimal(JdeDateUtil.toJdeTime(date)));
+            fe84202B.setAluser("MDM");
+            fe84202B.setAlpid("Interface");
+            fe84202B.setAlupmj(JdeDateUtil.toJdeDate(new Date()));
+            fe84202B.setAltday(new BigDecimal(JdeDateUtil.toJdeTime(new Date())));
+
+
+
+
+
+            if(phE001OutHeader.getFunctype().equals("ADD")) {
+                fe84202BMapperC2.insertSelective(schema, fe84202B);
+                f00022MapperC.updateByKey(schema);
+            }
+
+
+        }
+
         logger.info("成功");
         return null;
     }
     @Transactional
-    public String updateFE80101Z(PhC001OutSublineB phC001OutSublineB, String no) {
+    public String updateFE80101Z(PhC001OutSublineB phC001OutSublineB, String no,String reqno) {
         logger.info("客商开始更新FE80101Z");
         if(phC001OutSublineB.getPhC001OutBC01List()!=null) {
+
 
             for (PhC001OutBC01 tmp : phC001OutSublineB.getPhC001OutBC01List()) {
                 Fe80101z fe80101Z = new Fe80101z();
@@ -274,15 +336,18 @@ public class AddC01ToERPServiceImpl implements AddC01ToERPService{
                 // Integer bd = Integer.parseInt(tmp.getLictodate());
                 //  fe80101Z.setZzexdj(bd);
 
-                if (fe80101ZUpdateByE8ZZBMMapper.selectByPrimaryKey(schema,fe80101Z) >= 1) {
-                    fe80101ZUpdateByE8ZZBMMapper.updateByE8ZZBM(schema, fe80101Z, "C01", tmp.getLictodate());
-                }
+                if(!reqno.equals("")) {
+                    if (fe80101ZUpdateByE8ZZBMMapper.selectByPrimaryKey(schema, fe80101Z) >= 1) {
+                        fe80101ZUpdateByE8ZZBMMapper.updateByE8ZZBM(schema, fe80101Z, "C01", tmp.getLictodate());
+                    }
 
-                if (fe80101ZUpdateByE8ZZBMMapper.selectByPrimaryKey(schema,fe80101Z) == 0) {
-                    fe80101ZUpdateByE8ZZBMMapper.insertSelective(schema, fe80101Z, tmp.getLictodate());
+                    if (fe80101ZUpdateByE8ZZBMMapper.selectByPrimaryKey(schema, fe80101Z) == 0) {
+                        fe80101ZUpdateByE8ZZBMMapper.insertSelective(schema, fe80101Z, tmp.getLictodate(), reqno);
+                    }
                 }
             }
         }
+
         logger.info("成功");
         return null;
     }

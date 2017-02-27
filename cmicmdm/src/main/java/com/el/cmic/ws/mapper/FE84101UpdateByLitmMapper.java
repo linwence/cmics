@@ -30,7 +30,7 @@ public interface FE84101UpdateByLitmMapper {
                     SET("SPE8NAME = #{record.spe8name}");
                 }
                 if(record.getSpan8()!=null) {
-                    SET("SPAN8 = #{record.span8}");
+                  //  SET("SPAN8 = #{record.span8}");
                 }
                 if(record.getSpe8pzwh()!=null) {
                     SET("SPE8PZWH = #{record.spe8pzwh}");
@@ -70,7 +70,7 @@ public interface FE84101UpdateByLitmMapper {
             if(datatype.equals("E02")){
                 SET("SPEV01 = #{record.spev01}");
                 SET("SPE8NAME = #{record.spe8name}");
-                SET("SPAN8 = #{record.span8}");
+               // SET("SPAN8 = #{record.span8}");
                 SET("SPE8PZWH = #{record.spe8pzwh}");
                 if(record.getSpe8zdyl()!=null) {
                     SET("SPE8ZDYL = #{record.spe8zdyl}");
@@ -124,7 +124,7 @@ public interface FE84101UpdateByLitmMapper {
                 }
                 SET("SPEV01 = #{record.spev01}");
                 SET("SPE8NAME = #{record.spe8name}");
-                SET("SPAN8 = #{record.span8}");
+              //  SET("SPAN8 = #{record.span8}");
                 SET("SPE8JHG = #{record.spe8jhg}");
                 SET("SPE8ZTW = #{record.spe8ztw}");
                 SET("SPORIG = #{record.sporig}");
@@ -166,10 +166,19 @@ public interface FE84101UpdateByLitmMapper {
             WHERE("Trim(SPLITM) = #{record.splitm}");
             return toString();
         }
+        public String updatesametym(@Param("schema") String schema, @Param("e8lsm") String e8lsm ,@Param("e8tym") String e8tym) {
+            UPDATE(schema + ".FE84101");
+            SET("SPE8SPTYM = #{e8tym}");
+            WHERE("Trim(SPE8SPTYM) = #{e8lsm}");
+            return toString();
+        }
 
     }
 
 
     @UpdateProvider(type=SqlProvider.class, method="updateByLitmSelective")
     int updateByLitmSelective(@Param("schema")String schema,@Param("record") Fe84101 record, @Param("datatype") String datatype);
+
+    @UpdateProvider(type =SqlProvider.class, method="updatesametym" )
+    int updatesametym(@Param("schema") String schema, @Param("e8lsm") String e8lsm ,@Param("e8tym") String e8tym);
 }

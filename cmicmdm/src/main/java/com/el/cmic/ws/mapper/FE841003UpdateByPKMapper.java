@@ -21,6 +21,12 @@ public interface FE841003UpdateByPKMapper {
 
             SET("SQFLAG = #{record.sqflag}");
 
+            if(record.getSqflag() == "R"){
+               // SET("SQBFNU = (select ACDL01 FROM "+schema+".FE84202A where ACA204='Y' and ACE8SPLX = (select SQE8SPLX From "+schema+".FE841001 where squkidp = #{record.squkidp}) and ACCO = (select SQKCOO From "+schema+".FE841001 where squkidp = #{record.squkidp}))");
+                SET("SQA202 = (select ACA202 FROM "+schema+".FE84202A where ACA204='Y' and ACE8SPLX = (select SQE8SPLX From "+schema+".FE841003 where squkid = #{record.squkid}) and ACCO = (select SQKCOO From "+schema+".FE841003 where squkid = #{record.squkid}))");
+                SET("SQPP01 = (select ACPP01 FROM "+schema+".FE84202A where ACA204='Y' and ACE8SPLX = (select SQE8SPLX From "+schema+".FE841003 where squkid = #{record.squkid}) and ACCO = (select SQKCOO From "+schema+".FE841003 where squkid = #{record.squkid}))");
+
+            }
             //SET("SQEV02 = #{record.sqev02}");
 
             WHERE("Trim(SQUKID) = #{record.squkid}");

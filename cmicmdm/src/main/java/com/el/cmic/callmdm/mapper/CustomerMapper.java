@@ -1,10 +1,12 @@
 package com.el.cmic.callmdm.mapper;
 
+import com.el.cfg.domain.F0101z2;
 import com.el.cmic.callmdm.domain.*;
 import com.el.cmic.common.domain.MdmFuncType;
 import com.el.utils.ReadPropertiesUtil;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -65,9 +67,21 @@ public interface CustomerMapper {
             SELECT("a.kse8yljg as isjcyljg");
             SELECT("a.kse8gr as isgr");
             SELECT("a.kse8qt as isqt");
+            //增加公司、时间、制单人
+            SELECT("c.abmcu as kcoo");
+            SELECT("(select abalph from "+schema+"f0101 where trim(aban8)=trim(E.szurat/100)) as creator");
+            SELECT("TO_CHAR(to_date(trunc(e.szurdt/1000)  +1900||'-01-01','yyyy-MM-dd')+mod( e.szurdt, 1000)-1,'yyyy-MM-dd') as creationtime");
+            SELECT("SZEDUS");
+            SELECT("SZEDBT");
+            SELECT("SZEDTN");
+            SELECT("SZEDLN");
+
+
+            //
             FROM(schema + "FE80101 a");
             LEFT_OUTER_JOIN(schema + "f0116 b ON a.ksan8 = b.alan8");
             LEFT_OUTER_JOIN(schema+"f0101 c ON a.ksan8 = c.aban8");
+            LEFT_OUTER_JOIN(schema+"f0101z2 e ON a.ksan8 = e.szan8 and e.szedsp='Y' and e.sztnac='A'");
          //   WHERE("a.ksflag = 'P'");
             WHERE("a.ksflag = 'P' and (trim(c.abat1)='C' or trim(c.abat1)='V')");
             return toString();
@@ -80,10 +94,17 @@ public interface CustomerMapper {
             SELECT("a.sqev01 as ev01");
             SELECT("a.sqan8 as an8");
 
+            SELECT("a.sqkcoo as kcoo");
+
             //--------------------------------------统一码alky----------------------------------------------------------
             SELECT(" a.SQALKY as custcode");
             //SELECT("a.SQE8KSTYM as custcode");
             //----------------------------------------------------------------------------------------------------------
+
+            //增加制单人制单时间
+            SELECT("(select abalph from "+schema+ "f0101 where trim(aban8) = trim(a.sqpa8) ) as creator");
+            SELECT("TO_CHAR(to_date(trunc(a.sqtrdj/1000)  +1900||'-01-01','yyyy-MM-dd')+mod( a.sqtrdj, 1000)-1,'yyyy-MM-dd') as creationtime");
+            //
 
             SELECT("a.sqe8name as custname");
             SELECT("a.sqctr as pk_country");
@@ -114,11 +135,11 @@ public interface CustomerMapper {
 
         final static String CUSTOM_B_QRY = "customBQry";
 
-        public String customBQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8, @Param("funcType") String funcType) {
+        public String customBQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8, @Param("funcType") String funcType,@Param("doco") String doco) {
             if (funcType.equals(MdmFuncType.FUNC_TYPE_ADD)) {
                 return customAddBQry(schema, ctlSchema, an8);
             } else {
-                return customModBQry(schema, ctlSchema, an8);
+                return customModBQry(schema, ctlSchema, an8,doco);
             }
         }
 
@@ -140,7 +161,7 @@ public interface CustomerMapper {
             return toString();
         }
 
-        public String customModBQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8) {
+        public String customModBQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8,@Param("doco") String doco) {
             schema = schema + ".";
             ctlSchema = ctlSchema + ".";
             //SELECT("a.zze8zzlxa as pk_lictype");
@@ -155,7 +176,8 @@ public interface CustomerMapper {
             SELECT("a.zze8jyfw3 as licfws");
             FROM(schema + "FE841004 a");
             WHERE("a.zzan8=#{an8}");
-            WHERE(" a.zzev02='Y'");
+            WHERE("a.zzev02='Y'");
+            WHERE("a.zzukidp = #{doco}");
             return toString();
         }
 
@@ -429,7 +451,20 @@ public interface CustomerMapper {
             WHERE("Trim(GDTXKY) = #{gdtxky}");
             return toString();
         }
+
+        public String updatef0101z2(@Param("schema") String schema, @Param("record")F0101z2 record){
+            UPDATE(schema+".F0101Z2");
+            SET("SZURCD = #{record.szurcd}");
+            WHERE("trim(SZEDUS) = #{record.szedus}");
+            WHERE("trim(SZEDBT) = #{record.szedbt}");
+            WHERE("trim(SZEDTN) = #{record.szedtn}");
+            WHERE("trim(SZEDLN) = #{record.szedln}");
+            return toString();
+        }
     }
+
+    @UpdateProvider(type = SqlProvider.class,method ="updatef0101z2")
+    int updatef0101z2(@Param("schema") String schema, @Param("record")F0101z2 record);
 
     @SelectProvider(type = SqlProvider.class,method = "customAddQryAInfo")
     List<RqE001InputAttachment> customAddQryAInfo(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema,@Param("gdtxky")String gdtxky);
@@ -442,7 +477,7 @@ public interface CustomerMapper {
     public List<RqC001InputCustomC01> customQry(@Param("schema") String schema,@Param("ctlSchema") String ctlSchema, @Param("funcType") String funcType);
 
     @SelectProvider(type = SqlProvider.class, method = SqlProvider.CUSTOM_B_QRY)
-    public List<RqC001InputBC01> customBQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8, @Param("funcType") String funcType);
+    public List<RqC001InputBC01> customBQry(@Param("schema") String schema, @Param("ctlSchema") String ctlSchema, @Param("an8") String an8, @Param("funcType") String funcType,@Param("doco") String doco);
 
 
 

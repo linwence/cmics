@@ -30,7 +30,10 @@ public interface FE80101ZUpdateByE8ZZBMMapper {
             if(record.getZzfil2()!=null){
                 SET("ZZFIL2 = #{record.zzfil2}");
             }
-            WHERE("Trim(ZZEXDJ) = (SELECT TO_CHAR(TO_DATE(#{dj}, 'yyyy- mm-dd'), 'yyyy') * 1000 +TO_CHAR(TO_DATE(#{dj}, 'yyyy-mm- dd'), 'ddd ') - 1900000 FROM DUAL)");
+            if(dj != null){
+                SET("ZZEXDJ = (SELECT TO_CHAR(TO_DATE(#{dj}, 'yyyy- mm-dd'), 'yyyy') * 1000 +TO_CHAR(TO_DATE(#{dj}, 'yyyy-mm- dd'), 'ddd ') - 1900000 FROM DUAL)");
+            }
+            //WHERE("Trim(ZZEXDJ) = (SELECT TO_CHAR(TO_DATE(#{dj}, 'yyyy- mm-dd'), 'yyyy') * 1000 +TO_CHAR(TO_DATE(#{dj}, 'yyyy-mm- dd'), 'ddd ') - 1900000 FROM DUAL)");
 
             WHERE("Trim(ZZE8ZZLXA) = #{record.zze8zzlxa}");
             WHERE("Trim(ZZE8ZZBM) = #{record.zze8zzbm}");
@@ -39,7 +42,7 @@ public interface FE80101ZUpdateByE8ZZBMMapper {
 
             return toString();
         }
-        public String insertSelective(@Param("schema")String schema,@Param("record") Fe80101z record,@Param("dj") String dj){
+        public String insertSelective(@Param("schema")String schema,@Param("record") Fe80101z record,@Param("dj") String dj,@Param("reqno") String reqno){
 
 
             INSERT_INTO(schema+".FE80101Z");
@@ -77,6 +80,10 @@ public interface FE80101ZUpdateByE8ZZBMMapper {
             }
             VALUES("ZZPF1","'1'");
             VALUES("ZZALPH","(SELECT abalph from "+schema+".F0101 where trim(aban8)=#{record.zzan8})");
+            if(reqno != null && (!reqno.equals(""))){
+                VALUES("ZZEFTJ","(select zzeftj from "+schema+".FE841004 where trim(zzukidp)=#{reqno} and trim(zzan8) = #{record.zzan8} and trim(zze8zzlxa)=#{record.zze8zzlxa} and trim(zze8zzbm)=#{record.zze8zzbm} and trim(zzev02)='Y')");
+               // VALUES("ZZalph","(select abalph from "+schema+".F0101 where trim(aban8) = #{record.zzan8})");
+            }
             return toString();
 
 
@@ -100,5 +107,5 @@ public interface FE80101ZUpdateByE8ZZBMMapper {
     int selectByPrimaryKey(@Param("schema")String schema,@Param("record") Fe80101z record);
 
     @InsertProvider(type=SqlProvider.class, method="insertSelective")
-    int insertSelective(@Param("schema")String schema,@Param("record") Fe80101z record,@Param("dj") String dj);
+    int insertSelective(@Param("schema")String schema,@Param("record") Fe80101z record,@Param("dj") String dj,@Param("reqno") String reqno);
 }

@@ -15,6 +15,9 @@ import java.util.List;
         "errcode",
         "msg",
         "submitbillinfo",
+        "approver",
+        "approvedate",
+        "approvenote",
         "codeinfo"
 })
 public class PhE001OutHeader {
@@ -24,7 +27,36 @@ public class PhE001OutHeader {
     private String errcode;
     private String msg;
     private String submitbillinfo;
+
+    private String approver;
+    private String approvedate;
+    private String approvenote;
+
     private PhE001OutHeaderCodeInfo codeinfo;
+
+    public String getApprover() {
+        return approver;
+    }
+
+    public void setApprover(String approver) {
+        this.approver = approver;
+    }
+
+    public String getApprovedate() {
+        return approvedate;
+    }
+
+    public void setApprovedate(String approvedate) {
+        this.approvedate = approvedate;
+    }
+
+    public String getApprovenote() {
+        return approvenote;
+    }
+
+    public void setApprovenote(String approvenote) {
+        this.approvenote = approvenote;
+    }
 
     @XmlElement(name = "datatype")
     public String getDatatype() {
@@ -90,6 +122,7 @@ public class PhE001OutHeader {
         this.codeinfo = codeinfo;
     }
 
+    @Override
     public String toString() {
         return "PhE001OutHeader{" +
                 "datatype='" + datatype + '\'' +
@@ -98,6 +131,9 @@ public class PhE001OutHeader {
                 ", errcode='" + errcode + '\'' +
                 ", msg='" + msg + '\'' +
                 ", submitbillinfo='" + submitbillinfo + '\'' +
+                ", approver='" + approver + '\'' +
+                ", approvedate='" + approvedate + '\'' +
+                ", approvenote='" + approvenote + '\'' +
                 ", codeinfo=" + codeinfo +
                 '}';
     }

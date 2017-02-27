@@ -141,7 +141,7 @@ public class ReceiveMdmServiceImpl implements ReceiveMdmService {
                                         }
 
                                     }
-                                    addE01ToERPServiceImpl.AddE01ToERP(phE001OutHeader, phE001OutMain, phE001OutsublineB, no,co);
+                                    addE01ToERPServiceImpl.AddE01ToERP(phE001OutHeader, phE001OutMain, phE001OutsublineB, no,co,reqno);
                                 }
 
                                 if (datatype.equals("E02")) {
@@ -188,7 +188,7 @@ public class ReceiveMdmServiceImpl implements ReceiveMdmService {
                                         }
 
                                     }
-                                    addE03ToERPServiceImpl.addE03ToERP(phE001OutHeader, phE003OutMain, phE001OutsublineB,no,co);
+                                    addE03ToERPServiceImpl.addE03ToERP(phE001OutHeader, phE003OutMain, phE001OutsublineB,no,co,reqno);
                                 }
                                 if (datatype.equals("E04")) {
                                     logger.info("信息为E04");
@@ -304,7 +304,7 @@ public class ReceiveMdmServiceImpl implements ReceiveMdmService {
                                         }*/
                                         addC01ToERPServiceImpl.addC01ToERP(phE001OutHeader, phC001OutMain, phC001OutSublineYY,
                                                 phC001OutSublineJCYLJG, phC001OutSublineGR, phC001OutSublineQT, phC001OutSublineB,
-                                                phC001OutSublineJXS,phC001OutSublineJKS,phC001OutSublineCSC, no);
+                                                phC001OutSublineJXS,phC001OutSublineJKS,phC001OutSublineCSC, no,reqno);
                                     }
 
                                 }
@@ -346,12 +346,12 @@ public class ReceiveMdmServiceImpl implements ReceiveMdmService {
                 if(datatype.equals("E01")||datatype.equals("E02")||datatype.equals("E03")||datatype.equals("E04")) {
                     if (phE001OutHeader.getErrcode().equals("ERR011")) {
                         BigDecimal bigDecimal = new BigDecimal(reqno);
-                        modE0ESToERPServiceImpl.updateFE841001(bigDecimal,"E");
+                        modE0ESToERPServiceImpl.updateModE(bigDecimal,"R",no,phE001OutHeader);
                     }
                     if (phE001OutHeader.getErrcode().equals("SUCCESS")) {
                         if (!reqno.equals(null)) {
                             BigDecimal bigDecimal = new BigDecimal(reqno);
-                            modE0ESToERPServiceImpl.updateFE841001(bigDecimal,"S");
+                            modE0ESToERPServiceImpl.updateModE(bigDecimal,"S",no,phE001OutHeader);
                         }
                     }
                 }
@@ -359,15 +359,16 @@ public class ReceiveMdmServiceImpl implements ReceiveMdmService {
                     logger.info("接受信息为客商信息");
                     if (phE001OutHeader.getErrcode().equals("ERR011")) {
                         BigDecimal bigDecimal = new BigDecimal(reqno);
-                        modC0ESToERPServiceImpl.updateFE841003(bigDecimal,"E");
+                        BigDecimal bd= new BigDecimal(no);
+                        modC0ESToERPServiceImpl.updateModC(bigDecimal,"R",bd,phE001OutHeader);
                     }
                     if (phE001OutHeader.getErrcode().equals("SUCCESS")) {
-                        if (!reqno.equals(null)) {
+                       // if (!reqno.equals(null)) {
                             BigDecimal bd= new BigDecimal(no);
                             BigDecimal bigDecimal = new BigDecimal(reqno);
-                            modC0ESToERPServiceImpl.updateFE841003(bigDecimal,"S");
-                            modC0ESToERPServiceImpl.updateFE80101(bigDecimal,bd);
-                        }
+                            modC0ESToERPServiceImpl.updateModC(bigDecimal,"S",bd,phE001OutHeader);
+
+                        //}
                     }
                 }
                 if(datatype.equals("M01")){
