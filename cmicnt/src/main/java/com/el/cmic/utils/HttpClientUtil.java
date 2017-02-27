@@ -44,6 +44,7 @@ public class HttpClientUtil {
                 HttpEntity resEntity = response.getEntity();
                 if(resEntity != null){
                     result = EntityUtils.toString(resEntity,charset);
+                    System.out.println();
                 }
             }
         }catch(Exception ex){
