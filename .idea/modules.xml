@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cmicmdm/cmicmdm.iml" filepath="$PROJECT_DIR$/cmicmdm/cmicmdm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cmicnt/cmicnt.iml" filepath="$PROJECT_DIR$/cmicnt/cmicnt.iml" />
       <module fileurl="file://$PROJECT_DIR$/cmics.iml" filepath="$PROJECT_DIR$/cmics.iml" />
       <module fileurl="file://$PROJECT_DIR$/cmicspd/cmicspd.iml" filepath="$PROJECT_DIR$/cmicspd/cmicspd.iml" />
       <module fileurl="file://$PROJECT_DIR$/cmicwms/cmicwms.iml" filepath="$PROJECT_DIR$/cmicwms/cmicwms.iml" />

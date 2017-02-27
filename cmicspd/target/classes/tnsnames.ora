@@ -1,0 +1,37 @@
+# Please edit this file to add the necessary oracle database
+# E1LOCAL is required (Local Oracle Database)
+# DO NOT DELETE E1LOCAL entry
+
+
+E1LOCAL =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = E1Local)
+    )
+  )
+
+
+
+
+JDE =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = JDE92ENT)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = JDE)
+    )
+  )
+
+
+# JDE =
+ # (DESCRIPTION =
+ #   (ADDRESS_LIST =
+ #     (ADDRESS = (PROTOCOL = TCP)(HOST = JDE91ENT)(PORT = 1521))
+ #   )
+ #   (CONNECT_DATA =
+ #     (SERVICE_NAME = JDE)
+#    )
+#  )

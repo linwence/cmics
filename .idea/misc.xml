@@ -5,6 +5,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/cmicmdm" />
+    <file type="web" url="file://$PROJECT_DIR$/cmicnt" />
     <file type="web" url="file://$PROJECT_DIR$/cmicspd" />
     <file type="web" url="file://$PROJECT_DIR$/cmicwms" />
   </component>

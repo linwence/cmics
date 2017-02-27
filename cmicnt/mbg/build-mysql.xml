@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project default="genfiles" basedir="..">
+
+  <property name="lib.dir" value="${basedir}/lib"/>
+
+  <property name="mbg.dir" value="${basedir}/mbg"/>
+  <property name="mbg.jar" value="${mbg.dir}/mybatis-generator-core-1.3.3.jar"/>
+
+  <property name="mbg.src.dir" value="${mbg.dir}/DbCommentPlugin/src"/>
+  <property name="mbg.out.dir" value="${mbg.dir}/DbCommentPlugin/bin"/>
+
+  <target name="genplugins">
+    <echo>=== COMPILE ===</echo>
+    <mkdir dir="${mbg.out.dir}"/>
+    <javac debug="on"
+           destdir="${mbg.out.dir}"
+           includeantruntime="false">
+      <compilerarg value="-Xlint:unchecked"/>
+      <classpath location="${mbg.jar}"/>
+      <src path="${mbg.src.dir}"/>
+    </javac>
+  </target>
+
+  <path id="genfiles.class.path">
+    <pathelement path="${mbg.jar}"/>
+    <pathelement path="${mbg.out.dir}"/>
+  </path>
+
+  <target name="genfiles" depends="genplugins"
+          description="Generate domain and mapper files">
+    <echo>=== CODEGEN ===</echo>
+    <taskdef name="mbgenerator"
+             classname="org.mybatis.generator.ant.GeneratorAntTask"
+             classpathref="genfiles.class.path"/>
+
+    <property name="gen.src.dir" value="${basedir}/src/main"/>
+    <property name="gen.tbl.prefix" value="s_"/>
+    <property name="gen.pkg.domain" value="com.el.cfg.domain"/>
+    <property name="gen.pkg.mapper" value="com.el.cfg.mapper"/>
+
+    <property name="jdbc.jar" value="${lib.dir}/mysql-connector-java-5.1.38.jar"/>
+    <property file="${mbg.dir}/build-mysql.properties"/>
+
+    <mbgenerator overwrite="true"
+                 configfile="generatorConfig.xml"
+                 verbose="true">
+      <propertyset>
+        <propertyref prefix="gen"/>
+        <propertyref prefix="jdbc"/>
+      </propertyset>
+    </mbgenerator>
+
+  </target>
+
+</project>

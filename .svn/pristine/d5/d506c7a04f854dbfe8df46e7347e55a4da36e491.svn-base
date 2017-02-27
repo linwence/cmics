@@ -1,0 +1,53 @@
+package com.el.cmic.controller;
+
+import com.el.cmic.service.goods.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ * Created by Vincent on 2017/2/17.
+ */
+@RestController
+@RequestMapping("/api")
+public class NtApiController {
+    @Autowired
+    private ProductService productServiceImpl;
+
+    @RequestMapping("/product/time")
+    public String productByTime(@RequestParam("timeBegin") Date timeBegin, @RequestParam("timeEnd") Date timeEnd) {
+
+        if (productServiceImpl.callNtInterface(timeBegin, timeEnd)) {
+            return "调用成功";
+        } else {
+            return "调用失败";
+        }
+    }
+
+    @RequestMapping("/product/code")
+    public String productByKey(@RequestParam("code") String code) {
+        if (productServiceImpl.callNtInterface(code)) {
+            return "调用成功";
+        } else {
+            return "调用失败";
+        }
+    }
+
+    @InitBinder("timeBegin")
+    public void initTimeBegin(WebDataBinder binder) {
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true));
+    }
+
+    @InitBinder("timeEnd")
+    public void initTimeEnd(WebDataBinder binder) {
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true));
+    }
+}

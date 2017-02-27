@@ -6,7 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="f6f45689-4be8-46b9-b4f2-c5491e81b3fe" name="Default" comment="合格区又改回合格品">
+    <list default="true" readonly="true" id="f6f45689-4be8-46b9-b4f2-c5491e81b3fe" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicnt/src/test" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicnt/src/test/java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicnt/src/test/java/com" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicnt/src/test/java/com/el" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicnt/src/test/java/com/el/test" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicspd/mbg/DbCommentPlugin/bin" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicspd/mbg/DbCommentPlugin/bin/com" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicspd/mbg/DbCommentPlugin/bin/com/el" />
@@ -17,11 +22,14 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicwms/mbg/DbCommentPlugin/bin/com/el" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicwms/mbg/DbCommentPlugin/bin/com/el/mybatis" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicwms/mbg/DbCommentPlugin/bin/com/el/mybatis/plugins" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/cmicnt_war.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/cmicnt_war_exploded.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__axis_axis_1_4.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__axis_axis_wsdl4j_1_5_1.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_12.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_19.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mashape_unirest_unirest_java_1_4_9.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_9.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_discovery_commons_discovery_0_2.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_2.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_1.xml" />
@@ -32,15 +40,17 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_axis_axis_saaj_1_4.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpasyncclient_4_1_1.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_3.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_6.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_nio_4_4_4.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_5_2.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20160212.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicspd/src/test/java/com/el/test/TestSalesQueryServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicspd/src/test/java/com/el/test/TestSpdLedgerServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicspd/src/test/java/com/el/test/TestStockQueryServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/utils/HttpClientUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/utils/SSLClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cmicnt/src/test/java/com/el/test/JsonConvert.java" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/revert/RevertDataDetailService.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/revert/RevertDataService.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/revert/impl/RevertDataDetailServiceImpl.java" afterPath="" />
@@ -54,17 +64,18 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicmdm/cmicmdm.iml" afterPath="$PROJECT_DIR$/cmicmdm/cmicmdm.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicmdm/mbg/generatorConfig.xml" afterPath="$PROJECT_DIR$/cmicmdm/mbg/generatorConfig.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicnt/cmicnt.iml" afterPath="$PROJECT_DIR$/cmicnt/cmicnt.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicnt/pom.xml" afterPath="$PROJECT_DIR$/cmicnt/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/domain/goods/Fe8nt001.java" afterPath="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/domain/goods/Fe8nt001.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/goods/ProductServiceImpl.java" afterPath="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/goods/ProductServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmics.iml" afterPath="$PROJECT_DIR$/cmics.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicspd/cmicspd.iml" afterPath="$PROJECT_DIR$/cmicspd/cmicspd.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/common/SpdInterfaceType.java" afterPath="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/common/SpdInterfaceType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/common/service/ValidParamServiceImpl.java" afterPath="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/common/service/ValidParamServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicspd/src/main/resources/config/db.properties" afterPath="$PROJECT_DIR$/cmicspd/src/main/resources/config/db.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicwms/cmicwms.iml" afterPath="$PROJECT_DIR$/cmicwms/cmicwms.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmicwms/mbg/generatorConfig.xml" afterPath="$PROJECT_DIR$/cmicwms/mbg/generatorConfig.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
     <list id="9251d282-d8a1-4034-9ecc-ecaa7445de40" name="Failed commit: Default" comment="·" />
     <ignored path="cmics.iws" />
@@ -75,6 +86,7 @@
     <ignored path="$PROJECT_DIR$/cmicspd/target/" />
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/cmicmdm/target/" />
+    <ignored path="$PROJECT_DIR$/cmicnt/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -130,57 +142,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/record/ConserveDetail.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/record/ConserveDetailMapper.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/goods/BaleMapper.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/resources/config/log/log4j.properties" />
+        <option value="$PROJECT_DIR$/cmicnt/mbg/build-oracle.properties" />
+        <option value="$PROJECT_DIR$/cmicnt/mbg/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/utils/HttpRequest.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/domain/goods/GoodsResult.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/mapper/goods/ProductMapper.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/resources/config/log/log4j.properties" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/resources/config/spring/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cfg/NtConfigInfo.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/common/NtRequestParam.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cfg/NtServletContextListener.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/domain/calltime/Fe8nttime.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/domain/calltime/Fe8NtCfg.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/mapper/calltime/Fe8nttimeMapper.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/ntcfg/NtCfgService.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/ntcfg/NtCfgServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/timetask/NtTimeTask.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/utils/HttpRequestUtil.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/goods/ProductService.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/common/NtInterfaceType.java" />
         <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/ckback/CkBackServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/ckback/CkBackMapper.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/controller/WmsDataController.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/inbound/InboundPushDetail.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/inbound/InboundServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/record/InputCheckDetail.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/record/InputCheckMapper.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/record/OutCheckDetial.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/record/PurchaseOutDetail.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/stock/StockDetail.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/stock/StockDetailMapper.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/record/PurchaseDetailMapper.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/record/OutCheckDetailMapper.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/inbound/InboundBackMapper.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/resources/config/spd/SPD.properties" />
-        <option value="$PROJECT_DIR$/cmicspd/mbg/build-oracle.properties" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/ledger/SpdLedgerService.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/resources/config/db.properties" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/ledger/SpdLedgerServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/LedgerQryCondition.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/test/java/com/el/test/TestSpdLedgerServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/Ve8spdf4111.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/account/AccountItemMapper.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/account/impl/AccountItemServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/customer/CustomPropel.java" />
-        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/customer/CustomPropelMapper.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/StockQryCondition.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/query/Ve8spdf4111Mapper.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/stockquery/StockQueryService.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/test/java/com/el/test/TestStockQueryServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/stockquery/StockQueryServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cmicspd/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/query/Ve8spdF41021Mapper.java" />
+        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/query/Ve8spdf4111Mapper.java" />
         <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/Ve8spdF41021.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/common/SpdInterfaceType.java" />
-        <option value="$PROJECT_DIR$/cmicspd/mbg/generatorConfig.xml" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/SaleQryCondition.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/salequery/SalesQueryService.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/salequery/SalesQueryServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/common/service/ValidParamServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/test/java/com/el/test/TestSalesQueryServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/SpdWsServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/query/Ve8spdsalesMapper.java" />
+        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/Ve8spdf4111.java" />
         <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/Ve8spdsales.java" />
+        <option value="$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/query/Ve8spdsalesMapper.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/domain/invoice/InvoiceDomain.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/resources/config/spring/springmvc.xml" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/common/NtResult.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/interceptor/ValidInterceptor.java" />
+        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/ckback/CkBackMapper.java" />
+        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/inbound/InboundServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/inbound/Fe84108.java" />
+        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/inbound/InboundBackMapper.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/mapper/invoice/InvoiceMapper.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/invoice/InvoiceServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/invoice/InvoiceService.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/controller/NtApiController.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/mapper/ntcfg/Fe8NtCfgMapper.java" />
+        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/inbound/InboundCommonMapper.java" />
+        <option value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/common/service/ValidParamServiceImpl.java" />
         <option value="$PROJECT_DIR$/cmicwms/src/main/resources/config/wms/WMS.properties" />
         <option value="$PROJECT_DIR$/cmicwms/src/main/resources/config/db.properties" />
-        <option value="$PROJECT_DIR$/cmicspd/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/resources/config/nt/nt.properties" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/domain/goods/Fe8nt001.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/test/java/com/el/test/JsonConvert.java" />
+        <option value="$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/goods/ProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cmicnt/pom.xml" />
       </list>
     </option>
   </component>
@@ -199,7 +211,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
+        <option name="mavenHome" value="C:/apache-maven-3.3.9" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -269,8 +281,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -317,12 +327,342 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmicspd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="el" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmicspd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmicnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmicnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="el" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmicnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmicnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="el" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmicnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="el" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmicnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="el" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmicnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="el" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="goods" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmicnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="el" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -330,12 +670,12 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="last_opened_file_path" value="D:/work/国药器械/接口/MDM/第三方提供/nchome/nchome/modules/uapfw/lib/pubuapfw_wsframeworkLevel-1.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="cmics" />
-    <property name="extract.method.default.visibility" value="private" />
+    <property name="extract.method.default.visibility" value="public" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/common" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="66" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
@@ -364,58 +704,32 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\cmics\cmicnt\mbg" />
+      <recent name="D:\projects\cmics\cmicnt\mbg\DbCommentPlugin" />
       <recent name="D:\projects\cmics\cmicmdm\lib" />
       <recent name="D:\projects\cmics\cmicmdm\src\main\resources\config" />
       <recent name="D:\projects\cmics\cmicmdm\src\main\resources" />
-      <recent name="D:\projects\cmics\cmicwms\src\main\resources\config\log" />
-      <recent name="D:\projects\cmics\cmicwms\src\main\resources" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.el.cmic.mapper" />
       <recent name="com.el.cmic" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.el.cmic.timetask" />
+      <recent name="com.el.cfg" />
+      <recent name="com.el.cmic.utils" />
       <recent name="com.el.test" />
       <recent name="com.el.utils" />
-      <recent name="com.el.cmic.common.mapper" />
-      <recent name="com.el.cmic.domain.repertory" />
-      <recent name="com.el.cmic.domain.customer" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\projects\cmics\cmicspd\target\test-classes" />
-      <recent name="D:\projects\cmics\cmicwms\target\test-classes" />
-      <recent name="D:\projects\cmics\cmicwms\target\classes\com\el\cmic\mapper\inbound" />
-      <recent name="D:\projects\cmics\cmicspd\src\main\java\com\el\cmic\common\service" />
-      <recent name="D:\projects\cmics\cmicspd\mbg" />
+      <recent name="D:\projects\cmics\cmicnt\src\main\java\com\el\cmic\utils" />
+      <recent name="D:\projects\cmics\cmicnt\src\main\webapp\WEB-INF" />
+      <recent name="D:\projects\cmics\cmicnt\src\main\java\com\el\cfg" />
+      <recent name="D:\projects\cmics\cmicnt\src\main\resources" />
+      <recent name="D:\projects\cmics\cmicnt\mbg\DbCommentPlugin" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.cmicspd">
-    <configuration default="false" name="TestCkService.testCallWmsCkInterface" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.el.cmic.mapper.ck.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="cmicwms" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.el.cmic.mapper.ck" />
-      <option name="MAIN_CLASS_NAME" value="com.el.cmic.mapper.ck.TestCkService" />
-      <option name="METHOD_NAME" value="testCallWmsCkInterface" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.JsonConvert">
     <configuration default="false" name="TestSpdOrderBackServiceImpl.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -518,6 +832,26 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="JsonConvert" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.el.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.el.test.JsonConvert" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="cmicnt" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
@@ -932,6 +1266,78 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
+    <configuration default="false" name="nt" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.33" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="cmicnt:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/cmicnt" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_cmics_5" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="52747" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="cmicnt:war" />
+        </option>
+      </method>
+    </configuration>
     <configuration default="false" name="mdm" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.33" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -1149,23 +1555,24 @@
         </option>
       </method>
     </configuration>
-    <list size="8">
-      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.mdm" />
-      <item index="1" class="java.lang.String" itemvalue="Tomcat Server.wms" />
-      <item index="2" class="java.lang.String" itemvalue="Tomcat Server.cmicspd" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TestCkService.testCallWmsCkInterface" />
+    <list size="9">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.nt" />
+      <item index="1" class="java.lang.String" itemvalue="Tomcat Server.mdm" />
+      <item index="2" class="java.lang.String" itemvalue="Tomcat Server.wms" />
+      <item index="3" class="java.lang.String" itemvalue="Tomcat Server.cmicspd" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.TestSpdOrderBackServiceImpl.test" />
       <item index="5" class="java.lang.String" itemvalue="JUnit.TestSpdLedgerServiceImpl.getData" />
       <item index="6" class="java.lang.String" itemvalue="JUnit.TestStockQueryServiceImpl.getData" />
       <item index="7" class="java.lang.String" itemvalue="JUnit.TestSalesQueryServiceImpl.getData" />
+      <item index="8" class="java.lang.String" itemvalue="Application.JsonConvert" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TestSalesQueryServiceImpl.getData" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TestStockQueryServiceImpl.getData" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TestSpdLedgerServiceImpl.getData" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TestSpdOrderBackServiceImpl.test" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TestCkService.testCallWmsCkInterface" />
+        <item index="0" class="java.lang.String" itemvalue="Application.JsonConvert" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TestSalesQueryServiceImpl.getData" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TestStockQueryServiceImpl.getData" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestSpdLedgerServiceImpl.getData" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TestSpdOrderBackServiceImpl.test" />
       </list>
     </recent_temporary>
   </component>
@@ -1190,6 +1597,10 @@
         <SvnCopyRootSimple>
           <option name="myVcsRoot" value="D:\projects\cmics\cmicmdm" />
           <option name="myCopyRoot" value="D:\projects\cmics\cmicmdm" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\projects\cmics\cmicnt" />
+          <option name="myCopyRoot" value="D:\projects\cmics\cmicnt" />
         </SvnCopyRootSimple>
         <SvnCopyRootSimple>
           <option name="myVcsRoot" value="D:\projects\cmics\cmicspd" />
@@ -1338,154 +1749,25 @@
       <workItem from="1484614503120" duration="15888000" />
       <workItem from="1484640829048" duration="6470000" />
       <workItem from="1484701805970" duration="27497000" />
-      <workItem from="1484787611554" duration="10743000" />
-    </task>
-    <task id="LOCAL-00259" summary="订单返回增加“请求唯一标识”">
-      <created>1481197528105</created>
-      <option name="number" value="00259" />
-      <option name="presentableId" value="LOCAL-00259" />
-      <option name="project" value="LOCAL" />
-      <updated>1481197528105</updated>
-    </task>
-    <task id="LOCAL-00260" summary="修改bug">
-      <created>1481372560141</created>
-      <option name="number" value="00260" />
-      <option name="presentableId" value="LOCAL-00260" />
-      <option name="project" value="LOCAL" />
-      <updated>1481372560162</updated>
-    </task>
-    <task id="LOCAL-00261" summary="通知单号改成&quot;订单类型&quot;+&quot;-&quot;+&quot;DOCO&quot;">
-      <created>1481372676105</created>
-      <option name="number" value="00261" />
-      <option name="presentableId" value="LOCAL-00261" />
-      <option name="project" value="LOCAL" />
-      <updated>1481372676105</updated>
-    </task>
-    <task id="LOCAL-00262" summary="预发货日期/运输方式等">
-      <created>1481593717110</created>
-      <option name="number" value="00262" />
-      <option name="presentableId" value="LOCAL-00262" />
-      <option name="project" value="LOCAL" />
-      <updated>1481593717129</updated>
-    </task>
-    <task id="LOCAL-00263" summary="打包流水号存储到FE84211. E8FHDBH&#10;灭菌日期存储到：FE84108.E8MJRQ&#10;灭菌批号失效日期存储到：FE84108.E8MJSXQ&#10;组装拆配时：（单据类型DCT=IF）业务员=F4111.USER；时间=F4111.CRDJ">
-      <created>1481593788105</created>
-      <option name="number" value="00263" />
-      <option name="presentableId" value="LOCAL-00263" />
-      <option name="project" value="LOCAL" />
-      <updated>1481593788105</updated>
-    </task>
-    <task id="LOCAL-00264" summary="修改bug">
-      <created>1481627540105</created>
-      <option name="number" value="00264" />
-      <option name="presentableId" value="LOCAL-00264" />
-      <option name="project" value="LOCAL" />
-      <updated>1481627540105</updated>
-    </task>
-    <task id="LOCAL-00265" summary="root3">
-      <created>1481702649109</created>
-      <option name="number" value="00265" />
-      <option name="presentableId" value="LOCAL-00265" />
-      <option name="project" value="LOCAL" />
-      <updated>1481702649132</updated>
-    </task>
-    <task id="LOCAL-00266" summary="root3">
-      <created>1481702669105</created>
-      <option name="number" value="00266" />
-      <option name="presentableId" value="LOCAL-00266" />
-      <option name="project" value="LOCAL" />
-      <updated>1481702669106</updated>
-    </task>
-    <task id="LOCAL-00267">
-      <created>1481702809110</created>
-      <option name="number" value="00267" />
-      <option name="presentableId" value="LOCAL-00267" />
-      <option name="project" value="LOCAL" />
-      <updated>1481702809110</updated>
-    </task>
-    <task id="LOCAL-00268" summary="复核记录等增加订单号和订单类型">
-      <created>1481702919104</created>
-      <option name="number" value="00268" />
-      <option name="presentableId" value="LOCAL-00268" />
-      <option name="project" value="LOCAL" />
-      <updated>1481702919104</updated>
-    </task>
-    <task id="LOCAL-00269" summary="读取配置文件">
-      <created>1481704578110</created>
-      <option name="number" value="00269" />
-      <option name="presentableId" value="LOCAL-00269" />
-      <option name="project" value="LOCAL" />
-      <updated>1481704578110</updated>
-    </task>
-    <task id="LOCAL-00270" summary="入库返回增加取批次序号">
-      <created>1481879290109</created>
-      <option name="number" value="00270" />
-      <option name="presentableId" value="LOCAL-00270" />
-      <option name="project" value="LOCAL" />
-      <updated>1481879290123</updated>
-    </task>
-    <task id="LOCAL-00271" summary="读取配置文件">
-      <created>1481879320115</created>
-      <option name="number" value="00271" />
-      <option name="presentableId" value="LOCAL-00271" />
-      <option name="project" value="LOCAL" />
-      <updated>1481879320115</updated>
-    </task>
-    <task id="LOCAL-00272" summary="读取配置文件">
-      <created>1482221754710</created>
-      <option name="number" value="00272" />
-      <option name="presentableId" value="LOCAL-00272" />
-      <option name="project" value="LOCAL" />
-      <updated>1482221754719</updated>
-    </task>
-    <task id="LOCAL-00273" summary="接收回来，数量转换">
-      <created>1482386269163</created>
-      <option name="number" value="00273" />
-      <option name="presentableId" value="LOCAL-00273" />
-      <option name="project" value="LOCAL" />
-      <updated>1482386269165</updated>
-    </task>
-    <task id="LOCAL-00274" summary="组装拆配：&#10;先判断F4111.TRUM如果不等于F4101.UOM1，执行下面换算：&#10;F4111.LITM=F4101.LITM&#10;F4111.TRUM=F41002.UM    F4101.UOM1=F41002.RUM ,取到转换系数 F41002.CNV1&#10;下传WMS的“数量”*F41002.CNV1&#9;返回的时候同样逻辑查找，数量/CNV1，倒算回来保存&#10;">
-      <created>1482401989116</created>
-      <option name="number" value="00274" />
-      <option name="presentableId" value="LOCAL-00274" />
-      <option name="project" value="LOCAL" />
-      <updated>1482401989116</updated>
-    </task>
-    <task id="LOCAL-00275" summary="序列号表增加默认值">
-      <created>1482404602109</created>
-      <option name="number" value="00275" />
-      <option name="presentableId" value="LOCAL-00275" />
-      <option name="project" value="LOCAL" />
-      <updated>1482404602109</updated>
-    </task>
-    <task id="LOCAL-00276" summary="增加灭菌日期和灭菌失效日期">
-      <created>1482746139138</created>
-      <option name="number" value="00276" />
-      <option name="presentableId" value="LOCAL-00276" />
-      <option name="project" value="LOCAL" />
-      <updated>1482746139181</updated>
-    </task>
-    <task id="LOCAL-00277" summary="生产日期和灭菌批号日期、灭菌日期如果为空改成默认为1900-01-01">
-      <created>1482751045110</created>
-      <option name="number" value="00277" />
-      <option name="presentableId" value="LOCAL-00277" />
-      <option name="project" value="LOCAL" />
-      <updated>1482751045110</updated>
-    </task>
-    <task id="LOCAL-00278" summary="FE84108只有是op和OH的入库单才生成">
-      <created>1482805528111</created>
-      <option name="number" value="00278" />
-      <option name="presentableId" value="LOCAL-00278" />
-      <option name="project" value="LOCAL" />
-      <updated>1482805528113</updated>
-    </task>
-    <task id="LOCAL-00279" summary="销退入库后，带序列号的要更新FE8WMS04表。带序列号的要往FE8XLH99表插记录">
-      <created>1482843133106</created>
-      <option name="number" value="00279" />
-      <option name="presentableId" value="LOCAL-00279" />
-      <option name="project" value="LOCAL" />
-      <updated>1482843133106</updated>
+      <workItem from="1484787611554" duration="16849000" />
+      <workItem from="1484873986047" duration="4730000" />
+      <workItem from="1486519053040" duration="5363000" />
+      <workItem from="1486609477478" duration="946000" />
+      <workItem from="1487037804629" duration="19329000" />
+      <workItem from="1487120510078" duration="5631000" />
+      <workItem from="1487130637141" duration="4594000" />
+      <workItem from="1487141595448" duration="7660000" />
+      <workItem from="1487208252935" duration="13483000" />
+      <workItem from="1487294651299" duration="8571000" />
+      <workItem from="1487554382824" duration="10150000" />
+      <workItem from="1487639758204" duration="18479000" />
+      <workItem from="1487725545205" duration="19033000" />
+      <workItem from="1487752645236" duration="133000" />
+      <workItem from="1487752846159" duration="3521000" />
+      <workItem from="1487813104783" duration="10522000" />
+      <workItem from="1487898530047" duration="3009000" />
+      <workItem from="1487908061034" duration="1964000" />
+      <workItem from="1488161069291" duration="2631000" />
     </task>
     <task id="LOCAL-00280" summary="读取配置文件">
       <created>1483267912110</created>
@@ -1683,7 +1965,154 @@
       <option name="project" value="LOCAL" />
       <updated>1484801834107</updated>
     </task>
-    <option name="localTasksCounter" value="308" />
+    <task id="LOCAL-00308" summary="纳通接口">
+      <created>1487230390143</created>
+      <option name="number" value="00308" />
+      <option name="presentableId" value="LOCAL-00308" />
+      <option name="project" value="LOCAL" />
+      <updated>1487230390159</updated>
+    </task>
+    <task id="LOCAL-00309" summary="纳通接口">
+      <created>1487230410109</created>
+      <option name="number" value="00309" />
+      <option name="presentableId" value="LOCAL-00309" />
+      <option name="project" value="LOCAL" />
+      <updated>1487230410109</updated>
+    </task>
+    <task id="LOCAL-00310" summary="纳通接口">
+      <created>1487230876111</created>
+      <option name="number" value="00310" />
+      <option name="presentableId" value="LOCAL-00310" />
+      <option name="project" value="LOCAL" />
+      <updated>1487230876111</updated>
+    </task>
+    <task id="LOCAL-00311" summary="纳通接口">
+      <created>1487302790107</created>
+      <option name="number" value="00311" />
+      <option name="presentableId" value="LOCAL-00311" />
+      <option name="project" value="LOCAL" />
+      <updated>1487302790107</updated>
+    </task>
+    <task id="LOCAL-00312" summary="纳通接口">
+      <created>1487302810112</created>
+      <option name="number" value="00312" />
+      <option name="presentableId" value="LOCAL-00312" />
+      <option name="project" value="LOCAL" />
+      <updated>1487302810112</updated>
+    </task>
+    <task id="LOCAL-00313" summary="纳通接口">
+      <created>1487302826103</created>
+      <option name="number" value="00313" />
+      <option name="presentableId" value="LOCAL-00313" />
+      <option name="project" value="LOCAL" />
+      <updated>1487302826103</updated>
+    </task>
+    <task id="LOCAL-00314" summary="纳通接口">
+      <created>1487302841114</created>
+      <option name="number" value="00314" />
+      <option name="presentableId" value="LOCAL-00314" />
+      <option name="project" value="LOCAL" />
+      <updated>1487302841114</updated>
+    </task>
+    <task id="LOCAL-00315" summary="纳通接口">
+      <created>1487559420130</created>
+      <option name="number" value="00315" />
+      <option name="presentableId" value="LOCAL-00315" />
+      <option name="project" value="LOCAL" />
+      <updated>1487559420131</updated>
+    </task>
+    <task id="LOCAL-00316" summary="纳通接口">
+      <created>1487814046116</created>
+      <option name="number" value="00316" />
+      <option name="presentableId" value="LOCAL-00316" />
+      <option name="project" value="LOCAL" />
+      <updated>1487814046117</updated>
+    </task>
+    <task id="LOCAL-00317" summary="纳通接口">
+      <created>1487814056116</created>
+      <option name="number" value="00317" />
+      <option name="presentableId" value="LOCAL-00317" />
+      <option name="project" value="LOCAL" />
+      <updated>1487814056116</updated>
+    </task>
+    <task id="LOCAL-00318" summary="纳通接口">
+      <created>1487814068104</created>
+      <option name="number" value="00318" />
+      <option name="presentableId" value="LOCAL-00318" />
+      <option name="project" value="LOCAL" />
+      <updated>1487814068104</updated>
+    </task>
+    <task id="LOCAL-00319" summary="纳通接口">
+      <created>1487814085104</created>
+      <option name="number" value="00319" />
+      <option name="presentableId" value="LOCAL-00319" />
+      <option name="project" value="LOCAL" />
+      <updated>1487814085104</updated>
+    </task>
+    <task id="LOCAL-00320" summary="纳通接口">
+      <created>1487814101104</created>
+      <option name="number" value="00320" />
+      <option name="presentableId" value="LOCAL-00320" />
+      <option name="project" value="LOCAL" />
+      <updated>1487814101104</updated>
+    </task>
+    <task id="LOCAL-00321" summary="纳通接口">
+      <created>1487814250104</created>
+      <option name="number" value="00321" />
+      <option name="presentableId" value="LOCAL-00321" />
+      <option name="project" value="LOCAL" />
+      <updated>1487814250104</updated>
+    </task>
+    <task id="LOCAL-00322" summary="纳通接口">
+      <created>1487814286104</created>
+      <option name="number" value="00322" />
+      <option name="presentableId" value="LOCAL-00322" />
+      <option name="project" value="LOCAL" />
+      <updated>1487814286104</updated>
+    </task>
+    <task id="LOCAL-00323" summary="纳通接口">
+      <created>1487814319109</created>
+      <option name="number" value="00323" />
+      <option name="presentableId" value="LOCAL-00323" />
+      <option name="project" value="LOCAL" />
+      <updated>1487814319109</updated>
+    </task>
+    <task id="LOCAL-00324" summary="纳通接口">
+      <created>1487814529106</created>
+      <option name="number" value="00324" />
+      <option name="presentableId" value="LOCAL-00324" />
+      <option name="project" value="LOCAL" />
+      <updated>1487814529107</updated>
+    </task>
+    <task id="LOCAL-00325" summary="纳通接口">
+      <created>1487814539109</created>
+      <option name="number" value="00325" />
+      <option name="presentableId" value="LOCAL-00325" />
+      <option name="project" value="LOCAL" />
+      <updated>1487814539109</updated>
+    </task>
+    <task id="LOCAL-00326" summary="纳通接口">
+      <created>1487907419113</created>
+      <option name="number" value="00326" />
+      <option name="presentableId" value="LOCAL-00326" />
+      <option name="project" value="LOCAL" />
+      <updated>1487907419122</updated>
+    </task>
+    <task id="LOCAL-00327">
+      <created>1487909396110</created>
+      <option name="number" value="00327" />
+      <option name="presentableId" value="LOCAL-00327" />
+      <option name="project" value="LOCAL" />
+      <updated>1487909396112</updated>
+    </task>
+    <task id="LOCAL-00328">
+      <created>1487909440109</created>
+      <option name="number" value="00328" />
+      <option name="presentableId" value="LOCAL-00328" />
+      <option name="project" value="LOCAL" />
+      <updated>1487909440110</updated>
+    </task>
+    <option name="localTasksCounter" value="329" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1719,7 +2148,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1547416000" />
+    <option name="totallyTimeSpent" value="1693271000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -1746,17 +2175,17 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59075344" sideWeight="0.47633588" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5753425" sideWeight="0.45419848" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32869565" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270548" sideWeight="0.49694657" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28253424" sideWeight="0.49694657" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31543118" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28290468" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24810892" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38527396" sideWeight="0.4908397" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5770548" sideWeight="0.4908397" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270548" sideWeight="0.49694657" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1784,7 +2213,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24810892" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38527396" sideWeight="0.4908397" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5770548" sideWeight="0.4908397" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3269565" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66952056" sideWeight="0.45419848" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1795,8 +2224,8 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5753425" sideWeight="0.45419848" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900763" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32869565" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270548" sideWeight="0.49694657" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31543118" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28253424" sideWeight="0.49694657" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3570348" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46061644" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -1814,7 +2243,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="通知单号改成&quot;订单类型&quot;+&quot;-&quot;+&quot;DOCO&quot;" />
     <MESSAGE value="预发货日期/运输方式等" />
     <MESSAGE value="打包流水号存储到FE84211. E8FHDBH&#10;灭菌日期存储到：FE84108.E8MJRQ&#10;灭菌批号失效日期存储到：FE84108.E8MJSXQ&#10;组装拆配时：（单据类型DCT=IF）业务员=F4111.USER；时间=F4111.CRDJ" />
     <MESSAGE value="修改bug" />
@@ -1839,7 +2267,8 @@
     <MESSAGE value="LOTN OT/OJ入库的lotn要取原来单子上的" />
     <MESSAGE value="SPD 商品销售明细查询、应急库分类账查询、应急库库存查询" />
     <MESSAGE value="客户增加客户企业类型、对账增加记录日期" />
-    <option name="LAST_COMMIT_MESSAGE" value="客户增加客户企业类型、对账增加记录日期" />
+    <MESSAGE value="纳通接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
     <option name="CHANGE_BROWSER_SETTINGS">
       <map>
         <entry key="svn">
@@ -2041,13 +2470,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/inbound/InboundServiceImpl.java</url>
-          <line>456</line>
+          <line>454</line>
           <properties />
           <option name="timeStamp" value="445" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/inbound/InboundServiceImpl.java</url>
-          <line>480</line>
+          <line>478</line>
           <properties />
           <option name="timeStamp" value="447" />
         </line-breakpoint>
@@ -2065,7 +2494,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/ckback/CkBackServiceImpl.java</url>
-          <line>114</line>
+          <line>121</line>
           <properties />
           <option name="timeStamp" value="457" />
         </line-breakpoint>
@@ -2077,13 +2506,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/inbound/InboundServiceImpl.java</url>
-          <line>463</line>
+          <line>461</line>
           <properties />
           <option name="timeStamp" value="459" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/inbound/InboundServiceImpl.java</url>
-          <line>89</line>
+          <line>86</line>
           <properties />
           <option name="timeStamp" value="460" />
         </line-breakpoint>
@@ -2095,39 +2524,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/inbound/InboundServiceImpl.java</url>
-          <line>368</line>
+          <line>366</line>
           <properties />
           <option name="timeStamp" value="465" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/inbound/InboundServiceImpl.java</url>
-          <line>434</line>
+          <line>432</line>
           <properties />
           <option name="timeStamp" value="467" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/inbound/InboundServiceImpl.java</url>
-          <line>338</line>
+          <line>335</line>
           <properties />
           <option name="timeStamp" value="473" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/SpdWsServiceImpl.java</url>
-          <line>123</line>
-          <properties />
-          <option name="timeStamp" value="486" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/stockquery/StockQueryServiceImpl.java</url>
-          <line>24</line>
-          <properties />
-          <option name="timeStamp" value="487" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/SpdWsServiceImpl.java</url>
-          <line>126</line>
-          <properties />
-          <option name="timeStamp" value="488" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/SpdWsServiceImpl.java</url>
@@ -2141,9 +2552,81 @@
           <properties />
           <option name="timeStamp" value="490" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/goods/ProductServiceImpl.java</url>
+          <line>101</line>
+          <properties />
+          <option name="timeStamp" value="493" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/controller/NtApiController.java</url>
+          <line>32</line>
+          <properties />
+          <option name="timeStamp" value="495" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/controller/NtApiController.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="496" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/goods/ProductServiceImpl.java</url>
+          <line>118</line>
+          <properties />
+          <option name="timeStamp" value="497" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/stockquery/StockQueryServiceImpl.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="500" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/controller/NtApiController.java</url>
+          <line>51</line>
+          <properties />
+          <option name="timeStamp" value="503" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/controller/NtApiController.java</url>
+          <line>54</line>
+          <properties />
+          <option name="timeStamp" value="504" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/interceptor/ValidInterceptor.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="506" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/inbound/InboundServiceImpl.java</url>
+          <line>346</line>
+          <properties />
+          <option name="timeStamp" value="507" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cmicnt/src/test/java/com/el/test/JsonConvert.java</url>
+          <line>109</line>
+          <properties />
+          <option name="timeStamp" value="508" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.19/fastjson-1.2.19.jar!/com/alibaba/fastjson/parser/deserializer/AbstractDateDeserializer.class</url>
+          <line>54</line>
+          <properties />
+          <option name="timeStamp" value="509" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/domain/goods/Fe8nt001.java</url>
+          <line>680</line>
+          <properties />
+          <option name="timeStamp" value="510" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/query/Ve8spdf4111Mapper.java</url>
-          <line>138</line>
+          <line>140</line>
           <properties class="com.el.cmic.mapper.query.Ve8spdf4111Mapper" method="selectF4111" />
           <option name="timeStamp" value="481" />
         </line-breakpoint>
@@ -2155,7 +2638,7 @@
           </selected-grouping-rules>
         </breakpoints-dialog>
       </breakpoints-dialog>
-      <option name="time" value="491" />
+      <option name="time" value="511" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -2170,404 +2653,362 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.1/mybatis-3.4.1.jar!/org/apache/ibatis/binding/MapperProxy.class">
+    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/Ve8spdsales.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/goods/BaleMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="16" column="97" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/cxf/cxf-core/3.1.7/cxf-core-3.1.7.jar!/org/apache/cxf/service/invoker/AbstractInvoker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/supplier/impl/SupplierServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1273">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/common/domain/SpdData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="65" column="185" selection-start-line="65" selection-start-column="39" selection-end-line="65" selection-end-column="185" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cfg/domain/Fe8wms04.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/inbound/InboundBackMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="376" column="35" selection-start-line="376" selection-start-column="35" selection-end-line="376" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/orderback/SpdOrderBackServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="66" column="46" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/Ve8spdf4111.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/stock/impl/StockServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/record/ConserveDetailMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/record/impl/ConserveServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/ckback/CkBackServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/account/AccountItemMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/account/impl/AccountItemServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="51" column="12" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/customer/CustomPropel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="354" column="36" selection-start-line="354" selection-start-column="36" selection-end-line="354" selection-end-column="36" />
-          <folding>
-            <element signature="e#7293#7294#0" expanded="false" />
-            <element signature="e#7347#7348#0" expanded="false" />
-            <element signature="e#7393#7394#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/customer/CustomPropelMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="111" column="34" selection-start-line="111" selection-start-column="34" selection-end-line="111" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/query/Ve8spdf4111Mapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="68" column="13" selection-start-line="66" selection-start-column="12" selection-end-line="68" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/test/java/com/el/test/TestStockQueryServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="42" column="52" selection-start-line="42" selection-start-column="52" selection-end-line="42" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/test/java/com/el/test/TestSpdLedgerServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="47" column="5" selection-start-line="16" selection-start-column="3" selection-end-line="47" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.2.RELEASE/spring-aop-4.3.2.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/ledger/SpdLedgerServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/ledger/SpdLedgerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="10" column="53" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/Ve8spdF41021.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/target/cmicwms/WEB-INF/classes/config/db.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/target/cmicwms/WEB-INF/classes/config/wms/WMS.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/mbg/generatorConfig.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="101" column="78" selection-start-line="101" selection-start-column="78" selection-end-line="101" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/LedgerQryCondition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="24" selection-start-line="10" selection-start-column="3" selection-end-line="11" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/order/SpdOrderDetailMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/ckback/CkBackMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="81" column="179" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="179" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/order/SpdOrderMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2162">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/SaleQryCondition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="235" column="33" selection-start-line="235" selection-start-column="33" selection-end-line="235" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1574#1575#0" expanded="true" />
-            <element signature="e#1602#1603#0" expanded="true" />
-            <element signature="e#4601#4602#0" expanded="true" />
-            <element signature="e#4652#4653#0" expanded="true" />
-            <element signature="e#4698#4699#0" expanded="true" />
-            <element signature="e#4731#4732#0" expanded="true" />
-            <element signature="e#4763#4764#0" expanded="true" />
-            <element signature="e#4810#4811#0" expanded="true" />
-            <element signature="e#4852#4853#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/stockquery/StockQueryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="10" column="54" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/StockQryCondition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="49" column="26" selection-start-line="46" selection-start-column="3" selection-end-line="49" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/salequery/SalesQueryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/query/Ve8spdF41021Mapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="152" column="13" selection-start-line="150" selection-start-column="11" selection-end-line="152" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/common/service/ValidParamServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-594">
-          <caret line="128" column="135" selection-start-line="128" selection-start-column="135" selection-end-line="128" selection-end-column="135" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/salequery/SalesQueryServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="7296">
+          <caret line="604" column="31" selection-start-line="604" selection-start-column="31" selection-end-line="604" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/mapper/query/Ve8spdsalesMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="403">
+          <caret line="143" column="13" selection-start-line="143" selection-start-column="13" selection-end-line="143" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/test/java/com/el/test/TestSalesQueryServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/ck/CkOrderDtl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="988">
+          <caret line="58" column="14" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/common/SpdInterfaceType.java">
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/ck/CkOrder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="-233">
+          <caret line="61" column="48" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/SpdWsServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/ck/CkData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="133">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/service/stockquery/StockQueryServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/mapper/goods/ProductMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="24" column="94" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="94" />
-          <folding />
+        <state relative-caret-position="745">
+          <caret line="160" column="5" selection-start-line="160" selection-start-column="5" selection-end-line="160" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/java/com/el/cmic/domain/query/Ve8spdsales.java">
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/domain/invoice/InvoiceDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/ck/CkServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
-          <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+          <caret line="67" column="55" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/mbg/build-oracle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/resources/config/db.properties">
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/resources/config/log/log4j.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/goods/impl/BalesServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/resources/config/spd/SPD.properties">
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/inbound/Fe84108.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="981">
+          <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/invoice/InvoiceServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/invoice/InvoiceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/mapper/invoice/InvoiceMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/mapper/saleorderdetail/SaleOrderDetailMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2227">
+          <caret line="219" column="8" selection-start-line="219" selection-start-column="8" selection-end-line="219" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/ntcfg/NtCfgServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/saleorderdetail/SaleOrderDetailServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/interceptor/ValidInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="707">
+          <caret line="61" column="41" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/controller/NtApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="48" column="88" selection-start-line="48" selection-start-column="84" selection-end-line="48" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/resources/config/spring/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/resources/config/spring/springmvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-33">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/resources/config/db.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/mapper/ntcfg/Fe8NtCfgMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/timetask/NtTimeTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/common/NtResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/inbound/InboundPushDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="33" column="7" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/domain/inbound/InboundPush.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="35" column="24" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/4.3.2.RELEASE/spring-tx-4.3.2.RELEASE.jar!/org/springframework/transaction/interceptor/TransactionAspectSupport.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.2.RELEASE/spring-aop-4.3.2.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/inbound/InboundCommonMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119">
+          <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/inbound/InboundBackMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="371" column="37" selection-start-line="371" selection-start-column="37" selection-end-line="371" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/inbound/InboundServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="522" column="29" selection-start-line="522" selection-start-column="29" selection-end-line="522" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/common/service/ValidParamServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="122" column="9" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/resources/config/wms/WMS.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmicwms/src/main/resources/config/db.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="95">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmicwms/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-627">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/service/ckback/CkBackServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1102">
+          <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/java/com/el/cmic/mapper/ckback/CkBackMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2470">
+          <caret line="144" column="52" selection-start-line="144" selection-start-column="26" selection-end-line="144" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/utils/HttpRequestUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="38" column="51" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/resources/config/nt/nt.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.19/fastjson-1.2.19.jar!/com/alibaba/fastjson/parser/deserializer/AbstractDateDeserializer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.19/fastjson-1.2.19-sources.jar!/com/alibaba/fastjson/parser/DefaultJSONParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="716" column="0" selection-start-line="716" selection-start-column="0" selection-end-line="716" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.19/fastjson-1.2.19-sources.jar!/com/alibaba/fastjson/parser/deserializer/JavaBeanDeserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="666" column="0" selection-start-line="666" selection-start-column="0" selection-end-line="666" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.19/fastjson-1.2.19-sources.jar!/com/alibaba/fastjson/parser/deserializer/DefaultFieldDeserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/domain/goods/Fe8nt001.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="697" column="11" selection-start-line="693" selection-start-column="6" selection-end-line="697" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.19/fastjson-1.2.19-sources.jar!/com/alibaba/fastjson/parser/deserializer/AbstractDateDeserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/utils/SSLClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/utils/HttpClientUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -2575,18 +3016,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmicwms/src/main/resources/config/wms/WMS.properties">
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/test/java/com/el/test/JsonConvert.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="251">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmicspd/src/main/webapp/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/cmicnt/src/main/java/com/el/cmic/service/goods/ProductServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="983">
-          <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
+        <state relative-caret-position="171">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -2650,6 +3093,7 @@
             <option name="proportions">
               <list>
                 <option value="0.31724137" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

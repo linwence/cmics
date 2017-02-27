@@ -24,12 +24,14 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="cmicmdm" />
+        <module name="cmicnt" />
         <module name="cmicspd" />
         <module name="cmicwms" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="cmicmdm" target="1.8" />
+      <module name="cmicnt" target="1.8" />
       <module name="cmics" target="1.8" />
       <module name="cmicspd" target="1.8" />
       <module name="cmicwms" target="1.8" />

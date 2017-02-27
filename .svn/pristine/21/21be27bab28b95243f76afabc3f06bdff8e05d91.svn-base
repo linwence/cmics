@@ -1,0 +1,8 @@
+package com.el.cmic.common;
+
+/**
+ * Created by Vincent on 2017/2/16.
+ */
+public class NtInterfaceType {
+    public final static String PRODUCT_BY_TIME = "GetProductCredentialsByTime";
+}

@@ -5,65 +5,12 @@
     <file url="file://$PROJECT_DIR$/cmicmdm" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/com/el/cmic/EmpWsServiceImpl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/com/el/utils/JAXBListUtil.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetCusByCodeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetCusByCodeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetCusByTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetCusByTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetCusByUniSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetCusByUniSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetCusCountByTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetCusCountByTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByCodeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByCodeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByCodeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByCodeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByUniTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByUniTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByUniTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquByUniTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquCountByTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquCountByTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquCountByTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetEquCountByTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetNewCusByTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetNewCusByTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetNewEquByTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetNewEquByTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetNewEquByTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/GetNewEquByTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqCusSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqCusSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqEqutByTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqEqutByTypeSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqEqutByTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqEqutByTypeSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqMfrSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqMfrSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqModCusSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqModCusSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqModEquSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqModEquSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqModEquSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqModEquSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqModMfrSrv.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/itf/mdm/ws/ReqModMfrSrvResponse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/Exception.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/Exception.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/IllegalArgumentException.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/IllegalArgumentException.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/NullPointerException.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/NullPointerException.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/RuntimeException.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/RuntimeException.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/SuperVO.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/SuperVO.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/Throwable.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/Throwable.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/Urc.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/main/java/nc/uap/ws/lang/Urc.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/test/java/com/el/client/Emp.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/test/java/com/el/client/ReqEmpString.java" charset="GBK" />
@@ -71,6 +18,7 @@
     <file url="file://$PROJECT_DIR$/cmicmdm/src/test/java/com/el/client/ReqEmps.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/test/java/com/el/client/ReqEmpsResponse.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicmdm/src/test/java/com/el/test/TestEmpWs.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cmicnt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cmicspd" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cmicspd/src/test/java/com/el/client/Emp.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cmicspd/src/test/java/com/el/client/ReqEmps.java" charset="GBK" />

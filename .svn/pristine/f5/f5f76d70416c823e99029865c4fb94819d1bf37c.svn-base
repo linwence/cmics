@@ -1,0 +1,9 @@
+#纳通正式接口地址
+#nt.Url = http://10.17.9.238:8088/interface/UpLoadData
+#纳通测试地址
+nt.userCode=09002
+#”7F7D58BFFB3640E7BB435FC39A54E971“ + AAaa1234(密码)后MD5加密
+nt.pwd=BFFB3640E7BB435FC39A54E971AAaa1234
+#nt.Url = http://10.17.9.238:88/interface/UpLoadData
+#调用webservice 时间间隔秒(S)
+nt.timer=180
