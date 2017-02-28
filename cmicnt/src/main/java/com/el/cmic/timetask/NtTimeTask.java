@@ -1,9 +1,7 @@
 package com.el.cmic.timetask;
 
-import com.el.cmic.service.goods.ProductService;
-import com.el.cmic.service.goods.ProductServiceImplNew;
+import com.el.cmic.service.goods.ProductServiceImpl;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -20,13 +18,13 @@ public class NtTimeTask extends TimerTask {
     private ProductService productServiceImpl;*/
 
     @Resource
-    private ProductServiceImplNew productServiceImplNew;
+    private ProductServiceImpl productServiceImpl;
 
     @Override
     public void run() {
         //  货品接口
         logger.info("........货品接口调用开始........");
-        productServiceImplNew.callNtInterface();
+        productServiceImpl.callNtInterface();
         logger.info("........货品接口调用结束........");
 
 

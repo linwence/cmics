@@ -2,11 +2,11 @@ package com.el.cmic.controller;
 
 import com.el.cmic.common.NtResult;
 import com.el.cmic.domain.invoice.InvoiceDomain;
-import com.el.cmic.service.applydetail.ApplyDetailService;
-import com.el.cmic.service.applyhead.ApplyHeadService;
+import com.el.cmic.service.applydetail.ApplyDetailServiceImpl;
+import com.el.cmic.service.applyhead.ApplyHeadServiceImpl;
 import com.el.cmic.service.goods.ProductServiceImpl;
 import com.el.cmic.service.invoice.InvoiceService;
-import com.el.cmic.service.saleorderdetail.SaleOrderDetailService;
+import com.el.cmic.service.saleorderdetail.SaleOrderDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
@@ -29,14 +29,14 @@ public class NtApiController {
     @Autowired
     private InvoiceService invoiceServiceImpl;
 
-    @Autowired
-    private SaleOrderDetailService saleOrderDetailServiceImpl;
+    @Resource
+    private SaleOrderDetailServiceImpl saleOrderDetailServiceImpl;
 
-    @Autowired
-    private ApplyHeadService applyHeadServiceImpl;
+    @Resource
+    private ApplyHeadServiceImpl applyHeadServiceImpl;
 
-    @Autowired
-    private ApplyDetailService applyDetailServiceImpl;
+    @Resource
+    private ApplyDetailServiceImpl applyDetailServiceImpl;
 
     @RequestMapping("/product/time")
     public String productByTime(@RequestParam("timeBegin") Date timeBegin, @RequestParam("timeEnd") Date timeEnd) {
