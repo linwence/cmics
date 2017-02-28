@@ -122,7 +122,7 @@ public class BasicService  {
         hashMap.put("code", code);
         try {
 
-            String result = httpRequestUtil.sendPost(url, hashMap);
+            String result = httpClientUtil.doPost(url, hashMap,"utf-8");
 
             if (!afterNtResponse(result)) return false;
 
