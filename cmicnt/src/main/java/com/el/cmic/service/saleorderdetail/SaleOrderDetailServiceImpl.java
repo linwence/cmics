@@ -8,6 +8,7 @@ import com.el.cmic.domain.ntcfg.Fe8NtCfg;
 import com.el.cmic.domain.saleorderdetail.Fe8nt004;
 import com.el.cmic.mapper.saleorderdetail.SaleOrderDetailMapper;
 import com.el.cmic.service.ntcfg.NtCfgService;
+import com.el.cmic.utils.HttpClientUtil;
 import com.el.cmic.utils.HttpRequestUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,14 +40,16 @@ public class SaleOrderDetailServiceImpl implements SaleOrderDetailService {
 
     @Value("${schema}")
     private String tableSchema;
+    //@Resource
+    //private HttpRequestUtil httpRequestUtil;
     @Resource
-    private HttpRequestUtil httpRequestUtil;
+    private HttpClientUtil httpClientUtil;
 
     private String url;
 
     @Override
-    public int insertFe8nt004(String tableSchema , Fe8nt004 fe8nt004){
-        return saleOrderDetailMapper.insertFe8nt004(tableSchema,fe8nt004);
+    public int insertFe8nt004(String tableSchema, Fe8nt004 fe8nt004) {
+        return saleOrderDetailMapper.insertFe8nt004(tableSchema, fe8nt004);
     }
 
     @Override
@@ -55,17 +58,17 @@ public class SaleOrderDetailServiceImpl implements SaleOrderDetailService {
         url = fe8NtCfg.getUrl();
         Date timeBegin;
         Date timeEnd;
-        if(fe8NtCfg.getSuccessdate() == null){
+        if (fe8NtCfg.getSuccessdate() == null) {
             Calendar calendar = Calendar.getInstance();
             timeEnd = calendar.getTime();
-            calendar.set(2017,0,1,0,0,0);
+            calendar.set(2017, 0, 1, 0, 0, 0);
             timeBegin = calendar.getTime();
-        }else{
+        } else {
             timeBegin = fe8NtCfg.getSuccessdate();
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(timeBegin);
 
-            calendar.add(Calendar.SECOND,fe8NtCfg.getIntervalTime().intValue() * 60);
+            calendar.add(Calendar.SECOND, fe8NtCfg.getIntervalTime().intValue() * 60);
             timeEnd = calendar.getTime();
 
         }
@@ -91,11 +94,13 @@ public class SaleOrderDetailServiceImpl implements SaleOrderDetailService {
             }
             ntRequestParam.setTimeBegin(timeBegin);
             ntRequestParam.setTimeEnd(timeEnd);
-            String result = httpRequestUtil.sendPost(url, ntRequestParam.toMap());
+            // String result = httpRequestUtil.sendPost(url, ntRequestParam.toMap());
+            String result = httpClientUtil.doPost(url, ntRequestParam.toMap(),"utf-8");
 
             if (!afterNtResponse(result)) return false;
 
         } catch (Exception ex) {
+            ex.printStackTrace();
             logger.error("调用纳通订单明细接口失败;error:" + ex.getMessage());
             return false;
         }
@@ -114,8 +119,8 @@ public class SaleOrderDetailServiceImpl implements SaleOrderDetailService {
         hashMap.put("code", code);
         try {
 
-            String result = httpRequestUtil.sendPost(url, hashMap);
-
+            //String result = httpRequestUtil.sendPost(url, hashMap);
+            String result = httpClientUtil.doPost(url, hashMap,"utf-8");
             if (!afterNtResponse(result)) return false;
 
         } catch (Exception ex) {
@@ -147,7 +152,7 @@ public class SaleOrderDetailServiceImpl implements SaleOrderDetailService {
         List<Fe8nt004> fe8nt004List = JSON.parseArray(data, Fe8nt004.class);
         for (Fe8nt004 fe8nt004 : fe8nt004List
                 ) {
-            Fe8nt004 fe8nt = saleOrderDetailMapper.selectDateByPK(tableSchema,fe8nt004.getSde8from(),fe8nt004.getSde8type(),fe8nt004.getSde8odno(),fe8nt004.getSde8lnid());
+            Fe8nt004 fe8nt = saleOrderDetailMapper.selectDateByPK(tableSchema, fe8nt004.getSde8from(), fe8nt004.getSde8type(), fe8nt004.getSde8odno(), fe8nt004.getSde8lnid());
             //判断是不是存在该商品，存在的话判断一下更新时间是不是比数据库的要新，如果新就需要更新表
             /*if (fe8nt != null) {
                 int compareDateResult = fe8nt.getSdredate().compareTo(fe8nt004.getSdredate());
@@ -159,10 +164,10 @@ public class SaleOrderDetailServiceImpl implements SaleOrderDetailService {
                 insertFe8nt004(tableSchema, fe8nt004);
             }*/
 
-            if(fe8nt != null){
-                saleOrderDetailMapper.deleteFe8nt004ByPK(tableSchema,fe8nt004.getSde8from(),fe8nt004.getSde8type(),fe8nt004.getSde8odno(),fe8nt004.getSde8lnid());
+            if (fe8nt != null) {
+                saleOrderDetailMapper.deleteFe8nt004ByPK(tableSchema, fe8nt004.getSde8from(), fe8nt004.getSde8type(), fe8nt004.getSde8odno(), fe8nt004.getSde8lnid());
             }
-            saleOrderDetailMapper.insertFe8nt004(tableSchema,fe8nt004);
+            saleOrderDetailMapper.insertFe8nt004(tableSchema, fe8nt004);
         }
     }
 

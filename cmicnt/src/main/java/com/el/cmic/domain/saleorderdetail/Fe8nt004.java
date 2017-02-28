@@ -34,10 +34,10 @@ public class Fe8nt004 implements Serializable {
     @JSONField(name = "lnid")
     private BigDecimal sdrlln;
 
-    @JSONField(name = "kcoo")
+    @JSONField(name = "gkcoo")
     private String sdkcoo;
 
-    @JSONField(name = "dcto")
+    @JSONField(name = "gdcto")
     private String sddcto;
 
     @JSONField(name = "rorn")
@@ -153,10 +153,10 @@ public class Fe8nt004 implements Serializable {
     @JSONField(name = "dl10")
     private String sddl10;
 
-    @JSONField(name = "indate", format = "yyyy-MM-dd hh:mi:ss")
+    @JSONField(name = "indate", format = "yyyy/MM/dd HH:mm:ss")
     private Date sdindate;
 
-    @JSONField(name = "redate", format = "yyyy-MM-dd hh:mi:ss")
+    @JSONField(name = "redate", format = "yyyy/MM/dd HH:mm:ss")
     private Date sdredate;
 
 

@@ -79,7 +79,7 @@ public class Fe8nt005 implements Serializable {
     private BigDecimal kpstam;
     @JSONField(name = "atxa")
     private BigDecimal kpatxa;
-    @JSONField(name = "dl03")
+    @JSONField(name = "atx")
     private String kpdl03;
     @JSONField(name = "invnum2")
     private String kp58binvnum2;

@@ -23,45 +23,45 @@ public interface ApplyDetailMapper {
             SELECT("KDINDATE");
             SELECT("KDREDATE");
             FROM(schema+".fe8nt006");
-            WHERE("KD58BDOC = #{kd58bdoc}");
-            WHERE("KD58BSN = #{kd58bsn}");
-            WHERE("KDLNID = #{kdlnid}");
+            WHERE("KD58BDOC = #{record.kd58bdoc,jdbcType=NCHAR}");
+            WHERE("KD58BSN = #{record.kd58bsn,jdbcType=DECIMAL}");
+            WHERE("KDLNID = #{record.kdlnid,jdbcType=DECIMAL}");
             return toString();
         }
 
         public String updateFe8nt006ByPK(@Param("schema") String schema, @Param("record") Fe8nt006 record){
             UPDATE(schema+".fe8nt006");
-            SET("KD58BCODE = #{record.kd58bcode}");
-            SET("KD58BINVNUM = #{record.kd58binvnum}");
-            SET("KDLITM = #{record.kdlitm}");
-            SET("KD58BINAME = #{record.kd58biname}");
-            SET("KD58BTYPE = #{record.kd58btype}");
-            SET("KD58BUNIT = #{record.kd58bunit}");
-            SET("KD58BQTY = #{record.kd58bqty}");
-            SET("KD58BPRICE = #{record.kd58bprice}");
-            SET("KD58BAMT = #{record.kd58bamt}");
-            SET("KD58BTAX = #{record.kd58btax}");
-            SET("KD58BTAMT = #{record.kd58btamt}");
-            SET("KDCBURST5 = #{record.kdcburst5}");
-            SET("KDE8STR200 = #{record.kde8str200}");
+            SET("KD58BCODE = #{record.kd58bcode,jdbcType=NCHAR}");
+            SET("KD58BINVNUM = #{record.kd58binvnum,jdbcType=NCHAR}");
+            SET("KDLITM = #{record.kdlitm,jdbcType=NCHAR}");
+            SET("KD58BINAME = #{record.kd58biname,jdbcType=NCHAR}");
+            SET("KD58BTYPE = #{record.kd58btype,jdbcType=NCHAR}");
+            SET("KD58BUNIT = #{record.kd58bunit,jdbcType=NCHAR}");
+            SET("KD58BQTY = #{record.kd58bqty,jdbcType=DECIMAL}");
+            SET("KD58BPRICE = #{record.kd58bprice,jdbcType=DECIMAL}");
+            SET("KD58BAMT = #{record.kd58bamt,jdbcType=DECIMAL}");
+            SET("KD58BTAX = #{record.kd58btax,jdbcType=DECIMAL}");
+            SET("KD58BTAMT = #{record.kd58btamt,jdbcType=DECIMAL}");
+            SET("KDCBURST5 = #{record.kdcburst5,jdbcType=NCHAR}");
+            SET("KDE8STR200 = #{record.kde8str200,jdbcType=NCHAR}");
 
 
 
            /* SET("KDCBURST6 = #{record.kdcburst6}");
             SET("KDCBURST7 = #{record.kdcburst7}");
             SET("KDCBURST8 = #{record.kdcburst8}");*/
-            SET("KDDL01 = #{record.kddl01}");
-            SET("KDDL02 = #{record.kddl02}");
-            SET("KDDL03 = #{record.kddl03}");
-            SET("KDDL04 = #{record.kddl04}");
-            SET("KDDL05 = #{record.kddl05}");
+            SET("KDDL01 = #{record.kddl01,jdbcType=NCHAR}");
+            SET("KDDL02 = #{record.kddl02,jdbcType=NCHAR}");
+            SET("KDDL03 = #{record.kddl03,jdbcType=NCHAR}");
+            SET("KDDL04 = #{record.kddl04,jdbcType=NCHAR}");
+            SET("KDDL05 = #{record.kddl05,jdbcType=NCHAR}");
             /*
             SET("KDDL06 = #{record.kddl06}");
             SET("KDDL07 = #{record.kddl07}");
             SET("KDCBURST2 = #{record.kdcburst2}");
             */
-            SET("KDINDATE = #{record.kdindate}");
-            SET("KDREDATE = #{record.kdredate}");
+            SET("KDINDATE = #{record.kdindate,jdbcType=TIMESTAMP}");
+            SET("KDREDATE = #{record.kdredate,jdbcType=TIMESTAMP}");
 
             /*SET("KDIR01 = #{record.kdir01}");
             SET("KDIR02 = #{record.kdir02}");
@@ -97,39 +97,39 @@ public interface ApplyDetailMapper {
             */
 
 
-            WHERE("KD58BDOC = #{record.kd58bdoc}");
-            WHERE("KD58BSN = #{record.kd58bsn}");
-            WHERE("KDLNID = #{record.kdlnid}");
+            WHERE("KD58BDOC = #{record.kd58bdoc,jdbcType=NCHAR}");
+            WHERE("KD58BSN = #{record.kd58bsn,jdbcType=DECIMAL}");
+            WHERE("KDLNID = #{record.kdlnid,jdbcType=DECIMAL}");
             return toString();
         }
 
         public String insertFe8nt006(@Param("schema") String schema,@Param("record") Fe8nt006 record){
             INSERT_INTO(schema+".fe8nt006");
-            VALUES("KD58BDOC","{record.kd58bdoc}");
-            VALUES("KD58BSN","{record.kd58bsn}");
-            VALUES("KDLNID","{record.kdlnid}");
-            VALUES("KD58BCODE","{record.kd58bcode}");
-            VALUES("KD58BINVNUM","{record.kd58binvnum}");
-            VALUES("KDLITM","{record.kdlitm}");
-            VALUES("KD58BINAME","{record.kd58biname}");
-            VALUES("KD58BTYPE","{record.kd58btype}");
-            VALUES("KD58BUNIT","{record.kd58bunit}");
-            VALUES("KD58BQTY","{record.kd58bqty}");
-            VALUES("KD58BPRICE","{record.kd58bprice}");
-            VALUES("KD58BAMT","{record.kd58bamt}");
-            VALUES("KD58BTAX","{record.kd58btax}");
-            VALUES("KD58BTAMT","{record.kd58btamt}");
-            VALUES("KDCBURST5","{record.kdcburst5}");
-            VALUES("KDE8STR200","{record.kde8str200}");
+            VALUES("KD58BDOC","#{record.kd58bdoc,jdbcType=NCHAR}");
+            VALUES("KD58BSN","#{record.kd58bsn}");
+            VALUES("KDLNID","#{record.kdlnid}");
+            VALUES("KD58BCODE","#{record.kd58bcode,jdbcType=NCHAR}");
+            VALUES("KD58BINVNUM","#{record.kd58binvnum,jdbcType=NCHAR}");
+            VALUES("KDLITM","#{record.kdlitm,jdbcType=NCHAR}");
+            VALUES("KD58BINAME","#{record.kd58biname,jdbcType=NCHAR}");
+            VALUES("KD58BTYPE","#{record.kd58btype,jdbcType=NCHAR}");
+            VALUES("KD58BUNIT","#{record.kd58bunit,jdbcType=NCHAR}");
+            VALUES("KD58BQTY","#{record.kd58bqty}");
+            VALUES("KD58BPRICE","#{record.kd58bprice}");
+            VALUES("KD58BAMT","#{record.kd58bamt}");
+            VALUES("KD58BTAX","#{record.kd58btax}");
+            VALUES("KD58BTAMT","#{record.kd58btamt}");
+            VALUES("KDCBURST5","#{record.kdcburst5,jdbcType=NCHAR}");
+            VALUES("KDE8STR200","#{record.kde8str200,jdbcType=NCHAR}");
 
-            VALUES("KDINDATE","{record.kdindate}");
-            VALUES("KDREDATE","{record.kdredate}");
+            VALUES("KDINDATE","#{record.kdindate,jdbcType=TIMESTAMP}");
+            VALUES("KDREDATE","#{record.kdredate,jdbcType=TIMESTAMP}");
 
-            VALUES("KDDL01","{record.kddl01}");
-            VALUES("KDDL02","{record.kddl02}");
-            VALUES("KDDL03","{record.kddl03}");
-            VALUES("KDDL04","{record.kddl04}");
-            VALUES("KDDL05","{record.kddl05}");
+            VALUES("KDDL01","#{record.kddl01,jdbcType=NCHAR}");
+            VALUES("KDDL02","#{record.kddl02,jdbcType=NCHAR}");
+            VALUES("KDDL03","#{record.kddl03,jdbcType=NCHAR}");
+            VALUES("KDDL04","#{record.kddl04,jdbcType=NCHAR}");
+            VALUES("KDDL05","#{record.kddl05,jdbcType=NCHAR}");
 
             //---------------
             VALUES("KDCBURST6","' '");
@@ -177,9 +177,9 @@ public interface ApplyDetailMapper {
         }
         public String deleteFe8nt006ByPK(@Param("schema") String schema , @Param("kd58bdoc") String kd58bdoc, @Param("kd58bsn") BigDecimal kd58bsn, @Param("kdlnid") BigDecimal kdlnid){
             DELETE_FROM(schema+".fe8nt006");
-            WHERE("trim(KD58BDOC) = #{record.kd58bdoc}");
-            WHERE("trim(KD58BSN) = #{record.kd58bsn}");
-            WHERE("trim(KDLNID) = #{record.kdlnid}");
+            WHERE("KD58BDOC = #{record.kd58bdoc,jdbcType=NCHAR}");
+            WHERE("KD58BSN = #{record.kd58bsn,jdbcType=DECIMAL}");
+            WHERE("KDLNID = #{record.kdlnid,jdbcType=DECIMAL}");
             return toString();
         }
     }

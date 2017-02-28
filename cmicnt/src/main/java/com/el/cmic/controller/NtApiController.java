@@ -3,8 +3,11 @@ package com.el.cmic.controller;
 import com.alibaba.fastjson.JSON;
 import com.el.cmic.common.NtResult;
 import com.el.cmic.domain.invoice.InvoiceDomain;
+import com.el.cmic.service.applydetail.ApplyDetailService;
+import com.el.cmic.service.applyhead.ApplyHeadService;
 import com.el.cmic.service.goods.ProductService;
 import com.el.cmic.service.invoice.InvoiceService;
+import com.el.cmic.service.saleorderdetail.SaleOrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -27,6 +30,15 @@ public class NtApiController {
     @Autowired
     private InvoiceService invoiceServiceImpl;
 
+    @Autowired
+    private SaleOrderDetailService saleOrderDetailServiceImpl;
+
+    @Autowired
+    private ApplyHeadService applyHeadServiceImpl;
+
+    @Autowired
+    private ApplyDetailService applyDetailServiceImpl;
+
     @RequestMapping("/product/time")
     public String productByTime(@RequestParam("timeBegin") Date timeBegin, @RequestParam("timeEnd") Date timeEnd) {
 
@@ -40,6 +52,63 @@ public class NtApiController {
     @RequestMapping(value = "/product/code")
     public String productByKey(@RequestParam("code") String code) {
         if (productServiceImpl.callNtInterface(code)) {
+            return "调用成功";
+        } else {
+            return "调用失败";
+        }
+    }
+
+    @RequestMapping("/saleoderdetail/time")
+    public String saleOrderDetailByTime(@RequestParam("timeBegin") Date timeBegin, @RequestParam("timeEnd") Date timeEnd) {
+
+        if (saleOrderDetailServiceImpl.callNtInterface(timeBegin, timeEnd)) {
+            return "调用成功";
+        } else {
+            return "调用失败";
+        }
+    }
+
+    @RequestMapping(value = "/saleoderdetail/code")
+    public String saleOrderDetailBtTime(@RequestParam("code") String code) {
+        if (saleOrderDetailServiceImpl.callNtInterface(code)) {
+            return "调用成功";
+        } else {
+            return "调用失败";
+        }
+    }
+
+    @RequestMapping("/applyhead/time")
+    public String getApplyHeadByTime(@RequestParam("timeBegin") Date timeBegin, @RequestParam("timeEnd") Date timeEnd) {
+
+        if (applyHeadServiceImpl.callNtInterface(timeBegin, timeEnd)) {
+            return "调用成功";
+        } else {
+            return "调用失败";
+        }
+    }
+
+    @RequestMapping(value = "/applyhead/code")
+    public String getApplyHeadByCode(@RequestParam("code") String code) {
+        if (applyHeadServiceImpl.callNtInterface(code)) {
+            return "调用成功";
+        } else {
+            return "调用失败";
+        }
+    }
+
+    @RequestMapping("/applydeatil/time")
+    public String getApplyDetailByTime(@RequestParam("timeBegin") Date timeBegin, @RequestParam("timeEnd") Date timeEnd) {
+
+        if (applyDetailServiceImpl.callNtInterface(timeBegin, timeEnd)) {
+            return "调用成功";
+        } else {
+            return "调用失败";
+        }
+    }
+
+    @RequestMapping(value = "/applydetail/code")
+    public String getApplyDetailByCode(@RequestParam("code") String code) {
+        if (applyDetailServiceImpl.callNtInterface(code)) {
             return "调用成功";
         } else {
             return "调用失败";

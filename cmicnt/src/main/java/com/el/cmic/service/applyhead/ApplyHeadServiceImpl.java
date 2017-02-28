@@ -8,6 +8,7 @@ import com.el.cmic.domain.applyhead.Fe8nt005;
 import com.el.cmic.domain.ntcfg.Fe8NtCfg;
 import com.el.cmic.mapper.applyhead.ApplyHeadMapper;
 import com.el.cmic.service.ntcfg.NtCfgService;
+import com.el.cmic.utils.HttpClientUtil;
 import com.el.cmic.utils.HttpRequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,9 +39,11 @@ public class ApplyHeadServiceImpl implements ApplyHeadService {
 
     @Value("${schema}")
     private String tableSchema;
-    @Resource
-    private HttpRequestUtil httpRequestUtil;
+    // @Resource
+    //private HttpRequestUtil httpRequestUtil;
 
+    @Resource
+    private HttpClientUtil httpClientUtil;
     private String url;
 
     @Override
@@ -92,7 +95,8 @@ public class ApplyHeadServiceImpl implements ApplyHeadService {
             }
             ntRequestParam.setTimeBegin(timeBegin);
             ntRequestParam.setTimeEnd(timeEnd);
-            String result = httpRequestUtil.sendPost(url, ntRequestParam.toMap());
+            //String result = httpRequestUtil.sendPost(url, ntRequestParam.toMap());
+            String result = httpClientUtil.doPost(url,ntRequestParam.toMap(),"utf-8");
 
             if (!afterNtResponse(result)) return false;
 
@@ -115,8 +119,9 @@ public class ApplyHeadServiceImpl implements ApplyHeadService {
         hashMap.put("code", code);
         try {
 
-            String result = httpRequestUtil.sendPost(url, hashMap);
+            //String result = httpRequestUtil.sendPost(url, hashMap);
 
+            String result = httpClientUtil.doPost(url,hashMap,"utf-8");
             if (!afterNtResponse(result)) return false;
 
         } catch (Exception ex) {
