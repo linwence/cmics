@@ -1,4 +1,4 @@
-package com.el.cmic.service.goods;
+package com.el.cmic.common.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -7,6 +7,7 @@ import com.el.cmic.common.NtRequestParam;
 import com.el.cmic.domain.goods.Fe8nt001;
 import com.el.cmic.domain.ntcfg.Fe8NtCfg;
 import com.el.cmic.mapper.goods.ProductMapper;
+import com.el.cmic.service.goods.ProductService;
 import com.el.cmic.service.ntcfg.NtCfgService;
 import com.el.cmic.utils.HttpClientUtil;
 import com.el.cmic.utils.HttpRequestUtil;
@@ -16,8 +17,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,17 +31,20 @@ import java.util.List;
  * Created by Vincent on 2017/2/14.
  */
 @Service
-public class ProductServiceImpl implements ProductService {
-    Logger logger = Logger.getLogger(ProductServiceImpl.class);
-    @Autowired
-    private ProductMapper productMapper;
+public class BasicService  {
+    Logger logger = Logger.getLogger(BasicService.class);
+
     @Resource
     private NtRequestParam ntRequestParam;
     @Autowired
     private NtCfgService ntCfgServiceImpl;
 
+    protected String interFaceTypeByTime;
+    protected String interFaceTypeByCode;
+
     @Value("${schema}")
-    private String tableSchema;
+    protected String tableSchema;
+
     @Resource
     private HttpRequestUtil httpRequestUtil;
 
@@ -48,15 +53,9 @@ public class ProductServiceImpl implements ProductService {
 
     private String url;
 
-    @Override
-    public int insertFe8nt001(String tableSchema, Fe8nt001 fe8nt001) {
-        return productMapper.insertFe8nt001(tableSchema, fe8nt001);
-    }
 
-
-    @Override
     public void callNtInterface() {
-        Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(NtInterfaceType.PRODUCT_BY_TIME);
+        Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(this.interFaceTypeByTime);
         url = fe8NtCfg.getUrl();
         Date timeBegin;
         Date timeEnd;
@@ -97,11 +96,10 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
-    @Override
     public boolean callNtInterface(@RequestParam("timeBegin") Date timeBegin, @RequestParam("timeEnd") Date timeEnd) {
         try {
             if (StringUtils.isEmpty(url)) {
-                Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(NtInterfaceType.PRODUCT_BY_TIME);
+                Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(this.interFaceTypeByTime);
                 url = fe8NtCfg.getUrl();
             }
             ntRequestParam.setTimeBegin(timeBegin);
@@ -121,9 +119,8 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
-    @Override
     public boolean callNtInterface(String code) {
-        Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(NtInterfaceType.PRODUCT_BY_KEY);
+        Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(this.interFaceTypeByCode);
         url = fe8NtCfg.getUrl();
 
         HashMap<String, Object> hashMap = new HashMap<>();
@@ -160,7 +157,7 @@ public class ProductServiceImpl implements ProductService {
                     return true;
                 }
                 //根据数据插入或者更新接口临时表
-                insertOrUpdateFe8nt001(data);
+                insertOrUpdate(data);
             } else if (resultCode.equals("0") || resultCode.equals("-1")) {
                 logger.error("调用纳通商品接口失败,code=" + resultCode + ";error:" + resultMsg);
                 return false;
@@ -169,28 +166,7 @@ public class ProductServiceImpl implements ProductService {
         return true;
     }
 
-    @Transactional
-    public void insertOrUpdateFe8nt001(String data) {
-        List<Fe8nt001> fe8nt001List = JSON.parseArray(data, Fe8nt001.class);
-        if (fe8nt001List == null || fe8nt001List.size() == 0) {
-            return;
-        }
-        for (Fe8nt001 fe8nt001 : fe8nt001List
-                ) {
-            if (StringUtils.isEmpty(fe8nt001.getSpaitm())) {
-                continue;
-            }
-            Fe8nt001 fe8nt = productMapper.selectFe8nt001ByLitm(fe8nt001.getSpaitm());
-            //判断是不是存在该商品，存在的话判断一下更新时间是不是比数据库的要新，如果新就需要更新表
-            if (fe8nt != null) {
-                int compareDateResult = fe8nt.getSprdate().compareTo(fe8nt001.getSprdate());
-                if (compareDateResult < 0) {
-                    productMapper.updateFe8nt001(tableSchema, fe8nt001);
-                }
-            } else {
-                //不存在就插入数据
-                insertFe8nt001(tableSchema, fe8nt001);
-            }
-        }
+    public void insertOrUpdate(String data) {
+
     }
 }
