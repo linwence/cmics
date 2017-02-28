@@ -1,19 +1,18 @@
 package com.el.cmic.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.el.cmic.common.NtResult;
 import com.el.cmic.domain.invoice.InvoiceDomain;
 import com.el.cmic.service.applydetail.ApplyDetailService;
 import com.el.cmic.service.applyhead.ApplyHeadService;
-import com.el.cmic.service.goods.ProductService;
+import com.el.cmic.service.goods.ProductServiceImpl;
 import com.el.cmic.service.invoice.InvoiceService;
 import com.el.cmic.service.saleorderdetail.SaleOrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -24,8 +23,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class NtApiController {
-    @Autowired
-    private ProductService productServiceImpl;
+    @Resource
+    private ProductServiceImpl productServiceImpl;
 
     @Autowired
     private InvoiceService invoiceServiceImpl;
