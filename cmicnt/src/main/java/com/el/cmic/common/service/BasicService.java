@@ -2,12 +2,8 @@ package com.el.cmic.common.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.el.cmic.common.NtInterfaceType;
 import com.el.cmic.common.NtRequestParam;
-import com.el.cmic.domain.goods.Fe8nt001;
 import com.el.cmic.domain.ntcfg.Fe8NtCfg;
-import com.el.cmic.mapper.goods.ProductMapper;
-import com.el.cmic.service.goods.ProductService;
 import com.el.cmic.service.ntcfg.NtCfgService;
 import com.el.cmic.utils.HttpClientUtil;
 import com.el.cmic.utils.HttpRequestUtil;
@@ -15,17 +11,14 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Vincent on 2017/2/14.
@@ -123,15 +116,15 @@ public class BasicService  {
         Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(this.interFaceTypeByCode);
         url = fe8NtCfg.getUrl();
 
-        HashMap<String, Object> hashMap = new HashMap<>();
+        HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("userCode", ntRequestParam.getUserCode());
         hashMap.put("pwd", ntRequestParam.getPwd());
         hashMap.put("code", code);
         try {
 
-            //String result = httpRequestUtil.sendPost(url, hashMap);
+            String result = httpRequestUtil.sendPost(url, hashMap);
 
-            //if (!afterNtResponse(result)) return false;
+            if (!afterNtResponse(result)) return false;
 
         } catch (Exception ex) {
             logger.error("调用纳通产品证照信息(根据主键)接口失败;error:" + ex.getMessage());
