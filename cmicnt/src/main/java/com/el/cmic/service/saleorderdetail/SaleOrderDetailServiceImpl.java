@@ -41,6 +41,28 @@ public class SaleOrderDetailServiceImpl extends BasicService {
     }
 
     @Override
+    public boolean callNtInterface(String code) {
+        Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(this.interFaceTypeByCode);
+        url = fe8NtCfg.getUrl();
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("userCode", ntRequestParam.getUserCode());
+        hashMap.put("pwd", ntRequestParam.getPwd());
+        hashMap.put("vr02", code);
+        try {
+
+            String result = httpClientUtil.doPost(url, hashMap,"utf-8");
+
+            if (!afterNtResponse(result)) return false;
+
+        } catch (Exception ex) {
+            logger.error("调用纳通销售订单明细(根据主键)接口失败;error:" + ex.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     @Transactional
     public void insertOrUpdate(String data) {
         List<Fe8nt004> fe8nt004List = JSON.parseArray(data, Fe8nt004.class);

@@ -237,7 +237,17 @@ public class Fe8nt005 implements Serializable {
      */
     private String kpurrf;
 
+    private String kpedsp;
+
     private static final long serialVersionUID = 1L;
+
+    public String getKpedsp() {
+        return kpedsp;
+    }
+
+    public void setKpedsp(String kpedsp) {
+        this.kpedsp = kpedsp;
+    }
 
     public String getKp58bdoc() {
         return kp58bdoc;

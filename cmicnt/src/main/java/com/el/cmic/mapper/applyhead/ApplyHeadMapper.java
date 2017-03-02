@@ -193,6 +193,8 @@ public interface ApplyHeadMapper {
             VALUES("KPURAB","0");
             VALUES("KPURRF","' '");
 
+            VALUES("KPEDSP","'N'");
+
             VALUES("KP58BDOC","#{record.kp58bdoc,jdbcType=NCHAR}");
             VALUES("KP58BSN","#{record.kp58bsn,jdbcType=DECIMAL}");
             VALUES("KP58BSYS","#{record.kp58bsys,jdbcType=NCHAR}");

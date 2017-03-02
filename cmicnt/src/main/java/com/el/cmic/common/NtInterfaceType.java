@@ -10,8 +10,8 @@ public class NtInterfaceType {
     public final static String PRODUCT_BY_KEY = "GetProductCredentialsByKey";
     public final static String SALEDETAIL_BY_TIME = "GetSaleByTime";
     public final static String SALEDETAIL_BY_KEY = "GetSaleByKey";
-    public final static String APPLYHEAD_BY_KEY="GetApplyHeadByCode";
+    public final static String APPLYHEAD_BY_KEY="GetApplyHeadByKey";
     public final static String APPLYHEAD_BY_TIME="GetApplyHeadByTime";
     public final static String APPLYDETAIL_BY_TIME="GetApplyDetailByTime";
-    public final static String APPLYDETAIL_BY_KEY="GetApplyDetailByCode";
+    public final static String APPLYDETAIL_BY_KEY="GetApplyDetailByKey";
 }

@@ -116,7 +116,7 @@ public interface SaleOrderDetailMapper {
 
         public String insertFe8nt004(@Param("schema") String schema,@Param("record") Fe8nt004 record){
             INSERT_INTO(schema+".Fe8nt004");
-            VALUES("SDEDSP","#{record.sdedsp,jdbcType = NCHAR}");
+            VALUES("SDEDSP","'N'");
             VALUES("SDRKCO","#{record.sdrkco,jdbcType = NCHAR}");
             VALUES("SDRCTO","#{record.sdrcto,jdbcType = NCHAR}");
             VALUES("SDRORN","#{record.sdrorn,jdbcType = NCHAR}");

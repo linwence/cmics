@@ -68,8 +68,8 @@ public class NtApiController {
     }
 
     @RequestMapping(value = "/saleoderdetail/code")
-    public String saleOrderDetailBtTime(@RequestParam("code") String code) {
-        if (saleOrderDetailServiceImpl.callNtInterface(code)) {
+    public String saleOrderDetailBtTime(@RequestParam("vr02") String vr02) {
+        if (saleOrderDetailServiceImpl.callNtInterface(vr02)) {
             return "调用成功";
         } else {
             return "调用失败";
@@ -87,8 +87,8 @@ public class NtApiController {
     }
 
     @RequestMapping(value = "/applyhead/code")
-    public String getApplyHeadByCode(@RequestParam("code") String code) {
-        if (applyHeadServiceImpl.callNtInterface(code)) {
+    public String getApplyHeadByCode(@RequestParam("doc") String doc) {
+        if (applyHeadServiceImpl.callNtInterface(doc)) {
             return "调用成功";
         } else {
             return "调用失败";
@@ -106,8 +106,8 @@ public class NtApiController {
     }
 
     @RequestMapping(value = "/applydetail/code")
-    public String getApplyDetailByCode(@RequestParam("code") String code) {
-        if (applyDetailServiceImpl.callNtInterface(code)) {
+    public String getApplyDetailByCode(@RequestParam("doc") String doc,@RequestParam("lnid") String lnid) {
+        if (applyDetailServiceImpl.callNtInterface(doc,lnid)) {
             return "调用成功";
         } else {
             return "调用失败";

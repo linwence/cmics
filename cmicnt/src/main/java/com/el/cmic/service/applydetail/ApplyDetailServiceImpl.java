@@ -41,6 +41,28 @@ public class ApplyDetailServiceImpl extends BasicService {
     }
 
 
+    public boolean callNtInterface(String code,String lnid) {
+        Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(this.interFaceTypeByCode);
+        url = fe8NtCfg.getUrl();
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("userCode", ntRequestParam.getUserCode());
+        hashMap.put("pwd", ntRequestParam.getPwd());
+        hashMap.put("doc", code);
+        hashMap.put("lnid",lnid);
+        try {
+
+            String result = httpClientUtil.doPost(url, hashMap,"utf-8");
+
+            if (!afterNtResponse(result)) return false;
+
+        } catch (Exception ex) {
+            logger.error("调用纳通发票申请明细信息(根据主键)接口失败;error:" + ex.getMessage());
+            return false;
+        }
+        return true;
+    }
+
     @Override
     @Transactional
     public void insertOrUpdate(String data) {
