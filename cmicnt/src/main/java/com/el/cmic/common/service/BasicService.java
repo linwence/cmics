@@ -25,12 +25,12 @@ import java.util.HashMap;
  */
 @Service
 public class BasicService  {
-    Logger logger = Logger.getLogger(BasicService.class);
+     protected Logger logger = Logger.getLogger(BasicService.class);
 
     @Resource
-    private NtRequestParam ntRequestParam;
+    protected NtRequestParam ntRequestParam;
     @Autowired
-    private NtCfgService ntCfgServiceImpl;
+    protected NtCfgService ntCfgServiceImpl;
 
     protected String interFaceTypeByTime;
     protected String interFaceTypeByCode;
@@ -42,9 +42,9 @@ public class BasicService  {
     private HttpRequestUtil httpRequestUtil;
 
     @Resource
-    private HttpClientUtil httpClientUtil;
+    protected HttpClientUtil httpClientUtil;
 
-    private String url;
+    protected String url;
 
 
     public void callNtInterface() {
