@@ -11,7 +11,7 @@ public class Fe8nt006 implements Serializable {
     private String kd58bdoc;
     @JSONField(name = "sn")
     private BigDecimal kd58bsn;
-    @JSONField(name = "lind")
+    @JSONField(name = "lnid")
     private BigDecimal kdlnid;
     @JSONField(name = "code")
     private String kd58bcode;
@@ -81,9 +81,9 @@ public class Fe8nt006 implements Serializable {
      */
     private String kdcburst2;
 
-    @JSONField(name = "indate" )
+    @JSONField(name = "indate", format = "yyyy/MM/dd HH:mm:ss" )
     private Date kdindate;
-    @JSONField(name = "redate" )
+    @JSONField(name = "redate", format = "yyyy/MM/dd HH:mm:ss" )
     private Date kdredate;
 
     /**

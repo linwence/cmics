@@ -102,9 +102,9 @@ public class Fe8nt005 implements Serializable {
      */
     private String kpdl07;
 
-    @JSONField(name = "indate", format = "yyyy-MM-dd hh:mi:ss")
+    @JSONField(name = "indate", format = "yyyy/MM/dd HH:mm:ss")
     private Date kpindate;
-    @JSONField(name = "redate", format = "yyyy-MM-dd hh:mi:ss")
+    @JSONField(name = "redate", format = "yyyy/MM/dd HH:mm:ss")
     private Date kpredate;
 
     /**

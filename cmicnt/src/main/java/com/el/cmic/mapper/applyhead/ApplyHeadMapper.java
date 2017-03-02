@@ -183,7 +183,7 @@ public interface ApplyHeadMapper {
 
             VALUES("KPUSER","'NT'");
             VALUES("KPPID","'Interface'");
-            VALUES("KPJOBN","Service");
+            VALUES("KPJOBN","'Service'");
             VALUES("KPUPMJ",UPMJ);
             VALUES("KPUPMT","0");
             VALUES("KPTDAY",TDAY);
