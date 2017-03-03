@@ -1,8 +1,5 @@
 package com.el.cmic.common;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,12 +9,10 @@ import java.util.Map;
 /**
  * Created by Vincent on 2017/2/14.
  */
-@Component
-@Scope("prototype")
-public class NtRequestParam {
-    @Value("${nt.userCode}")
+public class NtRequestParamByTime {
+
     private String userCode;
-    @Value("${nt.pwd}")
+
     private String pwd;
 
     private Date timeBegin;
@@ -55,28 +50,9 @@ public class NtRequestParam {
         this.timeEnd = timeEnd;
     }
 
-    public Map<String, String> toMap() {
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("userCode", this.getUserCode());
-        hashMap.put("pwd", this.getPwd());
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        if(this.getTimeBegin()!=null){
-            hashMap.put("timeBegin", simpleDateFormat.format(this.getTimeBegin()));
-        }else {
-            hashMap.put("timeBegin", "");
-        }
-       if(this.getTimeEnd()!=null){
-           hashMap.put("timeEnd", simpleDateFormat.format(this.getTimeEnd()));
-       }else {
-           hashMap.put("timeEnd", "");
-       }
-
-        return hashMap;
-    }
-
     @Override
     public String toString() {
-        return "NtRequestParam{" +
+        return "NtRequestParamByTime{" +
                 "userCode='" + userCode + '\'' +
                 ", pwd='" + pwd + '\'' +
                 ", timeBegin=" + timeBegin +

@@ -1,5 +1,8 @@
 package com.el.cmic.controller;
 
+import com.el.cmic.common.NtRequestParam;
+import com.el.cmic.common.NtRequestParamByCode;
+import com.el.cmic.common.NtRequestParamByTime;
 import com.el.cmic.common.NtResult;
 import com.el.cmic.domain.invoice.InvoiceDomain;
 import com.el.cmic.service.applydetail.ApplyDetailServiceImpl;
@@ -7,7 +10,9 @@ import com.el.cmic.service.applyhead.ApplyHeadServiceImpl;
 import com.el.cmic.service.goods.ProductServiceImpl;
 import com.el.cmic.service.invoice.InvoiceService;
 import com.el.cmic.service.saleorderdetail.SaleOrderDetailServiceImpl;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +28,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class NtApiController {
+    Logger logger = Logger.getLogger(NtApiController.class);
     @Resource
     private ProductServiceImpl productServiceImpl;
 
@@ -37,6 +43,11 @@ public class NtApiController {
 
     @Resource
     private ApplyDetailServiceImpl applyDetailServiceImpl;
+
+    @Value("${nt.userCode}")
+    private String ntUserCode;
+    @Value("${nt.pwd}")
+    private String ntPwd;
 
     @RequestMapping("/product/time")
     public String productByTime(@RequestParam("timeBegin") Date timeBegin, @RequestParam("timeEnd") Date timeEnd) {
@@ -106,20 +117,36 @@ public class NtApiController {
     }
 
     @RequestMapping(value = "/applydetail/code")
-    public String getApplyDetailByCode(@RequestParam("doc") String doc,@RequestParam("lnid") String lnid) {
-        if (applyDetailServiceImpl.callNtInterface(doc,lnid)) {
+    public String getApplyDetailByCode(@RequestParam("doc") String doc, @RequestParam("lnid") String lnid) {
+        if (applyDetailServiceImpl.callNtInterface(doc, lnid)) {
             return "调用成功";
         } else {
             return "调用失败";
         }
     }
 
-    @RequestMapping(value = "/JDEForGYBusi/GetInvoiceByTime",method = RequestMethod.POST)
+    @RequestMapping(value = "/JDEForGYBusi/GetInvoiceByTime", method = RequestMethod.POST)
     @ResponseBody
-    public NtResult invoiceByTime(@RequestParam("timeBegin") Date timeBegin, @RequestParam("timeEnd") Date timeEnd) {
+    //public NtResult invoiceByTime(@RequestParam("timeBegin") Date timeBegin, @RequestParam("timeEnd") Date timeEnd) {
+    public NtResult invoiceByTime(@RequestBody NtRequestParamByTime ntRequestParamByTime) {
+
         NtResult ntResult = new NtResult("1", "", null);
+        if (ntRequestParamByTime == null) {
+            ntResult.setResultCode("-1");
+            ntResult.setData("参数为空");
+            return ntResult;
+        }
+        logger.info("纳通参数:" + ntRequestParamByTime.toString());
+
+        if (!ntUserCode.equals(ntRequestParamByTime.getUserCode()) || !ntPwd.equals(ntRequestParamByTime.getPwd())) {
+            ntResult.setResultCode("-1");
+            ntResult.setResultMsg("用户名或者密码不正确，请检查");
+            return ntResult;
+        }
+
+
         try {
-            List<InvoiceDomain> invoiceDomainList = invoiceServiceImpl.selectInvoiceByTime(timeBegin, timeEnd);
+            List<InvoiceDomain> invoiceDomainList = invoiceServiceImpl.selectInvoiceByTime(ntRequestParamByTime.getTimeBegin(), ntRequestParamByTime.getTimeEnd());
             ntResult.setData(invoiceDomainList);
         } catch (Exception ex) {
             ntResult.setResultCode("-1");
@@ -128,12 +155,25 @@ public class NtApiController {
         return ntResult;
     }
 
-    @RequestMapping(value = "/JDEForGYBusi/GetInvoiceByCode",method = RequestMethod.POST)
+    @RequestMapping(value = "/JDEForGYBusi/GetInvoiceByCode", method = RequestMethod.POST)
     @ResponseBody
-    public NtResult invoiceByCode(String code) {
+    public NtResult invoiceByCode(@RequestBody NtRequestParamByCode ntRequestParamByCode) {
         NtResult ntResult = new NtResult("1", "", null);
+        if (ntRequestParamByCode == null) {
+            ntResult.setResultCode("-1");
+            ntResult.setData("参数为空");
+            return ntResult;
+        }
+        logger.info("纳通参数:" + ntRequestParamByCode.toString());
+
+        if (!ntUserCode.equals(ntRequestParamByCode.getUserCode()) || !ntPwd.equals(ntRequestParamByCode.getPwd())) {
+            ntResult.setResultCode("-1");
+            ntResult.setResultMsg("用户名或者密码不正确，请检查");
+            return ntResult;
+        }
+
         try {
-            List<InvoiceDomain> invoiceDomainList = invoiceServiceImpl.selectInvoiceByNtDoc(code);
+            List<InvoiceDomain> invoiceDomainList = invoiceServiceImpl.selectInvoiceByNtDoc(ntRequestParamByCode.getCode());
             ntResult.setData(invoiceDomainList);
 
         } catch (Exception ex) {
