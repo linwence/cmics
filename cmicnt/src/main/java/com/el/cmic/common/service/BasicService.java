@@ -35,6 +35,8 @@ public class BasicService  {
     protected String interFaceTypeByTime;
     protected String interFaceTypeByCode;
 
+    protected Date rdate;
+
     @Value("${schema}")
     protected String tableSchema;
 
@@ -52,10 +54,12 @@ public class BasicService  {
         url = fe8NtCfg.getUrl();
         Date timeBegin;
         Date timeEnd;
+        Date callDate = Calendar.getInstance().getTime();
+        timeEnd=Calendar.getInstance().getTime();
         //如果成功调用日期为空，说明是第一次执行，第一次执行的话，数据开始时间从2017年1月1号开始
         if (fe8NtCfg.getSuccessdate() == null) {
             Calendar calendar = Calendar.getInstance();
-            timeEnd = calendar.getTime();
+           // timeEnd = calendar.getTime();
             calendar.set(2017, 0, 1, 0, 0, 0);
             timeBegin = calendar.getTime();
         } else {
@@ -65,27 +69,32 @@ public class BasicService  {
             calendar.setTime(timeBegin);
 
             //时间范围从执行成功时间开始+时间间隔
-            calendar.add(Calendar.SECOND, fe8NtCfg.getIntervalTime().intValue() * 60);
-            timeEnd = calendar.getTime();
+            //calendar.add(Calendar.SECOND, fe8NtCfg.getIntervalTime().intValue() * 60);
+           // timeEnd = calendar.getTime();
         }
-        Date callDate = Calendar.getInstance().getTime();
+
         fe8NtCfg.setCalldate(callDate);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         logger.info("[callDate]=" + simpleDateFormat.format(callDate) + "[timeBegin]=" + simpleDateFormat.format(timeBegin) + ";[timeEnd]=" + simpleDateFormat.format(timeEnd));
 
         if (this.callNtInterface(timeBegin, timeEnd)) {
             fe8NtCfg.setSuccessflag("S");
-            if (callDate.compareTo(timeEnd) > 0) {
+            /*if (callDate.compareTo(timeEnd) > 0) {
                 fe8NtCfg.setSuccessdate(timeEnd);
             } else {
                 fe8NtCfg.setSuccessdate(callDate);
-            }
-            logger.info("[successDate]=" + simpleDateFormat.format(fe8NtCfg.getSuccessdate()));
+            }*/
+
+           // logger.info("[successDate]=" + simpleDateFormat.format(fe8NtCfg.getSuccessdate()));
         } else {
             fe8NtCfg.setSuccessflag("E");
         }
+        fe8NtCfg.setSuccessdate(this.rdate);
+
         //记录接口调用时间
-        ntCfgServiceImpl.updateFe8NtCfg(fe8NtCfg);
+        if(this.rdate!=null){
+            ntCfgServiceImpl.updateFe8NtCfg(fe8NtCfg);
+        }
 
     }
 

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Fe8nt001 implements Serializable {
+public class Fe8nt001 implements Serializable, Comparable {
     @JSONField(name = "litm")
     private String spaitm;
 
@@ -707,71 +707,83 @@ public class Fe8nt001 implements Serializable {
         this.status = status;
     }
 
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", spaitm=").append(spaitm);
-        sb.append(", splitm=").append(splitm);
-        sb.append(", spitm=").append(spitm);
-        sb.append(", spdsc1=").append(spdsc1);
-        sb.append(", spdsc2=").append(spdsc2);
-        sb.append(", spe8tym=").append(spe8tym);
-        sb.append(", spuom1=").append(spuom1);
-        sb.append(", spdl01=").append(spdl01);
-        sb.append(", spglpt=").append(spglpt);
-        sb.append(", spdl02=").append(spdl02);
-        sb.append(", spmmcu=").append(spmmcu);
-        sb.append(", span8=").append(span8);
-        sb.append(", spe8name=").append(spe8name);
-        sb.append(", sporig=").append(sporig);
-        sb.append(", spe8fxdj=").append(spe8fxdj);
-        sb.append(", spdl03=").append(spdl03);
-        sb.append(", spe8cctj=").append(spe8cctj);
-        sb.append(", spdl04=").append(spdl04);
-        sb.append(", spe8qtcc=").append(spe8qtcc);
-        sb.append(", spe8xlhgl=").append(spe8xlhgl);
-        sb.append(", spe8zdyh=").append(spe8zdyh);
-        sb.append(", spe8yhzq=").append(spe8yhzq);
-        sb.append(", spe8cpfl=").append(spe8cpfl);
-        sb.append(", spe8zzlxa=").append(spe8zzlxa);
-        sb.append(", spe8zzbm=").append(spe8zzbm);
-        sb.append(", speftj=").append(speftj);
-        sb.append(", spexdj=").append(spexdj);
-        sb.append(", spe8path=").append(spe8path);
-        sb.append(", spir01=").append(spir01);
-        sb.append(", spir02=").append(spir02);
-        sb.append(", spir03=").append(spir03);
-        sb.append(", spir04=").append(spir04);
-        sb.append(", spir05=").append(spir05);
-        sb.append(", sphrb=").append(sphrb);
-        sb.append(", sppsal=").append(sppsal);
-        sb.append(", spipay=").append(spipay);
-        sb.append(", sptdsc=").append(sptdsc);
-        sb.append(", spefhr=").append(spefhr);
-        sb.append(", spcrtj=").append(spcrtj);
-        sb.append(", spdivj=").append(spdivj);
-        sb.append(", spafdj=").append(spafdj);
-        sb.append(", spckdt=").append(spckdt);
-        sb.append(", spuser=").append(spuser);
-        sb.append(", spupmj=").append(spupmj);
-        sb.append(", sptday=").append(sptday);
-        sb.append(", sppid=").append(sppid);
-        sb.append(", spjobn=").append(spjobn);
-        sb.append(", spurcd=").append(spurcd);
-        sb.append(", spurdt=").append(spurdt);
-        sb.append(", spurat=").append(spurat);
-        sb.append(", spurab=").append(spurab);
-        sb.append(", spurrf=").append(spurrf);
-        sb.append(", spflag=").append(spflag);
-        sb.append(", spedsp=").append(spedsp);
-        sb.append(", spev01=").append(spev01);
-        sb.append(", spev02=").append(spev02);
-        sb.append(", spev03=").append(spev03);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "Fe8nt001{" +
+                "spaitm='" + spaitm + '\'' +
+                ", splitm='" + splitm + '\'' +
+                ", spitm=" + spitm +
+                ", spdsc1='" + spdsc1 + '\'' +
+                ", spdsc2='" + spdsc2 + '\'' +
+                ", spe8tym='" + spe8tym + '\'' +
+                ", spuom1='" + spuom1 + '\'' +
+                ", spdl01='" + spdl01 + '\'' +
+                ", spglpt='" + spglpt + '\'' +
+                ", spdl02='" + spdl02 + '\'' +
+                ", spmmcu='" + spmmcu + '\'' +
+                ", span8=" + span8 +
+                ", spe8name='" + spe8name + '\'' +
+                ", sporig='" + sporig + '\'' +
+                ", spe8fxdj='" + spe8fxdj + '\'' +
+                ", spdl03='" + spdl03 + '\'' +
+                ", spe8cctj='" + spe8cctj + '\'' +
+                ", spdl04='" + spdl04 + '\'' +
+                ", spe8qtcc='" + spe8qtcc + '\'' +
+                ", spe8xlhgl='" + spe8xlhgl + '\'' +
+                ", spe8zdyh='" + spe8zdyh + '\'' +
+                ", spe8yhzq=" + spe8yhzq +
+                ", spe8cpfl='" + spe8cpfl + '\'' +
+                ", spe8zzlxa='" + spe8zzlxa + '\'' +
+                ", spe8zzbm='" + spe8zzbm + '\'' +
+                ", speftj=" + speftj +
+                ", spexdj=" + spexdj +
+                ", spe8path='" + spe8path + '\'' +
+                ", spir01='" + spir01 + '\'' +
+                ", spir02='" + spir02 + '\'' +
+                ", spir03='" + spir03 + '\'' +
+                ", spir04='" + spir04 + '\'' +
+                ", spir05='" + spir05 + '\'' +
+                ", sphrb=" + sphrb +
+                ", sppsal=" + sppsal +
+                ", spipay=" + spipay +
+                ", sptdsc=" + sptdsc +
+                ", spefhr=" + spefhr +
+                ", spcrtj=" + spcrtj +
+                ", spdivj=" + spdivj +
+                ", spafdj=" + spafdj +
+                ", spckdt=" + spckdt +
+                ", sprdate=" + sprdate +
+                ", spidate=" + spidate +
+                ", status='" + status + '\'' +
+                ", spuser='" + spuser + '\'' +
+                ", spupmj=" + spupmj +
+                ", sptday=" + sptday +
+                ", sppid='" + sppid + '\'' +
+                ", spjobn='" + spjobn + '\'' +
+                ", spurcd='" + spurcd + '\'' +
+                ", spurdt=" + spurdt +
+                ", spurat=" + spurat +
+                ", spurab=" + spurab +
+                ", spurrf='" + spurrf + '\'' +
+                ", spflag='" + spflag + '\'' +
+                ", spedsp='" + spedsp + '\'' +
+                ", spev01='" + spev01 + '\'' +
+                ", spev02='" + spev02 + '\'' +
+                ", spev03='" + spev03 + '\'' +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if(this.getSprdate().compareTo(((Fe8nt001) o).getSprdate())<0){
+            return -1;
+        }
+
+        if(this.getSprdate().compareTo(((Fe8nt001) o).getSprdate())>0) {
+            return 1;
+        }
+        return 0;
+
     }
 }
