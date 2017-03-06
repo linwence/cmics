@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Fe8nt004 implements Serializable {
+public class Fe8nt004 implements Serializable,Comparable {
     @JSONField(name = "from")
     private String sde8from;
 
@@ -941,5 +941,16 @@ public class Fe8nt004 implements Serializable {
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if(this.getSdredate().compareTo(((Fe8nt004) o).getSdredate())<0){
+            return -1;
+        }
+        if(this.getSdredate().compareTo(((Fe8nt004) o).getSdredate())>0){
+            return 1;
+        }
+        return 0;
     }
 }

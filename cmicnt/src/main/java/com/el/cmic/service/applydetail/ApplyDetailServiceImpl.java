@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by king_ on 2017/2/21.
@@ -67,6 +64,18 @@ public class ApplyDetailServiceImpl extends BasicService {
     @Transactional
     public void insertOrUpdate(String data) {
         List<Fe8nt006> fe8nt006List = JSON.parseArray(data, Fe8nt006.class);
+
+        if(fe8nt006List == null || fe8nt006List.size() == 0){
+            this.rdate = null;
+            return;
+        }
+
+        Collections.sort(fe8nt006List);
+
+        logger.info(fe8nt006List.get(0).toString());
+        this.rdate = fe8nt006List.get(fe8nt006List.size()-1).getKdredate();
+        logger.info(fe8nt006List.get(fe8nt006List.size()-1).getKdredate());
+
         for (Fe8nt006 fe8nt006 : fe8nt006List
                 ) {
             Fe8nt006 fe8nt = applyDetailMapper.selectFe8nt006DateByPK(tableSchema,fe8nt006.getKd58bdoc(),fe8nt006.getKd58bsn(),fe8nt006.getKdlnid());

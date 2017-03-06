@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by king_ on 2017/2/17.
@@ -66,6 +63,31 @@ public class SaleOrderDetailServiceImpl extends BasicService {
     @Transactional
     public void insertOrUpdate(String data) {
         List<Fe8nt004> fe8nt004List = JSON.parseArray(data, Fe8nt004.class);
+
+        if(fe8nt004List == null || fe8nt004List.size() == 0){
+            this.rdate = null;
+            return;
+        }
+
+        Collections.sort(fe8nt004List);
+
+        logger.info(fe8nt004List.get(0).toString());
+
+        this.rdate = fe8nt004List.get(fe8nt004List.size()-1).getSdredate();
+
+        logger.info(fe8nt004List.get(fe8nt004List.size()-1).getSdredate());
+
+
+
+
+
+
+
+
+
+
+
+
         for (Fe8nt004 fe8nt004 : fe8nt004List
                 ) {
             Fe8nt004 fe8nt = saleOrderDetailMapper.selectDateByPK(tableSchema, fe8nt004.getSde8from(), fe8nt004.getSde8type(), fe8nt004.getSde8odno(), fe8nt004.getSde8lnid());
