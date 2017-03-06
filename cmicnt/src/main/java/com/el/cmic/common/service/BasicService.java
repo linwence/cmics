@@ -65,13 +65,17 @@ public class BasicService  {
         } else {
             //执行成功的时间作为开始时间进行查询
             timeBegin = fe8NtCfg.getSuccessdate();
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(timeBegin);
+
 
             //时间范围从执行成功时间开始+时间间隔
             //calendar.add(Calendar.SECOND, fe8NtCfg.getIntervalTime().intValue() * 60);
            // timeEnd = calendar.getTime();
         }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(timeBegin);
+        //时间范围从执行成功时间开始+1秒
+        calendar.add(Calendar.SECOND, 1);
+        timeBegin=calendar.getTime();
 
         fe8NtCfg.setCalldate(callDate);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
