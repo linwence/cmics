@@ -37,7 +37,9 @@ public interface ApplyDetailMapper {
             SET("KD58BINAME = #{record.kd58biname,jdbcType=NCHAR}");
             SET("KD58BTYPE = #{record.kd58btype,jdbcType=NCHAR}");
             SET("KD58BUNIT = #{record.kd58bunit,jdbcType=NCHAR}");
-            SET("KD58BQTY = #{record.kd58bqty,jdbcType=DECIMAL}");
+            //-------------
+            SET("KD58BQTY = #{record.kd58bqty,jdbcType=DECIMAL}*10");
+            //-------------
             SET("KD58BPRICE = #{record.kd58bprice,jdbcType=DECIMAL}");
             SET("KD58BAMT = #{record.kd58bamt,jdbcType=DECIMAL}");
             SET("KD58BTAX = #{record.kd58btax,jdbcType=DECIMAL}");
@@ -114,7 +116,9 @@ public interface ApplyDetailMapper {
             VALUES("KD58BINAME","#{record.kd58biname,jdbcType=NCHAR}");
             VALUES("KD58BTYPE","#{record.kd58btype,jdbcType=NCHAR}");
             VALUES("KD58BUNIT","#{record.kd58bunit,jdbcType=NCHAR}");
-            VALUES("KD58BQTY","#{record.kd58bqty,jdbcType=DECIMAL}");
+            //-------------------------
+            VALUES("KD58BQTY","#{record.kd58bqty,jdbcType=DECIMAL}*10");
+            //-------------------------
             VALUES("KD58BPRICE","#{record.kd58bprice,jdbcType=DECIMAL}");
             VALUES("KD58BAMT","#{record.kd58bamt,jdbcType=DECIMAL}");
             VALUES("KD58BTAX","#{record.kd58btax,jdbcType=DECIMAL}");

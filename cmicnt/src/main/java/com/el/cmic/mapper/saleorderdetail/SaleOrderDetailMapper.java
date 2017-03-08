@@ -56,7 +56,9 @@ public interface SaleOrderDetailMapper {
             SET("SDE8DSC2 = #{record.sde8dsc2,jdbcType = NCHAR}");
             SET("SDUOM = #{record.sduom,jdbcType = NCHAR}");
             SET("SDUOM3 = #{record.sduom3,jdbcType = NCHAR}");
-            SET("SDUORG = #{record.sduorg,jdbcType=DECIMAL}");
+            //-----------------
+            SET("SDUORG = #{record.sduorg,jdbcType=DECIMAL}*10");
+            //-----------------
             SET("SDTUPRC = #{record.sdtuprc,jdbcType=DECIMAL}");
             SET("SDTAEXP = #{record.sdtaexp,jdbcType=DECIMAL}");
             SET("SDE8TPRRC = #{record.sde8tprrc,jdbcType=DECIMAL}");
@@ -139,7 +141,9 @@ public interface SaleOrderDetailMapper {
             VALUES("SDE8DSC2","#{record.sde8dsc2,jdbcType = NCHAR}");
             VALUES("SDUOM","#{record.sduom,jdbcType = NCHAR}");
             VALUES("SDUOM3","#{record.sduom3,jdbcType = NCHAR}");
-            VALUES("SDUORG","#{record.sduorg,jdbcType=DECIMAL}");
+            //-----------
+            VALUES("SDUORG","#{record.sduorg,jdbcType=DECIMAL}*10");
+            //-----------
             VALUES("SDTUPRC","#{record.sdtuprc,jdbcType=DECIMAL}");
             VALUES("SDTAEXP","#{record.sdtaexp,jdbcType=DECIMAL}");
             VALUES("SDE8TPRRC","#{record.sde8tprrc,jdbcType=DECIMAL}");
