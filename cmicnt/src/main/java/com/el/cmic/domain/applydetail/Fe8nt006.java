@@ -55,9 +55,9 @@ public class Fe8nt006 implements Serializable,Comparable {
      */
     private String kdcburst8;
 
-    @JSONField(name = "dl01" )
+    @JSONField(name = "dsc1" )
     private String kddl01;
-    @JSONField(name = "dl02" )
+    @JSONField(name = "txr1" )
     private String kddl02;
     @JSONField(name = "dl03" )
     private String kddl03;
