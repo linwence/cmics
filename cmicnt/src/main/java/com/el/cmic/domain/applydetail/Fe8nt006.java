@@ -27,8 +27,17 @@ public class Fe8nt006 implements Serializable,Comparable {
     private String kd58bunit;
     @JSONField(name = "qty")
     private BigDecimal kd58bqty;
-    @JSONField(name = "price")
+
+
+
+    //@JSONField(name = "price")
     private BigDecimal kd58bprice;
+
+    @JSONField(name = "price")
+    private BigDecimal kde8price;
+
+
+
     @JSONField(name = "amt")
     private BigDecimal kd58bamt;
     @JSONField(name = "tax")
