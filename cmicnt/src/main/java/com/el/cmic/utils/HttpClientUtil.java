@@ -12,6 +12,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class HttpClientUtil {
+    Logger logger=Logger.getLogger(HttpClientUtil.class);
     public String doPost(String url,Map<String,String> map,String charset){
         HttpClient httpClient = null;
         HttpPost httpPost = null;
@@ -50,6 +52,7 @@ public class HttpClientUtil {
         }catch(Exception ex){
             ex.printStackTrace();
         }
+        logger.info("[返回结果]"+result);
         return result;
     }
 }

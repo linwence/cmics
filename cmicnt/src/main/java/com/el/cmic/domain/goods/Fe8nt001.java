@@ -1,6 +1,7 @@
 package com.el.cmic.domain.goods;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -334,6 +335,9 @@ public class Fe8nt001 implements Serializable, Comparable {
     }
 
     public void setSpe8fxdj(String spe8fxdj) {
+        if(!StringUtils.isEmpty(spe8fxdj)&&spe8fxdj.length()==1){
+            spe8fxdj="00"+spe8fxdj;
+        }
         this.spe8fxdj = spe8fxdj;
     }
 
