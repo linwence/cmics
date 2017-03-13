@@ -1,5 +1,6 @@
 package com.el.cmic.utils;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,7 @@ import java.util.Map;
 public class HttpRequestUtil {
     //@Value("${nt.Url}")
    // private String url;
-
+Logger logger=  Logger.getLogger(HttpRequestUtil.class);
     /**
      * 向指定 URL 发送Http POST方法的请求
      * * @param param map
@@ -89,6 +90,7 @@ public class HttpRequestUtil {
                 ex.printStackTrace();
             }
         }
+        logger.info(result);
         return result;
     }
 

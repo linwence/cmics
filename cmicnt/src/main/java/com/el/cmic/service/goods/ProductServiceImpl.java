@@ -44,12 +44,12 @@ public class ProductServiceImpl extends BasicService {
         //排序
         Collections.sort(fe8nt001List);
 
-        logger.info(fe8nt001List.get(0).toString());
+       // logger.info(fe8nt001List.get(0).toString());
 
         //记录更新时间
         this.rdate = fe8nt001List.get(fe8nt001List.size() - 1).getSprdate();
 
-        logger.info(fe8nt001List.get(fe8nt001List.size() - 1).toString());
+       // logger.info(fe8nt001List.get(fe8nt001List.size() - 1).toString());
         for (Fe8nt001 fe8nt001 : fe8nt001List
                 ) {
             if (StringUtils.isEmpty(fe8nt001.getSpaitm())) {
