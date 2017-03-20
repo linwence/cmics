@@ -93,8 +93,8 @@ public class Fe8nt001 implements Serializable, Comparable {
     @JSONField(name = "path")
     private String spe8path;
 
-    @JSONField(name = "ir01")
-    private String spir01;
+    @JSONField(name = "sld")
+    private String spir01;//货架天数
 
     @JSONField(name = "ir02")
     private String spir02;
