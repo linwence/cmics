@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Vincent on 2017/2/21.
  */
-@JSONType(orders = {"doc", "ntdoc", "invnum", "dl01", "dl02", "indate", "redate"})
+@JSONType(orders = {"doc", "ntdoc", "invnum", "dl01", "dl02", "indate", "redate","ivd"})
 public class InvoiceDomain {
     @JSONField(name = "doc")
     private String doc;//申请号码
@@ -25,6 +25,8 @@ public class InvoiceDomain {
     private Date indate;//创建日期时间
     @JSONField(name = "redate", format = "yyyy-MM-dd HH:mm:ss")
     private Date redate;//更新日期时间
+    @JSONField(name = "ivd")
+    private Integer ivd;//开票日期
 
     public String getDoc() {
         return doc;
@@ -80,5 +82,13 @@ public class InvoiceDomain {
 
     public void setRedate(Date redate) {
         this.redate = redate;
+    }
+
+    public Integer getIvd() {
+        return ivd;
+    }
+
+    public void setIvd(Integer ivd) {
+        this.ivd = ivd;
     }
 }

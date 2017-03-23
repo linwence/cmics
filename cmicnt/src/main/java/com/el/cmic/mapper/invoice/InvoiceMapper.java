@@ -27,6 +27,7 @@ public interface InvoiceMapper {
             SELECT("dl02");
             SELECT("indate");
             SELECT("redate");
+            SELECT("ivd");
             FROM(tableSchema + ".ve8ntinvoice");
             if (timeBegin == null && timeEnd == null) {
                 WHERE("ROWNUM<=5000");
@@ -45,6 +46,7 @@ public interface InvoiceMapper {
             SELECT("dl02");
             SELECT("indate");
             SELECT("redate");
+            SELECT("ivd");
             FROM(tableSchema + ".ve8ntinvoice");
             if (StringUtils.isEmpty(ntdoc)) {
                 WHERE("ROWNUM<=5000");
