@@ -173,7 +173,7 @@ public class NtApiController {
         }
 
         try {
-            List<InvoiceDomain> invoiceDomainList = invoiceServiceImpl.selectInvoiceByNtDoc(ntRequestParamByCode.getCode());
+            List<InvoiceDomain> invoiceDomainList = invoiceServiceImpl.selectInvoiceByNtDoc(ntRequestParamByCode.getDoc());
             ntResult.setData(invoiceDomainList);
 
         } catch (Exception ex) {

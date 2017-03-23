@@ -9,7 +9,7 @@ public class NtRequestParamByCode {
 
     private String pwd;
 
-    private String code;
+    private String doc;
 
     public String getUserCode() {
         return userCode;
@@ -27,12 +27,12 @@ public class NtRequestParamByCode {
         this.pwd = pwd;
     }
 
-    public String getCode() {
-        return code;
+    public String getDoc() {
+        return doc;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setDoc(String doc) {
+        this.doc = doc;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class NtRequestParamByCode {
         return "NtRequestParamByCode{" +
                 "userCode='" + userCode + '\'' +
                 ", pwd='" + pwd + '\'' +
-                ", code='" + code + '\'' +
+                ", doc='" + doc + '\'' +
                 '}';
     }
 }

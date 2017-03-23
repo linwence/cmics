@@ -51,7 +51,7 @@ public interface InvoiceMapper {
             if (StringUtils.isEmpty(ntdoc)) {
                 WHERE("ROWNUM<=5000");
             } else {
-                WHERE("ntdoc=#{ntdoc}");
+                WHERE("trim(ntdoc)=#{ntdoc}");
             }
             return toString();
         }
