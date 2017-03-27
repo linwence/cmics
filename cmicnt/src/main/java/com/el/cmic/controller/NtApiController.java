@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,7 @@ import java.util.List;
  * Created by Vincent on 2017/2/17.
  */
 @RestController
+@Scope(value = "prototype")
 @RequestMapping("/api")
 public class NtApiController {
     Logger logger = Logger.getLogger(NtApiController.class);
