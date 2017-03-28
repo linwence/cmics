@@ -5,6 +5,7 @@ import com.el.cmic.common.NtInterfaceType;
 import com.el.cmic.common.service.BasicService;
 import com.el.cmic.domain.goods.Fe8nt001;
 import com.el.cmic.mapper.goods.ProductMapper;
+import com.el.cmic.utils.BCConvert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +35,8 @@ public class ProductServiceImpl extends BasicService {
     @Override
     @Transactional
     public void insertOrUpdate(String data) {
+        //全角转半角
+        data= BCConvert.qj2bj(data);
         List<Fe8nt001> fe8nt001List = JSON.parseArray(data, Fe8nt001.class);
         if (fe8nt001List == null || fe8nt001List.size() == 0) {
             //记录更新时间
