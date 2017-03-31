@@ -9,7 +9,7 @@ import org.apache.ibatis.type.JdbcType;
  */
 public interface Fe8NtCfgMapper {
 
-    @Select({"SELECT interfacename,calldate,successflag,successdate,url,intervaltime",
+    @Select({"SELECT interfacename,calldate,successflag,successdate,url,intervaltime,nvl(validflag,'Y') AS validflag",
             " FROM ${tableSchema}.Fe8NtCfg ",
             "where trim(interfacename)=#{interfacename}"})
     @Results({
@@ -18,7 +18,8 @@ public interface Fe8NtCfgMapper {
             @Result(column = "successflag", property = "successflag", jdbcType = JdbcType.NCHAR),
             @Result(column = "successdate", property = "successdate", jdbcType = JdbcType.TIMESTAMP),
             @Result(column = "url",property = "url",jdbcType = JdbcType.NCHAR),
-            @Result(column = "intervaltime",property = "intervalTime",jdbcType = JdbcType.INTEGER)
+            @Result(column = "intervaltime",property = "intervalTime",jdbcType = JdbcType.INTEGER),
+            @Result(column = "validflag",property = "validflag",jdbcType = JdbcType.NCHAR)
     })
     public Fe8NtCfg selectFe8nttime(String interfacename);
 

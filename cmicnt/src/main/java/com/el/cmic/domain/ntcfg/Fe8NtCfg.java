@@ -17,6 +17,7 @@ public class Fe8NtCfg {
     private String url;
 
     private Integer intervalTime;
+    private String validflag;
 
     public String getInterfacename() {
         return interfacename;
@@ -64,5 +65,13 @@ public class Fe8NtCfg {
 
     public void setIntervalTime(Integer intervalTime) {
         this.intervalTime = intervalTime;
+    }
+
+    public String getValidflag() {
+        return validflag;
+    }
+
+    public void setValidflag(String validflag) {
+        this.validflag = validflag;
     }
 }

@@ -51,6 +51,10 @@ public class BasicService  {
 
     public void callNtInterface() {
         Fe8NtCfg fe8NtCfg = ntCfgServiceImpl.selectFe8NtCfgByInterfaceName(this.interFaceTypeByTime);
+        if(fe8NtCfg.getValidflag().equals("N")){
+            logger.info("接口"+this.interFaceTypeByTime+"未启用");
+            return;
+        }
         url = fe8NtCfg.getUrl();
         Date timeBegin;
         Date timeEnd;
