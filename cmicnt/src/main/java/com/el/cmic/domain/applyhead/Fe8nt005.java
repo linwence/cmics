@@ -1,6 +1,7 @@
 package com.el.cmic.domain.applyhead;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -270,6 +271,11 @@ public class Fe8nt005 implements Serializable,Comparable {
     }
 
     public void setKp58bsys(String kp58bsys) {
+        if(!StringUtils.isEmpty(kp58bsys)){
+            if(kp58bsys.equals("1")){
+                kp58bsys="0"+kp58bsys;
+            }
+        }
         this.kp58bsys = kp58bsys;
     }
 
