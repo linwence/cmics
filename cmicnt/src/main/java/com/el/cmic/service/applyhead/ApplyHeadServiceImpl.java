@@ -93,8 +93,9 @@ public class ApplyHeadServiceImpl extends BasicService {
             if(fe8nt != null){
                 //applyHeadMapper.deleteFe8nt005ByPK(tableSchema,fe8nt005.getKp58bdoc(),fe8nt005.getKp58bsn(),fe8nt005.getKp58bsys());
                 logger.info("该条数据已经存在"+fe8nt.toString());
+            }else {
+                applyHeadMapper.insertFe8nt005(tableSchema, fe8nt005);
             }
-            applyHeadMapper.insertFe8nt005(tableSchema,fe8nt005);
         }
     }
 

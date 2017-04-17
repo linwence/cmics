@@ -228,6 +228,14 @@ public class Fe8nt006 implements Serializable,Comparable {
 
     private static final long serialVersionUID = 1L;
 
+    public BigDecimal getKde8price() {
+        return kde8price;
+    }
+
+    public void setKde8price(BigDecimal kde8price) {
+        this.kde8price = kde8price;
+    }
+
     public String getKd58bdoc() {
         return kd58bdoc;
     }

@@ -92,9 +92,11 @@ public class ApplyDetailServiceImpl extends BasicService {
 
             if(fe8nt != null){
                 //applyDetailMapper.deleteFe8nt006ByPK(tableSchema,fe8nt006.getKd58bdoc(),fe8nt006.getKd58bsn(),fe8nt006.getKdlnid());
+                //applyDetailMapper.updateFe8nt006ByPK(tableSchema, fe8nt006);
                 logger.info("该条数据已经存在"+fe8nt.toString());
-            }
+            }else{
             applyDetailMapper.insertFe8nt006(tableSchema,fe8nt006);
+            }
         }
     }
 }

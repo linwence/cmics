@@ -105,8 +105,9 @@ public class SaleOrderDetailServiceImpl extends BasicService {
             if (fe8nt != null) {
                 //saleOrderDetailMapper.deleteFe8nt004ByPK(tableSchema, fe8nt004.getSde8from(), fe8nt004.getSde8type(), fe8nt004.getSde8odno(), fe8nt004.getSde8lnid());
                 logger.info("该条数据已经存在"+fe8nt.toString());
+            }else {
+                saleOrderDetailMapper.insertFe8nt004(tableSchema, fe8nt004);
             }
-            saleOrderDetailMapper.insertFe8nt004(tableSchema, fe8nt004);
         }
     }
 
